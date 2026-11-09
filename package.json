@@ -1,0 +1,17 @@
+{
+  "name": "@apilki/yandex-market",
+  "version": "0.4.0",
+  "description": "JavaScript/TypeScript client for Yandex Market Partner API",
+  "main": "./dist/index.js",
+  "module": "./dist/esm/index.js",
+  "typings": "./dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apilki/yandex-market-typescript"
+  }
+}
