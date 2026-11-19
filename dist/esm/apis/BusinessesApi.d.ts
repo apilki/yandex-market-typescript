@@ -19,12 +19,12 @@ export interface BusinessesApiGetBusinessSettingsRequest {
  */
 export declare class BusinessesApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getBusinessSettings.md) %}  Возвращает информацию о настройках кабинета, идентификатор которого указан в запросе.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getBusinessSettings.md) %}
+     * {% include notitle access %}  Возвращает информацию о настройках кабинета, идентификатор которого указан в запросе.  {% include notitle limit %}
      * Настройки кабинета
      */
     getBusinessSettingsRaw(requestParameters: BusinessesApiGetBusinessSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetBusinessSettingsResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getBusinessSettings.md) %}  Возвращает информацию о настройках кабинета, идентификатор которого указан в запросе.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getBusinessSettings.md) %}
+     * {% include notitle access %}  Возвращает информацию о настройках кабинета, идентификатор которого указан в запросе.  {% include notitle limit %}
      * Настройки кабинета
      */
     getBusinessSettings(businessId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetBusinessSettingsResponse>;

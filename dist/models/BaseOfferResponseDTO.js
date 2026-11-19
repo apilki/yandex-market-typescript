@@ -66,6 +66,7 @@ function BaseOfferResponseDTOFromJSONTyped(json, ignoreDiscriminator) {
         'type': json['type'] == null ? undefined : (0, OfferType_1.OfferTypeFromJSON)(json['type']),
         'downloadable': json['downloadable'] == null ? undefined : json['downloadable'],
         'adult': json['adult'] == null ? undefined : json['adult'],
+        'markingDeclared': json['markingDeclared'] == null ? undefined : json['markingDeclared'],
         'age': json['age'] == null ? undefined : (0, AgeDTO_1.AgeDTOFromJSON)(json['age']),
         'params': json['params'] == null ? undefined : (json['params'].map(OfferParamDTO_1.OfferParamDTOFromJSON)),
     };
@@ -100,6 +101,7 @@ function BaseOfferResponseDTOToJSON(value) {
         'type': (0, OfferType_1.OfferTypeToJSON)(value['type']),
         'downloadable': value['downloadable'],
         'adult': value['adult'],
+        'markingDeclared': value['markingDeclared'],
         'age': (0, AgeDTO_1.AgeDTOToJSON)(value['age']),
         'params': value['params'] == null ? undefined : (value['params'].map(OfferParamDTO_1.OfferParamDTOToJSON)),
     };

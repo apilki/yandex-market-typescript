@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 import { SupplyRequestTypeFromJSON, SupplyRequestTypeToJSON, } from './SupplyRequestType';
+import { EtrnIdentifierDTOFromJSON, EtrnIdentifierDTOToJSON, } from './EtrnIdentifierDTO';
 import { SupplyRequestStatusTypeFromJSON, SupplyRequestStatusTypeToJSON, } from './SupplyRequestStatusType';
 import { SupplyRequestSubTypeFromJSON, SupplyRequestSubTypeToJSON, } from './SupplyRequestSubType';
 import { SupplyRequestCountersDTOFromJSON, SupplyRequestCountersDTOToJSON, } from './SupplyRequestCountersDTO';
@@ -56,6 +57,7 @@ export function SupplyRequestDTOFromJSONTyped(json, ignoreDiscriminator) {
         'childrenLinks': json['childrenLinks'] == null ? undefined : (json['childrenLinks'].map(SupplyRequestReferenceDTOFromJSON)),
         'targetLocation': SupplyRequestLocationDTOFromJSON(json['targetLocation']),
         'transitLocation': json['transitLocation'] == null ? undefined : SupplyRequestLocationDTOFromJSON(json['transitLocation']),
+        'etrnIdentifier': json['etrnIdentifier'] == null ? undefined : EtrnIdentifierDTOFromJSON(json['etrnIdentifier']),
     };
 }
 export function SupplyRequestDTOToJSON(value) {
@@ -73,5 +75,6 @@ export function SupplyRequestDTOToJSON(value) {
         'childrenLinks': value['childrenLinks'] == null ? undefined : (value['childrenLinks'].map(SupplyRequestReferenceDTOToJSON)),
         'targetLocation': SupplyRequestLocationDTOToJSON(value['targetLocation']),
         'transitLocation': SupplyRequestLocationDTOToJSON(value['transitLocation']),
+        'etrnIdentifier': EtrnIdentifierDTOToJSON(value['etrnIdentifier']),
     };
 }

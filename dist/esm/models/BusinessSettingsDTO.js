@@ -11,6 +11,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { BusinessWarehouseModelTypeFromJSON, BusinessWarehouseModelTypeToJSON, } from './BusinessWarehouseModelType';
 import { CurrencyTypeFromJSON, CurrencyTypeToJSON, } from './CurrencyType';
 /**
  * Check if a given object implements the BusinessSettingsDTO interface.
@@ -26,6 +27,7 @@ export function BusinessSettingsDTOFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'warehouseModel': json['warehouseModel'] == null ? undefined : BusinessWarehouseModelTypeFromJSON(json['warehouseModel']),
         'onlyDefaultPrice': json['onlyDefaultPrice'] == null ? undefined : json['onlyDefaultPrice'],
         'currency': json['currency'] == null ? undefined : CurrencyTypeFromJSON(json['currency']),
     };
@@ -35,6 +37,7 @@ export function BusinessSettingsDTOToJSON(value) {
         return value;
     }
     return {
+        'warehouseModel': BusinessWarehouseModelTypeToJSON(value['warehouseModel']),
         'onlyDefaultPrice': value['onlyDefaultPrice'],
         'currency': CurrencyTypeToJSON(value['currency']),
     };

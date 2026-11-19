@@ -35,6 +35,8 @@ exports.ReturnRequestDecisionTypeToJSON = ReturnRequestDecisionTypeToJSON;
  *
  * * `DECLINE_REFUND` — отказать в возврате.
  *
+ * * `PARTIAL_MONEY_REFUND` — частичный возврат денег.
+ *
  * * `OTHER_DECISION` — другое решение.
  *
  * @export
@@ -47,6 +49,7 @@ exports.ReturnRequestDecisionType = {
     REPLACE: 'REPLACE',
     SEND_TO_EXAMINATION: 'SEND_TO_EXAMINATION',
     DECLINE_REFUND: 'DECLINE_REFUND',
+    PARTIAL_MONEY_REFUND: 'PARTIAL_MONEY_REFUND',
     OTHER_DECISION: 'OTHER_DECISION'
 };
 function instanceOfReturnRequestDecisionType(value) {

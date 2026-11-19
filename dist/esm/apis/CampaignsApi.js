@@ -27,7 +27,7 @@ import { GetCampaignResponseFromJSON, GetCampaignSettingsResponseFromJSON, GetCa
  */
 export class CampaignsApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCampaign.md) %}  Возвращает информацию о магазине.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCampaign.md) %}
+     * {% include notitle access %}  Возвращает информацию о магазине.  {% include notitle limit %}
      * Информация о магазине
      */
     getCampaignRaw(requestParameters, initOverrides) {
@@ -54,7 +54,7 @@ export class CampaignsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCampaign.md) %}  Возвращает информацию о магазине.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCampaign.md) %}
+     * {% include notitle access %}  Возвращает информацию о магазине.  {% include notitle limit %}
      * Информация о магазине
      */
     getCampaign(campaignId, initOverrides) {
@@ -64,7 +64,7 @@ export class CampaignsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCampaignSettings.md) %}  Возвращает информацию о настройках магазина, идентификатор которого указан в запросе.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCampaignSettings.md) %}
+     * {% include notitle access %}  Возвращает информацию о настройках магазина, идентификатор которого указан в запросе.  {% include notitle limit %}
      * Настройки магазина
      */
     getCampaignSettingsRaw(requestParameters, initOverrides) {
@@ -91,7 +91,7 @@ export class CampaignsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCampaignSettings.md) %}  Возвращает информацию о настройках магазина, идентификатор которого указан в запросе.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCampaignSettings.md) %}
+     * {% include notitle access %}  Возвращает информацию о настройках магазина, идентификатор которого указан в запросе.  {% include notitle limit %}
      * Настройки магазина
      */
     getCampaignSettings(campaignId, initOverrides) {
@@ -101,12 +101,18 @@ export class CampaignsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCampaigns.md) %}  **Для Api-Key-токена:** возвращает список магазинов в кабинете, для которого выдан токен. Нельзя получить список только подагентских магазинов.  **Для OAuth-токена:** возвращает список магазинов, к которым имеет доступ пользователь — владелец токена авторизации, использованного в запросе. Для агентских пользователей список состоит из подагентских магазинов.  {% note warning \"Ограничение для параметра `pageSize`\" %}  Не передавайте значение больше 100.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCampaigns.md) %}
+     * {% include notitle access %}  **Для Api-Key-токена:** возвращает список магазинов в кабинете, для которого выдан токен. Нельзя получить список только подагентских магазинов.  **Для OAuth-токена:** возвращает список магазинов, к которым имеет доступ пользователь — владелец токена авторизации, использованного в запросе. Для агентских пользователей список состоит из подагентских магазинов.  {% note warning \"Ограничение для параметра `pageSize`\" %}  Не передавайте значение больше 100.  {% endnote %}  {% include notitle limit %}
      * Список магазинов пользователя
      */
     getCampaignsRaw(requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function* () {
             const queryParameters = {};
+            if (requestParameters['pageToken'] != null) {
+                queryParameters['pageToken'] = requestParameters['pageToken'];
+            }
+            if (requestParameters['limit'] != null) {
+                queryParameters['limit'] = requestParameters['limit'];
+            }
             if (requestParameters['page'] != null) {
                 queryParameters['page'] = requestParameters['page'];
             }
@@ -131,12 +137,12 @@ export class CampaignsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCampaigns.md) %}  **Для Api-Key-токена:** возвращает список магазинов в кабинете, для которого выдан токен. Нельзя получить список только подагентских магазинов.  **Для OAuth-токена:** возвращает список магазинов, к которым имеет доступ пользователь — владелец токена авторизации, использованного в запросе. Для агентских пользователей список состоит из подагентских магазинов.  {% note warning \"Ограничение для параметра `pageSize`\" %}  Не передавайте значение больше 100.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCampaigns.md) %}
+     * {% include notitle access %}  **Для Api-Key-токена:** возвращает список магазинов в кабинете, для которого выдан токен. Нельзя получить список только подагентских магазинов.  **Для OAuth-токена:** возвращает список магазинов, к которым имеет доступ пользователь — владелец токена авторизации, использованного в запросе. Для агентских пользователей список состоит из подагентских магазинов.  {% note warning \"Ограничение для параметра `pageSize`\" %}  Не передавайте значение больше 100.  {% endnote %}  {% include notitle limit %}
      * Список магазинов пользователя
      */
-    getCampaigns(page, pageSize, initOverrides) {
+    getCampaigns(pageToken, limit, page, pageSize, initOverrides) {
         return __awaiter(this, void 0, void 0, function* () {
-            const response = yield this.getCampaignsRaw({ page: page, pageSize: pageSize }, initOverrides);
+            const response = yield this.getCampaignsRaw({ pageToken: pageToken, limit: limit, page: page, pageSize: pageSize }, initOverrides);
             return yield response.value();
         });
     }

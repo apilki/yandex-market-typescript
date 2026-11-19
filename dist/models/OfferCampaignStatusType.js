@@ -30,6 +30,7 @@ exports.OfferCampaignStatusTypeToJSON = OfferCampaignStatusTypeToJSON;
  * * `NO_CARD` — Нужна карточка.
  * * `NO_STOCKS` — Нет на складе.
  * * `ARCHIVED` — В архиве.
+ * * `READY_FOR_PUBLICATION` — Магазин в процессе подключения.
  *
  * [Что обозначает каждый из статусов](https://yandex.ru/support/marketplace/assortment/add/statuses.html)
  *
@@ -44,7 +45,8 @@ exports.OfferCampaignStatusType = {
     CREATING_CARD: 'CREATING_CARD',
     NO_CARD: 'NO_CARD',
     NO_STOCKS: 'NO_STOCKS',
-    ARCHIVED: 'ARCHIVED'
+    ARCHIVED: 'ARCHIVED',
+    READY_FOR_PUBLICATION: 'READY_FOR_PUBLICATION'
 };
 function instanceOfOfferCampaignStatusType(value) {
     for (const key in exports.OfferCampaignStatusType) {

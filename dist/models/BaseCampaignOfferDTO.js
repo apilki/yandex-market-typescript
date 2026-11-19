@@ -17,7 +17,6 @@ exports.instanceOfBaseCampaignOfferDTO = instanceOfBaseCampaignOfferDTO;
 exports.BaseCampaignOfferDTOFromJSON = BaseCampaignOfferDTOFromJSON;
 exports.BaseCampaignOfferDTOFromJSONTyped = BaseCampaignOfferDTOFromJSONTyped;
 exports.BaseCampaignOfferDTOToJSON = BaseCampaignOfferDTOToJSON;
-const QuantumDTO_1 = require("./QuantumDTO");
 /**
  * Check if a given object implements the BaseCampaignOfferDTO interface.
  */
@@ -35,7 +34,6 @@ function BaseCampaignOfferDTOFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'offerId': json['offerId'],
-        'quantum': json['quantum'] == null ? undefined : (0, QuantumDTO_1.QuantumDTOFromJSON)(json['quantum']),
         'available': json['available'] == null ? undefined : json['available'],
     };
 }
@@ -45,7 +43,6 @@ function BaseCampaignOfferDTOToJSON(value) {
     }
     return {
         'offerId': value['offerId'],
-        'quantum': (0, QuantumDTO_1.QuantumDTOToJSON)(value['quantum']),
         'available': value['available'],
     };
 }

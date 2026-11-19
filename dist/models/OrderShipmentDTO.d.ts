@@ -21,7 +21,14 @@ import type { OrderParcelBoxDTO } from './OrderParcelBoxDTO';
  */
 export interface OrderShipmentDTO {
     /**
+     * {% note warning "Параметр устарел и будет отключен 05.10.2026." %}
+     *
+     *
+     *
+     * {% endnote %}
+     *
      * Идентификатор посылки, присвоенный Маркетом.
+     *
      * @type {number}
      * @memberof OrderShipmentDTO
      * @deprecated

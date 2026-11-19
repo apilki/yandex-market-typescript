@@ -35,6 +35,12 @@ export interface UpdateOrderDTO {
      * @memberof UpdateOrderDTO
      */
     customer?: CustomerDTO;
+    /**
+     * Продлить срок хранения заказа в пункте выдачи.
+     * @type {boolean}
+     * @memberof UpdateOrderDTO
+     */
+    extendStoragePeriod?: boolean;
 }
 /**
  * Check if a given object implements the UpdateOrderDTO interface.

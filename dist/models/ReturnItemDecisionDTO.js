@@ -18,6 +18,7 @@ exports.ReturnItemDecisionDTOFromJSON = ReturnItemDecisionDTOFromJSON;
 exports.ReturnItemDecisionDTOFromJSONTyped = ReturnItemDecisionDTOFromJSONTyped;
 exports.ReturnItemDecisionDTOToJSON = ReturnItemDecisionDTOToJSON;
 const ReturnRequestDecisionType_1 = require("./ReturnRequestDecisionType");
+const BasePriceDTO_1 = require("./BasePriceDTO");
 const ReturnRequestDecisionReasonType_1 = require("./ReturnRequestDecisionReasonType");
 /**
  * Check if a given object implements the ReturnItemDecisionDTO interface.
@@ -41,6 +42,7 @@ function ReturnItemDecisionDTOFromJSONTyped(json, ignoreDiscriminator) {
         'decisionType': (0, ReturnRequestDecisionType_1.ReturnRequestDecisionTypeFromJSON)(json['decisionType']),
         'decisionReasonType': json['decisionReasonType'] == null ? undefined : (0, ReturnRequestDecisionReasonType_1.ReturnRequestDecisionReasonTypeFromJSON)(json['decisionReasonType']),
         'comment': json['comment'] == null ? undefined : json['comment'],
+        'compensation': json['compensation'] == null ? undefined : (0, BasePriceDTO_1.BasePriceDTOFromJSON)(json['compensation']),
     };
 }
 function ReturnItemDecisionDTOToJSON(value) {
@@ -52,5 +54,6 @@ function ReturnItemDecisionDTOToJSON(value) {
         'decisionType': (0, ReturnRequestDecisionType_1.ReturnRequestDecisionTypeToJSON)(value['decisionType']),
         'decisionReasonType': (0, ReturnRequestDecisionReasonType_1.ReturnRequestDecisionReasonTypeToJSON)(value['decisionReasonType']),
         'comment': value['comment'],
+        'compensation': (0, BasePriceDTO_1.BasePriceDTOToJSON)(value['compensation']),
     };
 }

@@ -15,6 +15,7 @@
  * Свойство пункта выдачи:
  *
  * * `RETURN_ALLOWED` — пункт выдачи принимает возвраты.
+ * * `FITTING_ALLOWED` — в пункте выдачи доступна примерка.
  *
  * {% note warning "Проверка ограничений" %}
  *
@@ -26,7 +27,8 @@
  * @export
  */
 export const LogisticPointFeatureType = {
-    RETURN_ALLOWED: 'RETURN_ALLOWED'
+    RETURN_ALLOWED: 'RETURN_ALLOWED',
+    FITTING_ALLOWED: 'FITTING_ALLOWED'
 };
 export function instanceOfLogisticPointFeatureType(value) {
     for (const key in LogisticPointFeatureType) {

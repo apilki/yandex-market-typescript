@@ -15,6 +15,7 @@ import type { BusinessOrderCourierDeliveryDTO } from './BusinessOrderCourierDeli
 import type { BusinessOrderDeliveryDatesDTO } from './BusinessOrderDeliveryDatesDTO';
 import type { OrderTrackDTO } from './OrderTrackDTO';
 import type { BusinessOrderTransferDTO } from './BusinessOrderTransferDTO';
+import type { DigitalGoodsDeliveryDetailsDTO } from './DigitalGoodsDeliveryDetailsDTO';
 import type { BusinessOrderPickupDeliveryDTO } from './BusinessOrderPickupDeliveryDTO';
 import type { OrderDeliveryPartnerType } from './OrderDeliveryPartnerType';
 import type { OrderDeliveryType } from './OrderDeliveryType';
@@ -109,6 +110,30 @@ export interface BusinessOrderDeliveryDTO {
      * @memberof BusinessOrderDeliveryDTO
      */
     estimated?: boolean;
+    /**
+     * **Только для модели LaaS**
+     *
+     * Штрихкод получения заказа на ПВЗ.
+     *
+     * @type {string}
+     * @memberof BusinessOrderDeliveryDTO
+     */
+    receiveBarcode?: string;
+    /**
+     * **Только для модели LaaS**
+     *
+     * Код получения заказа на ПВЗ.
+     *
+     * @type {string}
+     * @memberof BusinessOrderDeliveryDTO
+     */
+    receiveCode?: string;
+    /**
+     *
+     * @type {DigitalGoodsDeliveryDetailsDTO}
+     * @memberof BusinessOrderDeliveryDTO
+     */
+    digitalGoods?: DigitalGoodsDeliveryDetailsDTO;
 }
 /**
  * Check if a given object implements the BusinessOrderDeliveryDTO interface.

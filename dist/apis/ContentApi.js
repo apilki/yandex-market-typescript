@@ -30,7 +30,49 @@ const index_1 = require("../models/index");
  */
 class ContentApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCategoryContentParameters.md) %}  Возвращает список характеристик с допустимыми значениями для заданной [листовой категории](*list-category).  Поля в ответе определяют правила передачи характеристики в методах: - POST v2/businesses/{businessId}/offer-mappings/update - POST v2/businesses/{businessId}/offer-cards/update  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCategoryContentParameters.md) %}
+     * {% include notitle access %}  Создает таблицы размеров бизнеса. За один запрос можно создать до 10 таблиц, в которых суммарно не больше 5000 ячеек. Если таблиц или ячеек больше, запрос отклоняется с ошибкой `BAD_REQUEST` и ни одна таблица не создается.  Таблица относится к размерной характеристике, а не к категории: она подбирается для всех категорий с той же размерной характеристикой.  Размерную характеристику категории возвращает метод подбора таблиц размеров `POST v2/businesses/{businessId}/size-tables/suggest` в поле `result.sizeParameterId`, характеристику существующей таблицы — метод `POST v2/businesses/{businessId}/size-tables` в поле `sizeParameterId`. Если в запросе есть неизвестный идентификатор размерной характеристики, запрос отклоняется с ошибкой `UNKNOWN_SIZE_PARAMETER` и ни одна таблица не создается.  Размерные сетки и обмеры, которые можно использовать в таблице, их значения и обязательные сетки возвращает метод `POST v2/businesses/{businessId}/size-tables/charts`.  {% cut \"Как заполнить таблицу\" %}  {% include notitle size-tables-filling %}  {% endcut %}  {% cut \"Чем сохраненная таблица отличается от переданной\" %}  {% include notitle size-tables-saved-differences %}  Значения из ответа можно без изменений передать в метод обновления таблиц размеров `POST v2/businesses/{businessId}/size-tables/update`: поля `columnType` и `rowIndex` в нем не учитываются.  {% endcut %}  Чтобы привязать таблицу к товару, передайте ее идентификатор в `value` характеристики с `parameterId: 73979829` в запросе POST v2/businesses/{businessId}/offer-cards/update. Когда таблица изменяется, новое содержимое применяется к привязанным товарам автоматически.  {% note warning \"Повторный запрос создает таблицы еще раз\" %}  Метод не идемпотентен: каждый запрос создает новые таблицы, даже если такие же уже есть.  Если запрос завершился ошибкой с кодом 5xx, часть таблиц могла сохраниться. Получите таблицы бизнеса методом `POST v2/businesses/{businessId}/size-tables` и только после этого повторите запрос для таблиц, которых там нет.  {% endnote %}  Количество таблиц у бизнеса ограничено — суммарно по всем размерным характеристикам. Удалить таблицу нельзя. Если лимит исчерпан, таблица не создается и для нее возвращается ошибка `LIMIT_TABLES`. При одновременных запросах лимит проверяется нестрого, и таблиц может создаться больше.  {% include notitle limit %}
+     * Создание таблиц размеров
+     */
+    createContentSizeTablesRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters['businessId'] == null) {
+                throw new runtime.RequiredError('businessId', 'Required parameter "businessId" was null or undefined when calling createContentSizeTables().');
+            }
+            if (requestParameters['createSizeTablesRequest'] == null) {
+                throw new runtime.RequiredError('createSizeTablesRequest', 'Required parameter "createSizeTablesRequest" was null or undefined when calling createContentSizeTables().');
+            }
+            const queryParameters = {};
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.apiKey) {
+                headerParameters["Api-Key"] = yield this.configuration.apiKey("Api-Key"); // ApiKey authentication
+            }
+            if (this.configuration && this.configuration.accessToken) {
+                // oauth required
+                headerParameters["Authorization"] = yield this.configuration.accessToken("OAuth", ["market:partner-api"]);
+            }
+            const response = yield this.request({
+                path: `/v2/businesses/{businessId}/size-tables/create`.replace(`{${"businessId"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: (0, index_1.CreateSizeTablesRequestToJSON)(requestParameters['createSizeTablesRequest']),
+            }, initOverrides);
+            return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CreateSizeTablesResponseFromJSON)(jsonValue));
+        });
+    }
+    /**
+     * {% include notitle access %}  Создает таблицы размеров бизнеса. За один запрос можно создать до 10 таблиц, в которых суммарно не больше 5000 ячеек. Если таблиц или ячеек больше, запрос отклоняется с ошибкой `BAD_REQUEST` и ни одна таблица не создается.  Таблица относится к размерной характеристике, а не к категории: она подбирается для всех категорий с той же размерной характеристикой.  Размерную характеристику категории возвращает метод подбора таблиц размеров `POST v2/businesses/{businessId}/size-tables/suggest` в поле `result.sizeParameterId`, характеристику существующей таблицы — метод `POST v2/businesses/{businessId}/size-tables` в поле `sizeParameterId`. Если в запросе есть неизвестный идентификатор размерной характеристики, запрос отклоняется с ошибкой `UNKNOWN_SIZE_PARAMETER` и ни одна таблица не создается.  Размерные сетки и обмеры, которые можно использовать в таблице, их значения и обязательные сетки возвращает метод `POST v2/businesses/{businessId}/size-tables/charts`.  {% cut \"Как заполнить таблицу\" %}  {% include notitle size-tables-filling %}  {% endcut %}  {% cut \"Чем сохраненная таблица отличается от переданной\" %}  {% include notitle size-tables-saved-differences %}  Значения из ответа можно без изменений передать в метод обновления таблиц размеров `POST v2/businesses/{businessId}/size-tables/update`: поля `columnType` и `rowIndex` в нем не учитываются.  {% endcut %}  Чтобы привязать таблицу к товару, передайте ее идентификатор в `value` характеристики с `parameterId: 73979829` в запросе POST v2/businesses/{businessId}/offer-cards/update. Когда таблица изменяется, новое содержимое применяется к привязанным товарам автоматически.  {% note warning \"Повторный запрос создает таблицы еще раз\" %}  Метод не идемпотентен: каждый запрос создает новые таблицы, даже если такие же уже есть.  Если запрос завершился ошибкой с кодом 5xx, часть таблиц могла сохраниться. Получите таблицы бизнеса методом `POST v2/businesses/{businessId}/size-tables` и только после этого повторите запрос для таблиц, которых там нет.  {% endnote %}  Количество таблиц у бизнеса ограничено — суммарно по всем размерным характеристикам. Удалить таблицу нельзя. Если лимит исчерпан, таблица не создается и для нее возвращается ошибка `LIMIT_TABLES`. При одновременных запросах лимит проверяется нестрого, и таблиц может создаться больше.  {% include notitle limit %}
+     * Создание таблиц размеров
+     */
+    createContentSizeTables(businessId, createSizeTablesRequest, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.createContentSizeTablesRaw({ businessId: businessId, createSizeTablesRequest: createSizeTablesRequest }, initOverrides);
+            return yield response.value();
+        });
+    }
+    /**
+     * {% include notitle access %}  Возвращает список характеристик с допустимыми значениями для заданной [листовой категории](*list-category).  Поля в ответе определяют правила передачи характеристики в методах: - POST v2/businesses/{businessId}/offer-mappings/update - POST v2/businesses/{businessId}/offer-cards/update  {% include notitle limit %}
      * Списки характеристик товаров по категориям
      */
     getCategoryContentParametersRaw(requestParameters, initOverrides) {
@@ -60,7 +102,7 @@ class ContentApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCategoryContentParameters.md) %}  Возвращает список характеристик с допустимыми значениями для заданной [листовой категории](*list-category).  Поля в ответе определяют правила передачи характеристики в методах: - POST v2/businesses/{businessId}/offer-mappings/update - POST v2/businesses/{businessId}/offer-cards/update  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCategoryContentParameters.md) %}
+     * {% include notitle access %}  Возвращает список характеристик с допустимыми значениями для заданной [листовой категории](*list-category).  Поля в ответе определяют правила передачи характеристики в методах: - POST v2/businesses/{businessId}/offer-mappings/update - POST v2/businesses/{businessId}/offer-cards/update  {% include notitle limit %}
      * Списки характеристик товаров по категориям
      */
     getCategoryContentParameters(categoryId, businessId, initOverrides) {
@@ -70,7 +112,97 @@ class ContentApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOfferCardsContentStatus.md) %}  Возвращает сведения о состоянии контента для заданных товаров:  * создана ли карточка товара и в каком она статусе; * рейтинг карточки — на сколько процентов она заполнена; * переданные характеристики товаров; * есть ли ошибки или предупреждения, связанные с контентом; * рекомендации по заполнению карточки.  Чтобы получить другие характеристики товаров, воспользуйтесь методом POST v2/businesses/{businessId}/offer-mappings.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOfferCardsContentStatus.md) %}
+     * {% include notitle access %}  Возвращает размерные сетки и обмеры, из которых можно составить таблицу размеров для указанной размерной характеристики. Их идентификаторы передаются в `sizeChartId` ячеек в методах создания и обновления таблиц размеров `POST v2/businesses/{businessId}/size-tables/create` и `POST v2/businesses/{businessId}/size-tables/update`.  В список входят:  * стандартные размерные сетки Маркета — значения в них выбираются из справочника `sizeValues`; * размерные сетки, значения в которых задаются текстом; * обмеры — значения в них тоже задаются текстом.  Брендовые размерные сетки в список не входят, и использовать их в своих таблицах нельзя: для них возвращается ошибка `UNKNOWN_SIZE_CHART`.  Обязательные размерные сетки отмечены `required: true`. В таблице должна быть хотя бы одна из них, а каждую обязательную сетку в таблице нужно заполнить во всех строках.  Для неизвестного идентификатора размерной характеристики возвращается ошибка `UNKNOWN_SIZE_PARAMETER`.  {% include notitle limit %}
+     * Размерные сетки и обмеры для таблиц размеров
+     */
+    getContentSizeChartsRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters['businessId'] == null) {
+                throw new runtime.RequiredError('businessId', 'Required parameter "businessId" was null or undefined when calling getContentSizeCharts().');
+            }
+            if (requestParameters['getSizeChartsRequest'] == null) {
+                throw new runtime.RequiredError('getSizeChartsRequest', 'Required parameter "getSizeChartsRequest" was null or undefined when calling getContentSizeCharts().');
+            }
+            const queryParameters = {};
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.apiKey) {
+                headerParameters["Api-Key"] = yield this.configuration.apiKey("Api-Key"); // ApiKey authentication
+            }
+            if (this.configuration && this.configuration.accessToken) {
+                // oauth required
+                headerParameters["Authorization"] = yield this.configuration.accessToken("OAuth", ["market:partner-api"]);
+            }
+            const response = yield this.request({
+                path: `/v2/businesses/{businessId}/size-tables/charts`.replace(`{${"businessId"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: (0, index_1.GetSizeChartsRequestToJSON)(requestParameters['getSizeChartsRequest']),
+            }, initOverrides);
+            return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetSizeChartsResponseFromJSON)(jsonValue));
+        });
+    }
+    /**
+     * {% include notitle access %}  Возвращает размерные сетки и обмеры, из которых можно составить таблицу размеров для указанной размерной характеристики. Их идентификаторы передаются в `sizeChartId` ячеек в методах создания и обновления таблиц размеров `POST v2/businesses/{businessId}/size-tables/create` и `POST v2/businesses/{businessId}/size-tables/update`.  В список входят:  * стандартные размерные сетки Маркета — значения в них выбираются из справочника `sizeValues`; * размерные сетки, значения в которых задаются текстом; * обмеры — значения в них тоже задаются текстом.  Брендовые размерные сетки в список не входят, и использовать их в своих таблицах нельзя: для них возвращается ошибка `UNKNOWN_SIZE_CHART`.  Обязательные размерные сетки отмечены `required: true`. В таблице должна быть хотя бы одна из них, а каждую обязательную сетку в таблице нужно заполнить во всех строках.  Для неизвестного идентификатора размерной характеристики возвращается ошибка `UNKNOWN_SIZE_PARAMETER`.  {% include notitle limit %}
+     * Размерные сетки и обмеры для таблиц размеров
+     */
+    getContentSizeCharts(businessId, getSizeChartsRequest, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.getContentSizeChartsRaw({ businessId: businessId, getSizeChartsRequest: getSizeChartsRequest }, initOverrides);
+            return yield response.value();
+        });
+    }
+    /**
+     * {% include notitle access %}  Возвращает таблицы размеров по их идентификаторам. Идентификаторы возвращает метод подбора таблиц размеров. Если `sizeTableIds` не передан, возвращает все таблицы размеров, созданные бизнесом.  Сначала возвращаются созданные бизнесом, затем брендовые, затем стандартные таблицы; внутри каждой группы — по убыванию идентификатора.  Результаты возвращаются постранично. Для навигации используйте параметры `pageToken` и `limit`. В каждом следующем запросе передавайте тот же набор `sizeTableIds`, что и в первом: `pageToken` привязан к нему, и с другим набором запрос будет отклонен. Порядок идентификаторов значения не имеет.  Идентификаторы, по которым таблицу вернуть не удалось — такой таблицы нет или она принадлежит другому бизнесу, — возвращаются в `notFoundSizeTableIds` на первой странице.  {% include notitle limit %}
+     * Таблицы размеров по идентификаторам
+     */
+    getContentSizeTablesRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters['businessId'] == null) {
+                throw new runtime.RequiredError('businessId', 'Required parameter "businessId" was null or undefined when calling getContentSizeTables().');
+            }
+            if (requestParameters['getSizeTablesRequest'] == null) {
+                throw new runtime.RequiredError('getSizeTablesRequest', 'Required parameter "getSizeTablesRequest" was null or undefined when calling getContentSizeTables().');
+            }
+            const queryParameters = {};
+            if (requestParameters['pageToken'] != null) {
+                queryParameters['pageToken'] = requestParameters['pageToken'];
+            }
+            if (requestParameters['limit'] != null) {
+                queryParameters['limit'] = requestParameters['limit'];
+            }
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.apiKey) {
+                headerParameters["Api-Key"] = yield this.configuration.apiKey("Api-Key"); // ApiKey authentication
+            }
+            if (this.configuration && this.configuration.accessToken) {
+                // oauth required
+                headerParameters["Authorization"] = yield this.configuration.accessToken("OAuth", ["market:partner-api"]);
+            }
+            const response = yield this.request({
+                path: `/v2/businesses/{businessId}/size-tables`.replace(`{${"businessId"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: (0, index_1.GetSizeTablesRequestToJSON)(requestParameters['getSizeTablesRequest']),
+            }, initOverrides);
+            return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetSizeTablesResponseFromJSON)(jsonValue));
+        });
+    }
+    /**
+     * {% include notitle access %}  Возвращает таблицы размеров по их идентификаторам. Идентификаторы возвращает метод подбора таблиц размеров. Если `sizeTableIds` не передан, возвращает все таблицы размеров, созданные бизнесом.  Сначала возвращаются созданные бизнесом, затем брендовые, затем стандартные таблицы; внутри каждой группы — по убыванию идентификатора.  Результаты возвращаются постранично. Для навигации используйте параметры `pageToken` и `limit`. В каждом следующем запросе передавайте тот же набор `sizeTableIds`, что и в первом: `pageToken` привязан к нему, и с другим набором запрос будет отклонен. Порядок идентификаторов значения не имеет.  Идентификаторы, по которым таблицу вернуть не удалось — такой таблицы нет или она принадлежит другому бизнесу, — возвращаются в `notFoundSizeTableIds` на первой странице.  {% include notitle limit %}
+     * Таблицы размеров по идентификаторам
+     */
+    getContentSizeTables(businessId, getSizeTablesRequest, pageToken, limit, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.getContentSizeTablesRaw({ businessId: businessId, getSizeTablesRequest: getSizeTablesRequest, pageToken: pageToken, limit: limit }, initOverrides);
+            return yield response.value();
+        });
+    }
+    /**
+     * {% include notitle access %}  Возвращает сведения о состоянии контента для заданных товаров:  * создана ли карточка товара и в каком она статусе; * рейтинг карточки — на сколько процентов она заполнена; * переданные характеристики товаров; * есть ли ошибки или предупреждения, связанные с контентом; * рекомендации по заполнению карточки.  Чтобы получить другие характеристики товаров, воспользуйтесь методом POST v2/businesses/{businessId}/offer-mappings.  {% include notitle limit %}
      * Получение информации о заполненности карточек магазина
      */
     getOfferCardsContentStatusRaw(requestParameters, initOverrides) {
@@ -105,7 +237,7 @@ class ContentApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOfferCardsContentStatus.md) %}  Возвращает сведения о состоянии контента для заданных товаров:  * создана ли карточка товара и в каком она статусе; * рейтинг карточки — на сколько процентов она заполнена; * переданные характеристики товаров; * есть ли ошибки или предупреждения, связанные с контентом; * рекомендации по заполнению карточки.  Чтобы получить другие характеристики товаров, воспользуйтесь методом POST v2/businesses/{businessId}/offer-mappings.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOfferCardsContentStatus.md) %}
+     * {% include notitle access %}  Возвращает сведения о состоянии контента для заданных товаров:  * создана ли карточка товара и в каком она статусе; * рейтинг карточки — на сколько процентов она заполнена; * переданные характеристики товаров; * есть ли ошибки или предупреждения, связанные с контентом; * рекомендации по заполнению карточки.  Чтобы получить другие характеристики товаров, воспользуйтесь методом POST v2/businesses/{businessId}/offer-mappings.  {% include notitle limit %}
      * Получение информации о заполненности карточек магазина
      */
     getOfferCardsContentStatus(businessId, pageToken, limit, getOfferCardsContentStatusRequest, initOverrides) {
@@ -115,7 +247,97 @@ class ContentApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateOfferContent.md) %}  Редактирует характеристики товара, которые специфичны для категории, к которой он относится.  {% note warning \"Здесь только то, что относится к конкретной категории\" %}  Если вам нужно изменить основные параметры товара (название, описание, изображения, видео, производитель, штрихкод), воспользуйтесь запросом POST v2/businesses/{businessId}/offer-mappings/update.  {% endnote %}  Чтобы удалить характеристики, которые заданы в параметрах с типом `string`, передайте пустое значение.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateOfferContent.md) %}
+     * {% include notitle access %}  Возвращает таблицы размеров, подходящие для указанной категории, бренда и пола.  Тип `STANDARD` — таблицы, уже созданные Маркетом и автоматически подобранные под выбранные вами категорию, бренд и пол. Тип `CUSTOM` — таблицы, которые вы создали сами: они подходят, если у вас свой бренд, уникальная размерная линейка, товары маломерят или большемерят.  Сначала возвращаются созданные бизнесом, затем брендовые, затем стандартные таблицы; внутри каждой группы — по убыванию идентификатора.  Результаты возвращаются постранично. Для навигации используйте параметры `pageToken` и `limit`.  {% include notitle limit %}
+     * Подбор таблиц размеров
+     */
+    suggestContentSizeTablesRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters['businessId'] == null) {
+                throw new runtime.RequiredError('businessId', 'Required parameter "businessId" was null or undefined when calling suggestContentSizeTables().');
+            }
+            if (requestParameters['suggestSizeTablesRequest'] == null) {
+                throw new runtime.RequiredError('suggestSizeTablesRequest', 'Required parameter "suggestSizeTablesRequest" was null or undefined when calling suggestContentSizeTables().');
+            }
+            const queryParameters = {};
+            if (requestParameters['pageToken'] != null) {
+                queryParameters['pageToken'] = requestParameters['pageToken'];
+            }
+            if (requestParameters['limit'] != null) {
+                queryParameters['limit'] = requestParameters['limit'];
+            }
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.apiKey) {
+                headerParameters["Api-Key"] = yield this.configuration.apiKey("Api-Key"); // ApiKey authentication
+            }
+            if (this.configuration && this.configuration.accessToken) {
+                // oauth required
+                headerParameters["Authorization"] = yield this.configuration.accessToken("OAuth", ["market:partner-api"]);
+            }
+            const response = yield this.request({
+                path: `/v2/businesses/{businessId}/size-tables/suggest`.replace(`{${"businessId"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: (0, index_1.SuggestSizeTablesRequestToJSON)(requestParameters['suggestSizeTablesRequest']),
+            }, initOverrides);
+            return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SuggestSizeTablesResponseFromJSON)(jsonValue));
+        });
+    }
+    /**
+     * {% include notitle access %}  Возвращает таблицы размеров, подходящие для указанной категории, бренда и пола.  Тип `STANDARD` — таблицы, уже созданные Маркетом и автоматически подобранные под выбранные вами категорию, бренд и пол. Тип `CUSTOM` — таблицы, которые вы создали сами: они подходят, если у вас свой бренд, уникальная размерная линейка, товары маломерят или большемерят.  Сначала возвращаются созданные бизнесом, затем брендовые, затем стандартные таблицы; внутри каждой группы — по убыванию идентификатора.  Результаты возвращаются постранично. Для навигации используйте параметры `pageToken` и `limit`.  {% include notitle limit %}
+     * Подбор таблиц размеров
+     */
+    suggestContentSizeTables(businessId, suggestSizeTablesRequest, pageToken, limit, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.suggestContentSizeTablesRaw({ businessId: businessId, suggestSizeTablesRequest: suggestSizeTablesRequest, pageToken: pageToken, limit: limit }, initOverrides);
+            return yield response.value();
+        });
+    }
+    /**
+     * {% include notitle access %}  Полностью заменяет названия и содержимое таблиц размеров, созданных бизнесом. За один запрос можно обновить до 10 таблиц, в которых суммарно не больше 5000 ячеек. Если таблиц или ячеек больше, запрос отклоняется с ошибкой `BAD_REQUEST` и ни одна таблица не обновляется.  {% note warning \"Передавайте полное содержимое таблицы\" %}  Все отсутствующие строки и колонки будут удалены.  {% endnote %}  Изменить можно только таблицы, созданные бизнесом, — у них в ответе метода `POST v2/businesses/{businessId}/size-tables` указано `editable: true`. Если таблицы нет, для нее возвращается ошибка `NOT_FOUND`, если это таблица Маркета (`sizeTableType: STANDARD`) — ошибка `FORBIDDEN`.  Размерную характеристику таблицы изменить нельзя: колонки и значения проверяются по характеристике, указанной при создании таблицы. Размерные сетки и обмеры, которые можно использовать в таблице, их значения и обязательные сетки возвращает метод `POST v2/businesses/{businessId}/size-tables/charts`.  Идентификаторы таблиц не должны повторяться в одном запросе. Если они повторяются, запрос отклоняется с ошибкой `BAD_REQUEST` и ни одна таблица не обновляется.  {% cut \"Как заполнить таблицу\" %}  {% include notitle size-tables-filling %}  {% endcut %}  {% cut \"Чем сохраненная таблица отличается от переданной\" %}  {% include notitle size-tables-saved-differences %}  Значения из ответа можно без изменений передать в этот метод: поля `columnType` и `rowIndex` в нем не учитываются.  {% endcut %}  {% note warning \"Сохраняется содержимое из последнего запроса\" %}  Версии таблицы не сравниваются. Если таблицу изменили в кабинете после того, как вы ее получили, эти изменения будут перезаписаны без предупреждения. Ошибка `CONCURRENT_MODIFICATION` возвращается, только если таблицу изменили во время обработки вашего запроса. В этом случае повторите запрос.  {% endnote %}  Новое содержимое таблицы применяется к привязанным к ней товарам автоматически через некоторое время. Передавать товары повторно не нужно.  Если запрос завершился ошибкой с кодом 5xx, его можно повторить: таблицы заменятся тем же содержимым.  {% include notitle limit %}
+     * Обновление таблиц размеров
+     */
+    updateContentSizeTablesRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters['businessId'] == null) {
+                throw new runtime.RequiredError('businessId', 'Required parameter "businessId" was null or undefined when calling updateContentSizeTables().');
+            }
+            if (requestParameters['updateSizeTablesRequest'] == null) {
+                throw new runtime.RequiredError('updateSizeTablesRequest', 'Required parameter "updateSizeTablesRequest" was null or undefined when calling updateContentSizeTables().');
+            }
+            const queryParameters = {};
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.apiKey) {
+                headerParameters["Api-Key"] = yield this.configuration.apiKey("Api-Key"); // ApiKey authentication
+            }
+            if (this.configuration && this.configuration.accessToken) {
+                // oauth required
+                headerParameters["Authorization"] = yield this.configuration.accessToken("OAuth", ["market:partner-api"]);
+            }
+            const response = yield this.request({
+                path: `/v2/businesses/{businessId}/size-tables/update`.replace(`{${"businessId"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: (0, index_1.UpdateSizeTablesRequestToJSON)(requestParameters['updateSizeTablesRequest']),
+            }, initOverrides);
+            return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.UpdateSizeTablesResponseFromJSON)(jsonValue));
+        });
+    }
+    /**
+     * {% include notitle access %}  Полностью заменяет названия и содержимое таблиц размеров, созданных бизнесом. За один запрос можно обновить до 10 таблиц, в которых суммарно не больше 5000 ячеек. Если таблиц или ячеек больше, запрос отклоняется с ошибкой `BAD_REQUEST` и ни одна таблица не обновляется.  {% note warning \"Передавайте полное содержимое таблицы\" %}  Все отсутствующие строки и колонки будут удалены.  {% endnote %}  Изменить можно только таблицы, созданные бизнесом, — у них в ответе метода `POST v2/businesses/{businessId}/size-tables` указано `editable: true`. Если таблицы нет, для нее возвращается ошибка `NOT_FOUND`, если это таблица Маркета (`sizeTableType: STANDARD`) — ошибка `FORBIDDEN`.  Размерную характеристику таблицы изменить нельзя: колонки и значения проверяются по характеристике, указанной при создании таблицы. Размерные сетки и обмеры, которые можно использовать в таблице, их значения и обязательные сетки возвращает метод `POST v2/businesses/{businessId}/size-tables/charts`.  Идентификаторы таблиц не должны повторяться в одном запросе. Если они повторяются, запрос отклоняется с ошибкой `BAD_REQUEST` и ни одна таблица не обновляется.  {% cut \"Как заполнить таблицу\" %}  {% include notitle size-tables-filling %}  {% endcut %}  {% cut \"Чем сохраненная таблица отличается от переданной\" %}  {% include notitle size-tables-saved-differences %}  Значения из ответа можно без изменений передать в этот метод: поля `columnType` и `rowIndex` в нем не учитываются.  {% endcut %}  {% note warning \"Сохраняется содержимое из последнего запроса\" %}  Версии таблицы не сравниваются. Если таблицу изменили в кабинете после того, как вы ее получили, эти изменения будут перезаписаны без предупреждения. Ошибка `CONCURRENT_MODIFICATION` возвращается, только если таблицу изменили во время обработки вашего запроса. В этом случае повторите запрос.  {% endnote %}  Новое содержимое таблицы применяется к привязанным к ней товарам автоматически через некоторое время. Передавать товары повторно не нужно.  Если запрос завершился ошибкой с кодом 5xx, его можно повторить: таблицы заменятся тем же содержимым.  {% include notitle limit %}
+     * Обновление таблиц размеров
+     */
+    updateContentSizeTables(businessId, updateSizeTablesRequest, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.updateContentSizeTablesRaw({ businessId: businessId, updateSizeTablesRequest: updateSizeTablesRequest }, initOverrides);
+            return yield response.value();
+        });
+    }
+    /**
+     * {% include notitle access %}  Редактирует характеристики товара, которые специфичны для категории, к которой он относится.  {% note warning \"Здесь только то, что относится к конкретной категории\" %}  Если вам нужно изменить основные параметры товара (название, описание, изображения, видео, производитель, штрихкод), воспользуйтесь запросом POST v2/businesses/{businessId}/offer-mappings/update.  {% endnote %}  Чтобы удалить характеристики, которые заданы в параметрах с типом `string`, передайте пустое значение.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
      * Редактирование категорийных характеристик товара
      */
     updateOfferContentRaw(requestParameters, initOverrides) {
@@ -147,7 +369,7 @@ class ContentApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateOfferContent.md) %}  Редактирует характеристики товара, которые специфичны для категории, к которой он относится.  {% note warning \"Здесь только то, что относится к конкретной категории\" %}  Если вам нужно изменить основные параметры товара (название, описание, изображения, видео, производитель, штрихкод), воспользуйтесь запросом POST v2/businesses/{businessId}/offer-mappings/update.  {% endnote %}  Чтобы удалить характеристики, которые заданы в параметрах с типом `string`, передайте пустое значение.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateOfferContent.md) %}
+     * {% include notitle access %}  Редактирует характеристики товара, которые специфичны для категории, к которой он относится.  {% note warning \"Здесь только то, что относится к конкретной категории\" %}  Если вам нужно изменить основные параметры товара (название, описание, изображения, видео, производитель, штрихкод), воспользуйтесь запросом POST v2/businesses/{businessId}/offer-mappings/update.  {% endnote %}  Чтобы удалить характеристики, которые заданы в параметрах с типом `string`, передайте пустое значение.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
      * Редактирование категорийных характеристик товара
      */
     updateOfferContent(businessId, updateOfferContentRequest, initOverrides) {

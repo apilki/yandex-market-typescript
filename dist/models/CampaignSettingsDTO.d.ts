@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { CampaignSettingsLocalRegionDTO } from './CampaignSettingsLocalRegionDTO';
+import type { TaxationInfoDTO } from './TaxationInfoDTO';
 /**
  * Настройки магазина.
  * @export
@@ -31,6 +32,12 @@ export interface CampaignSettingsDTO {
      */
     shopName?: string;
     /**
+     * {% note warning "Параметр устарел и будет отключен 12.10.2026." %}
+     *
+     *
+     *
+     * {% endnote %}
+     *
      * Признак размещения магазина на сайтах партнеров Яндекс Дистрибуции.
      * Возможные значения:
      * * `false` — магазин не размещен на сайтах партнеров Яндекс Дистрибуции.
@@ -42,6 +49,12 @@ export interface CampaignSettingsDTO {
      */
     showInContext?: boolean;
     /**
+     * {% note warning "Параметр устарел и будет отключен 12.10.2026." %}
+     *
+     *
+     *
+     * {% endnote %}
+     *
      * Признак показа предложений магазина в блоке над результатами поиска (cпецразмещение).
      * Возможные значения:
      * * `false` — предложения не показываются в блоке cпецразмещения.
@@ -53,6 +66,12 @@ export interface CampaignSettingsDTO {
      */
     showInPremium?: boolean;
     /**
+     * {% note warning "Параметр устарел и будет отключен 12.10.2026." %}
+     *
+     *
+     *
+     * {% endnote %}
+     *
      * Признак использования внешней интернет-статистики.
      * Возможные значения:
      * * `false` — внешняя интернет-статистика не используется.
@@ -69,6 +88,12 @@ export interface CampaignSettingsDTO {
      * @memberof CampaignSettingsDTO
      */
     localRegion?: CampaignSettingsLocalRegionDTO;
+    /**
+     *
+     * @type {TaxationInfoDTO}
+     * @memberof CampaignSettingsDTO
+     */
+    taxation: TaxationInfoDTO;
 }
 /**
  * Check if a given object implements the CampaignSettingsDTO interface.

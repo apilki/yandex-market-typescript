@@ -11,12 +11,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { PromoOfferBestPriceLevelsDTOFromJSON, PromoOfferBestPriceLevelsDTOToJSON, } from './PromoOfferBestPriceLevelsDTO';
 /**
  * Check if a given object implements the PromoOfferDiscountParamsDTO interface.
  */
 export function instanceOfPromoOfferDiscountParamsDTO(value) {
-    if (!('maxPromoPrice' in value) || value['maxPromoPrice'] === undefined)
-        return false;
     return true;
 }
 export function PromoOfferDiscountParamsDTOFromJSON(json) {
@@ -29,7 +28,8 @@ export function PromoOfferDiscountParamsDTOFromJSONTyped(json, ignoreDiscriminat
     return {
         'price': json['price'] == null ? undefined : json['price'],
         'promoPrice': json['promoPrice'] == null ? undefined : json['promoPrice'],
-        'maxPromoPrice': json['maxPromoPrice'],
+        'maxPromoPrice': json['maxPromoPrice'] == null ? undefined : json['maxPromoPrice'],
+        'bestPriceLevels': json['bestPriceLevels'] == null ? undefined : PromoOfferBestPriceLevelsDTOFromJSON(json['bestPriceLevels']),
     };
 }
 export function PromoOfferDiscountParamsDTOToJSON(value) {
@@ -40,5 +40,6 @@ export function PromoOfferDiscountParamsDTOToJSON(value) {
         'price': value['price'],
         'promoPrice': value['promoPrice'],
         'maxPromoPrice': value['maxPromoPrice'],
+        'bestPriceLevels': PromoOfferBestPriceLevelsDTOToJSON(value['bestPriceLevels']),
     };
 }

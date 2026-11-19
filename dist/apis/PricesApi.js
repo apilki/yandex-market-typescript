@@ -30,7 +30,7 @@ const index_1 = require("../models/index");
  */
 class PricesApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getDefaultPrices.md) %}  Возвращает список цен, которые вы установили для всех магазинов любым способом. Например, через API или с помощью Excel-шаблона.  О способах установки цен читайте [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/assortment/operations/prices.html).  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getDefaultPrices.md) %}
+     * {% include notitle access %}  Возвращает список цен, которые вы установили для всех магазинов любым способом. Например, через API или с помощью Excel-шаблона.  О способах установки цен читайте [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/assortment/operations/prices.html).  {% include notitle limit %}
      * Просмотр цен на указанные товары во всех магазинах
      */
     getDefaultPricesRaw(requestParameters, initOverrides) {
@@ -65,7 +65,7 @@ class PricesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getDefaultPrices.md) %}  Возвращает список цен, которые вы установили для всех магазинов любым способом. Например, через API или с помощью Excel-шаблона.  О способах установки цен читайте [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/assortment/operations/prices.html).  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getDefaultPrices.md) %}
+     * {% include notitle access %}  Возвращает список цен, которые вы установили для всех магазинов любым способом. Например, через API или с помощью Excel-шаблона.  О способах установки цен читайте [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/assortment/operations/prices.html).  {% include notitle limit %}
      * Просмотр цен на указанные товары во всех магазинах
      */
     getDefaultPrices(businessId, pageToken, limit, getDefaultPricesRequest, initOverrides) {
@@ -75,7 +75,7 @@ class PricesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getPrices.md) %}  {% note warning \"Какой метод использовать вместо устаревшего\" %}  POST v2/campaigns/{campaignId}/offer-prices  {% endnote %}  Возвращает список цен, установленных вами на товары любым способом: например, через API или в файле с каталогом.  {% note info \"Как считается общее количество товаров\" %}  По данным за последние семь дней (не включая сегодня) и не может быть выше 2 миллионов.  {% endnote %}  Способы установки цен описаны [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/assortment/operations/prices.html).  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getPrices.md) %}
+     * {% include notitle access %}  Возвращает список цен, установленных вами на товары любым способом: например, через API или в файле с каталогом.  Способы установки цен описаны [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/assortment/operations/prices.html).  {% include notitle limit %}
      * Список цен
      * @deprecated
      */
@@ -112,7 +112,7 @@ class PricesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getPrices.md) %}  {% note warning \"Какой метод использовать вместо устаревшего\" %}  POST v2/campaigns/{campaignId}/offer-prices  {% endnote %}  Возвращает список цен, установленных вами на товары любым способом: например, через API или в файле с каталогом.  {% note info \"Как считается общее количество товаров\" %}  По данным за последние семь дней (не включая сегодня) и не может быть выше 2 миллионов.  {% endnote %}  Способы установки цен описаны [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/assortment/operations/prices.html).  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getPrices.md) %}
+     * {% include notitle access %}  Возвращает список цен, установленных вами на товары любым способом: например, через API или в файле с каталогом.  Способы установки цен описаны [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/assortment/operations/prices.html).  {% include notitle limit %}
      * Список цен
      * @deprecated
      */
@@ -123,7 +123,7 @@ class PricesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getPricesByOfferIds.md) %}  Возвращает список цен на указанные товары в магазине.  {% note warning \"Метод только для отдельных магазинов\" %}  Используйте этот метод, только если в кабинете установлены уникальные цены в отдельных магазинах.  Для просмотра цен, которые действуют во всех магазинах, используйте POST v2/businesses/{businessId}/offer-mappings.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getPricesByOfferIds.md) %}
+     * {% include notitle access %}  Возвращает список цен на указанные товары в магазине.  {% note warning \"Метод только для отдельных магазинов\" %}  Используйте этот метод, только если в кабинете установлены уникальные цены в отдельных магазинах.  Для просмотра цен, которые действуют во всех магазинах, используйте POST v2/businesses/{businessId}/offer-mappings.  {% endnote %}  {% include notitle limit %}
      * Просмотр цен на указанные товары в конкретном магазине
      */
     getPricesByOfferIdsRaw(requestParameters, initOverrides) {
@@ -158,7 +158,7 @@ class PricesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getPricesByOfferIds.md) %}  Возвращает список цен на указанные товары в магазине.  {% note warning \"Метод только для отдельных магазинов\" %}  Используйте этот метод, только если в кабинете установлены уникальные цены в отдельных магазинах.  Для просмотра цен, которые действуют во всех магазинах, используйте POST v2/businesses/{businessId}/offer-mappings.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getPricesByOfferIds.md) %}
+     * {% include notitle access %}  Возвращает список цен на указанные товары в магазине.  {% note warning \"Метод только для отдельных магазинов\" %}  Используйте этот метод, только если в кабинете установлены уникальные цены в отдельных магазинах.  Для просмотра цен, которые действуют во всех магазинах, используйте POST v2/businesses/{businessId}/offer-mappings.  {% endnote %}  {% include notitle limit %}
      * Просмотр цен на указанные товары в конкретном магазине
      */
     getPricesByOfferIds(campaignId, pageToken, limit, getPricesByOfferIdsRequest, initOverrides) {
@@ -168,7 +168,7 @@ class PricesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateBusinessPrices.md) %}  Устанавливает цены, которые действуют во всех магазинах. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  При необходимости передавайте НДС с помощью параметра `vat` в запросе POST v2/campaigns/{campaignId}/offers/update.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateBusinessPrices.md) %}
+     * {% include notitle access %}  Устанавливает цены, которые действуют во всех магазинах. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  При необходимости передавайте НДС с помощью параметра `vat` в запросе POST v2/campaigns/{campaignId}/offers/update.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
      * Установка цен на товары для всех магазинов
      */
     updateBusinessPricesRaw(requestParameters, initOverrides) {
@@ -200,7 +200,7 @@ class PricesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateBusinessPrices.md) %}  Устанавливает цены, которые действуют во всех магазинах. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  При необходимости передавайте НДС с помощью параметра `vat` в запросе POST v2/campaigns/{campaignId}/offers/update.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateBusinessPrices.md) %}
+     * {% include notitle access %}  Устанавливает цены, которые действуют во всех магазинах. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  При необходимости передавайте НДС с помощью параметра `vat` в запросе POST v2/campaigns/{campaignId}/offers/update.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
      * Установка цен на товары для всех магазинов
      */
     updateBusinessPrices(businessId, updateBusinessPricesRequest, initOverrides) {
@@ -210,7 +210,7 @@ class PricesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updatePrices.md) %}  Устанавливает цены на товары в магазине. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  {% note warning \"Метод только для отдельных магазинов\" %}  Вам доступен этот метод, если в кабинете продавца на Маркете есть возможность установить уникальные цены в отдельных магазинах. Как это проверить — в методе POST v2/businesses/{businessId}/settings в параметре `onlyDefaultPrice` возвращается значение `false`.  В ином случае используйте метод управления ценами, которые действуют во всех магазинах, — POST v2/businesses/{businessId}/offer-prices/updates.  {% endnote %}  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updatePrices.md) %}
+     * {% include notitle access %}  Устанавливает цены на товары в магазине. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  {% note warning \"Метод только для отдельных магазинов\" %}  Вам доступен этот метод, если в кабинете продавца на Маркете есть возможность установить уникальные цены в отдельных магазинах. Как это проверить — в методе POST v2/businesses/{businessId}/settings в параметре `onlyDefaultPrice` возвращается значение `false`.  В ином случае используйте метод управления ценами, которые действуют во всех магазинах, — POST v2/businesses/{businessId}/offer-prices/updates.  {% endnote %}  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
      * Установка цен на товары в конкретном магазине
      */
     updatePricesRaw(requestParameters, initOverrides) {
@@ -242,7 +242,7 @@ class PricesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updatePrices.md) %}  Устанавливает цены на товары в магазине. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  {% note warning \"Метод только для отдельных магазинов\" %}  Вам доступен этот метод, если в кабинете продавца на Маркете есть возможность установить уникальные цены в отдельных магазинах. Как это проверить — в методе POST v2/businesses/{businessId}/settings в параметре `onlyDefaultPrice` возвращается значение `false`.  В ином случае используйте метод управления ценами, которые действуют во всех магазинах, — POST v2/businesses/{businessId}/offer-prices/updates.  {% endnote %}  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updatePrices.md) %}
+     * {% include notitle access %}  Устанавливает цены на товары в магазине. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  {% note warning \"Метод только для отдельных магазинов\" %}  Вам доступен этот метод, если в кабинете продавца на Маркете есть возможность установить уникальные цены в отдельных магазинах. Как это проверить — в методе POST v2/businesses/{businessId}/settings в параметре `onlyDefaultPrice` возвращается значение `false`.  В ином случае используйте метод управления ценами, которые действуют во всех магазинах, — POST v2/businesses/{businessId}/offer-prices/updates.  {% endnote %}  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
      * Установка цен на товары в конкретном магазине
      */
     updatePrices(campaignId, updatePricesRequest, initOverrides) {

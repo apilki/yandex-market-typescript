@@ -26,6 +26,8 @@
  *
  * * `DECLINE_REFUND` — отказать в возврате.
  *
+ * * `PARTIAL_MONEY_REFUND` — частичный возврат денег.
+ *
  * * `OTHER_DECISION` — другое решение.
  *
  * * `UNKNOWN` — не указано.
@@ -40,6 +42,7 @@ export declare const ReturnDecisionType: {
     readonly REPLACE: "REPLACE";
     readonly SEND_TO_EXAMINATION: "SEND_TO_EXAMINATION";
     readonly DECLINE_REFUND: "DECLINE_REFUND";
+    readonly PARTIAL_MONEY_REFUND: "PARTIAL_MONEY_REFUND";
     readonly OTHER_DECISION: "OTHER_DECISION";
     readonly UNKNOWN: "UNKNOWN";
 };

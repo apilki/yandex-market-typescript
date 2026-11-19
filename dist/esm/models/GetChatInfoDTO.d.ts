@@ -25,7 +25,14 @@ export interface GetChatInfoDTO {
      */
     chatId: number;
     /**
+     * {% note warning "Параметр устарел и будет отключен 19.10.2026." %}
+     *
+     * Вместо него используйте `context`.
+     *
+     * {% endnote %}
+     *
      * Идентификатор заказа.
+     *
      * @type {number}
      * @memberof GetChatInfoDTO
      * @deprecated

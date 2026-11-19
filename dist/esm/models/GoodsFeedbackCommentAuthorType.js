@@ -16,12 +16,14 @@
  *
  * * `USER` — пользователь.
  * * `BUSINESS` — кабинет.
+ * * `BRAND` — бренд.
  *
  * @export
  */
 export const GoodsFeedbackCommentAuthorType = {
     USER: 'USER',
-    BUSINESS: 'BUSINESS'
+    BUSINESS: 'BUSINESS',
+    BRAND: 'BRAND'
 };
 export function instanceOfGoodsFeedbackCommentAuthorType(value) {
     for (const key in GoodsFeedbackCommentAuthorType) {

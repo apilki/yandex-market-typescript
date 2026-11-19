@@ -27,7 +27,7 @@ import { GetAnswersRequestToJSON, GetAnswersResponseFromJSON, GetQuestionsReques
  */
 export class GoodsQuestionsApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getGoodsQuestionAnswers.md) %}  Возвращает ответы на вопрос о товаре по указанным фильтрам.  Результаты возвращаются постранично, одна страница содержит не более 50 ответов.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getGoodsQuestionAnswers.md) %}
+     * {% include notitle access %}  Возвращает ответы на вопрос о товаре по указанным фильтрам.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый ответ или комментарий. А полную информацию о них можно получить с помощью этого метода.  {#T}  {% endnote %}  Результаты возвращаются постранично, одна страница содержит не более 50 ответов.  {% include notitle limit %}
      * Получение ответов на вопрос
      */
     getGoodsQuestionAnswersRaw(requestParameters, initOverrides) {
@@ -65,7 +65,7 @@ export class GoodsQuestionsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getGoodsQuestionAnswers.md) %}  Возвращает ответы на вопрос о товаре по указанным фильтрам.  Результаты возвращаются постранично, одна страница содержит не более 50 ответов.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getGoodsQuestionAnswers.md) %}
+     * {% include notitle access %}  Возвращает ответы на вопрос о товаре по указанным фильтрам.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый ответ или комментарий. А полную информацию о них можно получить с помощью этого метода.  {#T}  {% endnote %}  Результаты возвращаются постранично, одна страница содержит не более 50 ответов.  {% include notitle limit %}
      * Получение ответов на вопрос
      */
     getGoodsQuestionAnswers(businessId, getAnswersRequest, pageToken, limit, initOverrides) {
@@ -75,7 +75,7 @@ export class GoodsQuestionsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getGoodsQuestions.md) %}  Возвращает вопросы о товарах продавца по указанным фильтрам.  Результаты возвращаются постранично, одна страница содержит не более 50 вопросов.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getGoodsQuestions.md) %}
+     * {% include notitle access %}  Возвращает вопросы о товарах продавца по указанным фильтрам.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый вопрос. А полную информацию о нем можно получить с помощью этого метода.  {#T}  {% endnote %}  Результаты возвращаются постранично, одна страница содержит не более 50 вопросов.  {% include notitle limit %}
      * Получение вопросов о товарах продавца
      */
     getGoodsQuestionsRaw(requestParameters, initOverrides) {
@@ -110,7 +110,7 @@ export class GoodsQuestionsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getGoodsQuestions.md) %}  Возвращает вопросы о товарах продавца по указанным фильтрам.  Результаты возвращаются постранично, одна страница содержит не более 50 вопросов.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getGoodsQuestions.md) %}
+     * {% include notitle access %}  Возвращает вопросы о товарах продавца по указанным фильтрам.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый вопрос. А полную информацию о нем можно получить с помощью этого метода.  {#T}  {% endnote %}  Результаты возвращаются постранично, одна страница содержит не более 50 вопросов.  {% include notitle limit %}
      * Получение вопросов о товарах продавца
      */
     getGoodsQuestions(businessId, pageToken, limit, getQuestionsRequest, initOverrides) {
@@ -120,7 +120,7 @@ export class GoodsQuestionsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateGoodsQuestionTextEntity.md) %}  Создание, изменение и удаление ответа или комментария.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateGoodsQuestionTextEntity.md) %}
+     * {% include notitle access %}  Создание, изменение и удаление ответа или комментария.  {% include notitle limit %}
      * Создание, изменение и удаление ответа или комментария
      */
     updateGoodsQuestionTextEntityRaw(requestParameters, initOverrides) {
@@ -152,7 +152,7 @@ export class GoodsQuestionsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateGoodsQuestionTextEntity.md) %}  Создание, изменение и удаление ответа или комментария.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateGoodsQuestionTextEntity.md) %}
+     * {% include notitle access %}  Создание, изменение и удаление ответа или комментария.  {% include notitle limit %}
      * Создание, изменение и удаление ответа или комментария
      */
     updateGoodsQuestionTextEntity(businessId, updateGoodsQuestionTextEntityRequest, initOverrides) {

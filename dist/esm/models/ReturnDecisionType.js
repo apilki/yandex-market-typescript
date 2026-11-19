@@ -28,6 +28,8 @@
  *
  * * `DECLINE_REFUND` — отказать в возврате.
  *
+ * * `PARTIAL_MONEY_REFUND` — частичный возврат денег.
+ *
  * * `OTHER_DECISION` — другое решение.
  *
  * * `UNKNOWN` — не указано.
@@ -42,6 +44,7 @@ export const ReturnDecisionType = {
     REPLACE: 'REPLACE',
     SEND_TO_EXAMINATION: 'SEND_TO_EXAMINATION',
     DECLINE_REFUND: 'DECLINE_REFUND',
+    PARTIAL_MONEY_REFUND: 'PARTIAL_MONEY_REFUND',
     OTHER_DECISION: 'OTHER_DECISION',
     UNKNOWN: 'UNKNOWN'
 };

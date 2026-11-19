@@ -26,7 +26,6 @@ export function PackagingScrollingPagerDTOFromJSONTyped(json, ignoreDiscriminato
     }
     return {
         'nextPageToken': json['nextPageToken'] == null ? undefined : json['nextPageToken'],
-        'prevPageToken': json['prevPageToken'] == null ? undefined : json['prevPageToken'],
     };
 }
 export function PackagingScrollingPagerDTOToJSON(value) {
@@ -35,6 +34,5 @@ export function PackagingScrollingPagerDTOToJSON(value) {
     }
     return {
         'nextPageToken': value['nextPageToken'],
-        'prevPageToken': value['prevPageToken'],
     };
 }

@@ -22,6 +22,7 @@ exports.LogisticPointFeatureTypeToJSON = LogisticPointFeatureTypeToJSON;
  * Свойство пункта выдачи:
  *
  * * `RETURN_ALLOWED` — пункт выдачи принимает возвраты.
+ * * `FITTING_ALLOWED` — в пункте выдачи доступна примерка.
  *
  * {% note warning "Проверка ограничений" %}
  *
@@ -33,7 +34,8 @@ exports.LogisticPointFeatureTypeToJSON = LogisticPointFeatureTypeToJSON;
  * @export
  */
 exports.LogisticPointFeatureType = {
-    RETURN_ALLOWED: 'RETURN_ALLOWED'
+    RETURN_ALLOWED: 'RETURN_ALLOWED',
+    FITTING_ALLOWED: 'FITTING_ALLOWED'
 };
 function instanceOfLogisticPointFeatureType(value) {
     for (const key in exports.LogisticPointFeatureType) {

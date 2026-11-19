@@ -69,6 +69,16 @@ export interface CreateOrderDTO {
      * @memberof CreateOrderDTO
      */
     draft?: boolean;
+    /**
+     * Признак тестового заказа.
+     *
+     * * `true` — позволяет проверить работу магазина и его API на тестовых заказах. Такой заказ не будет отгружен и не влияет на остатки.
+     * * `false` — настоящий заказ.
+     *
+     * @type {boolean}
+     * @memberof CreateOrderDTO
+     */
+    fake?: boolean;
 }
 /**
  * Check if a given object implements the CreateOrderDTO interface.

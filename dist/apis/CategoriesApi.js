@@ -30,7 +30,7 @@ const index_1 = require("../models/index");
  */
 class CategoriesApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCategoriesMaxSaleQuantum.md) %}  Возвращает лимит на установку [кванта](*quantum) и минимального количества товаров в заказе, которые вы можете задать для товаров указанных категорий.  Если вы передадите значение кванта или минимального количества товаров выше установленного Маркетом ограничения, товар будет скрыт с витрины.  Подробнее о том, как продавать товары по несколько штук, читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/assortment/fields/quantum).  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCategoriesMaxSaleQuantum.md) %}
+     * {% include notitle access %}  Возвращает лимит на установку [кванта](*quantum) и минимального количества товаров в заказе, которые вы можете задать для товаров указанных категорий.  Если вы передадите значение кванта или минимального количества товаров выше установленного Маркетом ограничения, товар будет скрыт с витрины.  Подробнее о том, как продавать товары по несколько штук, читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/assortment/fields/quantum).  {% include notitle limit %}
      * Лимит на установку кванта продажи и минимального количества товаров в заказе
      * @deprecated
      */
@@ -60,7 +60,7 @@ class CategoriesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCategoriesMaxSaleQuantum.md) %}  Возвращает лимит на установку [кванта](*quantum) и минимального количества товаров в заказе, которые вы можете задать для товаров указанных категорий.  Если вы передадите значение кванта или минимального количества товаров выше установленного Маркетом ограничения, товар будет скрыт с витрины.  Подробнее о том, как продавать товары по несколько штук, читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/assortment/fields/quantum).  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCategoriesMaxSaleQuantum.md) %}
+     * {% include notitle access %}  Возвращает лимит на установку [кванта](*quantum) и минимального количества товаров в заказе, которые вы можете задать для товаров указанных категорий.  Если вы передадите значение кванта или минимального количества товаров выше установленного Маркетом ограничения, товар будет скрыт с витрины.  Подробнее о том, как продавать товары по несколько штук, читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/assortment/fields/quantum).  {% include notitle limit %}
      * Лимит на установку кванта продажи и минимального количества товаров в заказе
      * @deprecated
      */
@@ -71,7 +71,7 @@ class CategoriesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCategoriesTree.md) %}  Возвращает дерево категорий Маркета.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCategoriesTree.md) %}
+     * {% include notitle access %}  Возвращает дерево категорий Маркета.  {% include notitle limit %}
      * Дерево категорий
      */
     getCategoriesTreeRaw(requestParameters, initOverrides) {
@@ -97,7 +97,7 @@ class CategoriesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCategoriesTree.md) %}  Возвращает дерево категорий Маркета.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCategoriesTree.md) %}
+     * {% include notitle access %}  Возвращает дерево категорий Маркета.  {% include notitle limit %}
      * Дерево категорий
      */
     getCategoriesTree(getCategoriesRequest, initOverrides) {

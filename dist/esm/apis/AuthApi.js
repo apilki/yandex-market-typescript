@@ -27,7 +27,7 @@ import { GetTokenInfoResponseFromJSON, } from '../models/index';
  */
 export class AuthApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getAuthTokenInfo.md) %}  {% note info \"Метод доступен только для Api-Key-токена.\" %}     {% endnote %}  Возвращает информацию о переданном токене авторизации.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getAuthTokenInfo.md) %}
+     * {% include notitle access %}  {% note info \"Метод доступен только для Api-Key-токена.\" %}     {% endnote %}  Возвращает информацию о переданном токене авторизации.  {% include notitle limit %}
      * Получение информации о токене авторизации
      */
     getAuthTokenInfoRaw(initOverrides) {
@@ -51,7 +51,7 @@ export class AuthApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getAuthTokenInfo.md) %}  {% note info \"Метод доступен только для Api-Key-токена.\" %}     {% endnote %}  Возвращает информацию о переданном токене авторизации.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getAuthTokenInfo.md) %}
+     * {% include notitle access %}  {% note info \"Метод доступен только для Api-Key-токена.\" %}     {% endnote %}  Возвращает информацию о переданном токене авторизации.  {% include notitle limit %}
      * Получение информации о токене авторизации
      */
     getAuthTokenInfo(initOverrides) {

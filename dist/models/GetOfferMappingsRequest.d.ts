@@ -22,7 +22,7 @@ export interface GetOfferMappingsRequest {
      * {% note warning "Такой список возвращается только целиком" %}
      *
      * Если вы запрашиваете информацию по конкретным SKU, не заполняйте:
-     * * `page_token`;
+     * * `pageToken`;
      * * `limit`;
      * * `cardStatuses`;
      * * `categoryIds`;

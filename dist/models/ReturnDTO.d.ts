@@ -97,9 +97,9 @@ export interface ReturnDTO {
      */
     shipmentStatus?: ReturnShipmentStatusType;
     /**
-     * {% note warning "Вместо него используйте `amount`." %}
+     * {% note warning "Параметр устарел и будет отключен 12.10.2026." %}
      *
-     *
+     * Вместо него используйте `amount`.
      *
      * {% endnote %}
      *

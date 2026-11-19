@@ -18,23 +18,38 @@ import type { PlacementType } from './PlacementType';
  */
 export interface GenerateUnitedMarketplaceServicesReportRequest {
     /**
-     * Идентификатор кабинета. Чтобы его узнать, воспользуйтесь запросом GET v2/campaigns.
+     * Идентификатор кабинета. {% if audience == "partner" %}Чтобы его узнать, воспользуйтесь запросом GET v2/campaigns.
      *
      * ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html)
+     * {% endif %}
      *
      * @type {number}
      * @memberof GenerateUnitedMarketplaceServicesReportRequest
      */
     businessId: number;
     /**
+     * {% note warning "Параметр устарел и будет отключен 12.10.2026." %}
+     *
+     * Вместо него используйте `dateFrom`.
+     *
+     * {% endnote %}
+     *
      * Начало периода, включительно.
+     *
      * @type {Date}
      * @memberof GenerateUnitedMarketplaceServicesReportRequest
      * @deprecated
      */
     dateTimeFrom?: Date;
     /**
+     * {% note warning "Параметр устарел и будет отключен 12.10.2026." %}
+     *
+     * Вместо него используйте `dateTo`.
+     *
+     * {% endnote %}
+     *
      * Конец периода, включительно. Максимальный период — 3 месяца.
+     *
      * @type {Date}
      * @memberof GenerateUnitedMarketplaceServicesReportRequest
      * @deprecated

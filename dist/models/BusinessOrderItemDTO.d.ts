@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { ItemPriceDTO } from './ItemPriceDTO';
+import type { OrderItemUnitStatusDTO } from './OrderItemUnitStatusDTO';
 import type { OrderItemInstanceDTO } from './OrderItemInstanceDTO';
 import type { OrderItemInstanceType } from './OrderItemInstanceType';
 import type { OrderItemTagType } from './OrderItemTagType';
@@ -91,6 +92,15 @@ export interface BusinessOrderItemDTO {
      * @memberof BusinessOrderItemDTO
      */
     requiredInstanceTypes?: Set<OrderItemInstanceType> | null;
+    /**
+     * Информация о статусах отдельных единиц товара в заказе.
+     *
+     * Если данных о статусах отдельных единиц товара нет, поле отсутствует.
+     *
+     * @type {Array<OrderItemUnitStatusDTO>}
+     * @memberof BusinessOrderItemDTO
+     */
+    itemStatuses?: Array<OrderItemUnitStatusDTO> | null;
     /**
      * Признаки товара.
      * @type {Set<OrderItemTagType>}

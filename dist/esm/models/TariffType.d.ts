@@ -72,6 +72,8 @@
  *
  * * `WITHDRAW_EXTERNAL` — отгрузка на внешний маркетплейс.
  *
+ * * `ITEM_BOOKING` — бронирование товара.
+ *
  * Подробнее об услугах Маркета читайте [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/introduction/rates/index.html).
  *
  * @export
@@ -107,6 +109,7 @@ export declare const TariffType: {
     readonly CARGO_ACCEPTANCE: "CARGO_ACCEPTANCE";
     readonly ORDER_PROCESSING: "ORDER_PROCESSING";
     readonly WITHDRAW_EXTERNAL: "WITHDRAW_EXTERNAL";
+    readonly ITEM_BOOKING: "ITEM_BOOKING";
 };
 export type TariffType = typeof TariffType[keyof typeof TariffType];
 export declare function instanceOfTariffType(value: any): boolean;

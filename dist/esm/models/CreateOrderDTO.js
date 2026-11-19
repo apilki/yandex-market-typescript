@@ -49,6 +49,7 @@ export function CreateOrderDTOFromJSONTyped(json, ignoreDiscriminator) {
         'packaging': CreateOrderPackagingDTOFromJSON(json['packaging']),
         'paymentType': DeliveryPaymentTypeFromJSON(json['paymentType']),
         'draft': json['draft'] == null ? undefined : json['draft'],
+        'fake': json['fake'] == null ? undefined : json['fake'],
     };
 }
 export function CreateOrderDTOToJSON(value) {
@@ -63,5 +64,6 @@ export function CreateOrderDTOToJSON(value) {
         'packaging': CreateOrderPackagingDTOToJSON(value['packaging']),
         'paymentType': DeliveryPaymentTypeToJSON(value['paymentType']),
         'draft': value['draft'],
+        'fake': value['fake'],
     };
 }

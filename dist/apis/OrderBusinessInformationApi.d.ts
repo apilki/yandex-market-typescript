@@ -24,22 +24,22 @@ export interface OrderBusinessInformationApiGetOrderBusinessDocumentsInfoRequest
  */
 export declare class OrderBusinessInformationApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOrderBusinessBuyerInfo.md) %}  Возвращает информацию о покупателе по идентификатору заказа.  {% note info \"Как получить информацию о покупателе, который является физическим лицом\" %}  Воспользуйтесь запросом GET v2/campaigns/{campaignId}/orders/{orderId}/buyer.  {% endnote %}  Получить данные можно, только если заказ находится в статусе `PROCESSING`, `DELIVERY`, `PICKUP` или `DELIVERED`.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOrderBusinessBuyerInfo.md) %}
+     * {% include notitle access %}  Возвращает информацию о покупателе по идентификатору заказа.  {% note info \"Как получить информацию о покупателе, который является физическим лицом\" %}  Воспользуйтесь запросом GET v2/campaigns/{campaignId}/orders/{orderId}/buyer.  {% endnote %}  Получить данные можно, только если заказ находится в статусе `PROCESSING`, `DELIVERY`, `PICKUP` или `DELIVERED`.  {% include notitle limit %}
      * Информация о покупателе — юридическом лице
      */
     getOrderBusinessBuyerInfoRaw(requestParameters: OrderBusinessInformationApiGetOrderBusinessBuyerInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetBusinessBuyerInfoResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOrderBusinessBuyerInfo.md) %}  Возвращает информацию о покупателе по идентификатору заказа.  {% note info \"Как получить информацию о покупателе, который является физическим лицом\" %}  Воспользуйтесь запросом GET v2/campaigns/{campaignId}/orders/{orderId}/buyer.  {% endnote %}  Получить данные можно, только если заказ находится в статусе `PROCESSING`, `DELIVERY`, `PICKUP` или `DELIVERED`.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOrderBusinessBuyerInfo.md) %}
+     * {% include notitle access %}  Возвращает информацию о покупателе по идентификатору заказа.  {% note info \"Как получить информацию о покупателе, который является физическим лицом\" %}  Воспользуйтесь запросом GET v2/campaigns/{campaignId}/orders/{orderId}/buyer.  {% endnote %}  Получить данные можно, только если заказ находится в статусе `PROCESSING`, `DELIVERY`, `PICKUP` или `DELIVERED`.  {% include notitle limit %}
      * Информация о покупателе — юридическом лице
      */
     getOrderBusinessBuyerInfo(campaignId: number, orderId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetBusinessBuyerInfoResponse>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOrderBusinessDocumentsInfo.md) %}  Возвращает информацию о документах по идентификатору заказа.  Получить данные можно после того, как заказ перейдет в статус `DELIVERED`.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOrderBusinessDocumentsInfo.md) %}
+     * {% include notitle access %}  Возвращает информацию о документах по идентификатору заказа.  Получить данные можно после того, как заказ перейдет в статус `DELIVERED`.  {% include notitle limit %}
      * Информация о документах
      */
     getOrderBusinessDocumentsInfoRaw(requestParameters: OrderBusinessInformationApiGetOrderBusinessDocumentsInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetBusinessDocumentsInfoResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOrderBusinessDocumentsInfo.md) %}  Возвращает информацию о документах по идентификатору заказа.  Получить данные можно после того, как заказ перейдет в статус `DELIVERED`.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOrderBusinessDocumentsInfo.md) %}
+     * {% include notitle access %}  Возвращает информацию о документах по идентификатору заказа.  Получить данные можно после того, как заказ перейдет в статус `DELIVERED`.  {% include notitle limit %}
      * Информация о документах
      */
     getOrderBusinessDocumentsInfo(campaignId: number, orderId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetBusinessDocumentsInfoResponse>;

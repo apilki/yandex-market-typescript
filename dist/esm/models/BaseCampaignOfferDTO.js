@@ -11,7 +11,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { QuantumDTOFromJSON, QuantumDTOToJSON, } from './QuantumDTO';
 /**
  * Check if a given object implements the BaseCampaignOfferDTO interface.
  */
@@ -29,7 +28,6 @@ export function BaseCampaignOfferDTOFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'offerId': json['offerId'],
-        'quantum': json['quantum'] == null ? undefined : QuantumDTOFromJSON(json['quantum']),
         'available': json['available'] == null ? undefined : json['available'],
     };
 }
@@ -39,7 +37,6 @@ export function BaseCampaignOfferDTOToJSON(value) {
     }
     return {
         'offerId': value['offerId'],
-        'quantum': QuantumDTOToJSON(value['quantum']),
         'available': value['available'],
     };
 }

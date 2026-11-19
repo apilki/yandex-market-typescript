@@ -11,6 +11,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { PlacementTypeFromJSON, PlacementTypeToJSON, } from './PlacementType';
 /**
  * Check if a given object implements the GenerateGoodsRealizationReportRequest interface.
  */
@@ -34,6 +35,9 @@ export function GenerateGoodsRealizationReportRequestFromJSONTyped(json, ignoreD
         'campaignId': json['campaignId'],
         'year': json['year'],
         'month': json['month'],
+        'inns': json['inns'] == null ? undefined : json['inns'],
+        'placementPrograms': json['placementPrograms'] == null ? undefined : (new Set(json['placementPrograms'].map(PlacementTypeFromJSON))),
+        'placementContracts': json['placementContracts'] == null ? undefined : json['placementContracts'],
     };
 }
 export function GenerateGoodsRealizationReportRequestToJSON(value) {
@@ -44,5 +48,8 @@ export function GenerateGoodsRealizationReportRequestToJSON(value) {
         'campaignId': value['campaignId'],
         'year': value['year'],
         'month': value['month'],
+        'inns': value['inns'] == null ? undefined : Array.from(value['inns']),
+        'placementPrograms': value['placementPrograms'] == null ? undefined : (Array.from(value['placementPrograms']).map(PlacementTypeToJSON)),
+        'placementContracts': value['placementContracts'] == null ? undefined : Array.from(value['placementContracts']),
     };
 }

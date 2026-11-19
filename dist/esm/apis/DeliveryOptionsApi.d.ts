@@ -24,22 +24,22 @@ export interface DeliveryOptionsApiGetReturnDeliveryOptionsOperationRequest {
  */
 export declare class DeliveryOptionsApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getDeliveryOptions.md) %}  Возвращает список вариантов для доставки заказов. Выберите подходящий вариант доставки из ответа и передайте его при создании заказа.  Укажите `courierDelivery` для курьерской доставки или `pickupDelivery` для доставки в пункт выдачи. Не передавайте оба параметра одновременно.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getDeliveryOptions.md) %}
+     * {% include notitle access %}  Возвращает список вариантов для доставки заказов. Выберите подходящий вариант доставки из ответа и передайте его при создании заказа.  Укажите `courierDelivery` для курьерской доставки или `pickupDelivery` для доставки в пункт выдачи. Не передавайте оба параметра одновременно.  {% include notitle limit %}
      * Получение доступных вариантов доставки заказов
      */
     getDeliveryOptionsRaw(requestParameters: DeliveryOptionsApiGetDeliveryOptionsOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetDeliveryOptionsResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getDeliveryOptions.md) %}  Возвращает список вариантов для доставки заказов. Выберите подходящий вариант доставки из ответа и передайте его при создании заказа.  Укажите `courierDelivery` для курьерской доставки или `pickupDelivery` для доставки в пункт выдачи. Не передавайте оба параметра одновременно.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getDeliveryOptions.md) %}
+     * {% include notitle access %}  Возвращает список вариантов для доставки заказов. Выберите подходящий вариант доставки из ответа и передайте его при создании заказа.  Укажите `courierDelivery` для курьерской доставки или `pickupDelivery` для доставки в пункт выдачи. Не передавайте оба параметра одновременно.  {% include notitle limit %}
      * Получение доступных вариантов доставки заказов
      */
     getDeliveryOptions(campaignId: number, getDeliveryOptionsRequest: GetDeliveryOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetDeliveryOptionsResponse>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getReturnDeliveryOptions.md) %}  Возвращает список идентификаторов пунктов выдачи, которые могут принять возврат указанных товаров.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getReturnDeliveryOptions.md) %}
+     * {% include notitle access %}  Возвращает список идентификаторов пунктов выдачи, которые могут принять возврат указанных товаров.  {% include notitle limit %}
      * Получение подходящих для возврата пунктов выдачи
      */
     getReturnDeliveryOptionsRaw(requestParameters: DeliveryOptionsApiGetReturnDeliveryOptionsOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetReturnDeliveryOptionsResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getReturnDeliveryOptions.md) %}  Возвращает список идентификаторов пунктов выдачи, которые могут принять возврат указанных товаров.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getReturnDeliveryOptions.md) %}
+     * {% include notitle access %}  Возвращает список идентификаторов пунктов выдачи, которые могут принять возврат указанных товаров.  {% include notitle limit %}
      * Получение подходящих для возврата пунктов выдачи
      */
     getReturnDeliveryOptions(campaignId: number, getReturnDeliveryOptionsRequest: GetReturnDeliveryOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetReturnDeliveryOptionsResponse>;

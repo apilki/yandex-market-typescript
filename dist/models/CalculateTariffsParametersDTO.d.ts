@@ -47,11 +47,12 @@ export interface CalculateTariffsParametersDTO {
      */
     frequency?: PaymentFrequencyType;
     /**
-     * Задержка выплат в неделях.
+     * Отсрочка выплат при еженедельном графике — сколько недель назад были доставлены заказы, за которые приходит выплата.
      *
      * Допустимые значения: 0, 1, 2 или 4.
      *
-     * Используйте только вместе с параметром `frequency`.
+     * Значения параметра `paymentDelayWeeks`, отличные от 0, допускаются только вместе с параметром `frequency` равным 'WEEKLY'.
+     * Использование других значений параметра `frequency` совместно с `paymentDelayWeeks` приведет к ошибке.
      *
      * @type {number}
      * @memberof CalculateTariffsParametersDTO

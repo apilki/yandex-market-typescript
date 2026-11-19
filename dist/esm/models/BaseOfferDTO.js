@@ -60,6 +60,7 @@ export function BaseOfferDTOFromJSONTyped(json, ignoreDiscriminator) {
         'type': json['type'] == null ? undefined : OfferTypeFromJSON(json['type']),
         'downloadable': json['downloadable'] == null ? undefined : json['downloadable'],
         'adult': json['adult'] == null ? undefined : json['adult'],
+        'markingDeclared': json['markingDeclared'] == null ? undefined : json['markingDeclared'],
         'age': json['age'] == null ? undefined : AgeDTOFromJSON(json['age']),
         'params': json['params'] == null ? undefined : (json['params'].map(OfferParamDTOFromJSON)),
     };
@@ -94,6 +95,7 @@ export function BaseOfferDTOToJSON(value) {
         'type': OfferTypeToJSON(value['type']),
         'downloadable': value['downloadable'],
         'adult': value['adult'],
+        'markingDeclared': value['markingDeclared'],
         'age': AgeDTOToJSON(value['age']),
         'params': value['params'] == null ? undefined : (value['params'].map(OfferParamDTOToJSON)),
     };

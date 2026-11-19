@@ -30,7 +30,7 @@ const index_1 = require("../models/index");
  */
 class PriceQuarantineApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/confirmBusinessPrices.md) %}  Подтверждает во всех магазинах цену на товары, которые попали в карантин, и удаляет их из карантина.  Товар попадает в карантин, если его цена меняется слишком резко. [Как настроить карантин](https://yandex.ru/support/marketplace/assortment/operations/prices.html#quarantine)  Чтобы увидеть список товаров, которые попали в карантин, используйте запрос [POST v2/businesses/{businessId}/price-quarantine](getBusinessQuarantineOffers.md).  {% include notitle [:no-translate[limit]](../../_auto/method_limits/confirmBusinessPrices.md) %}
+     * {% include notitle access %}  Подтверждает во всех магазинах цену на товары, которые попали в карантин, и удаляет их из карантина.  Товар попадает в карантин, если его цена меняется слишком резко. [Как настроить карантин](https://yandex.ru/support/marketplace/assortment/operations/prices.html#quarantine)  Чтобы увидеть список товаров, которые попали в карантин, используйте запрос [POST v2/businesses/{businessId}/price-quarantine](getBusinessQuarantineOffers.md).  {% include notitle limit %}
      * Удаление товара из карантина по цене в кабинете
      */
     confirmBusinessPricesRaw(requestParameters, initOverrides) {
@@ -62,7 +62,7 @@ class PriceQuarantineApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/confirmBusinessPrices.md) %}  Подтверждает во всех магазинах цену на товары, которые попали в карантин, и удаляет их из карантина.  Товар попадает в карантин, если его цена меняется слишком резко. [Как настроить карантин](https://yandex.ru/support/marketplace/assortment/operations/prices.html#quarantine)  Чтобы увидеть список товаров, которые попали в карантин, используйте запрос [POST v2/businesses/{businessId}/price-quarantine](getBusinessQuarantineOffers.md).  {% include notitle [:no-translate[limit]](../../_auto/method_limits/confirmBusinessPrices.md) %}
+     * {% include notitle access %}  Подтверждает во всех магазинах цену на товары, которые попали в карантин, и удаляет их из карантина.  Товар попадает в карантин, если его цена меняется слишком резко. [Как настроить карантин](https://yandex.ru/support/marketplace/assortment/operations/prices.html#quarantine)  Чтобы увидеть список товаров, которые попали в карантин, используйте запрос [POST v2/businesses/{businessId}/price-quarantine](getBusinessQuarantineOffers.md).  {% include notitle limit %}
      * Удаление товара из карантина по цене в кабинете
      */
     confirmBusinessPrices(businessId, confirmPricesRequest, initOverrides) {
@@ -72,7 +72,7 @@ class PriceQuarantineApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/confirmCampaignPrices.md) %}  Подтверждает в заданном магазине цену на товары, которые попали в карантин, и удаляет их из карантина.  Товар попадает в карантин, если его цена меняется слишком резко. [Как настроить карантин](https://yandex.ru/support/marketplace/assortment/operations/prices.html#quarantine)  Чтобы увидеть список товаров, которые попали в карантин, используйте запрос [POST v2/campaigns/{campaignId}/price-quarantine](getCampaignQuarantineOffers.md).  {% include notitle [:no-translate[limit]](../../_auto/method_limits/confirmCampaignPrices.md) %}
+     * {% include notitle access %}  Подтверждает в заданном магазине цену на товары, которые попали в карантин, и удаляет их из карантина.  Товар попадает в карантин, если его цена меняется слишком резко. [Как настроить карантин](https://yandex.ru/support/marketplace/assortment/operations/prices.html#quarantine)  Чтобы увидеть список товаров, которые попали в карантин, используйте запрос [POST v2/campaigns/{campaignId}/price-quarantine](getCampaignQuarantineOffers.md).  {% include notitle limit %}
      * Удаление товара из карантина по цене в магазине
      */
     confirmCampaignPricesRaw(requestParameters, initOverrides) {
@@ -104,7 +104,7 @@ class PriceQuarantineApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/confirmCampaignPrices.md) %}  Подтверждает в заданном магазине цену на товары, которые попали в карантин, и удаляет их из карантина.  Товар попадает в карантин, если его цена меняется слишком резко. [Как настроить карантин](https://yandex.ru/support/marketplace/assortment/operations/prices.html#quarantine)  Чтобы увидеть список товаров, которые попали в карантин, используйте запрос [POST v2/campaigns/{campaignId}/price-quarantine](getCampaignQuarantineOffers.md).  {% include notitle [:no-translate[limit]](../../_auto/method_limits/confirmCampaignPrices.md) %}
+     * {% include notitle access %}  Подтверждает в заданном магазине цену на товары, которые попали в карантин, и удаляет их из карантина.  Товар попадает в карантин, если его цена меняется слишком резко. [Как настроить карантин](https://yandex.ru/support/marketplace/assortment/operations/prices.html#quarantine)  Чтобы увидеть список товаров, которые попали в карантин, используйте запрос [POST v2/campaigns/{campaignId}/price-quarantine](getCampaignQuarantineOffers.md).  {% include notitle limit %}
      * Удаление товара из карантина по цене в магазине
      */
     confirmCampaignPrices(campaignId, confirmPricesRequest, initOverrides) {
@@ -114,7 +114,7 @@ class PriceQuarantineApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getBusinessQuarantineOffers.md) %}  Возвращает список товаров, которые находятся в карантине по цене, установленной для всех магазинов кабинета.  Проверьте цену каждого из товаров, который попал в карантин. Если ошибки нет и цена правильная, подтвердите ее с помощью запроса POST v2/businesses/{businessId}/price-quarantine/confirm. Если цена в самом деле ошибочная, установите верную с помощью запроса POST v2/businesses/{businessId}/offer-prices/updates.  {% note info \"Что такое карантин?\" %}  Товар попадает в карантин, если его цена меняется слишком резко или слишком сильно отличается от рыночной. [Подробнее](https://yandex.ru/support/marketplace/assortment/operations/prices.html#quarantine)  {% endnote %}  В запросе можно использовать фильтры.  Результаты возвращаются постранично.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getBusinessQuarantineOffers.md) %}
+     * {% include notitle access %}  Возвращает список товаров, которые находятся в карантине по цене, установленной для всех магазинов кабинета.  Проверьте цену каждого из товаров, который попал в карантин. Если ошибки нет и цена правильная, подтвердите ее с помощью запроса POST v2/businesses/{businessId}/price-quarantine/confirm. Если цена в самом деле ошибочная, установите верную с помощью запроса POST v2/businesses/{businessId}/offer-prices/updates.  {% note info \"Что такое карантин?\" %}  Товар попадает в карантин, если его цена меняется слишком резко или слишком сильно отличается от рыночной. [Подробнее](https://yandex.ru/support/marketplace/assortment/operations/prices.html#quarantine)  {% endnote %}  В запросе можно использовать фильтры.  Результаты возвращаются постранично.  {% include notitle limit %}
      * Список товаров, находящихся в карантине по цене в кабинете
      */
     getBusinessQuarantineOffersRaw(requestParameters, initOverrides) {
@@ -152,7 +152,7 @@ class PriceQuarantineApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getBusinessQuarantineOffers.md) %}  Возвращает список товаров, которые находятся в карантине по цене, установленной для всех магазинов кабинета.  Проверьте цену каждого из товаров, который попал в карантин. Если ошибки нет и цена правильная, подтвердите ее с помощью запроса POST v2/businesses/{businessId}/price-quarantine/confirm. Если цена в самом деле ошибочная, установите верную с помощью запроса POST v2/businesses/{businessId}/offer-prices/updates.  {% note info \"Что такое карантин?\" %}  Товар попадает в карантин, если его цена меняется слишком резко или слишком сильно отличается от рыночной. [Подробнее](https://yandex.ru/support/marketplace/assortment/operations/prices.html#quarantine)  {% endnote %}  В запросе можно использовать фильтры.  Результаты возвращаются постранично.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getBusinessQuarantineOffers.md) %}
+     * {% include notitle access %}  Возвращает список товаров, которые находятся в карантине по цене, установленной для всех магазинов кабинета.  Проверьте цену каждого из товаров, который попал в карантин. Если ошибки нет и цена правильная, подтвердите ее с помощью запроса POST v2/businesses/{businessId}/price-quarantine/confirm. Если цена в самом деле ошибочная, установите верную с помощью запроса POST v2/businesses/{businessId}/offer-prices/updates.  {% note info \"Что такое карантин?\" %}  Товар попадает в карантин, если его цена меняется слишком резко или слишком сильно отличается от рыночной. [Подробнее](https://yandex.ru/support/marketplace/assortment/operations/prices.html#quarantine)  {% endnote %}  В запросе можно использовать фильтры.  Результаты возвращаются постранично.  {% include notitle limit %}
      * Список товаров, находящихся в карантине по цене в кабинете
      */
     getBusinessQuarantineOffers(businessId, getQuarantineOffersRequest, pageToken, limit, initOverrides) {
@@ -162,7 +162,7 @@ class PriceQuarantineApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCampaignQuarantineOffers.md) %}  Возвращает список товаров, которые находятся в карантине по цене, установленной в заданном магазине.  Проверьте цену каждого из товаров, который попал в карантин. Если ошибки нет и цена правильная, подтвердите ее с помощью запроса POST v2/campaigns/{campaignId}/price-quarantine/confirm. Если цена в самом деле ошибочная, установите верную с помощью запроса POST v2/campaigns/{campaignId}/offer-prices/updates.  {% note info \"Что такое карантин?\" %}  Товар попадает в карантин, если его цена меняется слишком резко или слишком сильно отличается от рыночной. [Подробнее](https://yandex.ru/support/marketplace/assortment/operations/prices.html#quarantine)  {% endnote %}  В запросе можно использовать фильтры.  Результаты возвращаются постранично.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCampaignQuarantineOffers.md) %}
+     * {% include notitle access %}  Возвращает список товаров, которые находятся в карантине по цене, установленной в заданном магазине.  Проверьте цену каждого из товаров, который попал в карантин. Если ошибки нет и цена правильная, подтвердите ее с помощью запроса POST v2/campaigns/{campaignId}/price-quarantine/confirm. Если цена в самом деле ошибочная, установите верную с помощью запроса POST v2/campaigns/{campaignId}/offer-prices/updates.  {% note info \"Что такое карантин?\" %}  Товар попадает в карантин, если его цена меняется слишком резко или слишком сильно отличается от рыночной. [Подробнее](https://yandex.ru/support/marketplace/assortment/operations/prices.html#quarantine)  {% endnote %}  В запросе можно использовать фильтры.  Результаты возвращаются постранично.  {% include notitle limit %}
      * Список товаров, находящихся в карантине по цене в магазине
      */
     getCampaignQuarantineOffersRaw(requestParameters, initOverrides) {
@@ -200,7 +200,7 @@ class PriceQuarantineApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCampaignQuarantineOffers.md) %}  Возвращает список товаров, которые находятся в карантине по цене, установленной в заданном магазине.  Проверьте цену каждого из товаров, который попал в карантин. Если ошибки нет и цена правильная, подтвердите ее с помощью запроса POST v2/campaigns/{campaignId}/price-quarantine/confirm. Если цена в самом деле ошибочная, установите верную с помощью запроса POST v2/campaigns/{campaignId}/offer-prices/updates.  {% note info \"Что такое карантин?\" %}  Товар попадает в карантин, если его цена меняется слишком резко или слишком сильно отличается от рыночной. [Подробнее](https://yandex.ru/support/marketplace/assortment/operations/prices.html#quarantine)  {% endnote %}  В запросе можно использовать фильтры.  Результаты возвращаются постранично.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCampaignQuarantineOffers.md) %}
+     * {% include notitle access %}  Возвращает список товаров, которые находятся в карантине по цене, установленной в заданном магазине.  Проверьте цену каждого из товаров, который попал в карантин. Если ошибки нет и цена правильная, подтвердите ее с помощью запроса POST v2/campaigns/{campaignId}/price-quarantine/confirm. Если цена в самом деле ошибочная, установите верную с помощью запроса POST v2/campaigns/{campaignId}/offer-prices/updates.  {% note info \"Что такое карантин?\" %}  Товар попадает в карантин, если его цена меняется слишком резко или слишком сильно отличается от рыночной. [Подробнее](https://yandex.ru/support/marketplace/assortment/operations/prices.html#quarantine)  {% endnote %}  В запросе можно использовать фильтры.  Результаты возвращаются постранично.  {% include notitle limit %}
      * Список товаров, находящихся в карантине по цене в магазине
      */
     getCampaignQuarantineOffers(campaignId, getQuarantineOffersRequest, pageToken, limit, initOverrides) {

@@ -21,13 +21,6 @@ export interface PackagingScrollingPagerDTO {
      * @memberof PackagingScrollingPagerDTO
      */
     nextPageToken?: string;
-    /**
-     * Идентификатор предыдущей страницы результатов.
-     * @type {string}
-     * @memberof PackagingScrollingPagerDTO
-     * @deprecated
-     */
-    prevPageToken?: string;
 }
 /**
  * Check if a given object implements the PackagingScrollingPagerDTO interface.

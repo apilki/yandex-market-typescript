@@ -10,10 +10,17 @@
  * Do not edit the class manually.
  */
 import type { OrdersStatsPriceDTO } from './OrdersStatsPriceDTO';
+import type { OrdersStatsShopServiceType } from './OrdersStatsShopServiceType';
 import type { OrdersStatsDetailsDTO } from './OrdersStatsDetailsDTO';
 import type { OrdersStatsWarehouseDTO } from './OrdersStatsWarehouseDTO';
 /**
  * Список товаров в заказе после возможных изменений.
+ *
+ * Услуги установки, сборки и утилизации по модели DBS возвращаются отдельными позициями. Позицию услуги можно отличить от товара по наличию `shopServiceType`; ее `offerName` — `Установка`, `Сборка` или `Утилизация`. У одного товара может быть несколько позиций услуг.
+ *
+ * Значения `marketSku` и `shopSku` позиции услуги совпадают со значениями товара, для которого она заказана. При подсчете количества товаров исключайте позиции с `shopServiceType`.
+ *
+ * Отмена услуг отражается по тем же правилам, что и удаление товаров: при частичной отмене позиция есть в `items` с уменьшенным `count` и в `initialItems` с первоначальным `initialCount`, при полной — только в `initialItems`.
  *
  * В ходе обработки заказа Маркет может удалить из него единицы товаров — при проблемах на складе или по инициативе пользователя.
  *
@@ -26,11 +33,17 @@ import type { OrdersStatsWarehouseDTO } from './OrdersStatsWarehouseDTO';
  */
 export interface OrdersStatsItemDTO {
     /**
-     * Название товара.
+     * Название товара или услуги магазина.
      * @type {string}
      * @memberof OrdersStatsItemDTO
      */
     offerName?: string;
+    /**
+     *
+     * @type {OrdersStatsShopServiceType}
+     * @memberof OrdersStatsItemDTO
+     */
+    shopServiceType?: OrdersStatsShopServiceType;
     /**
      * Идентификатор карточки товара на Маркете.
      * @type {number}
@@ -61,16 +74,16 @@ export interface OrdersStatsItemDTO {
      */
     shopSku?: string;
     /**
-     * Количество единиц товара с учетом удаленных единиц.
+     * Количество единиц товара или услуги магазина с учетом удаленных или отмененных единиц.
      *
-     * Если из заказа удалены все единицы товара, он попадет только в список `initialItems`.
+     * Если из заказа удалены все единицы товара или полностью отменена услуга, позиция попадет только в список `initialItems`.
      *
      * @type {number}
      * @memberof OrdersStatsItemDTO
      */
     count?: number;
     /**
-     * Цена или скидки на товар.
+     * Цена или скидки на товар или услугу магазина.
      * @type {Array<OrdersStatsPriceDTO>}
      * @memberof OrdersStatsItemDTO
      */
@@ -88,13 +101,13 @@ export interface OrdersStatsItemDTO {
      */
     details?: Array<OrdersStatsDetailsDTO> | null;
     /**
-     * Список кодов идентификации товара в системе [:no-translate[«Честный ЗНАК»]](https://честныйзнак.рф/) или [:no-translate[«ASL BELGISI»]](https://aslbelgisi.uz) (для продавцов :no-translate[Market Yandex Go]).
+     * Список кодов идентификации товара в системе [«Честный ЗНАК»](https://честныйзнак.рф/) или [«ASL BELGISI»](https://aslbelgisi.uz) (для продавцов :no-translate[Market Yandex Go]).
      * @type {Set<string>}
      * @memberof OrdersStatsItemDTO
      */
     cisList?: Set<string> | null;
     /**
-     * Первоначальное количество единиц товара.
+     * Первоначальное количество единиц товара или услуги магазина.
      * @type {number}
      * @memberof OrdersStatsItemDTO
      */

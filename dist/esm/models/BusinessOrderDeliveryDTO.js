@@ -17,6 +17,7 @@ import { BusinessOrderCourierDeliveryDTOFromJSON, BusinessOrderCourierDeliveryDT
 import { BusinessOrderDeliveryDatesDTOFromJSON, BusinessOrderDeliveryDatesDTOToJSON, } from './BusinessOrderDeliveryDatesDTO';
 import { OrderTrackDTOFromJSON, OrderTrackDTOToJSON, } from './OrderTrackDTO';
 import { BusinessOrderTransferDTOFromJSON, BusinessOrderTransferDTOToJSON, } from './BusinessOrderTransferDTO';
+import { DigitalGoodsDeliveryDetailsDTOFromJSON, DigitalGoodsDeliveryDetailsDTOToJSON, } from './DigitalGoodsDeliveryDetailsDTO';
 import { BusinessOrderPickupDeliveryDTOFromJSON, BusinessOrderPickupDeliveryDTOToJSON, } from './BusinessOrderPickupDeliveryDTO';
 import { OrderDeliveryPartnerTypeFromJSON, OrderDeliveryPartnerTypeToJSON, } from './OrderDeliveryPartnerType';
 import { OrderDeliveryTypeFromJSON, OrderDeliveryTypeToJSON, } from './OrderDeliveryType';
@@ -59,6 +60,9 @@ export function BusinessOrderDeliveryDTOFromJSONTyped(json, ignoreDiscriminator)
         'boxesLayout': json['boxesLayout'] == null ? undefined : (json['boxesLayout'].map(BusinessOrderBoxLayoutDTOFromJSON)),
         'tracks': json['tracks'] == null ? undefined : (json['tracks'].map(OrderTrackDTOFromJSON)),
         'estimated': json['estimated'] == null ? undefined : json['estimated'],
+        'receiveBarcode': json['receiveBarcode'] == null ? undefined : json['receiveBarcode'],
+        'receiveCode': json['receiveCode'] == null ? undefined : json['receiveCode'],
+        'digitalGoods': json['digitalGoods'] == null ? undefined : DigitalGoodsDeliveryDetailsDTOFromJSON(json['digitalGoods']),
     };
 }
 export function BusinessOrderDeliveryDTOToJSON(value) {
@@ -80,5 +84,8 @@ export function BusinessOrderDeliveryDTOToJSON(value) {
         'boxesLayout': value['boxesLayout'] == null ? undefined : (value['boxesLayout'].map(BusinessOrderBoxLayoutDTOToJSON)),
         'tracks': value['tracks'] == null ? undefined : (value['tracks'].map(OrderTrackDTOToJSON)),
         'estimated': value['estimated'],
+        'receiveBarcode': value['receiveBarcode'],
+        'receiveCode': value['receiveCode'],
+        'digitalGoods': DigitalGoodsDeliveryDetailsDTOToJSON(value['digitalGoods']),
     };
 }

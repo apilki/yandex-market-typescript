@@ -20,12 +20,17 @@
  * * `DELIVERY_TO_CUSTOMER` — доставка покупателю (FBY, FBS). Для DBS и Экспресс — если заказ возвращается через логистику Маркета.
  * * `EXPRESS_DELIVERY_TO_CUSTOMER` — экспресс-доставка покупателю (Экспресс).
  * * `AGENCY` — прием платежа покупателя.
+ * * `AGENCY_COMMISSION_3PL` — услуги перевозки и ТЭО.
  * * `PAYMENT_TRANSFER` — перевод платежа покупателя.
  * * `RETURNED_ORDERS_STORAGE` — хранение невыкупов и возвратов (FBS). Для DBS и Экспресс — если заказ возвращается через логистику Маркета.
  * * `SORTING` — обработка заказа (FBS).
  * * `INTAKE_SORTING` — организация забора заказов со склада продавца (FBS).
  * * `RETURN_PROCESSING` — обработка заказов на складе (FBS). Для DBS и Экспресс — если заказ возвращается через логистику Маркета.
  * * `ILLIQUID_GOODS_SALE` — вознаграждение за продажу невывезенных товаров.
+ * * `CROSSREGIONAL_DELIVERY` - доставка средней мили.
+ * * `FULFILLMENT_WITHDRAW` - вывоз со склада.
+ * * `ITEM_BOOKING` - бронирование товара (только для продавцов Market Yandex Go).
+ * * `SHOP_SERVICE_PLACEMENT` — размещение услуг магазина (DBS). Начисления и корректировки возвращаются отдельными элементами массива `commissions` с этим типом: в одном заказе может быть несколько таких элементов. Корректировки могут быть отрицательными.
  *
  * @export
  */
@@ -38,12 +43,17 @@ export declare const OrdersStatsCommissionType: {
     readonly DELIVERY_TO_CUSTOMER: "DELIVERY_TO_CUSTOMER";
     readonly EXPRESS_DELIVERY_TO_CUSTOMER: "EXPRESS_DELIVERY_TO_CUSTOMER";
     readonly AGENCY: "AGENCY";
+    readonly AGENCY_COMMISSION_3PL: "AGENCY_COMMISSION_3PL";
     readonly PAYMENT_TRANSFER: "PAYMENT_TRANSFER";
     readonly RETURNED_ORDERS_STORAGE: "RETURNED_ORDERS_STORAGE";
     readonly SORTING: "SORTING";
     readonly INTAKE_SORTING: "INTAKE_SORTING";
     readonly RETURN_PROCESSING: "RETURN_PROCESSING";
     readonly ILLIQUID_GOODS_SALE: "ILLIQUID_GOODS_SALE";
+    readonly CROSSREGIONAL_DELIVERY: "CROSSREGIONAL_DELIVERY";
+    readonly FULFILLMENT_WITHDRAW: "FULFILLMENT_WITHDRAW";
+    readonly ITEM_BOOKING: "ITEM_BOOKING";
+    readonly SHOP_SERVICE_PLACEMENT: "SHOP_SERVICE_PLACEMENT";
 };
 export type OrdersStatsCommissionType = typeof OrdersStatsCommissionType[keyof typeof OrdersStatsCommissionType];
 export declare function instanceOfOrdersStatsCommissionType(value: any): boolean;

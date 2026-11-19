@@ -12,6 +12,8 @@
  * Do not edit the class manually.
  */
 import { BusinessSettingsDTOFromJSON, BusinessSettingsDTOToJSON, } from './BusinessSettingsDTO';
+import { BusinessTraitTypeFromJSON, BusinessTraitTypeToJSON, } from './BusinessTraitType';
+import { BusinessSubscriptionLevelTypeFromJSON, BusinessSubscriptionLevelTypeToJSON, } from './BusinessSubscriptionLevelType';
 import { BusinessDTOFromJSON, BusinessDTOToJSON, } from './BusinessDTO';
 /**
  * Check if a given object implements the GetBusinessSettingsInfoDTO interface.
@@ -29,6 +31,8 @@ export function GetBusinessSettingsInfoDTOFromJSONTyped(json, ignoreDiscriminato
     return {
         'info': json['info'] == null ? undefined : BusinessDTOFromJSON(json['info']),
         'settings': json['settings'] == null ? undefined : BusinessSettingsDTOFromJSON(json['settings']),
+        'subscriptionLevel': json['subscriptionLevel'] == null ? undefined : BusinessSubscriptionLevelTypeFromJSON(json['subscriptionLevel']),
+        'traits': json['traits'] == null ? undefined : (new Set(json['traits'].map(BusinessTraitTypeFromJSON))),
     };
 }
 export function GetBusinessSettingsInfoDTOToJSON(value) {
@@ -38,5 +42,7 @@ export function GetBusinessSettingsInfoDTOToJSON(value) {
     return {
         'info': BusinessDTOToJSON(value['info']),
         'settings': BusinessSettingsDTOToJSON(value['settings']),
+        'subscriptionLevel': BusinessSubscriptionLevelTypeToJSON(value['subscriptionLevel']),
+        'traits': value['traits'] == null ? undefined : (Array.from(value['traits']).map(BusinessTraitTypeToJSON)),
     };
 }

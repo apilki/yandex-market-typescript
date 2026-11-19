@@ -30,7 +30,7 @@ const index_1 = require("../models/index");
  */
 class RatingsApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getQualityRatingDetails.md) %}  Возвращает список заказов, которые повлияли на индекс качества магазина. Чтобы узнать значение индекса качества, выполните запрос POST v2/businesses/{businessId}/ratings/quality.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getQualityRatingDetails.md) %}
+     * {% include notitle access %}  Возвращает список заказов, которые повлияли на индекс качества магазина. Чтобы узнать значение индекса качества, выполните запрос POST v2/businesses/{businessId}/ratings/quality.  {% include notitle limit %}
      * Заказы, которые повлияли на индекс качества
      */
     getQualityRatingDetailsRaw(requestParameters, initOverrides) {
@@ -57,7 +57,7 @@ class RatingsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getQualityRatingDetails.md) %}  Возвращает список заказов, которые повлияли на индекс качества магазина. Чтобы узнать значение индекса качества, выполните запрос POST v2/businesses/{businessId}/ratings/quality.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getQualityRatingDetails.md) %}
+     * {% include notitle access %}  Возвращает список заказов, которые повлияли на индекс качества магазина. Чтобы узнать значение индекса качества, выполните запрос POST v2/businesses/{businessId}/ratings/quality.  {% include notitle limit %}
      * Заказы, которые повлияли на индекс качества
      */
     getQualityRatingDetails(campaignId, initOverrides) {
@@ -67,7 +67,7 @@ class RatingsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getQualityRatings.md) %}  Возвращает значение индекса качества магазинов и его составляющие.  Подробнее об индексе качества читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/quality/score/).  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getQualityRatings.md) %}
+     * {% include notitle access %}  Возвращает значение индекса качества магазинов и его составляющие.  Подробнее об индексе качества читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/quality/score/).  {% include notitle limit %}
      * Индекс качества магазинов
      */
     getQualityRatingsRaw(requestParameters, initOverrides) {
@@ -99,7 +99,7 @@ class RatingsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getQualityRatings.md) %}  Возвращает значение индекса качества магазинов и его составляющие.  Подробнее об индексе качества читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/quality/score/).  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getQualityRatings.md) %}
+     * {% include notitle access %}  Возвращает значение индекса качества магазинов и его составляющие.  Подробнее об индексе качества читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/quality/score/).  {% include notitle limit %}
      * Индекс качества магазинов
      */
     getQualityRatings(businessId, getQualityRatingRequest, initOverrides) {

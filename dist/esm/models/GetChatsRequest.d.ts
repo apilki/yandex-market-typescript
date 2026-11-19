@@ -21,7 +21,14 @@ import type { ChatType } from './ChatType';
  */
 export interface GetChatsRequest {
     /**
+     * {% note warning "Параметр устарел и будет отключен 19.10.2026." %}
+     *
+     * Вместо него используйте `contexts`.
+     *
+     * {% endnote %}
+     *
      * Фильтр по идентификаторам заказов на Маркете.
+     *
      * @type {Set<number>}
      * @memberof GetChatsRequest
      * @deprecated

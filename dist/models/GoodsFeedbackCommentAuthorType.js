@@ -23,12 +23,14 @@ exports.GoodsFeedbackCommentAuthorTypeToJSON = GoodsFeedbackCommentAuthorTypeToJ
  *
  * * `USER` — пользователь.
  * * `BUSINESS` — кабинет.
+ * * `BRAND` — бренд.
  *
  * @export
  */
 exports.GoodsFeedbackCommentAuthorType = {
     USER: 'USER',
-    BUSINESS: 'BUSINESS'
+    BUSINESS: 'BUSINESS',
+    BRAND: 'BRAND'
 };
 function instanceOfGoodsFeedbackCommentAuthorType(value) {
     for (const key in exports.GoodsFeedbackCommentAuthorType) {

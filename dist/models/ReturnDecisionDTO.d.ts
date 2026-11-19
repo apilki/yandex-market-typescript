@@ -56,9 +56,9 @@ export interface ReturnDecisionDTO {
      */
     decisionType?: ReturnDecisionType;
     /**
-     * {% note warning "Вместо него используйте `amount`." %}
+     * {% note warning "Параметр устарел и будет отключен 12.10.2026." %}
      *
-     *
+     * Вместо него используйте `amount`.
      *
      * {% endnote %}
      *
@@ -76,9 +76,9 @@ export interface ReturnDecisionDTO {
      */
     amount?: CurrencyValueDTO;
     /**
-     * {% note warning "Вместо него используйте `partnerCompensationAmount`." %}
+     * {% note warning "Параметр устарел и будет отключен 12.10.2026." %}
      *
-     *
+     * Вместо него используйте `partnerCompensationAmount`.
      *
      * {% endnote %}
      *

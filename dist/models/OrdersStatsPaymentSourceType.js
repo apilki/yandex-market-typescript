@@ -21,6 +21,7 @@ exports.OrdersStatsPaymentSourceTypeToJSON = OrdersStatsPaymentSourceTypeToJSON;
 /**
  * Способ денежного перевода:
  * - `BUYER` — оплата или возврат деньгами.
+ * - `MARKET_CESSION` — уступка задолженности покупателя.
  *
  * Устаревшие способы:
  * - `CASHBACK`.
@@ -33,6 +34,7 @@ exports.OrdersStatsPaymentSourceType = {
     BUYER: 'BUYER',
     CASHBACK: 'CASHBACK',
     MARKETPLACE: 'MARKETPLACE',
+    MARKET_CESSION: 'MARKET_CESSION',
     SPLIT: 'SPLIT'
 };
 function instanceOfOrdersStatsPaymentSourceType(value) {

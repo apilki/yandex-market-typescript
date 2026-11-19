@@ -14,12 +14,14 @@
  *
  * * `USER` — пользователь.
  * * `BUSINESS` — кабинет.
+ * * `BRAND` — бренд.
  *
  * @export
  */
 export declare const GoodsFeedbackCommentAuthorType: {
     readonly USER: "USER";
     readonly BUSINESS: "BUSINESS";
+    readonly BRAND: "BRAND";
 };
 export type GoodsFeedbackCommentAuthorType = typeof GoodsFeedbackCommentAuthorType[keyof typeof GoodsFeedbackCommentAuthorType];
 export declare function instanceOfGoodsFeedbackCommentAuthorType(value: any): boolean;

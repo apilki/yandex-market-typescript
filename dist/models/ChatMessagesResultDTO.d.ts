@@ -19,7 +19,14 @@ import type { ChatFullContextDTO } from './ChatFullContextDTO';
  */
 export interface ChatMessagesResultDTO {
     /**
+     * {% note warning "Параметр устарел и будет отключен 12.10.2026." %}
+     *
+     * Вместо него используйте `context`.
+     *
+     * {% endnote %}
+     *
      * Идентификатор заказа.
+     *
      * @type {number}
      * @memberof ChatMessagesResultDTO
      * @deprecated

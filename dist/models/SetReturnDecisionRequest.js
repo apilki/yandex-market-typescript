@@ -18,6 +18,7 @@ exports.SetReturnDecisionRequestFromJSON = SetReturnDecisionRequestFromJSON;
 exports.SetReturnDecisionRequestFromJSONTyped = SetReturnDecisionRequestFromJSONTyped;
 exports.SetReturnDecisionRequestToJSON = SetReturnDecisionRequestToJSON;
 const ReturnRequestDecisionType_1 = require("./ReturnRequestDecisionType");
+const BasePriceDTO_1 = require("./BasePriceDTO");
 /**
  * Check if a given object implements the SetReturnDecisionRequest interface.
  */
@@ -39,6 +40,7 @@ function SetReturnDecisionRequestFromJSONTyped(json, ignoreDiscriminator) {
         'returnItemId': json['returnItemId'],
         'decisionType': (0, ReturnRequestDecisionType_1.ReturnRequestDecisionTypeFromJSON)(json['decisionType']),
         'comment': json['comment'] == null ? undefined : json['comment'],
+        'compensation': json['compensation'] == null ? undefined : (0, BasePriceDTO_1.BasePriceDTOFromJSON)(json['compensation']),
     };
 }
 function SetReturnDecisionRequestToJSON(value) {
@@ -49,5 +51,6 @@ function SetReturnDecisionRequestToJSON(value) {
         'returnItemId': value['returnItemId'],
         'decisionType': (0, ReturnRequestDecisionType_1.ReturnRequestDecisionTypeToJSON)(value['decisionType']),
         'comment': value['comment'],
+        'compensation': (0, BasePriceDTO_1.BasePriceDTOToJSON)(value['compensation']),
     };
 }

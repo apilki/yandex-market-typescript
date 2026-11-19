@@ -27,7 +27,7 @@ import { CreateChatRequestToJSON, CreateChatResponseFromJSON, EmptyApiResponseFr
  */
 export class ChatsApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/createChat.md) %}  Создает новый чат с покупателем и возвращает информацию о нем или созданном ранее.  Типы чатов, которые может начать продавец:  * по заказам; * по возвратам (доступны только для FBY-, FBS- и Экспресс-магазинов).  {% include notitle [:no-translate[limit]](../../_auto/method_limits/createChat.md) %}
+     * {% include notitle access %}  Создает новый чат с покупателем и возвращает информацию о нем или созданном ранее.  Типы чатов, которые может начать продавец:  * по заказам; * по возвратам (доступны только для FBY-, FBS- и Экспресс-магазинов).  {% include notitle limit %}
      * Создание нового чата с покупателем
      */
     createChatRaw(requestParameters, initOverrides) {
@@ -59,7 +59,7 @@ export class ChatsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/createChat.md) %}  Создает новый чат с покупателем и возвращает информацию о нем или созданном ранее.  Типы чатов, которые может начать продавец:  * по заказам; * по возвратам (доступны только для FBY-, FBS- и Экспресс-магазинов).  {% include notitle [:no-translate[limit]](../../_auto/method_limits/createChat.md) %}
+     * {% include notitle access %}  Создает новый чат с покупателем и возвращает информацию о нем или созданном ранее.  Типы чатов, которые может начать продавец:  * по заказам; * по возвратам (доступны только для FBY-, FBS- и Экспресс-магазинов).  {% include notitle limit %}
      * Создание нового чата с покупателем
      */
     createChat(businessId, createChatRequest, initOverrides) {
@@ -69,7 +69,7 @@ export class ChatsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getChat.md) %}  Возвращает чат по его идентификатору.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getChat.md) %}
+     * {% include notitle access %}  Возвращает чат по его идентификатору.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  {% include notitle limit %}
      * Получение чата по идентификатору
      */
     getChatRaw(requestParameters, initOverrides) {
@@ -102,7 +102,7 @@ export class ChatsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getChat.md) %}  Возвращает чат по его идентификатору.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getChat.md) %}
+     * {% include notitle access %}  Возвращает чат по его идентификатору.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  {% include notitle limit %}
      * Получение чата по идентификатору
      */
     getChat(businessId, chatId, initOverrides) {
@@ -112,7 +112,7 @@ export class ChatsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getChatHistory.md) %}  Возвращает историю сообщений в чате с покупателем.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getChatHistory.md) %}
+     * {% include notitle access %}  Возвращает историю сообщений в чате с покупателем.  {% include notitle limit %}
      * Получение истории сообщений в чате
      */
     getChatHistoryRaw(requestParameters, initOverrides) {
@@ -156,7 +156,7 @@ export class ChatsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getChatHistory.md) %}  Возвращает историю сообщений в чате с покупателем.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getChatHistory.md) %}
+     * {% include notitle access %}  Возвращает историю сообщений в чате с покупателем.  {% include notitle limit %}
      * Получение истории сообщений в чате
      */
     getChatHistory(businessId, chatId, getChatHistoryRequest, pageToken, limit, initOverrides) {
@@ -166,7 +166,7 @@ export class ChatsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getChatMessage.md) %}  Возвращает сообщение по его идентификатору.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getChatMessage.md) %}
+     * {% include notitle access %}  Возвращает сообщение по его идентификатору.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  {% include notitle limit %}
      * Получение сообщения в чате
      */
     getChatMessageRaw(requestParameters, initOverrides) {
@@ -205,7 +205,7 @@ export class ChatsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getChatMessage.md) %}  Возвращает сообщение по его идентификатору.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getChatMessage.md) %}
+     * {% include notitle access %}  Возвращает сообщение по его идентификатору.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  {% include notitle limit %}
      * Получение сообщения в чате
      */
     getChatMessage(businessId, chatId, messageId, initOverrides) {
@@ -215,7 +215,7 @@ export class ChatsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getChats.md) %}  Возвращает чаты с покупателями.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getChats.md) %}
+     * {% include notitle access %}  Возвращает чаты с покупателями.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  {% include notitle limit %}
      * Получение доступных чатов
      */
     getChatsRaw(requestParameters, initOverrides) {
@@ -253,7 +253,7 @@ export class ChatsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getChats.md) %}  Возвращает чаты с покупателями.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getChats.md) %}
+     * {% include notitle access %}  Возвращает чаты с покупателями.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  {% include notitle limit %}
      * Получение доступных чатов
      */
     getChats(businessId, getChatsRequest, pageToken, limit, initOverrides) {
@@ -263,7 +263,7 @@ export class ChatsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/sendFileToChat.md) %}  Отправляет файл в чат с покупателем.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/sendFileToChat.md) %}
+     * {% include notitle access %}  Отправляет файл в чат с покупателем.  {% include notitle limit %}
      * Отправка файла в чат
      */
     sendFileToChatRaw(requestParameters, initOverrides) {
@@ -318,7 +318,7 @@ export class ChatsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/sendFileToChat.md) %}  Отправляет файл в чат с покупателем.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/sendFileToChat.md) %}
+     * {% include notitle access %}  Отправляет файл в чат с покупателем.  {% include notitle limit %}
      * Отправка файла в чат
      */
     sendFileToChat(businessId, chatId, file, initOverrides) {
@@ -328,7 +328,7 @@ export class ChatsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/sendMessageToChat.md) %}  Отправляет сообщение в чат с покупателем.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/sendMessageToChat.md) %}
+     * {% include notitle access %}  Отправляет сообщение в чат с покупателем.  {% include notitle limit %}
      * Отправка сообщения в чат
      */
     sendMessageToChatRaw(requestParameters, initOverrides) {
@@ -366,7 +366,7 @@ export class ChatsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/sendMessageToChat.md) %}  Отправляет сообщение в чат с покупателем.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/sendMessageToChat.md) %}
+     * {% include notitle access %}  Отправляет сообщение в чат с покупателем.  {% include notitle limit %}
      * Отправка сообщения в чат
      */
     sendMessageToChat(businessId, chatId, sendMessageToChatRequest, initOverrides) {

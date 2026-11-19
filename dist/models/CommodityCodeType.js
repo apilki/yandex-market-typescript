@@ -23,6 +23,7 @@ exports.CommodityCodeTypeToJSON = CommodityCodeTypeToJSON;
  *
  * * `CUSTOMS_COMMODITY_CODE` — код товара в единой Товарной номенклатуре внешнеэкономической деятельности (ТН ВЭД) — 10 или 14 цифр без пробелов.
  * * `IKPU_CODE` — идентификационный код продукции и услуг (ИКПУ) в Узбекистане – 17 цифр без пробелов.
+ * * `OKPD2_CODE` — код по Общероссийскому классификатору продукции по видам экономической деятельности (ОКПД2) — 2, 3, 4, 5, 6 или 9 цифр, разделенных точками: XX, XX.X, XX.XX, XX.XX.X, XX.XX.XX или XX.XX.XX.XXX.
  *
  * Не передавайте несколько кодов одного типа.
  *
@@ -30,7 +31,8 @@ exports.CommodityCodeTypeToJSON = CommodityCodeTypeToJSON;
  */
 exports.CommodityCodeType = {
     CUSTOMS_COMMODITY_CODE: 'CUSTOMS_COMMODITY_CODE',
-    IKPU_CODE: 'IKPU_CODE'
+    IKPU_CODE: 'IKPU_CODE',
+    OKPD2_CODE: 'OKPD2_CODE'
 };
 function instanceOfCommodityCodeType(value) {
     for (const key in exports.CommodityCodeType) {

@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { PromoOfferBestPriceLevelsDTO } from './PromoOfferBestPriceLevelsDTO';
 /**
  * Параметры товара в акции с типом `DIRECT_DISCOUNT` или `BLUE_FLASH`.
  * @export
@@ -39,15 +40,22 @@ export interface PromoOfferDiscountParamsDTO {
     promoPrice?: number;
     /**
      * Максимально возможная цена для участия в акции.
+     * Если значение не заполнено, ограничение отсутствует.
      *
      * Указывается в рублях.
      *
-     * Возвращается для всех товаров.
+     * Для акции «Бестселлеры Маркета» пороги по уровням возвращаются в параметре `bestPriceLevels`.
      *
      * @type {number}
      * @memberof PromoOfferDiscountParamsDTO
      */
-    maxPromoPrice: number;
+    maxPromoPrice?: number;
+    /**
+     *
+     * @type {PromoOfferBestPriceLevelsDTO}
+     * @memberof PromoOfferDiscountParamsDTO
+     */
+    bestPriceLevels?: PromoOfferBestPriceLevelsDTO;
 }
 /**
  * Check if a given object implements the PromoOfferDiscountParamsDTO interface.

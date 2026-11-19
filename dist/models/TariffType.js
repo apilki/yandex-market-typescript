@@ -81,6 +81,8 @@ exports.TariffTypeToJSON = TariffTypeToJSON;
  *
  * * `WITHDRAW_EXTERNAL` — отгрузка на внешний маркетплейс.
  *
+ * * `ITEM_BOOKING` — бронирование товара.
+ *
  * Подробнее об услугах Маркета читайте [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/introduction/rates/index.html).
  *
  * @export
@@ -115,7 +117,8 @@ exports.TariffType = {
     GOODS_ACCEPTANCE: 'GOODS_ACCEPTANCE',
     CARGO_ACCEPTANCE: 'CARGO_ACCEPTANCE',
     ORDER_PROCESSING: 'ORDER_PROCESSING',
-    WITHDRAW_EXTERNAL: 'WITHDRAW_EXTERNAL'
+    WITHDRAW_EXTERNAL: 'WITHDRAW_EXTERNAL',
+    ITEM_BOOKING: 'ITEM_BOOKING'
 };
 function instanceOfTariffType(value) {
     for (const key in exports.TariffType) {

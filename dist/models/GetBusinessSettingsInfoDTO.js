@@ -18,6 +18,8 @@ exports.GetBusinessSettingsInfoDTOFromJSON = GetBusinessSettingsInfoDTOFromJSON;
 exports.GetBusinessSettingsInfoDTOFromJSONTyped = GetBusinessSettingsInfoDTOFromJSONTyped;
 exports.GetBusinessSettingsInfoDTOToJSON = GetBusinessSettingsInfoDTOToJSON;
 const BusinessSettingsDTO_1 = require("./BusinessSettingsDTO");
+const BusinessTraitType_1 = require("./BusinessTraitType");
+const BusinessSubscriptionLevelType_1 = require("./BusinessSubscriptionLevelType");
 const BusinessDTO_1 = require("./BusinessDTO");
 /**
  * Check if a given object implements the GetBusinessSettingsInfoDTO interface.
@@ -35,6 +37,8 @@ function GetBusinessSettingsInfoDTOFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'info': json['info'] == null ? undefined : (0, BusinessDTO_1.BusinessDTOFromJSON)(json['info']),
         'settings': json['settings'] == null ? undefined : (0, BusinessSettingsDTO_1.BusinessSettingsDTOFromJSON)(json['settings']),
+        'subscriptionLevel': json['subscriptionLevel'] == null ? undefined : (0, BusinessSubscriptionLevelType_1.BusinessSubscriptionLevelTypeFromJSON)(json['subscriptionLevel']),
+        'traits': json['traits'] == null ? undefined : (new Set(json['traits'].map(BusinessTraitType_1.BusinessTraitTypeFromJSON))),
     };
 }
 function GetBusinessSettingsInfoDTOToJSON(value) {
@@ -44,5 +48,7 @@ function GetBusinessSettingsInfoDTOToJSON(value) {
     return {
         'info': (0, BusinessDTO_1.BusinessDTOToJSON)(value['info']),
         'settings': (0, BusinessSettingsDTO_1.BusinessSettingsDTOToJSON)(value['settings']),
+        'subscriptionLevel': (0, BusinessSubscriptionLevelType_1.BusinessSubscriptionLevelTypeToJSON)(value['subscriptionLevel']),
+        'traits': value['traits'] == null ? undefined : (Array.from(value['traits']).map(BusinessTraitType_1.BusinessTraitTypeToJSON)),
     };
 }

@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 import { ItemPriceDTOFromJSON, ItemPriceDTOToJSON, } from './ItemPriceDTO';
+import { OrderItemUnitStatusDTOFromJSON, OrderItemUnitStatusDTOToJSON, } from './OrderItemUnitStatusDTO';
 import { OrderItemInstanceDTOFromJSON, OrderItemInstanceDTOToJSON, } from './OrderItemInstanceDTO';
 import { OrderItemInstanceTypeFromJSON, OrderItemInstanceTypeToJSON, } from './OrderItemInstanceType';
 import { OrderItemTagTypeFromJSON, OrderItemTagTypeToJSON, } from './OrderItemTagType';
@@ -44,6 +45,7 @@ export function BusinessOrderItemDTOFromJSONTyped(json, ignoreDiscriminator) {
         'prices': json['prices'] == null ? undefined : ItemPriceDTOFromJSON(json['prices']),
         'instances': json['instances'] == null ? undefined : (json['instances'].map(OrderItemInstanceDTOFromJSON)),
         'requiredInstanceTypes': json['requiredInstanceTypes'] == null ? undefined : (new Set(json['requiredInstanceTypes'].map(OrderItemInstanceTypeFromJSON))),
+        'itemStatuses': json['itemStatuses'] == null ? undefined : (json['itemStatuses'].map(OrderItemUnitStatusDTOFromJSON)),
         'tags': json['tags'] == null ? undefined : (new Set(json['tags'].map(OrderItemTagTypeFromJSON))),
     };
 }
@@ -59,6 +61,7 @@ export function BusinessOrderItemDTOToJSON(value) {
         'prices': ItemPriceDTOToJSON(value['prices']),
         'instances': value['instances'] == null ? undefined : (value['instances'].map(OrderItemInstanceDTOToJSON)),
         'requiredInstanceTypes': value['requiredInstanceTypes'] == null ? undefined : (Array.from(value['requiredInstanceTypes']).map(OrderItemInstanceTypeToJSON)),
+        'itemStatuses': value['itemStatuses'] == null ? undefined : (value['itemStatuses'].map(OrderItemUnitStatusDTOToJSON)),
         'tags': value['tags'] == null ? undefined : (Array.from(value['tags']).map(OrderItemTagTypeToJSON)),
     };
 }

@@ -13,7 +13,6 @@
  */
 import { GetPriceWithVatDTOFromJSON, GetPriceWithVatDTOToJSON, } from './GetPriceWithVatDTO';
 import { OfferErrorDTOFromJSON, OfferErrorDTOToJSON, } from './OfferErrorDTO';
-import { QuantumDTOFromJSON, QuantumDTOToJSON, } from './QuantumDTO';
 import { GetPriceWithDiscountDTOFromJSON, GetPriceWithDiscountDTOToJSON, } from './GetPriceWithDiscountDTO';
 import { OfferCampaignStatusTypeFromJSON, OfferCampaignStatusTypeToJSON, } from './OfferCampaignStatusType';
 /**
@@ -33,7 +32,6 @@ export function GetCampaignOfferDTOFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'offerId': json['offerId'],
-        'quantum': json['quantum'] == null ? undefined : QuantumDTOFromJSON(json['quantum']),
         'available': json['available'] == null ? undefined : json['available'],
         'basicPrice': json['basicPrice'] == null ? undefined : GetPriceWithDiscountDTOFromJSON(json['basicPrice']),
         'campaignPrice': json['campaignPrice'] == null ? undefined : GetPriceWithVatDTOFromJSON(json['campaignPrice']),
@@ -48,7 +46,6 @@ export function GetCampaignOfferDTOToJSON(value) {
     }
     return {
         'offerId': value['offerId'],
-        'quantum': QuantumDTOToJSON(value['quantum']),
         'available': value['available'],
         'basicPrice': GetPriceWithDiscountDTOToJSON(value['basicPrice']),
         'campaignPrice': GetPriceWithVatDTOToJSON(value['campaignPrice']),

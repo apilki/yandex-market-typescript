@@ -16,8 +16,6 @@
  *
  * * `OUTCOME` — договор на продвижение.
  *
- * * `MARKETING` — договор на маркетинг.
- *
  * @export
  */
 export declare const ClosureDocumentsContractType: {

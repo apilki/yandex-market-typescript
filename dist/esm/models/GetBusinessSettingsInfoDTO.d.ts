@@ -10,6 +10,8 @@
  * Do not edit the class manually.
  */
 import type { BusinessSettingsDTO } from './BusinessSettingsDTO';
+import type { BusinessTraitType } from './BusinessTraitType';
+import type { BusinessSubscriptionLevelType } from './BusinessSubscriptionLevelType';
 import type { BusinessDTO } from './BusinessDTO';
 /**
  * Информация о кабинете и его настройках.
@@ -29,6 +31,18 @@ export interface GetBusinessSettingsInfoDTO {
      * @memberof GetBusinessSettingsInfoDTO
      */
     settings?: BusinessSettingsDTO;
+    /**
+     *
+     * @type {BusinessSubscriptionLevelType}
+     * @memberof GetBusinessSettingsInfoDTO
+     */
+    subscriptionLevel?: BusinessSubscriptionLevelType;
+    /**
+     * Свойства кабинета.
+     * @type {Set<BusinessTraitType>}
+     * @memberof GetBusinessSettingsInfoDTO
+     */
+    traits?: Set<BusinessTraitType> | null;
 }
 /**
  * Check if a given object implements the GetBusinessSettingsInfoDTO interface.

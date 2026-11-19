@@ -18,10 +18,13 @@ exports.CampaignSettingsDTOFromJSON = CampaignSettingsDTOFromJSON;
 exports.CampaignSettingsDTOFromJSONTyped = CampaignSettingsDTOFromJSONTyped;
 exports.CampaignSettingsDTOToJSON = CampaignSettingsDTOToJSON;
 const CampaignSettingsLocalRegionDTO_1 = require("./CampaignSettingsLocalRegionDTO");
+const TaxationInfoDTO_1 = require("./TaxationInfoDTO");
 /**
  * Check if a given object implements the CampaignSettingsDTO interface.
  */
 function instanceOfCampaignSettingsDTO(value) {
+    if (!('taxation' in value) || value['taxation'] === undefined)
+        return false;
     return true;
 }
 function CampaignSettingsDTOFromJSON(json) {
@@ -38,6 +41,7 @@ function CampaignSettingsDTOFromJSONTyped(json, ignoreDiscriminator) {
         'showInPremium': json['showInPremium'] == null ? undefined : json['showInPremium'],
         'useOpenStat': json['useOpenStat'] == null ? undefined : json['useOpenStat'],
         'localRegion': json['localRegion'] == null ? undefined : (0, CampaignSettingsLocalRegionDTO_1.CampaignSettingsLocalRegionDTOFromJSON)(json['localRegion']),
+        'taxation': (0, TaxationInfoDTO_1.TaxationInfoDTOFromJSON)(json['taxation']),
     };
 }
 function CampaignSettingsDTOToJSON(value) {
@@ -51,5 +55,6 @@ function CampaignSettingsDTOToJSON(value) {
         'showInPremium': value['showInPremium'],
         'useOpenStat': value['useOpenStat'],
         'localRegion': (0, CampaignSettingsLocalRegionDTO_1.CampaignSettingsLocalRegionDTOToJSON)(value['localRegion']),
+        'taxation': (0, TaxationInfoDTO_1.TaxationInfoDTOToJSON)(value['taxation']),
     };
 }

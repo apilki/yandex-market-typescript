@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { SupplyRequestType } from './SupplyRequestType';
+import type { EtrnIdentifierDTO } from './EtrnIdentifierDTO';
 import type { SupplyRequestStatusType } from './SupplyRequestStatusType';
 import type { SupplyRequestSubType } from './SupplyRequestSubType';
 import type { SupplyRequestCountersDTO } from './SupplyRequestCountersDTO';
@@ -82,6 +83,12 @@ export interface SupplyRequestDTO {
      * @memberof SupplyRequestDTO
      */
     transitLocation?: SupplyRequestLocationDTO;
+    /**
+     *
+     * @type {EtrnIdentifierDTO}
+     * @memberof SupplyRequestDTO
+     */
+    etrnIdentifier?: EtrnIdentifierDTO;
 }
 /**
  * Check if a given object implements the SupplyRequestDTO interface.

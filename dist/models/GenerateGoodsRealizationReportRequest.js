@@ -17,6 +17,7 @@ exports.instanceOfGenerateGoodsRealizationReportRequest = instanceOfGenerateGood
 exports.GenerateGoodsRealizationReportRequestFromJSON = GenerateGoodsRealizationReportRequestFromJSON;
 exports.GenerateGoodsRealizationReportRequestFromJSONTyped = GenerateGoodsRealizationReportRequestFromJSONTyped;
 exports.GenerateGoodsRealizationReportRequestToJSON = GenerateGoodsRealizationReportRequestToJSON;
+const PlacementType_1 = require("./PlacementType");
 /**
  * Check if a given object implements the GenerateGoodsRealizationReportRequest interface.
  */
@@ -40,6 +41,9 @@ function GenerateGoodsRealizationReportRequestFromJSONTyped(json, ignoreDiscrimi
         'campaignId': json['campaignId'],
         'year': json['year'],
         'month': json['month'],
+        'inns': json['inns'] == null ? undefined : json['inns'],
+        'placementPrograms': json['placementPrograms'] == null ? undefined : (new Set(json['placementPrograms'].map(PlacementType_1.PlacementTypeFromJSON))),
+        'placementContracts': json['placementContracts'] == null ? undefined : json['placementContracts'],
     };
 }
 function GenerateGoodsRealizationReportRequestToJSON(value) {
@@ -50,5 +54,8 @@ function GenerateGoodsRealizationReportRequestToJSON(value) {
         'campaignId': value['campaignId'],
         'year': value['year'],
         'month': value['month'],
+        'inns': value['inns'] == null ? undefined : Array.from(value['inns']),
+        'placementPrograms': value['placementPrograms'] == null ? undefined : (Array.from(value['placementPrograms']).map(PlacementType_1.PlacementTypeToJSON)),
+        'placementContracts': value['placementContracts'] == null ? undefined : Array.from(value['placementContracts']),
     };
 }

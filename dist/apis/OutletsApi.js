@@ -30,7 +30,7 @@ const index_1 = require("../models/index");
  */
 class OutletsApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/createOutlet.md) %}  Создает точку продаж магазина на Маркете.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/createOutlet.md) %}
+     * {% include notitle access %}  Создает точку продаж магазина на Маркете.  {% include notitle limit %}
      * Создание точки продаж
      */
     createOutletRaw(requestParameters, initOverrides) {
@@ -62,7 +62,7 @@ class OutletsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/createOutlet.md) %}  Создает точку продаж магазина на Маркете.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/createOutlet.md) %}
+     * {% include notitle access %}  Создает точку продаж магазина на Маркете.  {% include notitle limit %}
      * Создание точки продаж
      */
     createOutlet(campaignId, changeOutletRequest, initOverrides) {
@@ -72,7 +72,7 @@ class OutletsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/deleteOutlet.md) %}  Удаляет точку продаж магазина на Маркете.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/deleteOutlet.md) %}
+     * {% include notitle access %}  Удаляет точку продаж магазина на Маркете.  {% include notitle limit %}
      * Удаление точки продаж
      */
     deleteOutletRaw(requestParameters, initOverrides) {
@@ -102,7 +102,7 @@ class OutletsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/deleteOutlet.md) %}  Удаляет точку продаж магазина на Маркете.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/deleteOutlet.md) %}
+     * {% include notitle access %}  Удаляет точку продаж магазина на Маркете.  {% include notitle limit %}
      * Удаление точки продаж
      */
     deleteOutlet(campaignId, outletId, initOverrides) {
@@ -112,7 +112,7 @@ class OutletsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOutlet.md) %}  Возвращает информацию о точках продаж магазина.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOutlet.md) %}
+     * {% include notitle access %}  Возвращает информацию о точках продаж магазина.  {% include notitle limit %}
      * Информация об одной точке продаж
      */
     getOutletRaw(requestParameters, initOverrides) {
@@ -142,7 +142,7 @@ class OutletsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOutlet.md) %}  Возвращает информацию о точках продаж магазина.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOutlet.md) %}
+     * {% include notitle access %}  Возвращает информацию о точках продаж магазина.  {% include notitle limit %}
      * Информация об одной точке продаж
      */
     getOutlet(campaignId, outletId, initOverrides) {
@@ -152,7 +152,7 @@ class OutletsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOutlets.md) %}  Возвращает список точек продаж магазина.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOutlets.md) %}
+     * {% include notitle access %}  Возвращает список точек продаж магазина.  {% include notitle limit %}
      * Информация о нескольких точках продаж
      */
     getOutletsRaw(requestParameters, initOverrides) {
@@ -194,7 +194,7 @@ class OutletsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOutlets.md) %}  Возвращает список точек продаж магазина.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOutlets.md) %}
+     * {% include notitle access %}  Возвращает список точек продаж магазина.  {% include notitle limit %}
      * Информация о нескольких точках продаж
      */
     getOutlets(campaignId, pageToken, limit, regionId, shopOutletCode, regionId2, initOverrides) {
@@ -204,7 +204,7 @@ class OutletsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateOutlet.md) %}  Изменяет информацию о точке продаж магазина на Маркете.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateOutlet.md) %}
+     * {% include notitle access %}  Изменяет информацию о точке продаж магазина на Маркете.  {% include notitle limit %}
      * Изменение информации о точке продаж
      */
     updateOutletRaw(requestParameters, initOverrides) {
@@ -239,7 +239,7 @@ class OutletsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateOutlet.md) %}  Изменяет информацию о точке продаж магазина на Маркете.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateOutlet.md) %}
+     * {% include notitle access %}  Изменяет информацию о точке продаж магазина на Маркете.  {% include notitle limit %}
      * Изменение информации о точке продаж
      */
     updateOutlet(campaignId, outletId, changeOutletRequest, initOverrides) {

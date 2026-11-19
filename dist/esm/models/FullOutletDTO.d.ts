@@ -128,9 +128,9 @@ export interface FullOutletDTO {
      */
     region?: RegionDTO;
     /**
-     * {% note warning "Вместо него используйте `shopOutletCode`." %}
+     * {% note warning "Параметр устарел и будет отключен 19.10.2026." %}
      *
-     *
+     * Вместо него используйте `shopOutletCode`.
      *
      * {% endnote %}
      *
@@ -142,9 +142,9 @@ export interface FullOutletDTO {
      */
     shopOutletId?: string;
     /**
-     * {% note warning "Вместо него используйте `workingSchedule`." %}
+     * {% note warning "Параметр устарел и будет отключен 19.10.2026." %}
      *
-     *
+     * Вместо него используйте `workingSchedule`.
      *
      * {% endnote %}
      *

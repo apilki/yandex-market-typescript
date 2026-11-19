@@ -37,6 +37,8 @@ exports.CalculatedTariffTypeToJSON = CalculatedTariffTypeToJSON;
  *
  * * `MIDDLE_MILE` — средняя миля.
  *
+ * * `ITEM_BOOKING` — бронирование товара.
+ *
  * Подробнее об услугах Маркета читайте [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/introduction/rates/index.html).
  *
  * @export
@@ -49,7 +51,8 @@ exports.CalculatedTariffType = {
     CROSSREGIONAL_DELIVERY: 'CROSSREGIONAL_DELIVERY',
     EXPRESS_DELIVERY: 'EXPRESS_DELIVERY',
     SORTING: 'SORTING',
-    MIDDLE_MILE: 'MIDDLE_MILE'
+    MIDDLE_MILE: 'MIDDLE_MILE',
+    ITEM_BOOKING: 'ITEM_BOOKING'
 };
 function instanceOfCalculatedTariffType(value) {
     for (const key in exports.CalculatedTariffType) {

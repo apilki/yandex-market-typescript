@@ -79,9 +79,9 @@ export interface BaseOfferDTO {
      */
     marketCategoryId?: number;
     /**
-     * {% note warning "Вместо него используйте `marketCategoryId`." %}
+     * {% note warning "Параметр устарел и будет отключен 12.10.2026." %}
      *
-     *
+     * Вместо него используйте `marketCategoryId`.
      *
      * {% endnote %}
      *
@@ -243,9 +243,9 @@ export interface BaseOfferDTO {
      */
     guaranteePeriod?: TimePeriodDTO;
     /**
-     * {% note warning "Вместо него используйте `commodityCodes` с типом `CUSTOMS_COMMODITY_CODE`." %}
+     * {% note warning "Параметр устарел и будет отключен 12.10.2026." %}
      *
-     *
+     * Вместо него используйте `commodityCodes` с типом `CUSTOMS_COMMODITY_CODE`.
      *
      * {% endnote %}
      *
@@ -268,7 +268,7 @@ export interface BaseOfferDTO {
     /**
      * Номера документов на товар: сертификата, декларации соответствия и т. п.
      *
-     * Передавать можно только номера документов, сканы которого загружены в кабинете продавца по [инструкции](https://yandex.ru/support/marketplace/assortment/restrictions/certificates.html).
+     * Документы можно создать с помощью POST v1/businesses/{businessId}/offers/documents/create.
      *
      * @type {Set<string>}
      * @memberof BaseOfferDTO
@@ -314,15 +314,33 @@ export interface BaseOfferDTO {
      */
     adult?: boolean;
     /**
+     * Продавец будет маркировать товар в системе [«Честный ЗНАК»](https://честныйзнак.рф/). Аналог параметра «Буду маркировать» в кабинете продавца, фиде и Excel-шаблоне.
+     *
+     * * `true` — продавец будет маркировать товар.
+     * * `false` — продавец не заявляет маркировку. Если маркировка для товара обязательна, значение `false` ее не отменит.
+     *
+     * В ответе параметр показывает только заявление продавца. Если продавец не заявлял маркировку, параметр в ответе может отсутствовать.
+     *
+     * Если параметр не передан, текущее значение не меняется. Удалить его через `deleteParameters` нельзя — чтобы отозвать заявление, передайте `false`.
+     *
+     * Если признак меняется в нескольких местах (в кабинете, фиде, Excel-шаблоне или через API), сохраняется значение, переданное последним.
+     *
+     * Для маркируемого товара передайте в `barcodes` хотя бы один штрихкод производителя в формате GTIN.
+     *
+     * @type {boolean}
+     * @memberof BaseOfferDTO
+     */
+    markingDeclared?: boolean;
+    /**
      *
      * @type {AgeDTO}
      * @memberof BaseOfferDTO
      */
     age?: AgeDTO;
     /**
-     * {% note warning "При передаче характеристик используйте `parameterValues`." %}
+     * {% note warning "Параметр устарел и будет отключен 12.10.2026." %}
      *
-     *
+     * При передаче характеристик используйте `parameterValues`.
      *
      * {% endnote %}
      *

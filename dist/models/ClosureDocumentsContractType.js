@@ -25,8 +25,6 @@ exports.ClosureDocumentsContractTypeToJSON = ClosureDocumentsContractTypeToJSON;
  *
  * * `OUTCOME` — договор на продвижение.
  *
- * * `MARKETING` — договор на маркетинг.
- *
  * @export
  */
 exports.ClosureDocumentsContractType = {

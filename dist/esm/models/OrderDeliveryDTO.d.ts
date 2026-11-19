@@ -28,6 +28,12 @@ import type { OrderDeliveryAddressDTO } from './OrderDeliveryAddressDTO';
  */
 export interface OrderDeliveryDTO {
     /**
+     * {% note warning "Параметр устарел и будет отключен 05.10.2026." %}
+     *
+     *
+     *
+     * {% endnote %}
+     *
      * Идентификатор доставки, присвоенный магазином.
      *
      * Указывается, только если магазин передал данный идентификатор в ответе на запрос методом `POST cart`.
@@ -50,9 +56,9 @@ export interface OrderDeliveryDTO {
      */
     serviceName: string;
     /**
-     * {% note warning "Стоимость доставки смотрите в параметре `deliveryTotal`." %}
+     * {% note warning "Параметр устарел и будет отключен 05.10.2026." %}
      *
-     *
+     * Стоимость доставки смотрите в параметре `deliveryTotal`.
      *
      * {% endnote %}
      *
@@ -167,6 +173,15 @@ export interface OrderDeliveryDTO {
      * @memberof OrderDeliveryDTO
      */
     eacCode?: string;
+    /**
+     * **Только для модели LaaS**
+     *
+     * Код получения заказа на ПВЗ.
+     *
+     * @type {string}
+     * @memberof OrderDeliveryDTO
+     */
+    receiveCode?: string;
 }
 /**
  * Check if a given object implements the OrderDeliveryDTO interface.

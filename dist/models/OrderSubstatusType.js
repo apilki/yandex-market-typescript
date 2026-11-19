@@ -51,6 +51,10 @@ exports.OrderSubstatusTypeToJSON = OrderSubstatusTypeToJSON;
  *
  *     * `USER_REFUSED_QUALITY` — покупателя не устроило качество товара.
  *
+ *     * `USER_IDENTIFICATION_MISMATCH` — идентификационный документ покупателя не совпадает с данными в заказе.
+ *
+ *     * `PURCHASE_GROUP_THRESHOLD_NOT_REACHED_CANCELLED` — заказ участвовал в групповой покупке и был отменен, потому что не было достигнуто нужное количество покупок.
+ *
  *     * `REPLACING_ORDER` — покупатель решил заменить товар другим по собственной инициативе.
  *
  *     * `PROCESSING_EXPIRED` — значение более не используется.
@@ -190,6 +194,11 @@ exports.OrderSubstatusType = {
     CUSTOMS_FAILED_USER_DUTY_NOT_PAID: 'CUSTOMS_FAILED_USER_DUTY_NOT_PAID',
     CUSTOMS_FAILED_USER_INVALID_PERSONAL_DATA: 'CUSTOMS_FAILED_USER_INVALID_PERSONAL_DATA',
     CUSTOMS_FAILED_USER_ADDITIONAL_DATA_NOT_PROVIDED: 'CUSTOMS_FAILED_USER_ADDITIONAL_DATA_NOT_PROVIDED',
+    AWAIT_PAYMENT_AFTER_DELIVERY: 'AWAIT_PAYMENT_AFTER_DELIVERY',
+    AWAIT_USER_STEAM_FAST_URL: 'AWAIT_USER_STEAM_FAST_URL',
+    USER_IDENTIFICATION_MISMATCH: 'USER_IDENTIFICATION_MISMATCH',
+    PURCHASE_GROUP_THRESHOLD_NOT_REACHED_CANCELLED: 'PURCHASE_GROUP_THRESHOLD_NOT_REACHED_CANCELLED',
+    COURIER_DELIVERY_POSTPAID_FAILED: 'COURIER_DELIVERY_POSTPAID_FAILED',
     UNKNOWN: 'UNKNOWN'
 };
 function instanceOfOrderSubstatusType(value) {

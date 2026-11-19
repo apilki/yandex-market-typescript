@@ -30,7 +30,7 @@ const index_1 = require("../models/index");
  */
 class GoodsStatsApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getGoodsStats.md) %}  Возвращает подробный отчет по товарам, которые вы разместили на Маркете. С помощью отчета вы можете узнать, например, об остатках на складе, об условиях хранения ваших товаров и т. д.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getGoodsStats.md) %}
+     * {% include notitle access %}  Возвращает подробный отчет по товарам, которые вы разместили на Маркете. С помощью отчета вы можете узнать, например, об остатках на складе, об условиях хранения ваших товаров и т. д.  {% include notitle limit %}
      * Отчет по товарам
      */
     getGoodsStatsRaw(requestParameters, initOverrides) {
@@ -62,7 +62,7 @@ class GoodsStatsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getGoodsStats.md) %}  Возвращает подробный отчет по товарам, которые вы разместили на Маркете. С помощью отчета вы можете узнать, например, об остатках на складе, об условиях хранения ваших товаров и т. д.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getGoodsStats.md) %}
+     * {% include notitle access %}  Возвращает подробный отчет по товарам, которые вы разместили на Маркете. С помощью отчета вы можете узнать, например, об остатках на складе, об условиях хранения ваших товаров и т. д.  {% include notitle limit %}
      * Отчет по товарам
      */
     getGoodsStats(campaignId, getGoodsStatsRequest, initOverrides) {

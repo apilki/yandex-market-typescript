@@ -23,6 +23,13 @@ export interface GetAnswersRequest {
      * @memberof GetAnswersRequest
      */
     questionId?: number;
+    /**
+     * Идентификаторы ответов.
+     *
+     * @type {Set<number>}
+     * @memberof GetAnswersRequest
+     */
+    answerIds?: Set<number> | null;
 }
 /**
  * Check if a given object implements the GetAnswersRequest interface.

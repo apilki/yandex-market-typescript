@@ -21,13 +21,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import * as runtime from '../runtime';
-import { GetRegionWithChildrenResponseFromJSON, GetRegionsCodesResponseFromJSON, GetRegionsResponseFromJSON, } from '../models/index';
+import { GetRegionByIdResponseFromJSON, GetRegionWithChildrenResponseFromJSON, GetRegionsCodesResponseFromJSON, GetRegionsResponseFromJSON, } from '../models/index';
 /**
  *
  */
 export class RegionsApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getRegionsCodes.md) %}  Возвращает список стран с их кодами в формате :no-translate[ISO 3166-1 alpha-2].  Страна производства `countryCode` понадобится при продаже товаров из-за рубежа для бизнеса. Инструкция  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getRegionsCodes.md) %}
+     * {% include notitle access %}  Возвращает список стран с их кодами в формате :no-translate[ISO 3166-1 alpha-2].  Страна производства `countryCode` понадобится при продаже товаров из-за рубежа для бизнеса. Инструкция  {% include notitle limit %}
      * Список допустимых кодов стран
      */
     getRegionsCodesRaw(initOverrides) {
@@ -51,7 +51,7 @@ export class RegionsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getRegionsCodes.md) %}  Возвращает список стран с их кодами в формате :no-translate[ISO 3166-1 alpha-2].  Страна производства `countryCode` понадобится при продаже товаров из-за рубежа для бизнеса. Инструкция  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getRegionsCodes.md) %}
+     * {% include notitle access %}  Возвращает список стран с их кодами в формате :no-translate[ISO 3166-1 alpha-2].  Страна производства `countryCode` понадобится при продаже товаров из-за рубежа для бизнеса. Инструкция  {% include notitle limit %}
      * Список допустимых кодов стран
      */
     getRegionsCodes(initOverrides) {
@@ -61,7 +61,7 @@ export class RegionsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/searchRegionChildren.md) %}  Возвращает информацию о регионах, являющихся дочерними по отношению к региону, идентификатор которого указан в запросе.  Для методов `GET v2/regions`, `GET v2/regions/{regionId}` и `GET v2/regions/{regionId}/children` действует групповое ресурсное ограничение. Ограничение вводится на суммарное количество регионов, информация о которых запрошена при помощи этих методов (не более 100 000 регионов).  Объем запросов к ресурсу, который возможно выполнить в течение суток, зависит от суммарного количества регионов.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/searchRegionChildren.md) %}
+     * {% include notitle access %}  Возвращает информацию о регионах, являющихся дочерними по отношению к региону, идентификатор которого указан в запросе.  {% include notitle limit %}
      * Информация о дочерних регионах
      */
     searchRegionChildrenRaw(requestParameters, initOverrides) {
@@ -100,7 +100,7 @@ export class RegionsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/searchRegionChildren.md) %}  Возвращает информацию о регионах, являющихся дочерними по отношению к региону, идентификатор которого указан в запросе.  Для методов `GET v2/regions`, `GET v2/regions/{regionId}` и `GET v2/regions/{regionId}/children` действует групповое ресурсное ограничение. Ограничение вводится на суммарное количество регионов, информация о которых запрошена при помощи этих методов (не более 100 000 регионов).  Объем запросов к ресурсу, который возможно выполнить в течение суток, зависит от суммарного количества регионов.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/searchRegionChildren.md) %}
+     * {% include notitle access %}  Возвращает информацию о регионах, являющихся дочерними по отношению к региону, идентификатор которого указан в запросе.  {% include notitle limit %}
      * Информация о дочерних регионах
      */
     searchRegionChildren(regionId, pageToken, limit, page, pageSize, initOverrides) {
@@ -110,7 +110,7 @@ export class RegionsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/searchRegionsById.md) %}  Возвращает информацию о регионе.  Для методов `GET v2/regions`, `GET v2/regions/{regionId}` и `GET v2/regions/{regionId}/children` действует групповое ресурсное ограничение. Ограничение вводится на суммарное количество регионов, информация о которых запрошена при помощи этих методов (не более 100 000 регионов).  Объем запросов к ресурсу, который возможно выполнить в течение суток, зависит от суммарного количества регионов.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/searchRegionsById.md) %}
+     * {% include notitle access %}  Возвращает информацию о регионе.  {% include notitle limit %}
      * Информация о регионе
      */
     searchRegionsByIdRaw(requestParameters, initOverrides) {
@@ -133,11 +133,11 @@ export class RegionsApi extends runtime.BaseAPI {
                 headers: headerParameters,
                 query: queryParameters,
             }, initOverrides);
-            return new runtime.JSONApiResponse(response, (jsonValue) => GetRegionsResponseFromJSON(jsonValue));
+            return new runtime.JSONApiResponse(response, (jsonValue) => GetRegionByIdResponseFromJSON(jsonValue));
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/searchRegionsById.md) %}  Возвращает информацию о регионе.  Для методов `GET v2/regions`, `GET v2/regions/{regionId}` и `GET v2/regions/{regionId}/children` действует групповое ресурсное ограничение. Ограничение вводится на суммарное количество регионов, информация о которых запрошена при помощи этих методов (не более 100 000 регионов).  Объем запросов к ресурсу, который возможно выполнить в течение суток, зависит от суммарного количества регионов.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/searchRegionsById.md) %}
+     * {% include notitle access %}  Возвращает информацию о регионе.  {% include notitle limit %}
      * Информация о регионе
      */
     searchRegionsById(regionId, initOverrides) {
@@ -147,7 +147,7 @@ export class RegionsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/searchRegionsByName.md) %}  Возвращает информацию о регионе, удовлетворяющем заданным в запросе условиям поиска.  Если найдено несколько регионов, удовлетворяющих условиям поиска, возвращается информация по каждому найденному региону (но не более десяти регионов) для возможности определения нужного региона по родительским регионам.  Для методов `GET v2/regions`, `GET v2/regions/{regionId}` и `GET v2/regions/{regionId}/children` действует групповое ресурсное ограничение. Ограничение вводится на суммарное количество регионов, информация о которых запрошена при помощи этих методов (не более 100 000 регионов).  Объем запросов к ресурсу, который возможно выполнить в течение суток, зависит от суммарного количества регионов.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/searchRegionsByName.md) %}
+     * {% include notitle access %}  Возвращает информацию о регионе, удовлетворяющем заданным в запросе условиям поиска.  Если найдено несколько регионов, удовлетворяющих условиям поиска, возвращается информация по каждому найденному региону (но не более десяти регионов) для возможности определения нужного региона по родительским регионам.  {% include notitle limit %}
      * Поиск регионов по их имени
      */
     searchRegionsByNameRaw(requestParameters, initOverrides) {
@@ -183,7 +183,7 @@ export class RegionsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/searchRegionsByName.md) %}  Возвращает информацию о регионе, удовлетворяющем заданным в запросе условиям поиска.  Если найдено несколько регионов, удовлетворяющих условиям поиска, возвращается информация по каждому найденному региону (но не более десяти регионов) для возможности определения нужного региона по родительским регионам.  Для методов `GET v2/regions`, `GET v2/regions/{regionId}` и `GET v2/regions/{regionId}/children` действует групповое ресурсное ограничение. Ограничение вводится на суммарное количество регионов, информация о которых запрошена при помощи этих методов (не более 100 000 регионов).  Объем запросов к ресурсу, который возможно выполнить в течение суток, зависит от суммарного количества регионов.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/searchRegionsByName.md) %}
+     * {% include notitle access %}  Возвращает информацию о регионе, удовлетворяющем заданным в запросе условиям поиска.  Если найдено несколько регионов, удовлетворяющих условиям поиска, возвращается информация по каждому найденному региону (но не более десяти регионов) для возможности определения нужного региона по родительским регионам.  {% include notitle limit %}
      * Поиск регионов по их имени
      */
     searchRegionsByName(name, pageToken, limit, initOverrides) {

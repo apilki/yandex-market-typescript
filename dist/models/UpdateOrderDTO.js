@@ -38,6 +38,7 @@ function UpdateOrderDTOFromJSONTyped(json, ignoreDiscriminator) {
         'id': json['id'],
         'deliveryInterval': json['deliveryInterval'] == null ? undefined : (0, DeliveryIntervalsUpdateOptionDTO_1.DeliveryIntervalsUpdateOptionDTOFromJSON)(json['deliveryInterval']),
         'customer': json['customer'] == null ? undefined : (0, CustomerDTO_1.CustomerDTOFromJSON)(json['customer']),
+        'extendStoragePeriod': json['extendStoragePeriod'] == null ? undefined : json['extendStoragePeriod'],
     };
 }
 function UpdateOrderDTOToJSON(value) {
@@ -48,5 +49,6 @@ function UpdateOrderDTOToJSON(value) {
         'id': value['id'],
         'deliveryInterval': (0, DeliveryIntervalsUpdateOptionDTO_1.DeliveryIntervalsUpdateOptionDTOToJSON)(value['deliveryInterval']),
         'customer': (0, CustomerDTO_1.CustomerDTOToJSON)(value['customer']),
+        'extendStoragePeriod': value['extendStoragePeriod'],
     };
 }

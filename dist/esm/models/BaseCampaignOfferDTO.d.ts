@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { QuantumDTO } from './QuantumDTO';
 /**
  * Информация о новой цене на товар.
  * @export
@@ -40,14 +39,9 @@ export interface BaseCampaignOfferDTO {
      */
     offerId: string;
     /**
+     * {% note warning "Параметр устарел и будет отключен 19.10.2026." %}
      *
-     * @type {QuantumDTO}
-     * @memberof BaseCampaignOfferDTO
-     * @deprecated
-     */
-    quantum?: QuantumDTO;
-    /**
-     * {% note warning "Вместо него используйте методы скрытия товаров с витрины" %}
+     * Вместо него используйте методы скрытия товаров с витрины
      *
      * * GET v2/campaigns/{campaignId}/hidden-offers — просмотр скрытых товаров;
      * * POST v2/campaigns/{campaignId}/hidden-offers — скрытие товаров;

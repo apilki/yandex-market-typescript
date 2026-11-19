@@ -1,13 +1,37 @@
-# @apilki/yandex-market
+# @apilki/yandex-market — JavaScript/TypeScript client
 
-TypeScript/JavaScript клиент для **Yandex Market Partner API** (продавец-сторона: заказы, каталог, цены, отчёты). Построен на базе `fetch` API. Публикуется в npm-скоупе `@apilki` (GitHub-орг `apilki`).
+**Version: {{version}} · API as of {{date}}** <!-- штампуется пайплайном (github-distro); штамп ОДИН (EN), стандарт public-client-readme-standard -->
 
-## Особенности сборки
-- **Типизация**: Полная поддержка TypeScript (`.d.ts` включены).
-- **Стиль имен**: 
-  - Методы и классы: `camelCase` (например, `orderApi.getOrders`).
-  - Свойства объектов (JSON): **Original** (сохранено именование из спецификации Яндекса, обычно это `camelCase`).
-- **Аргументы методов**: Плоский список (позиционный). Первым параметром в большинстве методов идет `campaignId`.
+A **curated generated TypeScript client** for the Yandex Market Partner API —
+generated from the official API specification, with edge-cases and conflicts
+resolved. Fully typed, fetch-based, zero runtime dependencies, works in
+Node.js ≥ 18 and browsers. Covers all 161 operations (43 API classes) and is
+regenerated on every upstream change.
+
+```bash
+npm install @apilki/yandex-market
+```
+
+Docs: https://yandex.ru/dev/market/partner-api/doc/ru/ · Full description (RU) below.
+
+## Что это
+
+Готовый TypeScript-клиент для **Yandex Market Partner API** — заказы, каталог,
+цены, отчёты (продавец-сторона). Сгенерирован из официальной документации
+Яндекса и **доведён до ума**: неоднозначности и конфликты документации
+разбираются агентами и автоматическими рецептами, результат проверяется
+тестами — вы получаете клиент, который просто работает.
+
+- **Полное покрытие** — все 161 операция, 43 API-класса, ~757 моделей;
+- **Всегда свежий** — перегенерируется при каждом изменении API Яндекса;
+- **Никаких зависимостей** — на чистом `fetch`, работает в Node.js ≥ 18 и в браузере;
+- **Типизация / Ноль сюрпризов** — полные `.d.ts`, оригинальные имена полей из спецификации.
+
+## Установка
+
+```bash
+npm install @apilki/yandex-market
+```
 
 ## Быстрый старт
 
@@ -30,32 +54,43 @@ const orderApi = new OrderApi(config);
 const campaignsApi = new CampaignsApi(config);
 ```
 
-## 2. Работа с несколькими кабинетами или магазинами
+### 2. Несколько кабинетов или магазинов
 
-В зависимости от метода API Яндекса, первым аргументом может выступать либо **campaignId** (идентификатор магазина), либо **businessId** (идентификатор бизнеса/кабинета). Ключ авторизации `Api-Key` уже находится в заголовках конфигурации, поэтому он не требуется в аргументах.
+В зависимости от метода API Яндекса первым аргументом выступает либо
+**campaignId** (идентификатор магазина), либо **businessId** (идентификатор
+бизнеса/кабинета). Ключ авторизации `Api-Key` уже в заголовках конфигурации —
+в аргументах он не требуется.
 
 ```javascript
-const campaignId = 12345678; 
+const campaignId = 12345678;
 const businessId = 987654;
 
 async function fetchData() {
-    try {
-        // Пример метода с campaignId (Заказы)
-        const orders = await orderApi.getOrders(campaignId, { status: 'PROCESSING' });
+    // Метод с campaignId (Заказы)
+    const orders = await orderApi.getOrders(campaignId, { status: 'PROCESSING' });
 
-        // Пример метода с businessId (Каталог/Цены)
-        const offers = await assortmentApi.getOfferMappings(businessId, { limit: 100 });
-        
-        console.log('Данные получены');
-    } catch (error) {
-        console.error('Yandex API Error:', error);
-    }
+    // Метод с businessId (Каталог/Цены)
+    const offers = await assortmentApi.getOfferMappings(businessId, { limit: 100 });
+
+    console.log('Данные получены');
 }
 ```
 
-### 3. Обработка ошибок
+## Особенности сборки
 
-В случае ошибок 4xx/5xx клиент выбрасывает ResponseError. Ответ Яндекса обычно содержит объект с массивом ошибок.
+- **Типизация**: полная поддержка TypeScript (`.d.ts` включены).
+- **Стиль имён**:
+  - Методы и классы: `camelCase` (например, `orderApi.getOrders`);
+  - Свойства объектов (JSON): **original** — сохранено именование из спецификации Яндекса.
+- **Аргументы методов**: плоский список (позиционный). Первым параметром в большинстве
+  методов идёт `campaignId`, в методах каталога/финтеха — `businessId`. Проверяйте
+  сигнатуру через автодополнение в IDE.
+- **Fetch**: в среде Node.js < 18 требуется полифил `node-fetch`.
+
+## Ошибки
+
+При ответах 4xx/5xx клиент выбрасывает `ResponseError`. Ответ Яндекса обычно
+содержит объект с массивом ошибок.
 
 ```javascript
 try {
@@ -67,7 +102,7 @@ try {
 }
 ```
 
-### 4. Отладка (Middleware)
+## Отладка (Middleware)
 
 Для отладки сетевых запросов используйте Middleware:
 
@@ -82,21 +117,52 @@ const config = new Configuration({
 });
 ```
 
-### Важные замечания
+## Покрытие API
 
-Порядок аргументов: В большинстве методов Яндекса первым аргументом идет campaignId. Всегда проверяйте сигнатуру метода через автодополнение в IDE.
+Клиент покрывает **161 операцию** в **43 API-классах** (~757 моделей данных) —
+полный охват Yandex Market Partner API. Покрытие поддерживается пайплайном:
+каждое изменение спецификации проверяется автоматическими тестами на полноту.
 
-**Идентификаторы (ID):** Внимательно следите за сигнатурой метода в IDE.
-* Если метод относится к операциям магазина — первым аргументом идет campaignId.
-* Если к настройкам каталога или финтеху — первым аргументом идет businessId.
+## Postman-коллекция
 
-**JSON:** Мы сохранили оригинальное именование полей. Если поле в документации Яндекса называется deliveryServiceId, в коде оно будет точно таким же.
+Готовая [Postman Collection](https://github.com/apilki/yandex-market-postman)
+v2.1 — отдельный артефакт `apilki/yandex-market-postman`
+(`postman/collection.json`). Импортируйте коллекцию и работайте с API без кода.
 
-**Fetch:** В среде Node.js < 18 требуется полифил node-fetch.
+## Тесты
 
-**Авторизация:** Если Api-Key не задан в Configuration, он может потребоваться первым аргументом в каждом методе. Проверяйте подсказки IDE.
+После установки выполните `npm test` — юнит-набор по ключевым путям
+(запросы, сериализация, обработка ошибок, middleware). Прогоняется перед
+каждой публикацией, работает офлайн — без зависимостей и ключей доступа.
 
-### Ссылки
+## Известные ограничения
 
-* [Официальная документация API Яндекс Маркета для продавцов](https://yandex.ru/dev/market/partner-api/doc/ru/)
-* [Спецификация API Яндекс Маркета для продавцов](https://github.com/yandex-market/yandex-market-partner-api)
+- **Свежесть API — дата коммита спецификации, а не номер версии.** Апстрим
+  публикует спецификацию без семантических версий (`LATEST`): номер версии
+  есть только у клиента. Поэтому актуальность данных отражается датой в шапке
+  README (строка «API от …») и в CHANGELOG релизов — сопоставление по версиям
+  спецификации невозможно. Breaking-изменения анонсируются в ⚠-секции
+  CHANGELOG и в [MIGRATION.md](MIGRATION.md) (в пакете и GH-дистро).
+- **Node.js < 18 — нужен полифил `fetch`.** Клиент работает на встроенном
+  `fetch` (ноль зависимостей), нативно доступном с Node 18. На более старых
+  версиях установите `node-fetch` и передайте его через
+  `Configuration.fetchApi` (подробнее — «Особенности сборки»).
+- **Типы коллекционных параметров различаются (`Array` / `Set`)** — наследие
+  генерации: часть методов принимает массивы, часть `Set`. Ориентируйтесь на
+  сигнатуру метода (подсказки IDE); конвертировать вручную не нужно.
+
+## Языки
+
+- **TypeScript** — этот клиент (JavaScript/TypeScript);
+- **Python / Go** — в планах (тот же скоуп `@apilki`, отдельные репозитории).
+
+## Лицензия
+
+MIT © apilki. Клиент сгенерирован из спецификации Yandex Market Partner API
+(https://github.com/yandex-market/yandex-market-partner-api), Copyright (c) 2023
+YANDEX LLC, лицензирована по BSD 3-Clause. Полный текст — в [LICENSE](LICENSE).
+
+## Ссылки
+
+- [Официальная документация API Яндекс Маркета для продавцов](https://yandex.ru/dev/market/partner-api/doc/ru/)
+- [Спецификация API Яндекс Маркета для продавцов](https://github.com/yandex-market/yandex-market-partner-api)

@@ -21,6 +21,7 @@
  * * `NO_CARD` — Нужна карточка.
  * * `NO_STOCKS` — Нет на складе.
  * * `ARCHIVED` — В архиве.
+ * * `READY_FOR_PUBLICATION` — Магазин в процессе подключения.
  *
  * [Что обозначает каждый из статусов](https://yandex.ru/support/marketplace/assortment/add/statuses.html)
  *
@@ -36,6 +37,7 @@ export declare const OfferCampaignStatusType: {
     readonly NO_CARD: "NO_CARD";
     readonly NO_STOCKS: "NO_STOCKS";
     readonly ARCHIVED: "ARCHIVED";
+    readonly READY_FOR_PUBLICATION: "READY_FOR_PUBLICATION";
 };
 export type OfferCampaignStatusType = typeof OfferCampaignStatusType[keyof typeof OfferCampaignStatusType];
 export declare function instanceOfOfferCampaignStatusType(value: any): boolean;

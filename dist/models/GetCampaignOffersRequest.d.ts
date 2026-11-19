@@ -28,7 +28,7 @@ export interface GetCampaignOffersRequest {
      *
      * Если вы запрашиваете информацию по конкретным SKU, не заполняйте:
      *
-     * * `page_token`
+     * * `pageToken`
      * * `limit`
      *
      * {% endnote %}

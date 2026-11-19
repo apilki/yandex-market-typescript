@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { BusinessWarehouseModelType } from './BusinessWarehouseModelType';
 import type { CurrencyType } from './CurrencyType';
 /**
  * Настройки кабинета.
@@ -16,6 +17,12 @@ import type { CurrencyType } from './CurrencyType';
  * @interface BusinessSettingsDTO
  */
 export interface BusinessSettingsDTO {
+    /**
+     *
+     * @type {BusinessWarehouseModelType}
+     * @memberof BusinessSettingsDTO
+     */
+    warehouseModel?: BusinessWarehouseModelType;
     /**
      * Управление ценами на товары:
      *

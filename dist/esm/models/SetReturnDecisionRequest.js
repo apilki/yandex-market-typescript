@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 import { ReturnRequestDecisionTypeFromJSON, ReturnRequestDecisionTypeToJSON, } from './ReturnRequestDecisionType';
+import { BasePriceDTOFromJSON, BasePriceDTOToJSON, } from './BasePriceDTO';
 /**
  * Check if a given object implements the SetReturnDecisionRequest interface.
  */
@@ -33,6 +34,7 @@ export function SetReturnDecisionRequestFromJSONTyped(json, ignoreDiscriminator)
         'returnItemId': json['returnItemId'],
         'decisionType': ReturnRequestDecisionTypeFromJSON(json['decisionType']),
         'comment': json['comment'] == null ? undefined : json['comment'],
+        'compensation': json['compensation'] == null ? undefined : BasePriceDTOFromJSON(json['compensation']),
     };
 }
 export function SetReturnDecisionRequestToJSON(value) {
@@ -43,5 +45,6 @@ export function SetReturnDecisionRequestToJSON(value) {
         'returnItemId': value['returnItemId'],
         'decisionType': ReturnRequestDecisionTypeToJSON(value['decisionType']),
         'comment': value['comment'],
+        'compensation': BasePriceDTOToJSON(value['compensation']),
     };
 }

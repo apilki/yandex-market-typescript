@@ -28,6 +28,8 @@
  *
  * * `MIDDLE_MILE` — средняя миля.
  *
+ * * `ITEM_BOOKING` — бронирование товара.
+ *
  * Подробнее об услугах Маркета читайте [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/introduction/rates/index.html).
  *
  * @export
@@ -41,6 +43,7 @@ export declare const CalculatedTariffType: {
     readonly EXPRESS_DELIVERY: "EXPRESS_DELIVERY";
     readonly SORTING: "SORTING";
     readonly MIDDLE_MILE: "MIDDLE_MILE";
+    readonly ITEM_BOOKING: "ITEM_BOOKING";
 };
 export type CalculatedTariffType = typeof CalculatedTariffType[keyof typeof CalculatedTariffType];
 export declare function instanceOfCalculatedTariffType(value: any): boolean;

@@ -19,7 +19,6 @@ exports.GetCampaignOfferDTOFromJSONTyped = GetCampaignOfferDTOFromJSONTyped;
 exports.GetCampaignOfferDTOToJSON = GetCampaignOfferDTOToJSON;
 const GetPriceWithVatDTO_1 = require("./GetPriceWithVatDTO");
 const OfferErrorDTO_1 = require("./OfferErrorDTO");
-const QuantumDTO_1 = require("./QuantumDTO");
 const GetPriceWithDiscountDTO_1 = require("./GetPriceWithDiscountDTO");
 const OfferCampaignStatusType_1 = require("./OfferCampaignStatusType");
 /**
@@ -39,7 +38,6 @@ function GetCampaignOfferDTOFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'offerId': json['offerId'],
-        'quantum': json['quantum'] == null ? undefined : (0, QuantumDTO_1.QuantumDTOFromJSON)(json['quantum']),
         'available': json['available'] == null ? undefined : json['available'],
         'basicPrice': json['basicPrice'] == null ? undefined : (0, GetPriceWithDiscountDTO_1.GetPriceWithDiscountDTOFromJSON)(json['basicPrice']),
         'campaignPrice': json['campaignPrice'] == null ? undefined : (0, GetPriceWithVatDTO_1.GetPriceWithVatDTOFromJSON)(json['campaignPrice']),
@@ -54,7 +52,6 @@ function GetCampaignOfferDTOToJSON(value) {
     }
     return {
         'offerId': value['offerId'],
-        'quantum': (0, QuantumDTO_1.QuantumDTOToJSON)(value['quantum']),
         'available': value['available'],
         'basicPrice': (0, GetPriceWithDiscountDTO_1.GetPriceWithDiscountDTOToJSON)(value['basicPrice']),
         'campaignPrice': (0, GetPriceWithVatDTO_1.GetPriceWithVatDTOToJSON)(value['campaignPrice']),

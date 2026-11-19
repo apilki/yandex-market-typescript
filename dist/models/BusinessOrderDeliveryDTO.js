@@ -23,6 +23,7 @@ const BusinessOrderCourierDeliveryDTO_1 = require("./BusinessOrderCourierDeliver
 const BusinessOrderDeliveryDatesDTO_1 = require("./BusinessOrderDeliveryDatesDTO");
 const OrderTrackDTO_1 = require("./OrderTrackDTO");
 const BusinessOrderTransferDTO_1 = require("./BusinessOrderTransferDTO");
+const DigitalGoodsDeliveryDetailsDTO_1 = require("./DigitalGoodsDeliveryDetailsDTO");
 const BusinessOrderPickupDeliveryDTO_1 = require("./BusinessOrderPickupDeliveryDTO");
 const OrderDeliveryPartnerType_1 = require("./OrderDeliveryPartnerType");
 const OrderDeliveryType_1 = require("./OrderDeliveryType");
@@ -65,6 +66,9 @@ function BusinessOrderDeliveryDTOFromJSONTyped(json, ignoreDiscriminator) {
         'boxesLayout': json['boxesLayout'] == null ? undefined : (json['boxesLayout'].map(BusinessOrderBoxLayoutDTO_1.BusinessOrderBoxLayoutDTOFromJSON)),
         'tracks': json['tracks'] == null ? undefined : (json['tracks'].map(OrderTrackDTO_1.OrderTrackDTOFromJSON)),
         'estimated': json['estimated'] == null ? undefined : json['estimated'],
+        'receiveBarcode': json['receiveBarcode'] == null ? undefined : json['receiveBarcode'],
+        'receiveCode': json['receiveCode'] == null ? undefined : json['receiveCode'],
+        'digitalGoods': json['digitalGoods'] == null ? undefined : (0, DigitalGoodsDeliveryDetailsDTO_1.DigitalGoodsDeliveryDetailsDTOFromJSON)(json['digitalGoods']),
     };
 }
 function BusinessOrderDeliveryDTOToJSON(value) {
@@ -86,5 +90,8 @@ function BusinessOrderDeliveryDTOToJSON(value) {
         'boxesLayout': value['boxesLayout'] == null ? undefined : (value['boxesLayout'].map(BusinessOrderBoxLayoutDTO_1.BusinessOrderBoxLayoutDTOToJSON)),
         'tracks': value['tracks'] == null ? undefined : (value['tracks'].map(OrderTrackDTO_1.OrderTrackDTOToJSON)),
         'estimated': value['estimated'],
+        'receiveBarcode': value['receiveBarcode'],
+        'receiveCode': value['receiveCode'],
+        'digitalGoods': (0, DigitalGoodsDeliveryDetailsDTO_1.DigitalGoodsDeliveryDetailsDTOToJSON)(value['digitalGoods']),
     };
 }

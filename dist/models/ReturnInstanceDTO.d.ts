@@ -30,7 +30,7 @@ export interface ReturnInstanceDTO {
      */
     status?: ReturnInstanceStatusType;
     /**
-     * Код идентификации единицы товара в системе [:no-translate[«Честный ЗНАК»]](https://честныйзнак.рф/) или [:no-translate[«ASL BELGISI»]](https://aslbelgisi.uz) (для продавцов :no-translate[Market Yandex Go]).
+     * Код идентификации единицы товара в системе [«Честный ЗНАК»](https://честныйзнак.рф/) или [«ASL BELGISI»](https://aslbelgisi.uz) (для продавцов :no-translate[Market Yandex Go]).
      * @type {string}
      * @memberof ReturnInstanceDTO
      */

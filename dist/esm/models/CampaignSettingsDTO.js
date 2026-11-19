@@ -12,10 +12,13 @@
  * Do not edit the class manually.
  */
 import { CampaignSettingsLocalRegionDTOFromJSON, CampaignSettingsLocalRegionDTOToJSON, } from './CampaignSettingsLocalRegionDTO';
+import { TaxationInfoDTOFromJSON, TaxationInfoDTOToJSON, } from './TaxationInfoDTO';
 /**
  * Check if a given object implements the CampaignSettingsDTO interface.
  */
 export function instanceOfCampaignSettingsDTO(value) {
+    if (!('taxation' in value) || value['taxation'] === undefined)
+        return false;
     return true;
 }
 export function CampaignSettingsDTOFromJSON(json) {
@@ -32,6 +35,7 @@ export function CampaignSettingsDTOFromJSONTyped(json, ignoreDiscriminator) {
         'showInPremium': json['showInPremium'] == null ? undefined : json['showInPremium'],
         'useOpenStat': json['useOpenStat'] == null ? undefined : json['useOpenStat'],
         'localRegion': json['localRegion'] == null ? undefined : CampaignSettingsLocalRegionDTOFromJSON(json['localRegion']),
+        'taxation': TaxationInfoDTOFromJSON(json['taxation']),
     };
 }
 export function CampaignSettingsDTOToJSON(value) {
@@ -45,5 +49,6 @@ export function CampaignSettingsDTOToJSON(value) {
         'showInPremium': value['showInPremium'],
         'useOpenStat': value['useOpenStat'],
         'localRegion': CampaignSettingsLocalRegionDTOToJSON(value['localRegion']),
+        'taxation': TaxationInfoDTOToJSON(value['taxation']),
     };
 }

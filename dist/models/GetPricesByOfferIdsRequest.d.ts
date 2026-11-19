@@ -22,7 +22,7 @@ export interface GetPricesByOfferIdsRequest {
      *
      * Если вы запрашиваете информацию по конкретным SKU, не заполняйте:
      *
-     * * `page_token`
+     * * `pageToken`
      * * `limit`
      *
      * {% endnote %}

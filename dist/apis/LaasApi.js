@@ -30,7 +30,7 @@ const index_1 = require("../models/index");
  */
 class LaasApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/cancelReturn.md) %}  Отменяет возврат.  Это можно сделать только до принятия в пункте выдачи (`\"shipmentStatus\": \"CREATED\"`).  {% note info \"Возврат отменяется не мгновенно\" %}  Отмена возврата применяется в течение нескольких минут и только в случае успешного завершения операции. Как проверить статус операции  {% endnote %}  {% note tip \"Используйте этот метод в подобных ситуациях\" %}  Вы создали возврат, в котором указали 3 товара. Но покупатель передумал и решил вернуть только 2. Отмените возврат и создайте новый.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/cancelReturn.md) %}
+     * {% include notitle access %}  Отменяет возврат.  Это можно сделать только до принятия в пункте выдачи (`\"shipmentStatus\": \"CREATED\"`).  {% note info \"Возврат отменяется не мгновенно\" %}  Отмена возврата применяется в течение нескольких минут и только в случае успешного завершения операции. Как проверить статус операции  {% endnote %}  {% note tip \"Используйте этот метод в подобных ситуациях\" %}  Вы создали возврат, в котором указали 3 товара. Но покупатель передумал и решил вернуть только 2. Отмените возврат и создайте новый.  {% endnote %}  {% include notitle limit %}
      * Отмена возврата
      */
     cancelReturnRaw(requestParameters, initOverrides) {
@@ -62,7 +62,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/cancelReturn.md) %}  Отменяет возврат.  Это можно сделать только до принятия в пункте выдачи (`\"shipmentStatus\": \"CREATED\"`).  {% note info \"Возврат отменяется не мгновенно\" %}  Отмена возврата применяется в течение нескольких минут и только в случае успешного завершения операции. Как проверить статус операции  {% endnote %}  {% note tip \"Используйте этот метод в подобных ситуациях\" %}  Вы создали возврат, в котором указали 3 товара. Но покупатель передумал и решил вернуть только 2. Отмените возврат и создайте новый.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/cancelReturn.md) %}
+     * {% include notitle access %}  Отменяет возврат.  Это можно сделать только до принятия в пункте выдачи (`\"shipmentStatus\": \"CREATED\"`).  {% note info \"Возврат отменяется не мгновенно\" %}  Отмена возврата применяется в течение нескольких минут и только в случае успешного завершения операции. Как проверить статус операции  {% endnote %}  {% note tip \"Используйте этот метод в подобных ситуациях\" %}  Вы создали возврат, в котором указали 3 товара. Но покупатель передумал и решил вернуть только 2. Отмените возврат и создайте новый.  {% endnote %}  {% include notitle limit %}
      * Отмена возврата
      */
     cancelReturn(campaignId, cancelReturnRequest, initOverrides) {
@@ -72,7 +72,91 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/createOrder.md) %}  Создает новый заказ, если на складе Маркета есть нужное количество товаров.  Укажите `courierDelivery` для курьерской доставки или `pickupDelivery` для доставки в пункт выдачи. Не передавайте оба параметра одновременно.  Значение параметра `draft`:  * `true` — Маркет создаст заказ в статусе `RESERVED` и будет ждать подтверждения от магазина. Когда будете готовы, передайте статус `PROCESSING` с подстатусом `STARTED` в методе PUT v2/campaigns/{campaignId}/orders/{orderId}/status. Если не сделать это в течение часа после создания заказа, Маркет отменит его. * `false` — Маркет создаст заказ в статусе `PROCESSING` с подстатусом `STARTED`, подтверждение не требуется.  {% note warning \"Перед вызовом метода\" %}  Получите доступные варианты доставки — POST v2/campaigns/{campaignId}/delivery-options.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/createOrder.md) %}
+     * {% include notitle access %}  Создает таблицы размеров бизнеса. За один запрос можно создать до 10 таблиц, в которых суммарно не больше 5000 ячеек. Если таблиц или ячеек больше, запрос отклоняется с ошибкой `BAD_REQUEST` и ни одна таблица не создается.  Таблица относится к размерной характеристике, а не к категории: она подбирается для всех категорий с той же размерной характеристикой.  Размерную характеристику категории возвращает метод подбора таблиц размеров `POST v2/businesses/{businessId}/size-tables/suggest` в поле `result.sizeParameterId`, характеристику существующей таблицы — метод `POST v2/businesses/{businessId}/size-tables` в поле `sizeParameterId`. Если в запросе есть неизвестный идентификатор размерной характеристики, запрос отклоняется с ошибкой `UNKNOWN_SIZE_PARAMETER` и ни одна таблица не создается.  Размерные сетки и обмеры, которые можно использовать в таблице, их значения и обязательные сетки возвращает метод `POST v2/businesses/{businessId}/size-tables/charts`.  {% cut \"Как заполнить таблицу\" %}  {% include notitle size-tables-filling %}  {% endcut %}  {% cut \"Чем сохраненная таблица отличается от переданной\" %}  {% include notitle size-tables-saved-differences %}  Значения из ответа можно без изменений передать в метод обновления таблиц размеров `POST v2/businesses/{businessId}/size-tables/update`: поля `columnType` и `rowIndex` в нем не учитываются.  {% endcut %}  Чтобы привязать таблицу к товару, передайте ее идентификатор в `value` характеристики с `parameterId: 73979829` в запросе POST v2/businesses/{businessId}/offer-cards/update. Когда таблица изменяется, новое содержимое применяется к привязанным товарам автоматически.  {% note warning \"Повторный запрос создает таблицы еще раз\" %}  Метод не идемпотентен: каждый запрос создает новые таблицы, даже если такие же уже есть.  Если запрос завершился ошибкой с кодом 5xx, часть таблиц могла сохраниться. Получите таблицы бизнеса методом `POST v2/businesses/{businessId}/size-tables` и только после этого повторите запрос для таблиц, которых там нет.  {% endnote %}  Количество таблиц у бизнеса ограничено — суммарно по всем размерным характеристикам. Удалить таблицу нельзя. Если лимит исчерпан, таблица не создается и для нее возвращается ошибка `LIMIT_TABLES`. При одновременных запросах лимит проверяется нестрого, и таблиц может создаться больше.  {% include notitle limit %}
+     * Создание таблиц размеров
+     */
+    createContentSizeTablesRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters['businessId'] == null) {
+                throw new runtime.RequiredError('businessId', 'Required parameter "businessId" was null or undefined when calling createContentSizeTables().');
+            }
+            if (requestParameters['createSizeTablesRequest'] == null) {
+                throw new runtime.RequiredError('createSizeTablesRequest', 'Required parameter "createSizeTablesRequest" was null or undefined when calling createContentSizeTables().');
+            }
+            const queryParameters = {};
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.apiKey) {
+                headerParameters["Api-Key"] = yield this.configuration.apiKey("Api-Key"); // ApiKey authentication
+            }
+            if (this.configuration && this.configuration.accessToken) {
+                // oauth required
+                headerParameters["Authorization"] = yield this.configuration.accessToken("OAuth", ["market:partner-api"]);
+            }
+            const response = yield this.request({
+                path: `/v2/businesses/{businessId}/size-tables/create`.replace(`{${"businessId"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: (0, index_1.CreateSizeTablesRequestToJSON)(requestParameters['createSizeTablesRequest']),
+            }, initOverrides);
+            return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CreateSizeTablesResponseFromJSON)(jsonValue));
+        });
+    }
+    /**
+     * {% include notitle access %}  Создает таблицы размеров бизнеса. За один запрос можно создать до 10 таблиц, в которых суммарно не больше 5000 ячеек. Если таблиц или ячеек больше, запрос отклоняется с ошибкой `BAD_REQUEST` и ни одна таблица не создается.  Таблица относится к размерной характеристике, а не к категории: она подбирается для всех категорий с той же размерной характеристикой.  Размерную характеристику категории возвращает метод подбора таблиц размеров `POST v2/businesses/{businessId}/size-tables/suggest` в поле `result.sizeParameterId`, характеристику существующей таблицы — метод `POST v2/businesses/{businessId}/size-tables` в поле `sizeParameterId`. Если в запросе есть неизвестный идентификатор размерной характеристики, запрос отклоняется с ошибкой `UNKNOWN_SIZE_PARAMETER` и ни одна таблица не создается.  Размерные сетки и обмеры, которые можно использовать в таблице, их значения и обязательные сетки возвращает метод `POST v2/businesses/{businessId}/size-tables/charts`.  {% cut \"Как заполнить таблицу\" %}  {% include notitle size-tables-filling %}  {% endcut %}  {% cut \"Чем сохраненная таблица отличается от переданной\" %}  {% include notitle size-tables-saved-differences %}  Значения из ответа можно без изменений передать в метод обновления таблиц размеров `POST v2/businesses/{businessId}/size-tables/update`: поля `columnType` и `rowIndex` в нем не учитываются.  {% endcut %}  Чтобы привязать таблицу к товару, передайте ее идентификатор в `value` характеристики с `parameterId: 73979829` в запросе POST v2/businesses/{businessId}/offer-cards/update. Когда таблица изменяется, новое содержимое применяется к привязанным товарам автоматически.  {% note warning \"Повторный запрос создает таблицы еще раз\" %}  Метод не идемпотентен: каждый запрос создает новые таблицы, даже если такие же уже есть.  Если запрос завершился ошибкой с кодом 5xx, часть таблиц могла сохраниться. Получите таблицы бизнеса методом `POST v2/businesses/{businessId}/size-tables` и только после этого повторите запрос для таблиц, которых там нет.  {% endnote %}  Количество таблиц у бизнеса ограничено — суммарно по всем размерным характеристикам. Удалить таблицу нельзя. Если лимит исчерпан, таблица не создается и для нее возвращается ошибка `LIMIT_TABLES`. При одновременных запросах лимит проверяется нестрого, и таблиц может создаться больше.  {% include notitle limit %}
+     * Создание таблиц размеров
+     */
+    createContentSizeTables(businessId, createSizeTablesRequest, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.createContentSizeTablesRaw({ businessId: businessId, createSizeTablesRequest: createSizeTablesRequest }, initOverrides);
+            return yield response.value();
+        });
+    }
+    /**
+     * {% include notitle access %}  Создает для указанного бизнеса документы на товары. За один запрос можно создать не более 100 документов.  Для привязки документа к товару передайте его номер в поле `certificates` метода POST v2/businesses/{businessId}/offer-mappings/update.  Если документ с таким номером уже существует, результат для документа содержит ошибку `DOCUMENT_ALREADY_EXISTS`. Существующий документ при этом не возвращается. Ошибка одного документа не мешает обработке остальных.  {% include notitle limit %}
+     * Создание документов
+     */
+    createDocumentsRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters['businessId'] == null) {
+                throw new runtime.RequiredError('businessId', 'Required parameter "businessId" was null or undefined when calling createDocuments().');
+            }
+            if (requestParameters['createDocumentsRequest'] == null) {
+                throw new runtime.RequiredError('createDocumentsRequest', 'Required parameter "createDocumentsRequest" was null or undefined when calling createDocuments().');
+            }
+            const queryParameters = {};
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.apiKey) {
+                headerParameters["Api-Key"] = yield this.configuration.apiKey("Api-Key"); // ApiKey authentication
+            }
+            if (this.configuration && this.configuration.accessToken) {
+                // oauth required
+                headerParameters["Authorization"] = yield this.configuration.accessToken("OAuth", ["market:partner-api"]);
+            }
+            const response = yield this.request({
+                path: `/v1/businesses/{businessId}/offers/documents/create`.replace(`{${"businessId"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: (0, index_1.CreateDocumentsRequestToJSON)(requestParameters['createDocumentsRequest']),
+            }, initOverrides);
+            return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CreateDocumentsResponseFromJSON)(jsonValue));
+        });
+    }
+    /**
+     * {% include notitle access %}  Создает для указанного бизнеса документы на товары. За один запрос можно создать не более 100 документов.  Для привязки документа к товару передайте его номер в поле `certificates` метода POST v2/businesses/{businessId}/offer-mappings/update.  Если документ с таким номером уже существует, результат для документа содержит ошибку `DOCUMENT_ALREADY_EXISTS`. Существующий документ при этом не возвращается. Ошибка одного документа не мешает обработке остальных.  {% include notitle limit %}
+     * Создание документов
+     */
+    createDocuments(businessId, createDocumentsRequest, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.createDocumentsRaw({ businessId: businessId, createDocumentsRequest: createDocumentsRequest }, initOverrides);
+            return yield response.value();
+        });
+    }
+    /**
+     * {% include notitle access %}  Создает новый заказ, если на складе Маркета есть нужное количество товаров.  Укажите `courierDelivery` для курьерской доставки или `pickupDelivery` для доставки в пункт выдачи. Не передавайте оба параметра одновременно.  Значение параметра `draft`:  * `true` — Маркет создаст заказ в статусе `RESERVED` и будет ждать подтверждения от магазина. Когда будете готовы, передайте статус `PROCESSING` с подстатусом `STARTED` в методе PUT v2/campaigns/{campaignId}/orders/{orderId}/status. Если не сделать это в течение часа после создания заказа, Маркет отменит его. * `false` — Маркет создаст заказ в статусе `PROCESSING` с подстатусом `STARTED`, подтверждение не требуется.  Значение параметра `fake`:  * `true` — тестовый заказ. Позволяет проверить работу магазина и его API на тестовых заказах. Такой заказ не будет отгружен и не влияет на остатки. * `false` — настоящий заказ.  {% note warning \"Перед вызовом метода\" %}  Получите доступные варианты доставки — POST v2/campaigns/{campaignId}/delivery-options.  {% endnote %}  {% include notitle limit %}
      * Создание заказа
      */
     createOrderRaw(requestParameters, initOverrides) {
@@ -104,7 +188,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/createOrder.md) %}  Создает новый заказ, если на складе Маркета есть нужное количество товаров.  Укажите `courierDelivery` для курьерской доставки или `pickupDelivery` для доставки в пункт выдачи. Не передавайте оба параметра одновременно.  Значение параметра `draft`:  * `true` — Маркет создаст заказ в статусе `RESERVED` и будет ждать подтверждения от магазина. Когда будете готовы, передайте статус `PROCESSING` с подстатусом `STARTED` в методе PUT v2/campaigns/{campaignId}/orders/{orderId}/status. Если не сделать это в течение часа после создания заказа, Маркет отменит его. * `false` — Маркет создаст заказ в статусе `PROCESSING` с подстатусом `STARTED`, подтверждение не требуется.  {% note warning \"Перед вызовом метода\" %}  Получите доступные варианты доставки — POST v2/campaigns/{campaignId}/delivery-options.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/createOrder.md) %}
+     * {% include notitle access %}  Создает новый заказ, если на складе Маркета есть нужное количество товаров.  Укажите `courierDelivery` для курьерской доставки или `pickupDelivery` для доставки в пункт выдачи. Не передавайте оба параметра одновременно.  Значение параметра `draft`:  * `true` — Маркет создаст заказ в статусе `RESERVED` и будет ждать подтверждения от магазина. Когда будете готовы, передайте статус `PROCESSING` с подстатусом `STARTED` в методе PUT v2/campaigns/{campaignId}/orders/{orderId}/status. Если не сделать это в течение часа после создания заказа, Маркет отменит его. * `false` — Маркет создаст заказ в статусе `PROCESSING` с подстатусом `STARTED`, подтверждение не требуется.  Значение параметра `fake`:  * `true` — тестовый заказ. Позволяет проверить работу магазина и его API на тестовых заказах. Такой заказ не будет отгружен и не влияет на остатки. * `false` — настоящий заказ.  {% note warning \"Перед вызовом метода\" %}  Получите доступные варианты доставки — POST v2/campaigns/{campaignId}/delivery-options.  {% endnote %}  {% include notitle limit %}
      * Создание заказа
      */
     createOrder(campaignId, createOrderRequest, initOverrides) {
@@ -114,7 +198,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/createReturn.md) %}  Создает новый возврат.  Это можно сделать только для заказа в статусе `DELIVERED`.  {% note warning \"Перед вызовом метода\" %}  Проверьте, подходят ли пункты выдачи для возврата указанных товаров, — POST v1/campaigns/{campaignId}/return-delivery-options.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/createReturn.md) %}
+     * {% include notitle access %}  Создает новый возврат.  Это можно сделать только для заказа в статусе `DELIVERED`.  {% note warning \"Перед вызовом метода\" %}  Проверьте, подходят ли пункты выдачи для возврата указанных товаров, — POST v1/campaigns/{campaignId}/return-delivery-options.  {% endnote %}  {% include notitle limit %}
      * Создание возврата
      */
     createReturnRaw(requestParameters, initOverrides) {
@@ -146,7 +230,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/createReturn.md) %}  Создает новый возврат.  Это можно сделать только для заказа в статусе `DELIVERED`.  {% note warning \"Перед вызовом метода\" %}  Проверьте, подходят ли пункты выдачи для возврата указанных товаров, — POST v1/campaigns/{campaignId}/return-delivery-options.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/createReturn.md) %}
+     * {% include notitle access %}  Создает новый возврат.  Это можно сделать только для заказа в статусе `DELIVERED`.  {% note warning \"Перед вызовом метода\" %}  Проверьте, подходят ли пункты выдачи для возврата указанных товаров, — POST v1/campaigns/{campaignId}/return-delivery-options.  {% endnote %}  {% include notitle limit %}
      * Создание возврата
      */
     createReturn(campaignId, createReturnRequest, initOverrides) {
@@ -156,7 +240,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/deleteCampaignOffers.md) %}  Удаляет заданные товары из заданного магазина.  {% note warning \"Запрос удаляет товары из конкретного магазина\" %}  На продажи в других магазинах и на наличие товара в общем каталоге он не влияет.  {% endnote %}  Товар не получится удалить, если он хранится на складах Маркета.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/deleteCampaignOffers.md) %}
+     * {% include notitle access %}  Удаляет заданные товары из заданного магазина.  {% note warning \"Запрос удаляет товары из конкретного магазина\" %}  На продажи в других магазинах и на наличие товара в общем каталоге он не влияет.  {% endnote %}  Товар не получится удалить, если он хранится на складах Маркета.  {% include notitle limit %}
      * Удаление товаров из ассортимента магазина
      */
     deleteCampaignOffersRaw(requestParameters, initOverrides) {
@@ -188,7 +272,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/deleteCampaignOffers.md) %}  Удаляет заданные товары из заданного магазина.  {% note warning \"Запрос удаляет товары из конкретного магазина\" %}  На продажи в других магазинах и на наличие товара в общем каталоге он не влияет.  {% endnote %}  Товар не получится удалить, если он хранится на складах Маркета.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/deleteCampaignOffers.md) %}
+     * {% include notitle access %}  Удаляет заданные товары из заданного магазина.  {% note warning \"Запрос удаляет товары из конкретного магазина\" %}  На продажи в других магазинах и на наличие товара в общем каталоге он не влияет.  {% endnote %}  Товар не получится удалить, если он хранится на складах Маркета.  {% include notitle limit %}
      * Удаление товаров из ассортимента магазина
      */
     deleteCampaignOffers(campaignId, deleteCampaignOffersRequest, initOverrides) {
@@ -198,7 +282,49 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/deleteOffers.md) %}  Удаляет товары из каталога.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/deleteOffers.md) %}
+     * {% include notitle access %}  Удаляет документы на товары по их идентификаторам. За один запрос можно удалить не более 100 документов.  Повторный запрос на удаление возвращает успешный ответ. Отсутствие одного документа не мешает обработке остальных.  {% include notitle limit %}
+     * Удаление документов
+     */
+    deleteDocumentsRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters['businessId'] == null) {
+                throw new runtime.RequiredError('businessId', 'Required parameter "businessId" was null or undefined when calling deleteDocuments().');
+            }
+            if (requestParameters['deleteDocumentsRequest'] == null) {
+                throw new runtime.RequiredError('deleteDocumentsRequest', 'Required parameter "deleteDocumentsRequest" was null or undefined when calling deleteDocuments().');
+            }
+            const queryParameters = {};
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.apiKey) {
+                headerParameters["Api-Key"] = yield this.configuration.apiKey("Api-Key"); // ApiKey authentication
+            }
+            if (this.configuration && this.configuration.accessToken) {
+                // oauth required
+                headerParameters["Authorization"] = yield this.configuration.accessToken("OAuth", ["market:partner-api"]);
+            }
+            const response = yield this.request({
+                path: `/v1/businesses/{businessId}/offers/documents/delete`.replace(`{${"businessId"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: (0, index_1.DeleteDocumentsRequestToJSON)(requestParameters['deleteDocumentsRequest']),
+            }, initOverrides);
+            return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.EmptyApiResponseFromJSON)(jsonValue));
+        });
+    }
+    /**
+     * {% include notitle access %}  Удаляет документы на товары по их идентификаторам. За один запрос можно удалить не более 100 документов.  Повторный запрос на удаление возвращает успешный ответ. Отсутствие одного документа не мешает обработке остальных.  {% include notitle limit %}
+     * Удаление документов
+     */
+    deleteDocuments(businessId, deleteDocumentsRequest, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.deleteDocumentsRaw({ businessId: businessId, deleteDocumentsRequest: deleteDocumentsRequest }, initOverrides);
+            return yield response.value();
+        });
+    }
+    /**
+     * {% include notitle access %}  Удаляет товары из каталога.  {% include notitle limit %}
      * Удаление товаров из каталога
      */
     deleteOffersRaw(requestParameters, initOverrides) {
@@ -230,7 +356,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/deleteOffers.md) %}  Удаляет товары из каталога.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/deleteOffers.md) %}
+     * {% include notitle access %}  Удаляет товары из каталога.  {% include notitle limit %}
      * Удаление товаров из каталога
      */
     deleteOffers(businessId, deleteOffersRequest, initOverrides) {
@@ -240,7 +366,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/generateBarcodesReport.md) %}  Запускает генерацию PDF-файла со штрихкодами переданных товаров или товаров в указанной заявке на поставку.  Файл не получится сгенерировать, если в нем будет более 1 500 штрихкодов.  Узнать статус генерации и получить ссылку на готовый файл можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/generateBarcodesReport.md) %}
+     * {% include notitle access %}  Запускает генерацию PDF-файла со штрихкодами переданных товаров или товаров в указанной заявке на поставку.  Файл не получится сгенерировать, если в нем будет более 1 500 штрихкодов.  Узнать статус генерации и получить ссылку на готовый файл можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle limit %}
      * Получение файла со штрихкодами
      */
     generateBarcodesReportRaw(requestParameters, initOverrides) {
@@ -269,7 +395,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/generateBarcodesReport.md) %}  Запускает генерацию PDF-файла со штрихкодами переданных товаров или товаров в указанной заявке на поставку.  Файл не получится сгенерировать, если в нем будет более 1 500 штрихкодов.  Узнать статус генерации и получить ссылку на готовый файл можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/generateBarcodesReport.md) %}
+     * {% include notitle access %}  Запускает генерацию PDF-файла со штрихкодами переданных товаров или товаров в указанной заявке на поставку.  Файл не получится сгенерировать, если в нем будет более 1 500 штрихкодов.  Узнать статус генерации и получить ссылку на готовый файл можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle limit %}
      * Получение файла со штрихкодами
      */
     generateBarcodesReport(generateBarcodesReportRequest, initOverrides) {
@@ -279,7 +405,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/generateClosureDocumentsDetalizationReport.md) %}  Запускает генерацию отчета по схождению с закрывающими документами в зависимости от типа договора.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - Договор на размещение    {% include notitle [:no-translate[reports]](../../_auto/reports/period_closure/period_closure_income.md) %}  - Договор на продвижение    {% include notitle [:no-translate[reports]](../../_auto/reports/period_closure/period_closure_outcome.md) %}  - Договор на маркетинг    {% include notitle [:no-translate[reports]](../../_auto/reports/advertiser_billing_operations/advertiser_billing_operations.md) %}  {% endlist %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/generateClosureDocumentsDetalizationReport.md) %}
+     * {% include notitle access %}  Запускает генерацию отчета по схождению с закрывающими документами в зависимости от типа договора.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - Договор на размещение    {% include notitle reports %}  - Договор на продвижение    {% include notitle reports %}  {% endlist %}  {% include notitle limit %}
      * Отчет по схождению с закрывающими документами
      */
     generateClosureDocumentsDetalizationReportRaw(requestParameters, initOverrides) {
@@ -311,7 +437,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/generateClosureDocumentsDetalizationReport.md) %}  Запускает генерацию отчета по схождению с закрывающими документами в зависимости от типа договора.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - Договор на размещение    {% include notitle [:no-translate[reports]](../../_auto/reports/period_closure/period_closure_income.md) %}  - Договор на продвижение    {% include notitle [:no-translate[reports]](../../_auto/reports/period_closure/period_closure_outcome.md) %}  - Договор на маркетинг    {% include notitle [:no-translate[reports]](../../_auto/reports/advertiser_billing_operations/advertiser_billing_operations.md) %}  {% endlist %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/generateClosureDocumentsDetalizationReport.md) %}
+     * {% include notitle access %}  Запускает генерацию отчета по схождению с закрывающими документами в зависимости от типа договора.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - Договор на размещение    {% include notitle reports %}  - Договор на продвижение    {% include notitle reports %}  {% endlist %}  {% include notitle limit %}
      * Отчет по схождению с закрывающими документами
      */
     generateClosureDocumentsDetalizationReport(generateClosureDocumentsDetalizationRequest, format, initOverrides) {
@@ -321,7 +447,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/generateClosureDocumentsReport.md) %}  Возвращает ZIP-архив с закрывающими документами в формате PDF за указанный месяц.  {% cut \"Состав документов в зависимости от типа договора\" %}  * **Договор на размещение**    * [акт об оказанных услугах](*acts-main-act)   * [счет-фактура](*acts-main-invoice)   * [сводный отчет по данным статистики](*acts-main-report)   * [отчет об исполнении поручения и о зачете взаимных требований](*acts-main-agent) (отчет агента)  * **Договор на продвижение** (в России не заключается после 30 сентября 2024 года)    * [акт об оказании услуг](*acts-discounts-act)   * [счет-фактура](*acts-discounts-invoice), если этого требует схема налогообложения  * **Договор на маркетинг**    * [акт об оказанных услугах](*acts-marketing-act)   * [счет-фактура](*acts-main-invoice)   * [счет-фактура на аванс](*acts-marketing-invoice)   * [выписка по лицевому счету](*acts-marketing-account)   * [детализация к акту](*acts-marketing-details)  {% endcut %}  Узнать статус генерации и получить ссылку на архив можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/generateClosureDocumentsReport.md) %}
+     * {% include notitle access %}  Возвращает ZIP-архив с закрывающими документами в формате PDF за указанный месяц.  {% cut \"Состав документов в зависимости от типа договора\" %}  * **Договор на размещение**    * [универсальный передаточный документ (УПД-1)](*acts-main-utd) (в России формируется за октябрь 2026 года и последующие месяцы, вместо акта об оказанных услугах и счета-фактуры)   * [акт об оказанных услугах](*acts-main-act) (в России формируется за месяцы до октября 2026 года)   * [счет-фактура](*acts-main-invoice) (в России формируется за месяцы до октября 2026 года)   * [сводный отчет по данным статистики](*acts-main-report)   * [отчет об исполнении поручения и о зачете взаимных требований](*acts-main-agent) (отчет агента)  * **Договор на продвижение** (в России не заключается после 30 сентября 2024 года)    * [акт об оказании услуг](*acts-discounts-act)   * [счет-фактура](*acts-discounts-invoice), если этого требует схема налогообложения  * **Договор на маркетинг**    * [универсальный передаточный документ (УПД-1)](*acts-main-utd) (в России формируется за август 2026 года и последующие месяцы, вместо акта об оказанных услугах и счета-фактуры)   * [акт об оказанных услугах](*acts-marketing-act) (в России формируется за месяцы до августа 2026 года)   * [счет-фактура](*acts-main-invoice) (в России формируется за месяцы до августа 2026 года)   * [счет-фактура на аванс](*acts-marketing-invoice)   * [детализация к акту](*acts-marketing-details)  {% endcut %}  Узнать статус генерации и получить ссылку на архив можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle limit %}
      * Закрывающие документы
      */
     generateClosureDocumentsReportRaw(requestParameters, initOverrides) {
@@ -350,7 +476,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/generateClosureDocumentsReport.md) %}  Возвращает ZIP-архив с закрывающими документами в формате PDF за указанный месяц.  {% cut \"Состав документов в зависимости от типа договора\" %}  * **Договор на размещение**    * [акт об оказанных услугах](*acts-main-act)   * [счет-фактура](*acts-main-invoice)   * [сводный отчет по данным статистики](*acts-main-report)   * [отчет об исполнении поручения и о зачете взаимных требований](*acts-main-agent) (отчет агента)  * **Договор на продвижение** (в России не заключается после 30 сентября 2024 года)    * [акт об оказании услуг](*acts-discounts-act)   * [счет-фактура](*acts-discounts-invoice), если этого требует схема налогообложения  * **Договор на маркетинг**    * [акт об оказанных услугах](*acts-marketing-act)   * [счет-фактура](*acts-main-invoice)   * [счет-фактура на аванс](*acts-marketing-invoice)   * [выписка по лицевому счету](*acts-marketing-account)   * [детализация к акту](*acts-marketing-details)  {% endcut %}  Узнать статус генерации и получить ссылку на архив можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/generateClosureDocumentsReport.md) %}
+     * {% include notitle access %}  Возвращает ZIP-архив с закрывающими документами в формате PDF за указанный месяц.  {% cut \"Состав документов в зависимости от типа договора\" %}  * **Договор на размещение**    * [универсальный передаточный документ (УПД-1)](*acts-main-utd) (в России формируется за октябрь 2026 года и последующие месяцы, вместо акта об оказанных услугах и счета-фактуры)   * [акт об оказанных услугах](*acts-main-act) (в России формируется за месяцы до октября 2026 года)   * [счет-фактура](*acts-main-invoice) (в России формируется за месяцы до октября 2026 года)   * [сводный отчет по данным статистики](*acts-main-report)   * [отчет об исполнении поручения и о зачете взаимных требований](*acts-main-agent) (отчет агента)  * **Договор на продвижение** (в России не заключается после 30 сентября 2024 года)    * [акт об оказании услуг](*acts-discounts-act)   * [счет-фактура](*acts-discounts-invoice), если этого требует схема налогообложения  * **Договор на маркетинг**    * [универсальный передаточный документ (УПД-1)](*acts-main-utd) (в России формируется за август 2026 года и последующие месяцы, вместо акта об оказанных услугах и счета-фактуры)   * [акт об оказанных услугах](*acts-marketing-act) (в России формируется за месяцы до августа 2026 года)   * [счет-фактура](*acts-main-invoice) (в России формируется за месяцы до августа 2026 года)   * [счет-фактура на аванс](*acts-marketing-invoice)   * [детализация к акту](*acts-marketing-details)  {% endcut %}  Узнать статус генерации и получить ссылку на архив можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle limit %}
      * Закрывающие документы
      */
     generateClosureDocumentsReport(generateClosureDocumentsRequest, initOverrides) {
@@ -360,7 +486,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/generateGoodsMovementReport.md) %}  Запускает генерацию отчета по движению товаров. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/reports-fby-fbs.html#flow)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle [:no-translate[reports]](../../_auto/reports/sku/movement/movement_config.md) %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/generateGoodsMovementReport.md) %}
+     * {% include notitle access %}  Запускает генерацию отчета по движению товаров. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/reports-fby-fbs.html#flow)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
      * Отчет по движению товаров
      */
     generateGoodsMovementReportRaw(requestParameters, initOverrides) {
@@ -392,7 +518,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/generateGoodsMovementReport.md) %}  Запускает генерацию отчета по движению товаров. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/reports-fby-fbs.html#flow)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle [:no-translate[reports]](../../_auto/reports/sku/movement/movement_config.md) %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/generateGoodsMovementReport.md) %}
+     * {% include notitle access %}  Запускает генерацию отчета по движению товаров. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/reports-fby-fbs.html#flow)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
      * Отчет по движению товаров
      */
     generateGoodsMovementReport(generateGoodsMovementReportRequest, format, initOverrides) {
@@ -402,7 +528,55 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/generateOfferBarcodes.md) %}  Генерирует штрихкоды и присваивает их указанным товарам.  Если у товара на упаковке уже есть штрихкод производителя, передайте его в параметре `barcodes` в методе POST v2/businesses/{businessId}/offer-mappings/update. Генерировать новый не нужно.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/generateOfferBarcodes.md) %}
+     * {% include notitle access %}  Запускает генерацию отчета по счету маркетинга.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle limit %}
+     * Отчет по счету маркетинга
+     */
+    generateMarketingDetalizationReportRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters['businessId'] == null) {
+                throw new runtime.RequiredError('businessId', 'Required parameter "businessId" was null or undefined when calling generateMarketingDetalizationReport().');
+            }
+            if (requestParameters['generateMarketingDetalizationRequest'] == null) {
+                throw new runtime.RequiredError('generateMarketingDetalizationRequest', 'Required parameter "generateMarketingDetalizationRequest" was null or undefined when calling generateMarketingDetalizationReport().');
+            }
+            const queryParameters = {};
+            if (requestParameters['format'] != null) {
+                queryParameters['format'] = requestParameters['format'];
+            }
+            if (requestParameters['sourceType'] != null) {
+                queryParameters['sourceType'] = requestParameters['sourceType'];
+            }
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.apiKey) {
+                headerParameters["Api-Key"] = yield this.configuration.apiKey("Api-Key"); // ApiKey authentication
+            }
+            if (this.configuration && this.configuration.accessToken) {
+                // oauth required
+                headerParameters["Authorization"] = yield this.configuration.accessToken("OAuth", ["market:partner-api"]);
+            }
+            const response = yield this.request({
+                path: `/v1/businesses/{businessId}/reports/marketing-detalization/generate`.replace(`{${"businessId"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: (0, index_1.GenerateMarketingDetalizationRequestToJSON)(requestParameters['generateMarketingDetalizationRequest']),
+            }, initOverrides);
+            return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GenerateReportResponseFromJSON)(jsonValue));
+        });
+    }
+    /**
+     * {% include notitle access %}  Запускает генерацию отчета по счету маркетинга.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle limit %}
+     * Отчет по счету маркетинга
+     */
+    generateMarketingDetalizationReport(businessId, generateMarketingDetalizationRequest, format, sourceType, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.generateMarketingDetalizationReportRaw({ businessId: businessId, generateMarketingDetalizationRequest: generateMarketingDetalizationRequest, format: format, sourceType: sourceType }, initOverrides);
+            return yield response.value();
+        });
+    }
+    /**
+     * {% include notitle access %}  Генерирует штрихкоды и присваивает их указанным товарам.  Если у товара на упаковке уже есть штрихкод производителя, передайте его в параметре `barcodes` в методе POST v2/businesses/{businessId}/offer-mappings/update. Генерировать новый не нужно.  {% include notitle limit %}
      * Генерация штрихкодов
      */
     generateOfferBarcodesRaw(requestParameters, initOverrides) {
@@ -434,7 +608,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/generateOfferBarcodes.md) %}  Генерирует штрихкоды и присваивает их указанным товарам.  Если у товара на упаковке уже есть штрихкод производителя, передайте его в параметре `barcodes` в методе POST v2/businesses/{businessId}/offer-mappings/update. Генерировать новый не нужно.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/generateOfferBarcodes.md) %}
+     * {% include notitle access %}  Генерирует штрихкоды и присваивает их указанным товарам.  Если у товара на упаковке уже есть штрихкод производителя, передайте его в параметре `barcodes` в методе POST v2/businesses/{businessId}/offer-mappings/update. Генерировать новый не нужно.  {% include notitle limit %}
      * Генерация штрихкодов
      */
     generateOfferBarcodes(businessId, generateOfferBarcodesRequest, initOverrides) {
@@ -444,7 +618,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/generateStocksOnWarehousesReport.md) %}  Запускает генерацию отчета по остаткам на складах. [Что это за отчет](https://yandex.ru/support/marketplace/ru/storage/logistics#remains-history)  **Какая информация вернется:**  * Для моделей FBY и LaaS, если указать `campaignId`, — об остатках на складах Маркета. * Для остальных моделей, если указать `campaignId`, — об остатках на соответствующем складе магазина. * Для остальных моделей, если указать `businessId`, — об остатках на всех складах магазинов в кабинете, кроме FBY и LaaS. Используйте фильтр `campaignIds`, чтобы указать определенные магазины.  ⚠️ Не передавайте одновременно `campaignId` и `businessId`.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - Склад Маркета    {% include notitle [:no-translate[reports]](../../_auto/reports/stocks/stocks_on_warehouses.md) %}  - Склад магазина    {% include notitle [:no-translate[reports]](../../_auto/reports/offers/mass/mass_shared_stocks_business_csv_config.md) %}  - Все склады магазинов в кабинете, кроме FBY и LaaS    {% include notitle [:no-translate[reports]](../../_auto/reports/offers/stocks_business_config.md) %}  {% endlist %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/generateStocksOnWarehousesReport.md) %}
+     * {% include notitle access %}  Запускает генерацию отчета по остаткам на складах. [Что это за отчет](https://yandex.ru/support/marketplace/ru/storage/logistics#remains-history)  {% note warning \"Когда использовать этот метод\" %}  Метод актуален:  * для моделей FBY и LaaS; * для моделей FBS, DBS и Экспресс, если в кабинете есть группы складов.  Если в кабинете нет групп складов и вы работаете с моделями FBS, DBS или Экспресс, используйте метод POST v3/businesses/{businessId}/reports/stocks/generate. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  **Какая информация вернется:**  * Для моделей FBY и LaaS, если указать `campaignId`, — об остатках на складах Маркета. * Для остальных моделей, если указать `campaignId`, — об остатках на соответствующем складе магазина. * Для остальных моделей, если указать `businessId`, — об остатках на всех складах магазинов в кабинете, кроме FBY и LaaS. Используйте фильтр `campaignIds`, чтобы указать определенные магазины.  ⚠️ Не передавайте одновременно `campaignId` и `businessId`.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - Склад Маркета    {% include notitle reports %}  - Склад магазина    {% include notitle reports %}  - Все склады магазинов в кабинете, кроме FBY и LaaS    {% include notitle reports %}  {% endlist %}  {% include notitle limit %}
      * Отчет по остаткам на складах
      */
     generateStocksOnWarehousesReportRaw(requestParameters, initOverrides) {
@@ -476,7 +650,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/generateStocksOnWarehousesReport.md) %}  Запускает генерацию отчета по остаткам на складах. [Что это за отчет](https://yandex.ru/support/marketplace/ru/storage/logistics#remains-history)  **Какая информация вернется:**  * Для моделей FBY и LaaS, если указать `campaignId`, — об остатках на складах Маркета. * Для остальных моделей, если указать `campaignId`, — об остатках на соответствующем складе магазина. * Для остальных моделей, если указать `businessId`, — об остатках на всех складах магазинов в кабинете, кроме FBY и LaaS. Используйте фильтр `campaignIds`, чтобы указать определенные магазины.  ⚠️ Не передавайте одновременно `campaignId` и `businessId`.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - Склад Маркета    {% include notitle [:no-translate[reports]](../../_auto/reports/stocks/stocks_on_warehouses.md) %}  - Склад магазина    {% include notitle [:no-translate[reports]](../../_auto/reports/offers/mass/mass_shared_stocks_business_csv_config.md) %}  - Все склады магазинов в кабинете, кроме FBY и LaaS    {% include notitle [:no-translate[reports]](../../_auto/reports/offers/stocks_business_config.md) %}  {% endlist %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/generateStocksOnWarehousesReport.md) %}
+     * {% include notitle access %}  Запускает генерацию отчета по остаткам на складах. [Что это за отчет](https://yandex.ru/support/marketplace/ru/storage/logistics#remains-history)  {% note warning \"Когда использовать этот метод\" %}  Метод актуален:  * для моделей FBY и LaaS; * для моделей FBS, DBS и Экспресс, если в кабинете есть группы складов.  Если в кабинете нет групп складов и вы работаете с моделями FBS, DBS или Экспресс, используйте метод POST v3/businesses/{businessId}/reports/stocks/generate. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  **Какая информация вернется:**  * Для моделей FBY и LaaS, если указать `campaignId`, — об остатках на складах Маркета. * Для остальных моделей, если указать `campaignId`, — об остатках на соответствующем складе магазина. * Для остальных моделей, если указать `businessId`, — об остатках на всех складах магазинов в кабинете, кроме FBY и LaaS. Используйте фильтр `campaignIds`, чтобы указать определенные магазины.  ⚠️ Не передавайте одновременно `campaignId` и `businessId`.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - Склад Маркета    {% include notitle reports %}  - Склад магазина    {% include notitle reports %}  - Все склады магазинов в кабинете, кроме FBY и LaaS    {% include notitle reports %}  {% endlist %}  {% include notitle limit %}
      * Отчет по остаткам на складах
      */
     generateStocksOnWarehousesReport(generateStocksOnWarehousesReportRequest, format, initOverrides) {
@@ -486,7 +660,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/generateUnitedMarketplaceServicesReport.md) %}  Запускает генерацию отчета по стоимости услуг за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/accounting/transactions#reports)  Тип отчета зависит от того, какие поля заполнены в запросе:  |**Тип отчета**               |**Какие поля нужны**             | |-----------------------------|---------------------------------| |По дате начисления услуги    |`dateFrom` и `dateTo`            | |По дате формирования акта    |`year` и `month`                 |  Заказать отчеты обоих типов одним запросом нельзя.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle [:no-translate[reports]](../../_auto/reports/united/services/generator/united_marketplace_services.md) %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/generateUnitedMarketplaceServicesReport.md) %}
+     * {% include notitle access %}  Запускает генерацию отчета по стоимости услуг за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/accounting/transactions#reports)  Тип отчета зависит от того, какие поля заполнены в запросе:  |**Тип отчета**               |**Какие поля нужны**             | |-----------------------------|---------------------------------| |По дате начисления услуги    |`dateFrom` и `dateTo`            | |По дате формирования акта    |`year` и `month`                 |  Заказать отчеты обоих типов одним запросом нельзя.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle limit %}
      * Отчет по стоимости услуг
      */
     generateUnitedMarketplaceServicesReportRaw(requestParameters, initOverrides) {
@@ -521,7 +695,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/generateUnitedMarketplaceServicesReport.md) %}  Запускает генерацию отчета по стоимости услуг за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/accounting/transactions#reports)  Тип отчета зависит от того, какие поля заполнены в запросе:  |**Тип отчета**               |**Какие поля нужны**             | |-----------------------------|---------------------------------| |По дате начисления услуги    |`dateFrom` и `dateTo`            | |По дате формирования акта    |`year` и `month`                 |  Заказать отчеты обоих типов одним запросом нельзя.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle [:no-translate[reports]](../../_auto/reports/united/services/generator/united_marketplace_services.md) %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/generateUnitedMarketplaceServicesReport.md) %}
+     * {% include notitle access %}  Запускает генерацию отчета по стоимости услуг за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/accounting/transactions#reports)  Тип отчета зависит от того, какие поля заполнены в запросе:  |**Тип отчета**               |**Какие поля нужны**             | |-----------------------------|---------------------------------| |По дате начисления услуги    |`dateFrom` и `dateTo`            | |По дате формирования акта    |`year` и `month`                 |  Заказать отчеты обоих типов одним запросом нельзя.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle limit %}
      * Отчет по стоимости услуг
      */
     generateUnitedMarketplaceServicesReport(generateUnitedMarketplaceServicesReportRequest, format, language, initOverrides) {
@@ -531,7 +705,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/generateUnitedReturnsReport.md) %}  Запускает генерацию сводного отчета по невыкупам и возвратам за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/orders/returns/logistic#rejected-orders)  Отчет содержит информацию о невыкупах и возвратах за указанный период, а также о тех, которые готовы к выдаче.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle [:no-translate[reports]](../../_auto/reports/united/returns/generator/united_returns.md) %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/generateUnitedReturnsReport.md) %}
+     * {% include notitle access %}  Запускает генерацию сводного отчета по невыкупам и возвратам за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/orders/returns/logistic#rejected-orders)  Отчет содержит информацию о невыкупах и возвратах за указанный период, а также о тех, которые готовы к выдаче.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
      * Отчет по невыкупам и возвратам
      */
     generateUnitedReturnsReportRaw(requestParameters, initOverrides) {
@@ -563,7 +737,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/generateUnitedReturnsReport.md) %}  Запускает генерацию сводного отчета по невыкупам и возвратам за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/orders/returns/logistic#rejected-orders)  Отчет содержит информацию о невыкупах и возвратах за указанный период, а также о тех, которые готовы к выдаче.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle [:no-translate[reports]](../../_auto/reports/united/returns/generator/united_returns.md) %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/generateUnitedReturnsReport.md) %}
+     * {% include notitle access %}  Запускает генерацию сводного отчета по невыкупам и возвратам за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/orders/returns/logistic#rejected-orders)  Отчет содержит информацию о невыкупах и возвратах за указанный период, а также о тех, которые готовы к выдаче.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
      * Отчет по невыкупам и возвратам
      */
     generateUnitedReturnsReport(generateUnitedReturnsRequest, format, initOverrides) {
@@ -573,7 +747,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getAuthTokenInfo.md) %}  {% note info \"Метод доступен только для Api-Key-токена.\" %}     {% endnote %}  Возвращает информацию о переданном токене авторизации.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getAuthTokenInfo.md) %}
+     * {% include notitle access %}  {% note info \"Метод доступен только для Api-Key-токена.\" %}     {% endnote %}  Возвращает информацию о переданном токене авторизации.  {% include notitle limit %}
      * Получение информации о токене авторизации
      */
     getAuthTokenInfoRaw(initOverrides) {
@@ -597,7 +771,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getAuthTokenInfo.md) %}  {% note info \"Метод доступен только для Api-Key-токена.\" %}     {% endnote %}  Возвращает информацию о переданном токене авторизации.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getAuthTokenInfo.md) %}
+     * {% include notitle access %}  {% note info \"Метод доступен только для Api-Key-токена.\" %}     {% endnote %}  Возвращает информацию о переданном токене авторизации.  {% include notitle limit %}
      * Получение информации о токене авторизации
      */
     getAuthTokenInfo(initOverrides) {
@@ -607,7 +781,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getBusinessOrders.md) %}  Возвращает информацию о заказах в кабинете. Запрос можно использовать для отслеживания заказов и их статусов.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый заказ или изменится его статус. А полную информацию можно получить с помощью этого метода.  {#T}  {% endnote %}  Доступна фильтрация по параметрам:  * дата оформления заказа;  * дата и время обновления заказа;  * дата отгрузки;  * статусы заказов (`statuses`);  * этапы обработки или причины отмены (`substatuses`);  * идентификаторы кампаний;  * идентификаторы заказов;  * внешние идентификаторы заказов;  * тип заказа (настоящий или тестовый);  * модели размещения;  * наличие запросов от покупателей на отмену заказа.  Максимальный диапазон дат за один запрос — 30 дней (передается в параметрах `fromDate` и `toDate`). Если их не передать, возвращается информация за последние 30 дней.  Результаты возвращаются постранично. Для навигации используйте параметры `page_token` и `limit`.  Получить более подробную информацию о покупателе и его номере телефона можно с помощью запроса GET v2/campaigns/{campaignId}/orders/{orderId}/buyer.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getBusinessOrders.md) %}
+     * {% include notitle access %}  Возвращает информацию о заказах в кабинете. Запрос можно использовать для отслеживания заказов и их статусов.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый заказ или изменится его статус. А полную информацию можно получить с помощью этого метода.  {#T}  {% endnote %}  Доступна фильтрация по параметрам:  * дата оформления заказа;  * дата и время обновления заказа;  * дата отгрузки;  * статусы заказов (`statuses`);  * этапы обработки или причины отмены (`substatuses`);  * идентификаторы кампаний;  * идентификаторы заказов;  * внешние идентификаторы заказов;  * тип заказа (настоящий или тестовый);  * модели размещения;  * наличие запросов от покупателей на отмену заказа.  Максимальный диапазон дат за один запрос — 30 дней (передается в параметрах `fromDate` и `toDate`). Если их не передать, возвращается информация за последние 30 дней.  Результаты возвращаются постранично. Для навигации используйте параметры `pageToken` и `limit`.  Получить более подробную информацию о покупателе и его номере телефона можно с помощью запроса GET v2/campaigns/{campaignId}/orders/{orderId}/buyer.  {% include notitle limit %}
      * Информация о заказах в кабинете
      */
     getBusinessOrdersRaw(requestParameters, initOverrides) {
@@ -645,7 +819,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getBusinessOrders.md) %}  Возвращает информацию о заказах в кабинете. Запрос можно использовать для отслеживания заказов и их статусов.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый заказ или изменится его статус. А полную информацию можно получить с помощью этого метода.  {#T}  {% endnote %}  Доступна фильтрация по параметрам:  * дата оформления заказа;  * дата и время обновления заказа;  * дата отгрузки;  * статусы заказов (`statuses`);  * этапы обработки или причины отмены (`substatuses`);  * идентификаторы кампаний;  * идентификаторы заказов;  * внешние идентификаторы заказов;  * тип заказа (настоящий или тестовый);  * модели размещения;  * наличие запросов от покупателей на отмену заказа.  Максимальный диапазон дат за один запрос — 30 дней (передается в параметрах `fromDate` и `toDate`). Если их не передать, возвращается информация за последние 30 дней.  Результаты возвращаются постранично. Для навигации используйте параметры `page_token` и `limit`.  Получить более подробную информацию о покупателе и его номере телефона можно с помощью запроса GET v2/campaigns/{campaignId}/orders/{orderId}/buyer.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getBusinessOrders.md) %}
+     * {% include notitle access %}  Возвращает информацию о заказах в кабинете. Запрос можно использовать для отслеживания заказов и их статусов.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый заказ или изменится его статус. А полную информацию можно получить с помощью этого метода.  {#T}  {% endnote %}  Доступна фильтрация по параметрам:  * дата оформления заказа;  * дата и время обновления заказа;  * дата отгрузки;  * статусы заказов (`statuses`);  * этапы обработки или причины отмены (`substatuses`);  * идентификаторы кампаний;  * идентификаторы заказов;  * внешние идентификаторы заказов;  * тип заказа (настоящий или тестовый);  * модели размещения;  * наличие запросов от покупателей на отмену заказа.  Максимальный диапазон дат за один запрос — 30 дней (передается в параметрах `fromDate` и `toDate`). Если их не передать, возвращается информация за последние 30 дней.  Результаты возвращаются постранично. Для навигации используйте параметры `pageToken` и `limit`.  Получить более подробную информацию о покупателе и его номере телефона можно с помощью запроса GET v2/campaigns/{campaignId}/orders/{orderId}/buyer.  {% include notitle limit %}
      * Информация о заказах в кабинете
      */
     getBusinessOrders(businessId, getBusinessOrdersRequest, pageToken, limit, initOverrides) {
@@ -655,7 +829,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getBusinessSettings.md) %}  Возвращает информацию о настройках кабинета, идентификатор которого указан в запросе.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getBusinessSettings.md) %}
+     * {% include notitle access %}  Возвращает информацию о настройках кабинета, идентификатор которого указан в запросе.  {% include notitle limit %}
      * Настройки кабинета
      */
     getBusinessSettingsRaw(requestParameters, initOverrides) {
@@ -682,7 +856,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getBusinessSettings.md) %}  Возвращает информацию о настройках кабинета, идентификатор которого указан в запросе.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getBusinessSettings.md) %}
+     * {% include notitle access %}  Возвращает информацию о настройках кабинета, идентификатор которого указан в запросе.  {% include notitle limit %}
      * Настройки кабинета
      */
     getBusinessSettings(businessId, initOverrides) {
@@ -692,7 +866,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCampaign.md) %}  Возвращает информацию о магазине.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCampaign.md) %}
+     * {% include notitle access %}  Возвращает информацию о магазине.  {% include notitle limit %}
      * Информация о магазине
      */
     getCampaignRaw(requestParameters, initOverrides) {
@@ -719,7 +893,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCampaign.md) %}  Возвращает информацию о магазине.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCampaign.md) %}
+     * {% include notitle access %}  Возвращает информацию о магазине.  {% include notitle limit %}
      * Информация о магазине
      */
     getCampaign(campaignId, initOverrides) {
@@ -729,7 +903,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCampaignOffers.md) %}  Возвращает список товаров, которые размещены в заданном магазине. Для каждого товара указываются параметры размещения.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCampaignOffers.md) %}
+     * {% include notitle access %}  Возвращает список товаров, которые размещены в заданном магазине. Для каждого товара указываются параметры размещения.  {% include notitle limit %}
      * Информация о товарах, которые размещены в заданном магазине
      */
     getCampaignOffersRaw(requestParameters, initOverrides) {
@@ -767,7 +941,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCampaignOffers.md) %}  Возвращает список товаров, которые размещены в заданном магазине. Для каждого товара указываются параметры размещения.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCampaignOffers.md) %}
+     * {% include notitle access %}  Возвращает список товаров, которые размещены в заданном магазине. Для каждого товара указываются параметры размещения.  {% include notitle limit %}
      * Информация о товарах, которые размещены в заданном магазине
      */
     getCampaignOffers(campaignId, getCampaignOffersRequest, pageToken, limit, initOverrides) {
@@ -777,7 +951,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCampaignSettings.md) %}  Возвращает информацию о настройках магазина, идентификатор которого указан в запросе.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCampaignSettings.md) %}
+     * {% include notitle access %}  Возвращает информацию о настройках магазина, идентификатор которого указан в запросе.  {% include notitle limit %}
      * Настройки магазина
      */
     getCampaignSettingsRaw(requestParameters, initOverrides) {
@@ -804,7 +978,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCampaignSettings.md) %}  Возвращает информацию о настройках магазина, идентификатор которого указан в запросе.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCampaignSettings.md) %}
+     * {% include notitle access %}  Возвращает информацию о настройках магазина, идентификатор которого указан в запросе.  {% include notitle limit %}
      * Настройки магазина
      */
     getCampaignSettings(campaignId, initOverrides) {
@@ -814,12 +988,18 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCampaigns.md) %}  **Для Api-Key-токена:** возвращает список магазинов в кабинете, для которого выдан токен. Нельзя получить список только подагентских магазинов.  **Для OAuth-токена:** возвращает список магазинов, к которым имеет доступ пользователь — владелец токена авторизации, использованного в запросе. Для агентских пользователей список состоит из подагентских магазинов.  {% note warning \"Ограничение для параметра `pageSize`\" %}  Не передавайте значение больше 100.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCampaigns.md) %}
+     * {% include notitle access %}  **Для Api-Key-токена:** возвращает список магазинов в кабинете, для которого выдан токен. Нельзя получить список только подагентских магазинов.  **Для OAuth-токена:** возвращает список магазинов, к которым имеет доступ пользователь — владелец токена авторизации, использованного в запросе. Для агентских пользователей список состоит из подагентских магазинов.  {% note warning \"Ограничение для параметра `pageSize`\" %}  Не передавайте значение больше 100.  {% endnote %}  {% include notitle limit %}
      * Список магазинов пользователя
      */
     getCampaignsRaw(requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function* () {
             const queryParameters = {};
+            if (requestParameters['pageToken'] != null) {
+                queryParameters['pageToken'] = requestParameters['pageToken'];
+            }
+            if (requestParameters['limit'] != null) {
+                queryParameters['limit'] = requestParameters['limit'];
+            }
             if (requestParameters['page'] != null) {
                 queryParameters['page'] = requestParameters['page'];
             }
@@ -844,17 +1024,17 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCampaigns.md) %}  **Для Api-Key-токена:** возвращает список магазинов в кабинете, для которого выдан токен. Нельзя получить список только подагентских магазинов.  **Для OAuth-токена:** возвращает список магазинов, к которым имеет доступ пользователь — владелец токена авторизации, использованного в запросе. Для агентских пользователей список состоит из подагентских магазинов.  {% note warning \"Ограничение для параметра `pageSize`\" %}  Не передавайте значение больше 100.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCampaigns.md) %}
+     * {% include notitle access %}  **Для Api-Key-токена:** возвращает список магазинов в кабинете, для которого выдан токен. Нельзя получить список только подагентских магазинов.  **Для OAuth-токена:** возвращает список магазинов, к которым имеет доступ пользователь — владелец токена авторизации, использованного в запросе. Для агентских пользователей список состоит из подагентских магазинов.  {% note warning \"Ограничение для параметра `pageSize`\" %}  Не передавайте значение больше 100.  {% endnote %}  {% include notitle limit %}
      * Список магазинов пользователя
      */
-    getCampaigns(page, pageSize, initOverrides) {
+    getCampaigns(pageToken, limit, page, pageSize, initOverrides) {
         return __awaiter(this, void 0, void 0, function* () {
-            const response = yield this.getCampaignsRaw({ page: page, pageSize: pageSize }, initOverrides);
+            const response = yield this.getCampaignsRaw({ pageToken: pageToken, limit: limit, page: page, pageSize: pageSize }, initOverrides);
             return yield response.value();
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCategoriesTree.md) %}  Возвращает дерево категорий Маркета.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCategoriesTree.md) %}
+     * {% include notitle access %}  Возвращает дерево категорий Маркета.  {% include notitle limit %}
      * Дерево категорий
      */
     getCategoriesTreeRaw(requestParameters, initOverrides) {
@@ -880,7 +1060,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCategoriesTree.md) %}  Возвращает дерево категорий Маркета.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCategoriesTree.md) %}
+     * {% include notitle access %}  Возвращает дерево категорий Маркета.  {% include notitle limit %}
      * Дерево категорий
      */
     getCategoriesTree(getCategoriesRequest, initOverrides) {
@@ -890,7 +1070,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCategoryContentParameters.md) %}  Возвращает список характеристик с допустимыми значениями для заданной [листовой категории](*list-category).  Поля в ответе определяют правила передачи характеристики в методах: - POST v2/businesses/{businessId}/offer-mappings/update - POST v2/businesses/{businessId}/offer-cards/update  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCategoryContentParameters.md) %}
+     * {% include notitle access %}  Возвращает список характеристик с допустимыми значениями для заданной [листовой категории](*list-category).  Поля в ответе определяют правила передачи характеристики в методах: - POST v2/businesses/{businessId}/offer-mappings/update - POST v2/businesses/{businessId}/offer-cards/update  {% include notitle limit %}
      * Списки характеристик товаров по категориям
      */
     getCategoryContentParametersRaw(requestParameters, initOverrides) {
@@ -920,7 +1100,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCategoryContentParameters.md) %}  Возвращает список характеристик с допустимыми значениями для заданной [листовой категории](*list-category).  Поля в ответе определяют правила передачи характеристики в методах: - POST v2/businesses/{businessId}/offer-mappings/update - POST v2/businesses/{businessId}/offer-cards/update  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCategoryContentParameters.md) %}
+     * {% include notitle access %}  Возвращает список характеристик с допустимыми значениями для заданной [листовой категории](*list-category).  Поля в ответе определяют правила передачи характеристики в методах: - POST v2/businesses/{businessId}/offer-mappings/update - POST v2/businesses/{businessId}/offer-cards/update  {% include notitle limit %}
      * Списки характеристик товаров по категориям
      */
     getCategoryContentParameters(categoryId, businessId, initOverrides) {
@@ -930,7 +1110,97 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getDefaultPrices.md) %}  Возвращает список цен, которые вы установили для всех магазинов любым способом. Например, через API или с помощью Excel-шаблона.  О способах установки цен читайте [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/assortment/operations/prices.html).  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getDefaultPrices.md) %}
+     * {% include notitle access %}  Возвращает размерные сетки и обмеры, из которых можно составить таблицу размеров для указанной размерной характеристики. Их идентификаторы передаются в `sizeChartId` ячеек в методах создания и обновления таблиц размеров `POST v2/businesses/{businessId}/size-tables/create` и `POST v2/businesses/{businessId}/size-tables/update`.  В список входят:  * стандартные размерные сетки Маркета — значения в них выбираются из справочника `sizeValues`; * размерные сетки, значения в которых задаются текстом; * обмеры — значения в них тоже задаются текстом.  Брендовые размерные сетки в список не входят, и использовать их в своих таблицах нельзя: для них возвращается ошибка `UNKNOWN_SIZE_CHART`.  Обязательные размерные сетки отмечены `required: true`. В таблице должна быть хотя бы одна из них, а каждую обязательную сетку в таблице нужно заполнить во всех строках.  Для неизвестного идентификатора размерной характеристики возвращается ошибка `UNKNOWN_SIZE_PARAMETER`.  {% include notitle limit %}
+     * Размерные сетки и обмеры для таблиц размеров
+     */
+    getContentSizeChartsRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters['businessId'] == null) {
+                throw new runtime.RequiredError('businessId', 'Required parameter "businessId" was null or undefined when calling getContentSizeCharts().');
+            }
+            if (requestParameters['getSizeChartsRequest'] == null) {
+                throw new runtime.RequiredError('getSizeChartsRequest', 'Required parameter "getSizeChartsRequest" was null or undefined when calling getContentSizeCharts().');
+            }
+            const queryParameters = {};
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.apiKey) {
+                headerParameters["Api-Key"] = yield this.configuration.apiKey("Api-Key"); // ApiKey authentication
+            }
+            if (this.configuration && this.configuration.accessToken) {
+                // oauth required
+                headerParameters["Authorization"] = yield this.configuration.accessToken("OAuth", ["market:partner-api"]);
+            }
+            const response = yield this.request({
+                path: `/v2/businesses/{businessId}/size-tables/charts`.replace(`{${"businessId"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: (0, index_1.GetSizeChartsRequestToJSON)(requestParameters['getSizeChartsRequest']),
+            }, initOverrides);
+            return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetSizeChartsResponseFromJSON)(jsonValue));
+        });
+    }
+    /**
+     * {% include notitle access %}  Возвращает размерные сетки и обмеры, из которых можно составить таблицу размеров для указанной размерной характеристики. Их идентификаторы передаются в `sizeChartId` ячеек в методах создания и обновления таблиц размеров `POST v2/businesses/{businessId}/size-tables/create` и `POST v2/businesses/{businessId}/size-tables/update`.  В список входят:  * стандартные размерные сетки Маркета — значения в них выбираются из справочника `sizeValues`; * размерные сетки, значения в которых задаются текстом; * обмеры — значения в них тоже задаются текстом.  Брендовые размерные сетки в список не входят, и использовать их в своих таблицах нельзя: для них возвращается ошибка `UNKNOWN_SIZE_CHART`.  Обязательные размерные сетки отмечены `required: true`. В таблице должна быть хотя бы одна из них, а каждую обязательную сетку в таблице нужно заполнить во всех строках.  Для неизвестного идентификатора размерной характеристики возвращается ошибка `UNKNOWN_SIZE_PARAMETER`.  {% include notitle limit %}
+     * Размерные сетки и обмеры для таблиц размеров
+     */
+    getContentSizeCharts(businessId, getSizeChartsRequest, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.getContentSizeChartsRaw({ businessId: businessId, getSizeChartsRequest: getSizeChartsRequest }, initOverrides);
+            return yield response.value();
+        });
+    }
+    /**
+     * {% include notitle access %}  Возвращает таблицы размеров по их идентификаторам. Идентификаторы возвращает метод подбора таблиц размеров. Если `sizeTableIds` не передан, возвращает все таблицы размеров, созданные бизнесом.  Сначала возвращаются созданные бизнесом, затем брендовые, затем стандартные таблицы; внутри каждой группы — по убыванию идентификатора.  Результаты возвращаются постранично. Для навигации используйте параметры `pageToken` и `limit`. В каждом следующем запросе передавайте тот же набор `sizeTableIds`, что и в первом: `pageToken` привязан к нему, и с другим набором запрос будет отклонен. Порядок идентификаторов значения не имеет.  Идентификаторы, по которым таблицу вернуть не удалось — такой таблицы нет или она принадлежит другому бизнесу, — возвращаются в `notFoundSizeTableIds` на первой странице.  {% include notitle limit %}
+     * Таблицы размеров по идентификаторам
+     */
+    getContentSizeTablesRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters['businessId'] == null) {
+                throw new runtime.RequiredError('businessId', 'Required parameter "businessId" was null or undefined when calling getContentSizeTables().');
+            }
+            if (requestParameters['getSizeTablesRequest'] == null) {
+                throw new runtime.RequiredError('getSizeTablesRequest', 'Required parameter "getSizeTablesRequest" was null or undefined when calling getContentSizeTables().');
+            }
+            const queryParameters = {};
+            if (requestParameters['pageToken'] != null) {
+                queryParameters['pageToken'] = requestParameters['pageToken'];
+            }
+            if (requestParameters['limit'] != null) {
+                queryParameters['limit'] = requestParameters['limit'];
+            }
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.apiKey) {
+                headerParameters["Api-Key"] = yield this.configuration.apiKey("Api-Key"); // ApiKey authentication
+            }
+            if (this.configuration && this.configuration.accessToken) {
+                // oauth required
+                headerParameters["Authorization"] = yield this.configuration.accessToken("OAuth", ["market:partner-api"]);
+            }
+            const response = yield this.request({
+                path: `/v2/businesses/{businessId}/size-tables`.replace(`{${"businessId"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: (0, index_1.GetSizeTablesRequestToJSON)(requestParameters['getSizeTablesRequest']),
+            }, initOverrides);
+            return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetSizeTablesResponseFromJSON)(jsonValue));
+        });
+    }
+    /**
+     * {% include notitle access %}  Возвращает таблицы размеров по их идентификаторам. Идентификаторы возвращает метод подбора таблиц размеров. Если `sizeTableIds` не передан, возвращает все таблицы размеров, созданные бизнесом.  Сначала возвращаются созданные бизнесом, затем брендовые, затем стандартные таблицы; внутри каждой группы — по убыванию идентификатора.  Результаты возвращаются постранично. Для навигации используйте параметры `pageToken` и `limit`. В каждом следующем запросе передавайте тот же набор `sizeTableIds`, что и в первом: `pageToken` привязан к нему, и с другим набором запрос будет отклонен. Порядок идентификаторов значения не имеет.  Идентификаторы, по которым таблицу вернуть не удалось — такой таблицы нет или она принадлежит другому бизнесу, — возвращаются в `notFoundSizeTableIds` на первой странице.  {% include notitle limit %}
+     * Таблицы размеров по идентификаторам
+     */
+    getContentSizeTables(businessId, getSizeTablesRequest, pageToken, limit, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.getContentSizeTablesRaw({ businessId: businessId, getSizeTablesRequest: getSizeTablesRequest, pageToken: pageToken, limit: limit }, initOverrides);
+            return yield response.value();
+        });
+    }
+    /**
+     * {% include notitle access %}  Возвращает список цен, которые вы установили для всех магазинов любым способом. Например, через API или с помощью Excel-шаблона.  О способах установки цен читайте [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/assortment/operations/prices.html).  {% include notitle limit %}
      * Просмотр цен на указанные товары во всех магазинах
      */
     getDefaultPricesRaw(requestParameters, initOverrides) {
@@ -965,7 +1235,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getDefaultPrices.md) %}  Возвращает список цен, которые вы установили для всех магазинов любым способом. Например, через API или с помощью Excel-шаблона.  О способах установки цен читайте [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/assortment/operations/prices.html).  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getDefaultPrices.md) %}
+     * {% include notitle access %}  Возвращает список цен, которые вы установили для всех магазинов любым способом. Например, через API или с помощью Excel-шаблона.  О способах установки цен читайте [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/assortment/operations/prices.html).  {% include notitle limit %}
      * Просмотр цен на указанные товары во всех магазинах
      */
     getDefaultPrices(businessId, pageToken, limit, getDefaultPricesRequest, initOverrides) {
@@ -975,7 +1245,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getDeliveryOptions.md) %}  Возвращает список вариантов для доставки заказов. Выберите подходящий вариант доставки из ответа и передайте его при создании заказа.  Укажите `courierDelivery` для курьерской доставки или `pickupDelivery` для доставки в пункт выдачи. Не передавайте оба параметра одновременно.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getDeliveryOptions.md) %}
+     * {% include notitle access %}  Возвращает список вариантов для доставки заказов. Выберите подходящий вариант доставки из ответа и передайте его при создании заказа.  Укажите `courierDelivery` для курьерской доставки или `pickupDelivery` для доставки в пункт выдачи. Не передавайте оба параметра одновременно.  {% include notitle limit %}
      * Получение доступных вариантов доставки заказов
      */
     getDeliveryOptionsRaw(requestParameters, initOverrides) {
@@ -1007,7 +1277,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getDeliveryOptions.md) %}  Возвращает список вариантов для доставки заказов. Выберите подходящий вариант доставки из ответа и передайте его при создании заказа.  Укажите `courierDelivery` для курьерской доставки или `pickupDelivery` для доставки в пункт выдачи. Не передавайте оба параметра одновременно.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getDeliveryOptions.md) %}
+     * {% include notitle access %}  Возвращает список вариантов для доставки заказов. Выберите подходящий вариант доставки из ответа и передайте его при создании заказа.  Укажите `courierDelivery` для курьерской доставки или `pickupDelivery` для доставки в пункт выдачи. Не передавайте оба параметра одновременно.  {% include notitle limit %}
      * Получение доступных вариантов доставки заказов
      */
     getDeliveryOptions(campaignId, getDeliveryOptionsRequest, initOverrides) {
@@ -1017,7 +1287,55 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getFulfillmentWarehouses.md) %}  Возвращает список фулфилмент-складов Маркета с их идентификаторами.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getFulfillmentWarehouses.md) %}
+     * {% include notitle access %}  Возвращает страницу документов на товары с учетом переданных фильтров.  {% include notitle limit %}
+     * Получение документов
+     */
+    getDocumentsRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters['businessId'] == null) {
+                throw new runtime.RequiredError('businessId', 'Required parameter "businessId" was null or undefined when calling getDocuments().');
+            }
+            if (requestParameters['getDocumentsRequest'] == null) {
+                throw new runtime.RequiredError('getDocumentsRequest', 'Required parameter "getDocumentsRequest" was null or undefined when calling getDocuments().');
+            }
+            const queryParameters = {};
+            if (requestParameters['pageToken'] != null) {
+                queryParameters['pageToken'] = requestParameters['pageToken'];
+            }
+            if (requestParameters['limit'] != null) {
+                queryParameters['limit'] = requestParameters['limit'];
+            }
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.apiKey) {
+                headerParameters["Api-Key"] = yield this.configuration.apiKey("Api-Key"); // ApiKey authentication
+            }
+            if (this.configuration && this.configuration.accessToken) {
+                // oauth required
+                headerParameters["Authorization"] = yield this.configuration.accessToken("OAuth", ["market:partner-api"]);
+            }
+            const response = yield this.request({
+                path: `/v1/businesses/{businessId}/offers/documents`.replace(`{${"businessId"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: (0, index_1.GetDocumentsRequestToJSON)(requestParameters['getDocumentsRequest']),
+            }, initOverrides);
+            return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetDocumentsResponseFromJSON)(jsonValue));
+        });
+    }
+    /**
+     * {% include notitle access %}  Возвращает страницу документов на товары с учетом переданных фильтров.  {% include notitle limit %}
+     * Получение документов
+     */
+    getDocuments(businessId, getDocumentsRequest, pageToken, limit, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.getDocumentsRaw({ businessId: businessId, getDocumentsRequest: getDocumentsRequest, pageToken: pageToken, limit: limit }, initOverrides);
+            return yield response.value();
+        });
+    }
+    /**
+     * {% include notitle access %}  Возвращает список фулфилмент-складов Маркета с их идентификаторами.  {% include notitle limit %}
      * Идентификаторы фулфилмент-складов Маркета
      */
     getFulfillmentWarehousesRaw(requestParameters, initOverrides) {
@@ -1044,7 +1362,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getFulfillmentWarehouses.md) %}  Возвращает список фулфилмент-складов Маркета с их идентификаторами.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getFulfillmentWarehouses.md) %}
+     * {% include notitle access %}  Возвращает список фулфилмент-складов Маркета с их идентификаторами.  {% include notitle limit %}
      * Идентификаторы фулфилмент-складов Маркета
      */
     getFulfillmentWarehouses(campaignId, initOverrides) {
@@ -1054,7 +1372,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getLogisticPoints.md) %}  Возвращает список пунктов выдачи заказов Маркета.  Регулярно запрашивайте эту информацию, чтобы в системе магазина хранить актуальные данные. Например, раз в день.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getLogisticPoints.md) %}
+     * {% include notitle access %}  Возвращает список пунктов выдачи заказов Маркета.  Регулярно запрашивайте эту информацию, чтобы в системе магазина хранить актуальные данные. Например, раз в день.  {% include notitle limit %}
      * Получение точек ПВЗ Маркета
      */
     getLogisticPointsRaw(requestParameters, initOverrides) {
@@ -1087,7 +1405,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getLogisticPoints.md) %}  Возвращает список пунктов выдачи заказов Маркета.  Регулярно запрашивайте эту информацию, чтобы в системе магазина хранить актуальные данные. Например, раз в день.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getLogisticPoints.md) %}
+     * {% include notitle access %}  Возвращает список пунктов выдачи заказов Маркета.  Регулярно запрашивайте эту информацию, чтобы в системе магазина хранить актуальные данные. Например, раз в день.  {% include notitle limit %}
      * Получение точек ПВЗ Маркета
      */
     getLogisticPoints(businessId, pageToken, limit, initOverrides) {
@@ -1097,7 +1415,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOfferCardsContentStatus.md) %}  Возвращает сведения о состоянии контента для заданных товаров:  * создана ли карточка товара и в каком она статусе; * рейтинг карточки — на сколько процентов она заполнена; * переданные характеристики товаров; * есть ли ошибки или предупреждения, связанные с контентом; * рекомендации по заполнению карточки.  Чтобы получить другие характеристики товаров, воспользуйтесь методом POST v2/businesses/{businessId}/offer-mappings.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOfferCardsContentStatus.md) %}
+     * {% include notitle access %}  Возвращает сведения о состоянии контента для заданных товаров:  * создана ли карточка товара и в каком она статусе; * рейтинг карточки — на сколько процентов она заполнена; * переданные характеристики товаров; * есть ли ошибки или предупреждения, связанные с контентом; * рекомендации по заполнению карточки.  Чтобы получить другие характеристики товаров, воспользуйтесь методом POST v2/businesses/{businessId}/offer-mappings.  {% include notitle limit %}
      * Получение информации о заполненности карточек магазина
      */
     getOfferCardsContentStatusRaw(requestParameters, initOverrides) {
@@ -1132,7 +1450,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOfferCardsContentStatus.md) %}  Возвращает сведения о состоянии контента для заданных товаров:  * создана ли карточка товара и в каком она статусе; * рейтинг карточки — на сколько процентов она заполнена; * переданные характеристики товаров; * есть ли ошибки или предупреждения, связанные с контентом; * рекомендации по заполнению карточки.  Чтобы получить другие характеристики товаров, воспользуйтесь методом POST v2/businesses/{businessId}/offer-mappings.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOfferCardsContentStatus.md) %}
+     * {% include notitle access %}  Возвращает сведения о состоянии контента для заданных товаров:  * создана ли карточка товара и в каком она статусе; * рейтинг карточки — на сколько процентов она заполнена; * переданные характеристики товаров; * есть ли ошибки или предупреждения, связанные с контентом; * рекомендации по заполнению карточки.  Чтобы получить другие характеристики товаров, воспользуйтесь методом POST v2/businesses/{businessId}/offer-mappings.  {% include notitle limit %}
      * Получение информации о заполненности карточек магазина
      */
     getOfferCardsContentStatus(businessId, pageToken, limit, getOfferCardsContentStatusRequest, initOverrides) {
@@ -1142,7 +1460,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOfferMappings.md) %}  Возвращает список товаров в каталоге, их категории на Маркете и характеристики каждого товара.  Можно использовать тремя способами: * задать список интересующих SKU; * задать фильтр — в этом случае результаты возвращаются постранично; * не передавать тело запроса, чтобы получить список всех товаров в каталоге.  Чтобы получить категорийные характеристики товаров, воспользуйтесь методом POST v2/businesses/{businessId}/offer-cards.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOfferMappings.md) %}
+     * {% include notitle access %}  Возвращает список товаров в каталоге, их категории на Маркете и характеристики каждого товара.  Можно использовать тремя способами: * задать список интересующих SKU; * задать фильтр — в этом случае результаты возвращаются постранично; * не передавать тело запроса, чтобы получить список всех товаров в каталоге.  Чтобы получить категорийные характеристики товаров, воспользуйтесь методом POST v2/businesses/{businessId}/offer-cards.  {% include notitle limit %}
      * Информация о товарах в каталоге
      */
     getOfferMappingsRaw(requestParameters, initOverrides) {
@@ -1180,7 +1498,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOfferMappings.md) %}  Возвращает список товаров в каталоге, их категории на Маркете и характеристики каждого товара.  Можно использовать тремя способами: * задать список интересующих SKU; * задать фильтр — в этом случае результаты возвращаются постранично; * не передавать тело запроса, чтобы получить список всех товаров в каталоге.  Чтобы получить категорийные характеристики товаров, воспользуйтесь методом POST v2/businesses/{businessId}/offer-cards.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOfferMappings.md) %}
+     * {% include notitle access %}  Возвращает список товаров в каталоге, их категории на Маркете и характеристики каждого товара.  Можно использовать тремя способами: * задать список интересующих SKU; * задать фильтр — в этом случае результаты возвращаются постранично; * не передавать тело запроса, чтобы получить список всех товаров в каталоге.  Чтобы получить категорийные характеристики товаров, воспользуйтесь методом POST v2/businesses/{businessId}/offer-cards.  {% include notitle limit %}
      * Информация о товарах в каталоге
      */
     getOfferMappings(businessId, pageToken, limit, language, getOfferMappingsRequest, initOverrides) {
@@ -1190,7 +1508,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOperations.md) %}  Возвращает статусы запущенных операций по их идентификаторам.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOperations.md) %}
+     * {% include notitle access %}  Возвращает статусы запущенных операций по их идентификаторам.  {% include notitle limit %}
      * Получение статусов операций
      */
     getOperationsRaw(requestParameters, initOverrides) {
@@ -1222,7 +1540,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOperations.md) %}  Возвращает статусы запущенных операций по их идентификаторам.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOperations.md) %}
+     * {% include notitle access %}  Возвращает статусы запущенных операций по их идентификаторам.  {% include notitle limit %}
      * Получение статусов операций
      */
     getOperations(businessId, getOperationsRequest, initOverrides) {
@@ -1232,7 +1550,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOrder.md) %}  {% note warning \"Какой метод использовать вместо устаревшего\" %}  POST v1/businesses/{businessId}/orders  {% endnote %}  Возвращает информацию о заказе в магазине.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый заказ или изменится его статус. А полную информацию можно получить с помощью метода POST v1/businesses/{businessId}/orders.  {#T}  {% endnote %}  Получить более подробную информацию о покупателе и его номере телефона можно с помощью запроса GET v2/campaigns/{campaignId}/orders/{orderId}/buyer.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOrder.md) %}
+     * {% include notitle access %}  Возвращает информацию о заказе в магазине.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый заказ или изменится его статус. А полную информацию можно получить с помощью метода POST v1/businesses/{businessId}/orders.  {#T}  {% endnote %}  Получить более подробную информацию о покупателе и его номере телефона можно с помощью запроса GET v2/campaigns/{campaignId}/orders/{orderId}/buyer.  {% include notitle limit %}
      * Информация об одном заказе в магазине
      * @deprecated
      */
@@ -1263,7 +1581,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOrder.md) %}  {% note warning \"Какой метод использовать вместо устаревшего\" %}  POST v1/businesses/{businessId}/orders  {% endnote %}  Возвращает информацию о заказе в магазине.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый заказ или изменится его статус. А полную информацию можно получить с помощью метода POST v1/businesses/{businessId}/orders.  {#T}  {% endnote %}  Получить более подробную информацию о покупателе и его номере телефона можно с помощью запроса GET v2/campaigns/{campaignId}/orders/{orderId}/buyer.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOrder.md) %}
+     * {% include notitle access %}  Возвращает информацию о заказе в магазине.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый заказ или изменится его статус. А полную информацию можно получить с помощью метода POST v1/businesses/{businessId}/orders.  {#T}  {% endnote %}  Получить более подробную информацию о покупателе и его номере телефона можно с помощью запроса GET v2/campaigns/{campaignId}/orders/{orderId}/buyer.  {% include notitle limit %}
      * Информация об одном заказе в магазине
      * @deprecated
      */
@@ -1274,7 +1592,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOrderIdentifiersStatus.md) %}  Возвращает статусы проверки кодов маркировки в заказе.  Заказ, в котором есть ювелирные изделия или товары с обязательной маркировкой в системе [:no-translate[«Честный ЗНАК»]](https://честныйзнак.рф/), можно перевести в статус `READY_TO_SHIP`, только когда:  1. В методе PUT v2/campaigns/{campaignId}/orders/{orderId}/boxes вы передадите Маркету:      * [УИНы](:no-translate[*uin]) по каждому ювелирному изделию в заказе;      * коды маркировки в системе :no-translate[«Честный ЗНАК»] по всем товарам в заказе, для которых она обязательна. 2. Все коды маркировки успешно пройдут проверку.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOrderIdentifiersStatus.md) %}
+     * {% include notitle access %}  Возвращает статусы проверки кодов маркировки в заказе.  Заказ, в котором есть ювелирные изделия или товары с обязательной маркировкой в системе [«Честный ЗНАК»](https://честныйзнак.рф/), можно перевести в статус `READY_TO_SHIP`, только когда:  1. В методе PUT v2/campaigns/{campaignId}/orders/{orderId}/boxes вы передадите Маркету:      * [УИНы](:no-translate[*uin]) по каждому ювелирному изделию в заказе;      * коды маркировки в системе :no-translate[«Честный ЗНАК»] по всем товарам в заказе, для которых она обязательна. 2. Все коды маркировки успешно пройдут проверку.  {% include notitle limit %}
      * Статусы проверки кодов маркировки
      */
     getOrderIdentifiersStatusRaw(requestParameters, initOverrides) {
@@ -1304,7 +1622,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOrderIdentifiersStatus.md) %}  Возвращает статусы проверки кодов маркировки в заказе.  Заказ, в котором есть ювелирные изделия или товары с обязательной маркировкой в системе [:no-translate[«Честный ЗНАК»]](https://честныйзнак.рф/), можно перевести в статус `READY_TO_SHIP`, только когда:  1. В методе PUT v2/campaigns/{campaignId}/orders/{orderId}/boxes вы передадите Маркету:      * [УИНы](:no-translate[*uin]) по каждому ювелирному изделию в заказе;      * коды маркировки в системе :no-translate[«Честный ЗНАК»] по всем товарам в заказе, для которых она обязательна. 2. Все коды маркировки успешно пройдут проверку.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOrderIdentifiersStatus.md) %}
+     * {% include notitle access %}  Возвращает статусы проверки кодов маркировки в заказе.  Заказ, в котором есть ювелирные изделия или товары с обязательной маркировкой в системе [«Честный ЗНАК»](https://честныйзнак.рф/), можно перевести в статус `READY_TO_SHIP`, только когда:  1. В методе PUT v2/campaigns/{campaignId}/orders/{orderId}/boxes вы передадите Маркету:      * [УИНы](:no-translate[*uin]) по каждому ювелирному изделию в заказе;      * коды маркировки в системе :no-translate[«Честный ЗНАК»] по всем товарам в заказе, для которых она обязательна. 2. Все коды маркировки успешно пройдут проверку.  {% include notitle limit %}
      * Статусы проверки кодов маркировки
      */
     getOrderIdentifiersStatus(campaignId, orderId, initOverrides) {
@@ -1314,7 +1632,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOrderUpdateOptions.md) %}  Возвращает список доступных интервалов для изменения даты и времени курьерской доставки.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOrderUpdateOptions.md) %}
+     * {% include notitle access %}  Возвращает список доступных интервалов для изменения даты и времени курьерской доставки.  {% include notitle limit %}
      * Получение временных интервалов для изменения заказа
      */
     getOrderUpdateOptionsRaw(requestParameters, initOverrides) {
@@ -1346,7 +1664,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOrderUpdateOptions.md) %}  Возвращает список доступных интервалов для изменения даты и времени курьерской доставки.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOrderUpdateOptions.md) %}
+     * {% include notitle access %}  Возвращает список доступных интервалов для изменения даты и времени курьерской доставки.  {% include notitle limit %}
      * Получение временных интервалов для изменения заказа
      */
     getOrderUpdateOptions(campaignId, getOrderUpdateOptionsRequest, initOverrides) {
@@ -1356,7 +1674,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOrders.md) %}  {% note warning \"Какой метод использовать вместо устаревшего\" %}  POST v1/businesses/{businessId}/orders  {% endnote %}  Возвращает информацию о заказах в магазине. Запрос можно использовать для отслеживания заказов и их статусов.  По умолчанию данные о тестовых заказах не приходят. Чтобы их получить, передайте значение `true` в параметре `fake`.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый заказ или изменится его статус. А полную информацию можно получить с помощью метода POST v1/businesses/{businessId}/orders.  {#T}  {% endnote %}  Доступна фильтрация по параметрам:  * дата оформления заказа;  * дата и время обновления заказа;  * дата отгрузки;  * статусы заказов (`statuses`);  * этапы обработки или причины отмены (`substatuses`);  * идентификаторы заказов;  * тип заказа (настоящий или тестовый).  Не возвращается информация о заказах, которые доставили или отменили больше 30 дней назад. Как ее получить:  * POST v1/businesses/{businessId}/orders; * POST v2/campaigns/{campaignId}/stats/orders.  Максимальный диапазон дат за один запрос — 30 дней (передается в параметрах `fromDate` и `toDate`). Если их не передать, возвращается информация за последние 30 дней.  Результаты возвращаются постранично. Для навигации используйте параметры `page_token` и `limit`.  Получить более подробную информацию о покупателе и его номере телефона можно с помощью запроса GET v2/campaigns/{campaignId}/orders/{orderId}/buyer.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOrders.md) %}
+     * {% include notitle access %}  Возвращает информацию о заказах в магазине. Запрос можно использовать для отслеживания заказов и их статусов.  По умолчанию данные о тестовых заказах не приходят. Чтобы их получить, передайте значение `true` в параметре `fake`.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый заказ или изменится его статус. А полную информацию можно получить с помощью метода POST v1/businesses/{businessId}/orders.  {#T}  {% endnote %}  Доступна фильтрация по параметрам:  * дата оформления заказа;  * дата и время обновления заказа;  * дата отгрузки;  * статусы заказов (`statuses`);  * этапы обработки или причины отмены (`substatuses`);  * идентификаторы заказов;  * тип заказа (настоящий или тестовый).  Не возвращается информация о заказах, которые доставили или отменили больше 30 дней назад. Как ее получить:  * POST v1/businesses/{businessId}/orders; * POST v2/campaigns/{campaignId}/stats/orders.  Максимальный диапазон дат за один запрос — 30 дней (передается в параметрах `fromDate` и `toDate`). Если их не передать, возвращается информация за последние 30 дней.  Результаты возвращаются постранично. Для навигации используйте параметры `pageToken` и `limit`.  Получить более подробную информацию о покупателе и его номере телефона можно с помощью запроса GET v2/campaigns/{campaignId}/orders/{orderId}/buyer.  {% include notitle limit %}
      * Информация о заказах в магазине
      * @deprecated
      */
@@ -1441,7 +1759,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOrders.md) %}  {% note warning \"Какой метод использовать вместо устаревшего\" %}  POST v1/businesses/{businessId}/orders  {% endnote %}  Возвращает информацию о заказах в магазине. Запрос можно использовать для отслеживания заказов и их статусов.  По умолчанию данные о тестовых заказах не приходят. Чтобы их получить, передайте значение `true` в параметре `fake`.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый заказ или изменится его статус. А полную информацию можно получить с помощью метода POST v1/businesses/{businessId}/orders.  {#T}  {% endnote %}  Доступна фильтрация по параметрам:  * дата оформления заказа;  * дата и время обновления заказа;  * дата отгрузки;  * статусы заказов (`statuses`);  * этапы обработки или причины отмены (`substatuses`);  * идентификаторы заказов;  * тип заказа (настоящий или тестовый).  Не возвращается информация о заказах, которые доставили или отменили больше 30 дней назад. Как ее получить:  * POST v1/businesses/{businessId}/orders; * POST v2/campaigns/{campaignId}/stats/orders.  Максимальный диапазон дат за один запрос — 30 дней (передается в параметрах `fromDate` и `toDate`). Если их не передать, возвращается информация за последние 30 дней.  Результаты возвращаются постранично. Для навигации используйте параметры `page_token` и `limit`.  Получить более подробную информацию о покупателе и его номере телефона можно с помощью запроса GET v2/campaigns/{campaignId}/orders/{orderId}/buyer.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOrders.md) %}
+     * {% include notitle access %}  Возвращает информацию о заказах в магазине. Запрос можно использовать для отслеживания заказов и их статусов.  По умолчанию данные о тестовых заказах не приходят. Чтобы их получить, передайте значение `true` в параметре `fake`.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый заказ или изменится его статус. А полную информацию можно получить с помощью метода POST v1/businesses/{businessId}/orders.  {#T}  {% endnote %}  Доступна фильтрация по параметрам:  * дата оформления заказа;  * дата и время обновления заказа;  * дата отгрузки;  * статусы заказов (`statuses`);  * этапы обработки или причины отмены (`substatuses`);  * идентификаторы заказов;  * тип заказа (настоящий или тестовый).  Не возвращается информация о заказах, которые доставили или отменили больше 30 дней назад. Как ее получить:  * POST v1/businesses/{businessId}/orders; * POST v2/campaigns/{campaignId}/stats/orders.  Максимальный диапазон дат за один запрос — 30 дней (передается в параметрах `fromDate` и `toDate`). Если их не передать, возвращается информация за последние 30 дней.  Результаты возвращаются постранично. Для навигации используйте параметры `pageToken` и `limit`.  Получить более подробную информацию о покупателе и его номере телефона можно с помощью запроса GET v2/campaigns/{campaignId}/orders/{orderId}/buyer.  {% include notitle limit %}
      * Информация о заказах в магазине
      * @deprecated
      */
@@ -1452,7 +1770,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getPricesByOfferIds.md) %}  Возвращает список цен на указанные товары в магазине.  {% note warning \"Метод только для отдельных магазинов\" %}  Используйте этот метод, только если в кабинете установлены уникальные цены в отдельных магазинах.  Для просмотра цен, которые действуют во всех магазинах, используйте POST v2/businesses/{businessId}/offer-mappings.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getPricesByOfferIds.md) %}
+     * {% include notitle access %}  Возвращает список цен на указанные товары в магазине.  {% note warning \"Метод только для отдельных магазинов\" %}  Используйте этот метод, только если в кабинете установлены уникальные цены в отдельных магазинах.  Для просмотра цен, которые действуют во всех магазинах, используйте POST v2/businesses/{businessId}/offer-mappings.  {% endnote %}  {% include notitle limit %}
      * Просмотр цен на указанные товары в конкретном магазине
      */
     getPricesByOfferIdsRaw(requestParameters, initOverrides) {
@@ -1487,7 +1805,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getPricesByOfferIds.md) %}  Возвращает список цен на указанные товары в магазине.  {% note warning \"Метод только для отдельных магазинов\" %}  Используйте этот метод, только если в кабинете установлены уникальные цены в отдельных магазинах.  Для просмотра цен, которые действуют во всех магазинах, используйте POST v2/businesses/{businessId}/offer-mappings.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getPricesByOfferIds.md) %}
+     * {% include notitle access %}  Возвращает список цен на указанные товары в магазине.  {% note warning \"Метод только для отдельных магазинов\" %}  Используйте этот метод, только если в кабинете установлены уникальные цены в отдельных магазинах.  Для просмотра цен, которые действуют во всех магазинах, используйте POST v2/businesses/{businessId}/offer-mappings.  {% endnote %}  {% include notitle limit %}
      * Просмотр цен на указанные товары в конкретном магазине
      */
     getPricesByOfferIds(campaignId, pageToken, limit, getPricesByOfferIdsRequest, initOverrides) {
@@ -1497,7 +1815,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getRegionsCodes.md) %}  Возвращает список стран с их кодами в формате :no-translate[ISO 3166-1 alpha-2].  Страна производства `countryCode` понадобится при продаже товаров из-за рубежа для бизнеса. Инструкция  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getRegionsCodes.md) %}
+     * {% include notitle access %}  Возвращает список стран с их кодами в формате :no-translate[ISO 3166-1 alpha-2].  Страна производства `countryCode` понадобится при продаже товаров из-за рубежа для бизнеса. Инструкция  {% include notitle limit %}
      * Список допустимых кодов стран
      */
     getRegionsCodesRaw(initOverrides) {
@@ -1521,7 +1839,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getRegionsCodes.md) %}  Возвращает список стран с их кодами в формате :no-translate[ISO 3166-1 alpha-2].  Страна производства `countryCode` понадобится при продаже товаров из-за рубежа для бизнеса. Инструкция  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getRegionsCodes.md) %}
+     * {% include notitle access %}  Возвращает список стран с их кодами в формате :no-translate[ISO 3166-1 alpha-2].  Страна производства `countryCode` понадобится при продаже товаров из-за рубежа для бизнеса. Инструкция  {% include notitle limit %}
      * Список допустимых кодов стран
      */
     getRegionsCodes(initOverrides) {
@@ -1531,7 +1849,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getReportInfo.md) %}  Возвращает статус генерации заданного отчета или документа и, если он готов, ссылку для скачивания.  Чтобы воспользоваться этим запросом, вначале нужно запустить генерацию отчета или документа. Инструкция  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getReportInfo.md) %}
+     * {% include notitle access %}  Возвращает статус генерации заданного отчета или документа и, если он готов, ссылку для скачивания.  Чтобы воспользоваться этим запросом, вначале нужно запустить генерацию отчета или документа. Инструкция  {% include notitle limit %}
      * Получение заданного отчета или документа
      */
     getReportInfoRaw(requestParameters, initOverrides) {
@@ -1540,6 +1858,9 @@ class LaasApi extends runtime.BaseAPI {
                 throw new runtime.RequiredError('reportId', 'Required parameter "reportId" was null or undefined when calling getReportInfo().');
             }
             const queryParameters = {};
+            if (requestParameters['sourceType'] != null) {
+                queryParameters['sourceType'] = requestParameters['sourceType'];
+            }
             const headerParameters = {};
             if (this.configuration && this.configuration.apiKey) {
                 headerParameters["Api-Key"] = yield this.configuration.apiKey("Api-Key"); // ApiKey authentication
@@ -1558,17 +1879,17 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getReportInfo.md) %}  Возвращает статус генерации заданного отчета или документа и, если он готов, ссылку для скачивания.  Чтобы воспользоваться этим запросом, вначале нужно запустить генерацию отчета или документа. Инструкция  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getReportInfo.md) %}
+     * {% include notitle access %}  Возвращает статус генерации заданного отчета или документа и, если он готов, ссылку для скачивания.  Чтобы воспользоваться этим запросом, вначале нужно запустить генерацию отчета или документа. Инструкция  {% include notitle limit %}
      * Получение заданного отчета или документа
      */
-    getReportInfo(reportId, initOverrides) {
+    getReportInfo(reportId, sourceType, initOverrides) {
         return __awaiter(this, void 0, void 0, function* () {
-            const response = yield this.getReportInfoRaw({ reportId: reportId }, initOverrides);
+            const response = yield this.getReportInfoRaw({ reportId: reportId, sourceType: sourceType }, initOverrides);
             return yield response.value();
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getReturn.md) %}  Получает информацию по одному невыкупу или возврату.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getReturn.md) %}
+     * {% include notitle access %}  Получает информацию по одному невыкупу или возврату.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  {% include notitle limit %}
      * Информация о невыкупе или возврате
      */
     getReturnRaw(requestParameters, initOverrides) {
@@ -1601,7 +1922,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getReturn.md) %}  Получает информацию по одному невыкупу или возврату.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getReturn.md) %}
+     * {% include notitle access %}  Получает информацию по одному невыкупу или возврату.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  {% include notitle limit %}
      * Информация о невыкупе или возврате
      */
     getReturn(campaignId, orderId, returnId, initOverrides) {
@@ -1611,7 +1932,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getReturnDeliveryOptions.md) %}  Возвращает список идентификаторов пунктов выдачи, которые могут принять возврат указанных товаров.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getReturnDeliveryOptions.md) %}
+     * {% include notitle access %}  Возвращает список идентификаторов пунктов выдачи, которые могут принять возврат указанных товаров.  {% include notitle limit %}
      * Получение подходящих для возврата пунктов выдачи
      */
     getReturnDeliveryOptionsRaw(requestParameters, initOverrides) {
@@ -1643,7 +1964,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getReturnDeliveryOptions.md) %}  Возвращает список идентификаторов пунктов выдачи, которые могут принять возврат указанных товаров.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getReturnDeliveryOptions.md) %}
+     * {% include notitle access %}  Возвращает список идентификаторов пунктов выдачи, которые могут принять возврат указанных товаров.  {% include notitle limit %}
      * Получение подходящих для возврата пунктов выдачи
      */
     getReturnDeliveryOptions(campaignId, getReturnDeliveryOptionsRequest, initOverrides) {
@@ -1653,7 +1974,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getReturns.md) %}  Получает список невыкупов и возвратов.  Чтобы получить информацию по одному невыкупу или возврату, выполните запрос GET v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId}.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getReturns.md) %}
+     * {% include notitle access %}  Получает список невыкупов и возвратов.  Чтобы получить информацию по одному невыкупу или возврату, выполните запрос GET v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId}.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  {% include notitle limit %}
      * Список невыкупов и возвратов
      */
     getReturnsRaw(requestParameters, initOverrides) {
@@ -1710,7 +2031,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getReturns.md) %}  Получает список невыкупов и возвратов.  Чтобы получить информацию по одному невыкупу или возврату, выполните запрос GET v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId}.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getReturns.md) %}
+     * {% include notitle access %}  Получает список невыкупов и возвратов.  Чтобы получить информацию по одному невыкупу или возврату, выполните запрос GET v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId}.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  {% include notitle limit %}
      * Список невыкупов и возвратов
      */
     getReturns(campaignId, pageToken, limit, orderIds, statuses, shipmentStatuses, type, fromDate, toDate, fromDate2, toDate2, initOverrides) {
@@ -1720,7 +2041,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getStocks.md) %}  Возвращает данные об остатках товаров (для всех моделей) и об [оборачиваемости](*turnover) товаров (для модели FBY).  {% note info \"По умолчанию данные по оборачивамости не возращаются\" %}  Чтобы они были в ответе, передавайте `true` в поле `withTurnover`.  {% endnote %}  **Для моделей FBY и LaaS:** информация об остатках может возвращаться с нескольких складов Маркета, у которых будут разные `warehouseId`. Получить список складов Маркета можно с помощью метода GET v2/warehouses.  **Для модели FBS:** в ответе может вернуться не только партнерский склад, но и склад возвратов Маркета. Это возможно, если возврат поступил в указанную продавцом точку возвратов и долго не был забран.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getStocks.md) %}  [//]: <> (turnover: Среднее количество дней, за которое товар продается. Подробно об оборачиваемости рассказано в Справке Маркета для продавцов https://yandex.ru/support/marketplace/analytics/turnover.html.)
+     * {% include notitle access %}  Возвращает данные об остатках товаров (для всех моделей) и об [оборачиваемости](*turnover) товаров (для модели FBY).  {% note warning \"Когда использовать этот метод\" %}  Метод актуален:  * для моделей FBY и LaaS; * для моделей FBS, DBS и Экспресс, если в кабинете есть группы складов.  Если в кабинете нет групп складов и вы работаете с моделями FBS, DBS или Экспресс, используйте метод POST v3/businesses/{businessId}/offers/stocks. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  {% note info \"По умолчанию данные по оборачивамости не возращаются\" %}  Чтобы они были в ответе, передавайте `true` в поле `withTurnover`.  {% endnote %}  **Для моделей FBY и LaaS:** информация об остатках может возвращаться с нескольких складов Маркета, у которых будут разные `warehouseId`. Получить список складов Маркета можно с помощью метода GET v2/warehouses.  **Для модели FBS:** в ответе может вернуться не только партнерский склад, но и склад возвратов Маркета. Это возможно, если возврат поступил в указанную продавцом точку возвратов и долго не был забран.  {% include notitle limit %}  [//]: <> (turnover: Среднее количество дней, за которое товар продается. Подробно об оборачиваемости рассказано в Справке Маркета для продавцов https://yandex.ru/support/marketplace/analytics/turnover.html.)
      * Информация об остатках и оборачиваемости
      */
     getStocksRaw(requestParameters, initOverrides) {
@@ -1755,7 +2076,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getStocks.md) %}  Возвращает данные об остатках товаров (для всех моделей) и об [оборачиваемости](*turnover) товаров (для модели FBY).  {% note info \"По умолчанию данные по оборачивамости не возращаются\" %}  Чтобы они были в ответе, передавайте `true` в поле `withTurnover`.  {% endnote %}  **Для моделей FBY и LaaS:** информация об остатках может возвращаться с нескольких складов Маркета, у которых будут разные `warehouseId`. Получить список складов Маркета можно с помощью метода GET v2/warehouses.  **Для модели FBS:** в ответе может вернуться не только партнерский склад, но и склад возвратов Маркета. Это возможно, если возврат поступил в указанную продавцом точку возвратов и долго не был забран.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getStocks.md) %}  [//]: <> (turnover: Среднее количество дней, за которое товар продается. Подробно об оборачиваемости рассказано в Справке Маркета для продавцов https://yandex.ru/support/marketplace/analytics/turnover.html.)
+     * {% include notitle access %}  Возвращает данные об остатках товаров (для всех моделей) и об [оборачиваемости](*turnover) товаров (для модели FBY).  {% note warning \"Когда использовать этот метод\" %}  Метод актуален:  * для моделей FBY и LaaS; * для моделей FBS, DBS и Экспресс, если в кабинете есть группы складов.  Если в кабинете нет групп складов и вы работаете с моделями FBS, DBS или Экспресс, используйте метод POST v3/businesses/{businessId}/offers/stocks. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  {% note info \"По умолчанию данные по оборачивамости не возращаются\" %}  Чтобы они были в ответе, передавайте `true` в поле `withTurnover`.  {% endnote %}  **Для моделей FBY и LaaS:** информация об остатках может возвращаться с нескольких складов Маркета, у которых будут разные `warehouseId`. Получить список складов Маркета можно с помощью метода GET v2/warehouses.  **Для модели FBS:** в ответе может вернуться не только партнерский склад, но и склад возвратов Маркета. Это возможно, если возврат поступил в указанную продавцом точку возвратов и долго не был забран.  {% include notitle limit %}  [//]: <> (turnover: Среднее количество дней, за которое товар продается. Подробно об оборачиваемости рассказано в Справке Маркета для продавцов https://yandex.ru/support/marketplace/analytics/turnover.html.)
      * Информация об остатках и оборачиваемости
      */
     getStocks(campaignId, pageToken, limit, getWarehouseStocksRequest, initOverrides) {
@@ -1765,7 +2086,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getSupplyRequestDocuments.md) %}  Возвращает документы по заявке.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getSupplyRequestDocuments.md) %}
+     * {% include notitle access %}  Возвращает документы по заявке.  {% include notitle limit %}
      * Получение документов по заявке на поставку, вывоз или утилизацию
      */
     getSupplyRequestDocumentsRaw(requestParameters, initOverrides) {
@@ -1797,7 +2118,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getSupplyRequestDocuments.md) %}  Возвращает документы по заявке.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getSupplyRequestDocuments.md) %}
+     * {% include notitle access %}  Возвращает документы по заявке.  {% include notitle limit %}
      * Получение документов по заявке на поставку, вывоз или утилизацию
      */
     getSupplyRequestDocuments(campaignId, getSupplyRequestDocumentsRequest, initOverrides) {
@@ -1807,7 +2128,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getSupplyRequestItems.md) %}  Возвращает список товаров в заявке и информацию по ним.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getSupplyRequestItems.md) %}
+     * {% include notitle access %}  Возвращает список товаров в заявке и информацию по ним.  {% include notitle limit %}
      * Получение товаров в заявке на поставку, вывоз или утилизацию
      */
     getSupplyRequestItemsRaw(requestParameters, initOverrides) {
@@ -1845,7 +2166,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getSupplyRequestItems.md) %}  Возвращает список товаров в заявке и информацию по ним.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getSupplyRequestItems.md) %}
+     * {% include notitle access %}  Возвращает список товаров в заявке и информацию по ним.  {% include notitle limit %}
      * Получение товаров в заявке на поставку, вывоз или утилизацию
      */
     getSupplyRequestItems(campaignId, getSupplyRequestItemsRequest, pageToken, limit, initOverrides) {
@@ -1855,7 +2176,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getSupplyRequests.md) %}  По указанным фильтрам возвращает заявки на поставку, вывоз и утилизацию, а также информацию по ним.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getSupplyRequests.md) %}
+     * {% include notitle access %}  По указанным фильтрам возвращает заявки на поставку, вывоз и утилизацию, а также информацию по ним.  {% include notitle limit %}
      * Получение информации о заявках на поставку, вывоз и утилизацию
      */
     getSupplyRequestsRaw(requestParameters, initOverrides) {
@@ -1890,7 +2211,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getSupplyRequests.md) %}  По указанным фильтрам возвращает заявки на поставку, вывоз и утилизацию, а также информацию по ним.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getSupplyRequests.md) %}
+     * {% include notitle access %}  По указанным фильтрам возвращает заявки на поставку, вывоз и утилизацию, а также информацию по ним.  {% include notitle limit %}
      * Получение информации о заявках на поставку, вывоз и утилизацию
      */
     getSupplyRequests(campaignId, pageToken, limit, getSupplyRequestsRequest, initOverrides) {
@@ -1900,7 +2221,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/searchRegionChildren.md) %}  Возвращает информацию о регионах, являющихся дочерними по отношению к региону, идентификатор которого указан в запросе.  Для методов `GET v2/regions`, `GET v2/regions/{regionId}` и `GET v2/regions/{regionId}/children` действует групповое ресурсное ограничение. Ограничение вводится на суммарное количество регионов, информация о которых запрошена при помощи этих методов (не более 100 000 регионов).  Объем запросов к ресурсу, который возможно выполнить в течение суток, зависит от суммарного количества регионов.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/searchRegionChildren.md) %}
+     * {% include notitle access %}  Возвращает информацию о регионах, являющихся дочерними по отношению к региону, идентификатор которого указан в запросе.  {% include notitle limit %}
      * Информация о дочерних регионах
      */
     searchRegionChildrenRaw(requestParameters, initOverrides) {
@@ -1939,7 +2260,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/searchRegionChildren.md) %}  Возвращает информацию о регионах, являющихся дочерними по отношению к региону, идентификатор которого указан в запросе.  Для методов `GET v2/regions`, `GET v2/regions/{regionId}` и `GET v2/regions/{regionId}/children` действует групповое ресурсное ограничение. Ограничение вводится на суммарное количество регионов, информация о которых запрошена при помощи этих методов (не более 100 000 регионов).  Объем запросов к ресурсу, который возможно выполнить в течение суток, зависит от суммарного количества регионов.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/searchRegionChildren.md) %}
+     * {% include notitle access %}  Возвращает информацию о регионах, являющихся дочерними по отношению к региону, идентификатор которого указан в запросе.  {% include notitle limit %}
      * Информация о дочерних регионах
      */
     searchRegionChildren(regionId, pageToken, limit, page, pageSize, initOverrides) {
@@ -1949,7 +2270,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/searchRegionsById.md) %}  Возвращает информацию о регионе.  Для методов `GET v2/regions`, `GET v2/regions/{regionId}` и `GET v2/regions/{regionId}/children` действует групповое ресурсное ограничение. Ограничение вводится на суммарное количество регионов, информация о которых запрошена при помощи этих методов (не более 100 000 регионов).  Объем запросов к ресурсу, который возможно выполнить в течение суток, зависит от суммарного количества регионов.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/searchRegionsById.md) %}
+     * {% include notitle access %}  Возвращает информацию о регионе.  {% include notitle limit %}
      * Информация о регионе
      */
     searchRegionsByIdRaw(requestParameters, initOverrides) {
@@ -1972,11 +2293,11 @@ class LaasApi extends runtime.BaseAPI {
                 headers: headerParameters,
                 query: queryParameters,
             }, initOverrides);
-            return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetRegionsResponseFromJSON)(jsonValue));
+            return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetRegionByIdResponseFromJSON)(jsonValue));
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/searchRegionsById.md) %}  Возвращает информацию о регионе.  Для методов `GET v2/regions`, `GET v2/regions/{regionId}` и `GET v2/regions/{regionId}/children` действует групповое ресурсное ограничение. Ограничение вводится на суммарное количество регионов, информация о которых запрошена при помощи этих методов (не более 100 000 регионов).  Объем запросов к ресурсу, который возможно выполнить в течение суток, зависит от суммарного количества регионов.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/searchRegionsById.md) %}
+     * {% include notitle access %}  Возвращает информацию о регионе.  {% include notitle limit %}
      * Информация о регионе
      */
     searchRegionsById(regionId, initOverrides) {
@@ -1986,7 +2307,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/searchRegionsByName.md) %}  Возвращает информацию о регионе, удовлетворяющем заданным в запросе условиям поиска.  Если найдено несколько регионов, удовлетворяющих условиям поиска, возвращается информация по каждому найденному региону (но не более десяти регионов) для возможности определения нужного региона по родительским регионам.  Для методов `GET v2/regions`, `GET v2/regions/{regionId}` и `GET v2/regions/{regionId}/children` действует групповое ресурсное ограничение. Ограничение вводится на суммарное количество регионов, информация о которых запрошена при помощи этих методов (не более 100 000 регионов).  Объем запросов к ресурсу, который возможно выполнить в течение суток, зависит от суммарного количества регионов.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/searchRegionsByName.md) %}
+     * {% include notitle access %}  Возвращает информацию о регионе, удовлетворяющем заданным в запросе условиям поиска.  Если найдено несколько регионов, удовлетворяющих условиям поиска, возвращается информация по каждому найденному региону (но не более десяти регионов) для возможности определения нужного региона по родительским регионам.  {% include notitle limit %}
      * Поиск регионов по их имени
      */
     searchRegionsByNameRaw(requestParameters, initOverrides) {
@@ -2022,7 +2343,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/searchRegionsByName.md) %}  Возвращает информацию о регионе, удовлетворяющем заданным в запросе условиям поиска.  Если найдено несколько регионов, удовлетворяющих условиям поиска, возвращается информация по каждому найденному региону (но не более десяти регионов) для возможности определения нужного региона по родительским регионам.  Для методов `GET v2/regions`, `GET v2/regions/{regionId}` и `GET v2/regions/{regionId}/children` действует групповое ресурсное ограничение. Ограничение вводится на суммарное количество регионов, информация о которых запрошена при помощи этих методов (не более 100 000 регионов).  Объем запросов к ресурсу, который возможно выполнить в течение суток, зависит от суммарного количества регионов.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/searchRegionsByName.md) %}
+     * {% include notitle access %}  Возвращает информацию о регионе, удовлетворяющем заданным в запросе условиям поиска.  Если найдено несколько регионов, удовлетворяющих условиям поиска, возвращается информация по каждому найденному региону (но не более десяти регионов) для возможности определения нужного региона по родительским регионам.  {% include notitle limit %}
      * Поиск регионов по их имени
      */
     searchRegionsByName(name, pageToken, limit, initOverrides) {
@@ -2032,7 +2353,55 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateBusinessPrices.md) %}  Устанавливает цены, которые действуют во всех магазинах. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  При необходимости передавайте НДС с помощью параметра `vat` в запросе POST v2/campaigns/{campaignId}/offers/update.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateBusinessPrices.md) %}
+     * {% include notitle access %}  Возвращает таблицы размеров, подходящие для указанной категории, бренда и пола.  Тип `STANDARD` — таблицы, уже созданные Маркетом и автоматически подобранные под выбранные вами категорию, бренд и пол. Тип `CUSTOM` — таблицы, которые вы создали сами: они подходят, если у вас свой бренд, уникальная размерная линейка, товары маломерят или большемерят.  Сначала возвращаются созданные бизнесом, затем брендовые, затем стандартные таблицы; внутри каждой группы — по убыванию идентификатора.  Результаты возвращаются постранично. Для навигации используйте параметры `pageToken` и `limit`.  {% include notitle limit %}
+     * Подбор таблиц размеров
+     */
+    suggestContentSizeTablesRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters['businessId'] == null) {
+                throw new runtime.RequiredError('businessId', 'Required parameter "businessId" was null or undefined when calling suggestContentSizeTables().');
+            }
+            if (requestParameters['suggestSizeTablesRequest'] == null) {
+                throw new runtime.RequiredError('suggestSizeTablesRequest', 'Required parameter "suggestSizeTablesRequest" was null or undefined when calling suggestContentSizeTables().');
+            }
+            const queryParameters = {};
+            if (requestParameters['pageToken'] != null) {
+                queryParameters['pageToken'] = requestParameters['pageToken'];
+            }
+            if (requestParameters['limit'] != null) {
+                queryParameters['limit'] = requestParameters['limit'];
+            }
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.apiKey) {
+                headerParameters["Api-Key"] = yield this.configuration.apiKey("Api-Key"); // ApiKey authentication
+            }
+            if (this.configuration && this.configuration.accessToken) {
+                // oauth required
+                headerParameters["Authorization"] = yield this.configuration.accessToken("OAuth", ["market:partner-api"]);
+            }
+            const response = yield this.request({
+                path: `/v2/businesses/{businessId}/size-tables/suggest`.replace(`{${"businessId"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: (0, index_1.SuggestSizeTablesRequestToJSON)(requestParameters['suggestSizeTablesRequest']),
+            }, initOverrides);
+            return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SuggestSizeTablesResponseFromJSON)(jsonValue));
+        });
+    }
+    /**
+     * {% include notitle access %}  Возвращает таблицы размеров, подходящие для указанной категории, бренда и пола.  Тип `STANDARD` — таблицы, уже созданные Маркетом и автоматически подобранные под выбранные вами категорию, бренд и пол. Тип `CUSTOM` — таблицы, которые вы создали сами: они подходят, если у вас свой бренд, уникальная размерная линейка, товары маломерят или большемерят.  Сначала возвращаются созданные бизнесом, затем брендовые, затем стандартные таблицы; внутри каждой группы — по убыванию идентификатора.  Результаты возвращаются постранично. Для навигации используйте параметры `pageToken` и `limit`.  {% include notitle limit %}
+     * Подбор таблиц размеров
+     */
+    suggestContentSizeTables(businessId, suggestSizeTablesRequest, pageToken, limit, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.suggestContentSizeTablesRaw({ businessId: businessId, suggestSizeTablesRequest: suggestSizeTablesRequest, pageToken: pageToken, limit: limit }, initOverrides);
+            return yield response.value();
+        });
+    }
+    /**
+     * {% include notitle access %}  Устанавливает цены, которые действуют во всех магазинах. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  При необходимости передавайте НДС с помощью параметра `vat` в запросе POST v2/campaigns/{campaignId}/offers/update.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
      * Установка цен на товары для всех магазинов
      */
     updateBusinessPricesRaw(requestParameters, initOverrides) {
@@ -2064,7 +2433,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateBusinessPrices.md) %}  Устанавливает цены, которые действуют во всех магазинах. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  При необходимости передавайте НДС с помощью параметра `vat` в запросе POST v2/campaigns/{campaignId}/offers/update.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateBusinessPrices.md) %}
+     * {% include notitle access %}  Устанавливает цены, которые действуют во всех магазинах. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  При необходимости передавайте НДС с помощью параметра `vat` в запросе POST v2/campaigns/{campaignId}/offers/update.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
      * Установка цен на товары для всех магазинов
      */
     updateBusinessPrices(businessId, updateBusinessPricesRequest, initOverrides) {
@@ -2074,7 +2443,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateCampaignOffers.md) %}  Изменяет параметры размещения товаров в конкретном магазине: доступность товара, продажа квантами и применяемый НДС.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateCampaignOffers.md) %}
+     * {% include notitle access %}  Изменяет параметры размещения товаров в конкретном магазине: доступность товара и применяемый НДС.  {% include notitle limit %}
      * Изменение условий продажи товаров в магазине
      */
     updateCampaignOffersRaw(requestParameters, initOverrides) {
@@ -2106,7 +2475,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateCampaignOffers.md) %}  Изменяет параметры размещения товаров в конкретном магазине: доступность товара, продажа квантами и применяемый НДС.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateCampaignOffers.md) %}
+     * {% include notitle access %}  Изменяет параметры размещения товаров в конкретном магазине: доступность товара и применяемый НДС.  {% include notitle limit %}
      * Изменение условий продажи товаров в магазине
      */
     updateCampaignOffers(campaignId, updateCampaignOffersRequest, initOverrides) {
@@ -2116,7 +2485,91 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateOfferContent.md) %}  Редактирует характеристики товара, которые специфичны для категории, к которой он относится.  {% note warning \"Здесь только то, что относится к конкретной категории\" %}  Если вам нужно изменить основные параметры товара (название, описание, изображения, видео, производитель, штрихкод), воспользуйтесь запросом POST v2/businesses/{businessId}/offer-mappings/update.  {% endnote %}  Чтобы удалить характеристики, которые заданы в параметрах с типом `string`, передайте пустое значение.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateOfferContent.md) %}
+     * {% include notitle access %}  Полностью заменяет названия и содержимое таблиц размеров, созданных бизнесом. За один запрос можно обновить до 10 таблиц, в которых суммарно не больше 5000 ячеек. Если таблиц или ячеек больше, запрос отклоняется с ошибкой `BAD_REQUEST` и ни одна таблица не обновляется.  {% note warning \"Передавайте полное содержимое таблицы\" %}  Все отсутствующие строки и колонки будут удалены.  {% endnote %}  Изменить можно только таблицы, созданные бизнесом, — у них в ответе метода `POST v2/businesses/{businessId}/size-tables` указано `editable: true`. Если таблицы нет, для нее возвращается ошибка `NOT_FOUND`, если это таблица Маркета (`sizeTableType: STANDARD`) — ошибка `FORBIDDEN`.  Размерную характеристику таблицы изменить нельзя: колонки и значения проверяются по характеристике, указанной при создании таблицы. Размерные сетки и обмеры, которые можно использовать в таблице, их значения и обязательные сетки возвращает метод `POST v2/businesses/{businessId}/size-tables/charts`.  Идентификаторы таблиц не должны повторяться в одном запросе. Если они повторяются, запрос отклоняется с ошибкой `BAD_REQUEST` и ни одна таблица не обновляется.  {% cut \"Как заполнить таблицу\" %}  {% include notitle size-tables-filling %}  {% endcut %}  {% cut \"Чем сохраненная таблица отличается от переданной\" %}  {% include notitle size-tables-saved-differences %}  Значения из ответа можно без изменений передать в этот метод: поля `columnType` и `rowIndex` в нем не учитываются.  {% endcut %}  {% note warning \"Сохраняется содержимое из последнего запроса\" %}  Версии таблицы не сравниваются. Если таблицу изменили в кабинете после того, как вы ее получили, эти изменения будут перезаписаны без предупреждения. Ошибка `CONCURRENT_MODIFICATION` возвращается, только если таблицу изменили во время обработки вашего запроса. В этом случае повторите запрос.  {% endnote %}  Новое содержимое таблицы применяется к привязанным к ней товарам автоматически через некоторое время. Передавать товары повторно не нужно.  Если запрос завершился ошибкой с кодом 5xx, его можно повторить: таблицы заменятся тем же содержимым.  {% include notitle limit %}
+     * Обновление таблиц размеров
+     */
+    updateContentSizeTablesRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters['businessId'] == null) {
+                throw new runtime.RequiredError('businessId', 'Required parameter "businessId" was null or undefined when calling updateContentSizeTables().');
+            }
+            if (requestParameters['updateSizeTablesRequest'] == null) {
+                throw new runtime.RequiredError('updateSizeTablesRequest', 'Required parameter "updateSizeTablesRequest" was null or undefined when calling updateContentSizeTables().');
+            }
+            const queryParameters = {};
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.apiKey) {
+                headerParameters["Api-Key"] = yield this.configuration.apiKey("Api-Key"); // ApiKey authentication
+            }
+            if (this.configuration && this.configuration.accessToken) {
+                // oauth required
+                headerParameters["Authorization"] = yield this.configuration.accessToken("OAuth", ["market:partner-api"]);
+            }
+            const response = yield this.request({
+                path: `/v2/businesses/{businessId}/size-tables/update`.replace(`{${"businessId"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: (0, index_1.UpdateSizeTablesRequestToJSON)(requestParameters['updateSizeTablesRequest']),
+            }, initOverrides);
+            return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.UpdateSizeTablesResponseFromJSON)(jsonValue));
+        });
+    }
+    /**
+     * {% include notitle access %}  Полностью заменяет названия и содержимое таблиц размеров, созданных бизнесом. За один запрос можно обновить до 10 таблиц, в которых суммарно не больше 5000 ячеек. Если таблиц или ячеек больше, запрос отклоняется с ошибкой `BAD_REQUEST` и ни одна таблица не обновляется.  {% note warning \"Передавайте полное содержимое таблицы\" %}  Все отсутствующие строки и колонки будут удалены.  {% endnote %}  Изменить можно только таблицы, созданные бизнесом, — у них в ответе метода `POST v2/businesses/{businessId}/size-tables` указано `editable: true`. Если таблицы нет, для нее возвращается ошибка `NOT_FOUND`, если это таблица Маркета (`sizeTableType: STANDARD`) — ошибка `FORBIDDEN`.  Размерную характеристику таблицы изменить нельзя: колонки и значения проверяются по характеристике, указанной при создании таблицы. Размерные сетки и обмеры, которые можно использовать в таблице, их значения и обязательные сетки возвращает метод `POST v2/businesses/{businessId}/size-tables/charts`.  Идентификаторы таблиц не должны повторяться в одном запросе. Если они повторяются, запрос отклоняется с ошибкой `BAD_REQUEST` и ни одна таблица не обновляется.  {% cut \"Как заполнить таблицу\" %}  {% include notitle size-tables-filling %}  {% endcut %}  {% cut \"Чем сохраненная таблица отличается от переданной\" %}  {% include notitle size-tables-saved-differences %}  Значения из ответа можно без изменений передать в этот метод: поля `columnType` и `rowIndex` в нем не учитываются.  {% endcut %}  {% note warning \"Сохраняется содержимое из последнего запроса\" %}  Версии таблицы не сравниваются. Если таблицу изменили в кабинете после того, как вы ее получили, эти изменения будут перезаписаны без предупреждения. Ошибка `CONCURRENT_MODIFICATION` возвращается, только если таблицу изменили во время обработки вашего запроса. В этом случае повторите запрос.  {% endnote %}  Новое содержимое таблицы применяется к привязанным к ней товарам автоматически через некоторое время. Передавать товары повторно не нужно.  Если запрос завершился ошибкой с кодом 5xx, его можно повторить: таблицы заменятся тем же содержимым.  {% include notitle limit %}
+     * Обновление таблиц размеров
+     */
+    updateContentSizeTables(businessId, updateSizeTablesRequest, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.updateContentSizeTablesRaw({ businessId: businessId, updateSizeTablesRequest: updateSizeTablesRequest }, initOverrides);
+            return yield response.value();
+        });
+    }
+    /**
+     * {% include notitle access %}  Полностью обновляет номер, тип и даты документов на товары. За один запрос можно обновить не более 100 документов.  Для каждого документа передайте его идентификатор и актуальные значения номера, типа и дат. Если дата не указана, ранее сохраненная дата будет удалена. Ошибка одного документа не мешает обработке остальных.  {% include notitle limit %}
+     * Обновление документов
+     */
+    updateDocumentsRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters['businessId'] == null) {
+                throw new runtime.RequiredError('businessId', 'Required parameter "businessId" was null or undefined when calling updateDocuments().');
+            }
+            if (requestParameters['updateDocumentsRequest'] == null) {
+                throw new runtime.RequiredError('updateDocumentsRequest', 'Required parameter "updateDocumentsRequest" was null or undefined when calling updateDocuments().');
+            }
+            const queryParameters = {};
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.apiKey) {
+                headerParameters["Api-Key"] = yield this.configuration.apiKey("Api-Key"); // ApiKey authentication
+            }
+            if (this.configuration && this.configuration.accessToken) {
+                // oauth required
+                headerParameters["Authorization"] = yield this.configuration.accessToken("OAuth", ["market:partner-api"]);
+            }
+            const response = yield this.request({
+                path: `/v1/businesses/{businessId}/offers/documents/update`.replace(`{${"businessId"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: (0, index_1.UpdateDocumentsRequestToJSON)(requestParameters['updateDocumentsRequest']),
+            }, initOverrides);
+            return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.UpdateDocumentsResponseFromJSON)(jsonValue));
+        });
+    }
+    /**
+     * {% include notitle access %}  Полностью обновляет номер, тип и даты документов на товары. За один запрос можно обновить не более 100 документов.  Для каждого документа передайте его идентификатор и актуальные значения номера, типа и дат. Если дата не указана, ранее сохраненная дата будет удалена. Ошибка одного документа не мешает обработке остальных.  {% include notitle limit %}
+     * Обновление документов
+     */
+    updateDocuments(businessId, updateDocumentsRequest, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.updateDocumentsRaw({ businessId: businessId, updateDocumentsRequest: updateDocumentsRequest }, initOverrides);
+            return yield response.value();
+        });
+    }
+    /**
+     * {% include notitle access %}  Редактирует характеристики товара, которые специфичны для категории, к которой он относится.  {% note warning \"Здесь только то, что относится к конкретной категории\" %}  Если вам нужно изменить основные параметры товара (название, описание, изображения, видео, производитель, штрихкод), воспользуйтесь запросом POST v2/businesses/{businessId}/offer-mappings/update.  {% endnote %}  Чтобы удалить характеристики, которые заданы в параметрах с типом `string`, передайте пустое значение.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
      * Редактирование категорийных характеристик товара
      */
     updateOfferContentRaw(requestParameters, initOverrides) {
@@ -2148,7 +2601,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateOfferContent.md) %}  Редактирует характеристики товара, которые специфичны для категории, к которой он относится.  {% note warning \"Здесь только то, что относится к конкретной категории\" %}  Если вам нужно изменить основные параметры товара (название, описание, изображения, видео, производитель, штрихкод), воспользуйтесь запросом POST v2/businesses/{businessId}/offer-mappings/update.  {% endnote %}  Чтобы удалить характеристики, которые заданы в параметрах с типом `string`, передайте пустое значение.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateOfferContent.md) %}
+     * {% include notitle access %}  Редактирует характеристики товара, которые специфичны для категории, к которой он относится.  {% note warning \"Здесь только то, что относится к конкретной категории\" %}  Если вам нужно изменить основные параметры товара (название, описание, изображения, видео, производитель, штрихкод), воспользуйтесь запросом POST v2/businesses/{businessId}/offer-mappings/update.  {% endnote %}  Чтобы удалить характеристики, которые заданы в параметрах с типом `string`, передайте пустое значение.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
      * Редактирование категорийных характеристик товара
      */
     updateOfferContent(businessId, updateOfferContentRequest, initOverrides) {
@@ -2158,7 +2611,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateOfferMappings.md) %}  Добавляет товары в каталог и передает:  * их [листовые категории](*list-categories) на Маркете и категорийные характеристики; * основные характеристики; * цены на товары в кабинете.  Также объединяет товары на карточке, редактирует и удаляет информацию об уже добавленных товарах, в том числе цены в кабинете и категории товаров.  Список категорий Маркета можно получить с помощью запроса POST v2/categories/tree, а характеристики товаров по категориям с помощью POST v2/category/{categoryId}/parameters.  {% cut \"Добавить новый товар\" %}  Передайте его с новым идентификатором, который раньше никогда не использовался в каталоге.  Обязательно укажите параметры: `offerId`, `name`, `marketCategoryId`, `pictures`, `vendor`, `description`.  Старайтесь сразу передать как можно больше информации — она потребуется Маркету для подбора подходящей карточки или создания новой.  Если известно, какой карточке на Маркете соответствует товар, можно сразу указать идентификатор этой карточки (SKU на Маркете) в поле `marketSKU`.  **Для продавцов Market Yandex Go:**  Когда вы добавляете товары в каталог, указывайте значения параметров `name` и `description` на русском языке. Чтобы на витрине они отображались и на другом языке, еще раз выполните запрос `POST v2/businesses/{businessId}/offer-mappings/update`, где укажите:    * язык в параметре `language`;   * значения параметров `name` и `description` на указанном языке.    Повторно передавать остальные характеристики товара не нужно.  {% endcut %}  {% cut \"Изменить информацию о товаре\" %}  Передайте новые данные, указав в `offerId` SKU товара в вашей системе.  Поля, в которых ничего не меняется, можно не передавать.  {% endcut %}  {% cut \"Удалить переданные ранее параметры товара\" %}  В `deleteParameters` укажите значения параметров, которые хотите удалить. Можно передать сразу несколько значений.  Для параметров с типом `string` также можно передать пустое значение.  {% endcut %}  Параметр `offerId` (SKU товара в вашей системе) должен быть **уникальным** для всех товаров, которые вы передаете.  {% note warning \"Правила использования SKU\" %}  * У каждого товара SKU должен быть свой.  * Уже заданный SKU нельзя освободить и использовать заново для другого товара. Каждый товар должен получать новый идентификатор, до того никогда не использовавшийся в вашем каталоге.  SKU товара можно изменить в кабинете продавца на Маркете. О том, как это сделать, читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/assortment/operations/edit-sku).  {% endnote %}  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateOfferMappings.md) %}
+     * {% include notitle access %}  Добавляет товары в каталог и передает:  * их [листовые категории](*list-categories) на Маркете и категорийные характеристики; * основные характеристики; * цены на товары в кабинете.  Также объединяет товары на карточке, редактирует и удаляет информацию об уже добавленных товарах, в том числе цены в кабинете и категории товаров.  Список категорий Маркета можно получить с помощью запроса POST v2/categories/tree, а характеристики товаров по категориям с помощью POST v2/category/{categoryId}/parameters.  {% cut \"Добавить новый товар\" %}  Передайте его с новым идентификатором, который раньше никогда не использовался в каталоге.  Обязательно укажите параметры: `offerId`, `name`, `marketCategoryId`, `pictures`, `vendor`, `description`.  Старайтесь сразу передать как можно больше информации — она потребуется Маркету для подбора подходящей карточки или создания новой.  Если известно, какой карточке на Маркете соответствует товар, можно сразу указать идентификатор этой карточки (SKU на Маркете) в поле `marketSKU`.  **Для продавцов Market Yandex Go:**  Когда вы добавляете товары в каталог, указывайте значения параметров `name` и `description` на русском языке. Чтобы на витрине они отображались и на другом языке, еще раз выполните запрос `POST v2/businesses/{businessId}/offer-mappings/update`, где укажите:    * язык в параметре `language`;   * значения параметров `name` и `description` на указанном языке.    Повторно передавать остальные характеристики товара не нужно.  {% endcut %}  {% cut \"Изменить информацию о товаре\" %}  Передайте новые данные, указав в `offerId` SKU товара в вашей системе.  Поля, в которых ничего не меняется, можно не передавать.  {% endcut %}  {% cut \"Удалить переданные ранее параметры товара\" %}  В `deleteParameters` укажите значения параметров, которые хотите удалить. Можно передать сразу несколько значений.  Для параметров с типом `string` также можно передать пустое значение.  {% endcut %}  Параметр `offerId` (SKU товара в вашей системе) должен быть **уникальным** для всех товаров, которые вы передаете.  {% note warning \"Правила использования SKU\" %}  * У каждого товара SKU должен быть свой.  * Уже заданный SKU нельзя освободить и использовать заново для другого товара. Каждый товар должен получать новый идентификатор, до того никогда не использовавшийся в вашем каталоге.  SKU товара можно изменить в кабинете продавца на Маркете. О том, как это сделать, читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/assortment/operations/edit-sku).  {% endnote %}  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
      * Добавление товаров в каталог и изменение информации о них
      */
     updateOfferMappingsRaw(requestParameters, initOverrides) {
@@ -2193,7 +2646,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateOfferMappings.md) %}  Добавляет товары в каталог и передает:  * их [листовые категории](*list-categories) на Маркете и категорийные характеристики; * основные характеристики; * цены на товары в кабинете.  Также объединяет товары на карточке, редактирует и удаляет информацию об уже добавленных товарах, в том числе цены в кабинете и категории товаров.  Список категорий Маркета можно получить с помощью запроса POST v2/categories/tree, а характеристики товаров по категориям с помощью POST v2/category/{categoryId}/parameters.  {% cut \"Добавить новый товар\" %}  Передайте его с новым идентификатором, который раньше никогда не использовался в каталоге.  Обязательно укажите параметры: `offerId`, `name`, `marketCategoryId`, `pictures`, `vendor`, `description`.  Старайтесь сразу передать как можно больше информации — она потребуется Маркету для подбора подходящей карточки или создания новой.  Если известно, какой карточке на Маркете соответствует товар, можно сразу указать идентификатор этой карточки (SKU на Маркете) в поле `marketSKU`.  **Для продавцов Market Yandex Go:**  Когда вы добавляете товары в каталог, указывайте значения параметров `name` и `description` на русском языке. Чтобы на витрине они отображались и на другом языке, еще раз выполните запрос `POST v2/businesses/{businessId}/offer-mappings/update`, где укажите:    * язык в параметре `language`;   * значения параметров `name` и `description` на указанном языке.    Повторно передавать остальные характеристики товара не нужно.  {% endcut %}  {% cut \"Изменить информацию о товаре\" %}  Передайте новые данные, указав в `offerId` SKU товара в вашей системе.  Поля, в которых ничего не меняется, можно не передавать.  {% endcut %}  {% cut \"Удалить переданные ранее параметры товара\" %}  В `deleteParameters` укажите значения параметров, которые хотите удалить. Можно передать сразу несколько значений.  Для параметров с типом `string` также можно передать пустое значение.  {% endcut %}  Параметр `offerId` (SKU товара в вашей системе) должен быть **уникальным** для всех товаров, которые вы передаете.  {% note warning \"Правила использования SKU\" %}  * У каждого товара SKU должен быть свой.  * Уже заданный SKU нельзя освободить и использовать заново для другого товара. Каждый товар должен получать новый идентификатор, до того никогда не использовавшийся в вашем каталоге.  SKU товара можно изменить в кабинете продавца на Маркете. О том, как это сделать, читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/assortment/operations/edit-sku).  {% endnote %}  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateOfferMappings.md) %}
+     * {% include notitle access %}  Добавляет товары в каталог и передает:  * их [листовые категории](*list-categories) на Маркете и категорийные характеристики; * основные характеристики; * цены на товары в кабинете.  Также объединяет товары на карточке, редактирует и удаляет информацию об уже добавленных товарах, в том числе цены в кабинете и категории товаров.  Список категорий Маркета можно получить с помощью запроса POST v2/categories/tree, а характеристики товаров по категориям с помощью POST v2/category/{categoryId}/parameters.  {% cut \"Добавить новый товар\" %}  Передайте его с новым идентификатором, который раньше никогда не использовался в каталоге.  Обязательно укажите параметры: `offerId`, `name`, `marketCategoryId`, `pictures`, `vendor`, `description`.  Старайтесь сразу передать как можно больше информации — она потребуется Маркету для подбора подходящей карточки или создания новой.  Если известно, какой карточке на Маркете соответствует товар, можно сразу указать идентификатор этой карточки (SKU на Маркете) в поле `marketSKU`.  **Для продавцов Market Yandex Go:**  Когда вы добавляете товары в каталог, указывайте значения параметров `name` и `description` на русском языке. Чтобы на витрине они отображались и на другом языке, еще раз выполните запрос `POST v2/businesses/{businessId}/offer-mappings/update`, где укажите:    * язык в параметре `language`;   * значения параметров `name` и `description` на указанном языке.    Повторно передавать остальные характеристики товара не нужно.  {% endcut %}  {% cut \"Изменить информацию о товаре\" %}  Передайте новые данные, указав в `offerId` SKU товара в вашей системе.  Поля, в которых ничего не меняется, можно не передавать.  {% endcut %}  {% cut \"Удалить переданные ранее параметры товара\" %}  В `deleteParameters` укажите значения параметров, которые хотите удалить. Можно передать сразу несколько значений.  Для параметров с типом `string` также можно передать пустое значение.  {% endcut %}  Параметр `offerId` (SKU товара в вашей системе) должен быть **уникальным** для всех товаров, которые вы передаете.  {% note warning \"Правила использования SKU\" %}  * У каждого товара SKU должен быть свой.  * Уже заданный SKU нельзя освободить и использовать заново для другого товара. Каждый товар должен получать новый идентификатор, до того никогда не использовавшийся в вашем каталоге.  SKU товара можно изменить в кабинете продавца на Маркете. О том, как это сделать, читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/assortment/operations/edit-sku).  {% endnote %}  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
      * Добавление товаров в каталог и изменение информации о них
      */
     updateOfferMappings(businessId, updateOfferMappingsRequest, language, initOverrides) {
@@ -2203,7 +2656,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateOrder.md) %}  Изменяет в заказе:  * данные получателя; * интервал дат курьерской доставки.  Передавайте только ту информацию, которую хотите изменить. При необходимости вы можете отредактировать и данные получателя, и интервал доставки одновременно.  Заказ можно изменить в любом статусе до вручения покупателю или отмены (`DELIVERED` или `CANCELLED`).  {% note info \"Данные заказа обновляются не мгновенно\" %}  Изменения применяются в течение нескольких минут и только в случае успешного завершения операции. Как проверить статус операции  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateOrder.md) %}
+     * {% include notitle access %}  Изменяет в заказе:  * данные получателя; * интервал дат курьерской доставки; * срок хранения заказа в пункте выдачи.  Передавайте только ту информацию, которую хотите изменить. При необходимости вы можете передать несколько изменений одновременно.  Заказ можно изменить в любом статусе до вручения покупателю или отмены (`DELIVERED` или `CANCELLED`).  {% note info \"Данные заказа обновляются не мгновенно\" %}  Изменения применяются в течение нескольких минут и только в случае успешного завершения операции. Как проверить статус операции  {% endnote %}  {% include notitle limit %}
      * Изменение заказа
      */
     updateOrderRaw(requestParameters, initOverrides) {
@@ -2235,7 +2688,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateOrder.md) %}  Изменяет в заказе:  * данные получателя; * интервал дат курьерской доставки.  Передавайте только ту информацию, которую хотите изменить. При необходимости вы можете отредактировать и данные получателя, и интервал доставки одновременно.  Заказ можно изменить в любом статусе до вручения покупателю или отмены (`DELIVERED` или `CANCELLED`).  {% note info \"Данные заказа обновляются не мгновенно\" %}  Изменения применяются в течение нескольких минут и только в случае успешного завершения операции. Как проверить статус операции  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateOrder.md) %}
+     * {% include notitle access %}  Изменяет в заказе:  * данные получателя; * интервал дат курьерской доставки; * срок хранения заказа в пункте выдачи.  Передавайте только ту информацию, которую хотите изменить. При необходимости вы можете передать несколько изменений одновременно.  Заказ можно изменить в любом статусе до вручения покупателю или отмены (`DELIVERED` или `CANCELLED`).  {% note info \"Данные заказа обновляются не мгновенно\" %}  Изменения применяются в течение нескольких минут и только в случае успешного завершения операции. Как проверить статус операции  {% endnote %}  {% include notitle limit %}
      * Изменение заказа
      */
     updateOrder(campaignId, updateOrderRequest, initOverrides) {
@@ -2245,7 +2698,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateOrderStatus.md) %}  Изменяет статус заказа. Возможные изменения статусов:  * Если магазин подтвердил и подготовил заказ к отправке, то заказ из статуса `\"status\": \"PROCESSING\"` и этапа обработки `\"substatus\": \"STARTED\"` нужно перевести в статус `\"status\": \"PROCESSING\"` и этап обработки `\"substatus\": \"READY_TO_SHIP\"`. * Если магазин подтвердил заказ, но не может его выполнить (например, товар числится в базе, но отсутствует на складе или нет нужного цвета), то заказ из статуса `\"status\": \"PROCESSING\"` и этапа обработки `\"substatus\": \"STARTED\"` нужно перевести в статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`. * Если магазин подготовил заказ к отгрузке, но не может его выполнить (например, последний товар был поврежден или оказался с браком), то заказ из статуса `\"status\": \"PROCESSING\"` и этапа обработки `\"substatus\": \"READY_TO_SHIP\"` нужно перевести в статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`.  {% cut \"**Как подтвердить LaaS-заказ**\" %}  Для подтверждения черновика заказа передайте статус `\"status\": \"PROCESSING\"` с подстатусом `\"substatus\": \"STARTED\"`.  Подтверждение заказа, созданного с параметром `draft` равным `false`, не требуется.  {% endcut %}  {% cut \"**Как отменить LaaS-заказ**\" %}  Передайте статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`.  При успешном выполнении запроса отмена произойдет через некоторое время. Как проверить статус операции  {% endcut %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateOrderStatus.md) %}
+     * {% include notitle access %}  Изменяет статус заказа. Возможные изменения статусов:  * Если магазин подтвердил и подготовил заказ к отправке, то заказ из статуса `\"status\": \"PROCESSING\"` и этапа обработки `\"substatus\": \"STARTED\"` нужно перевести в статус `\"status\": \"PROCESSING\"` и этап обработки `\"substatus\": \"READY_TO_SHIP\"`. * Если магазин подтвердил заказ, но не может его выполнить (например, товар числится в базе, но отсутствует на складе или нет нужного цвета), то заказ из статуса `\"status\": \"PROCESSING\"` и этапа обработки `\"substatus\": \"STARTED\"` нужно перевести в статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`. * Если магазин подготовил заказ к отгрузке, но не может его выполнить (например, последний товар был поврежден или оказался с браком), то заказ из статуса `\"status\": \"PROCESSING\"` и этапа обработки `\"substatus\": \"READY_TO_SHIP\"` нужно перевести в статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`.  Полная информация о статусной модели DBS-заказов: Как изменяются статусы заказов.  {% cut \"**Как подтвердить LaaS-заказ**\" %}  Для подтверждения черновика заказа передайте статус `\"status\": \"PROCESSING\"` с подстатусом `\"substatus\": \"STARTED\"`.  Подтверждение заказа, созданного с параметром `draft` равным `false`, не требуется.  {% endcut %}  {% cut \"**Как отменить LaaS-заказ**\" %}  Передайте статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`.  При успешном выполнении запроса отмена произойдет через некоторое время. Как проверить статус операции  {% endcut %}  {% include notitle limit %}
      * Изменение статуса одного заказа
      */
     updateOrderStatusRaw(requestParameters, initOverrides) {
@@ -2280,7 +2733,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateOrderStatus.md) %}  Изменяет статус заказа. Возможные изменения статусов:  * Если магазин подтвердил и подготовил заказ к отправке, то заказ из статуса `\"status\": \"PROCESSING\"` и этапа обработки `\"substatus\": \"STARTED\"` нужно перевести в статус `\"status\": \"PROCESSING\"` и этап обработки `\"substatus\": \"READY_TO_SHIP\"`. * Если магазин подтвердил заказ, но не может его выполнить (например, товар числится в базе, но отсутствует на складе или нет нужного цвета), то заказ из статуса `\"status\": \"PROCESSING\"` и этапа обработки `\"substatus\": \"STARTED\"` нужно перевести в статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`. * Если магазин подготовил заказ к отгрузке, но не может его выполнить (например, последний товар был поврежден или оказался с браком), то заказ из статуса `\"status\": \"PROCESSING\"` и этапа обработки `\"substatus\": \"READY_TO_SHIP\"` нужно перевести в статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`.  {% cut \"**Как подтвердить LaaS-заказ**\" %}  Для подтверждения черновика заказа передайте статус `\"status\": \"PROCESSING\"` с подстатусом `\"substatus\": \"STARTED\"`.  Подтверждение заказа, созданного с параметром `draft` равным `false`, не требуется.  {% endcut %}  {% cut \"**Как отменить LaaS-заказ**\" %}  Передайте статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`.  При успешном выполнении запроса отмена произойдет через некоторое время. Как проверить статус операции  {% endcut %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateOrderStatus.md) %}
+     * {% include notitle access %}  Изменяет статус заказа. Возможные изменения статусов:  * Если магазин подтвердил и подготовил заказ к отправке, то заказ из статуса `\"status\": \"PROCESSING\"` и этапа обработки `\"substatus\": \"STARTED\"` нужно перевести в статус `\"status\": \"PROCESSING\"` и этап обработки `\"substatus\": \"READY_TO_SHIP\"`. * Если магазин подтвердил заказ, но не может его выполнить (например, товар числится в базе, но отсутствует на складе или нет нужного цвета), то заказ из статуса `\"status\": \"PROCESSING\"` и этапа обработки `\"substatus\": \"STARTED\"` нужно перевести в статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`. * Если магазин подготовил заказ к отгрузке, но не может его выполнить (например, последний товар был поврежден или оказался с браком), то заказ из статуса `\"status\": \"PROCESSING\"` и этапа обработки `\"substatus\": \"READY_TO_SHIP\"` нужно перевести в статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`.  Полная информация о статусной модели DBS-заказов: Как изменяются статусы заказов.  {% cut \"**Как подтвердить LaaS-заказ**\" %}  Для подтверждения черновика заказа передайте статус `\"status\": \"PROCESSING\"` с подстатусом `\"substatus\": \"STARTED\"`.  Подтверждение заказа, созданного с параметром `draft` равным `false`, не требуется.  {% endcut %}  {% cut \"**Как отменить LaaS-заказ**\" %}  Передайте статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`.  При успешном выполнении запроса отмена произойдет через некоторое время. Как проверить статус операции  {% endcut %}  {% include notitle limit %}
      * Изменение статуса одного заказа
      */
     updateOrderStatus(campaignId, orderId, updateOrderStatusRequest, initOverrides) {
@@ -2290,7 +2743,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateOrderStatuses.md) %}  Изменяет статусы нескольких заказов.  Возможные изменения статусов:  * Если магазин подтвердил и подготовил заказ к отправке, то заказ из статуса `\"status\": \"PROCESSING\"`и этапа обработки `\"substatus\": \"STARTED\"` нужно перевести в статус `\"status\": \"PROCESSING\"` и этап обработки `\"substatus\": \"READY_TO_SHIP\"`. * Если магазин подтвердил заказ, но не может его выполнить (например, товар числится в базе, но отсутствует на складе или нет нужного цвета), то заказ из статуса `\"status\": \"PROCESSING\"` и этапа обработки `\"substatus\": \"STARTED\"` нужно перевести в статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`. * Если магазин подготовил заказ к отгрузке, но не может его выполнить (например, последний товар был поврежден или оказался с браком), то заказ из статуса `\"status\": \"PROCESSING\"` и этапа обработки `\"substatus\": \"READY_TO_SHIP\"` нужно перевести в статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`.  {% cut \"**Как подтвердить LaaS-заказ**\" %}  Для подтверждения черновика заказа передайте статус `\"status\": \"PROCESSING\"` с подстатусом `\"substatus\": \"STARTED\"`.  Подтверждение заказа, созданного с параметром `draft` равным `false`, не требуется.  {% endcut %}  {% cut \"**Как отменить LaaS-заказ**\" %}  Передайте статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`.  При успешном выполнении запроса отмена произойдет через некоторое время. Как проверить статус операции  {% endcut %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateOrderStatuses.md) %}
+     * {% include notitle access %}  Изменяет статусы нескольких заказов.  Возможные изменения статусов:  * Если магазин подтвердил и подготовил заказ к отправке, то заказ из статуса `\"status\": \"PROCESSING\"`и этапа обработки `\"substatus\": \"STARTED\"` нужно перевести в статус `\"status\": \"PROCESSING\"` и этап обработки `\"substatus\": \"READY_TO_SHIP\"`. * Если магазин подтвердил заказ, но не может его выполнить (например, товар числится в базе, но отсутствует на складе или нет нужного цвета), то заказ из статуса `\"status\": \"PROCESSING\"` и этапа обработки `\"substatus\": \"STARTED\"` нужно перевести в статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`. * Если магазин подготовил заказ к отгрузке, но не может его выполнить (например, последний товар был поврежден или оказался с браком), то заказ из статуса `\"status\": \"PROCESSING\"` и этапа обработки `\"substatus\": \"READY_TO_SHIP\"` нужно перевести в статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`.  Полная информация о статусной модели DBS-заказов: Как изменяются статусы заказов.  {% cut \"**Как подтвердить LaaS-заказ**\" %}  Для подтверждения черновика заказа передайте статус `\"status\": \"PROCESSING\"` с подстатусом `\"substatus\": \"STARTED\"`.  Подтверждение заказа, созданного с параметром `draft` равным `false`, не требуется.  {% endcut %}  {% cut \"**Как отменить LaaS-заказ**\" %}  Передайте статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`.  При успешном выполнении запроса отмена произойдет через некоторое время. Как проверить статус операции  {% endcut %}  {% include notitle limit %}
      * Изменение статусов нескольких заказов
      */
     updateOrderStatusesRaw(requestParameters, initOverrides) {
@@ -2322,7 +2775,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateOrderStatuses.md) %}  Изменяет статусы нескольких заказов.  Возможные изменения статусов:  * Если магазин подтвердил и подготовил заказ к отправке, то заказ из статуса `\"status\": \"PROCESSING\"`и этапа обработки `\"substatus\": \"STARTED\"` нужно перевести в статус `\"status\": \"PROCESSING\"` и этап обработки `\"substatus\": \"READY_TO_SHIP\"`. * Если магазин подтвердил заказ, но не может его выполнить (например, товар числится в базе, но отсутствует на складе или нет нужного цвета), то заказ из статуса `\"status\": \"PROCESSING\"` и этапа обработки `\"substatus\": \"STARTED\"` нужно перевести в статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`. * Если магазин подготовил заказ к отгрузке, но не может его выполнить (например, последний товар был поврежден или оказался с браком), то заказ из статуса `\"status\": \"PROCESSING\"` и этапа обработки `\"substatus\": \"READY_TO_SHIP\"` нужно перевести в статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`.  {% cut \"**Как подтвердить LaaS-заказ**\" %}  Для подтверждения черновика заказа передайте статус `\"status\": \"PROCESSING\"` с подстатусом `\"substatus\": \"STARTED\"`.  Подтверждение заказа, созданного с параметром `draft` равным `false`, не требуется.  {% endcut %}  {% cut \"**Как отменить LaaS-заказ**\" %}  Передайте статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`.  При успешном выполнении запроса отмена произойдет через некоторое время. Как проверить статус операции  {% endcut %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateOrderStatuses.md) %}
+     * {% include notitle access %}  Изменяет статусы нескольких заказов.  Возможные изменения статусов:  * Если магазин подтвердил и подготовил заказ к отправке, то заказ из статуса `\"status\": \"PROCESSING\"`и этапа обработки `\"substatus\": \"STARTED\"` нужно перевести в статус `\"status\": \"PROCESSING\"` и этап обработки `\"substatus\": \"READY_TO_SHIP\"`. * Если магазин подтвердил заказ, но не может его выполнить (например, товар числится в базе, но отсутствует на складе или нет нужного цвета), то заказ из статуса `\"status\": \"PROCESSING\"` и этапа обработки `\"substatus\": \"STARTED\"` нужно перевести в статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`. * Если магазин подготовил заказ к отгрузке, но не может его выполнить (например, последний товар был поврежден или оказался с браком), то заказ из статуса `\"status\": \"PROCESSING\"` и этапа обработки `\"substatus\": \"READY_TO_SHIP\"` нужно перевести в статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`.  Полная информация о статусной модели DBS-заказов: Как изменяются статусы заказов.  {% cut \"**Как подтвердить LaaS-заказ**\" %}  Для подтверждения черновика заказа передайте статус `\"status\": \"PROCESSING\"` с подстатусом `\"substatus\": \"STARTED\"`.  Подтверждение заказа, созданного с параметром `draft` равным `false`, не требуется.  {% endcut %}  {% cut \"**Как отменить LaaS-заказ**\" %}  Передайте статус `\"status\": \"CANCELLED\"` с причиной отмены заказа `\"substatus\": \"SHOP_FAILED\"`.  При успешном выполнении запроса отмена произойдет через некоторое время. Как проверить статус операции  {% endcut %}  {% include notitle limit %}
      * Изменение статусов нескольких заказов
      */
     updateOrderStatuses(campaignId, updateOrderStatusesRequest, initOverrides) {
@@ -2332,7 +2785,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updatePrices.md) %}  Устанавливает цены на товары в магазине. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  {% note warning \"Метод только для отдельных магазинов\" %}  Вам доступен этот метод, если в кабинете продавца на Маркете есть возможность установить уникальные цены в отдельных магазинах. Как это проверить — в методе POST v2/businesses/{businessId}/settings в параметре `onlyDefaultPrice` возвращается значение `false`.  В ином случае используйте метод управления ценами, которые действуют во всех магазинах, — POST v2/businesses/{businessId}/offer-prices/updates.  {% endnote %}  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updatePrices.md) %}
+     * {% include notitle access %}  Устанавливает цены на товары в магазине. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  {% note warning \"Метод только для отдельных магазинов\" %}  Вам доступен этот метод, если в кабинете продавца на Маркете есть возможность установить уникальные цены в отдельных магазинах. Как это проверить — в методе POST v2/businesses/{businessId}/settings в параметре `onlyDefaultPrice` возвращается значение `false`.  В ином случае используйте метод управления ценами, которые действуют во всех магазинах, — POST v2/businesses/{businessId}/offer-prices/updates.  {% endnote %}  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
      * Установка цен на товары в конкретном магазине
      */
     updatePricesRaw(requestParameters, initOverrides) {
@@ -2364,7 +2817,7 @@ class LaasApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updatePrices.md) %}  Устанавливает цены на товары в магазине. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  {% note warning \"Метод только для отдельных магазинов\" %}  Вам доступен этот метод, если в кабинете продавца на Маркете есть возможность установить уникальные цены в отдельных магазинах. Как это проверить — в методе POST v2/businesses/{businessId}/settings в параметре `onlyDefaultPrice` возвращается значение `false`.  В ином случае используйте метод управления ценами, которые действуют во всех магазинах, — POST v2/businesses/{businessId}/offer-prices/updates.  {% endnote %}  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updatePrices.md) %}
+     * {% include notitle access %}  Устанавливает цены на товары в магазине. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  {% note warning \"Метод только для отдельных магазинов\" %}  Вам доступен этот метод, если в кабинете продавца на Маркете есть возможность установить уникальные цены в отдельных магазинах. Как это проверить — в методе POST v2/businesses/{businessId}/settings в параметре `onlyDefaultPrice` возвращается значение `false`.  В ином случае используйте метод управления ценами, которые действуют во всех магазинах, — POST v2/businesses/{businessId}/offer-prices/updates.  {% endnote %}  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
      * Установка цен на товары в конкретном магазине
      */
     updatePrices(campaignId, updatePricesRequest, initOverrides) {

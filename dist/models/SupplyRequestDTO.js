@@ -18,6 +18,7 @@ exports.SupplyRequestDTOFromJSON = SupplyRequestDTOFromJSON;
 exports.SupplyRequestDTOFromJSONTyped = SupplyRequestDTOFromJSONTyped;
 exports.SupplyRequestDTOToJSON = SupplyRequestDTOToJSON;
 const SupplyRequestType_1 = require("./SupplyRequestType");
+const EtrnIdentifierDTO_1 = require("./EtrnIdentifierDTO");
 const SupplyRequestStatusType_1 = require("./SupplyRequestStatusType");
 const SupplyRequestSubType_1 = require("./SupplyRequestSubType");
 const SupplyRequestCountersDTO_1 = require("./SupplyRequestCountersDTO");
@@ -62,6 +63,7 @@ function SupplyRequestDTOFromJSONTyped(json, ignoreDiscriminator) {
         'childrenLinks': json['childrenLinks'] == null ? undefined : (json['childrenLinks'].map(SupplyRequestReferenceDTO_1.SupplyRequestReferenceDTOFromJSON)),
         'targetLocation': (0, SupplyRequestLocationDTO_1.SupplyRequestLocationDTOFromJSON)(json['targetLocation']),
         'transitLocation': json['transitLocation'] == null ? undefined : (0, SupplyRequestLocationDTO_1.SupplyRequestLocationDTOFromJSON)(json['transitLocation']),
+        'etrnIdentifier': json['etrnIdentifier'] == null ? undefined : (0, EtrnIdentifierDTO_1.EtrnIdentifierDTOFromJSON)(json['etrnIdentifier']),
     };
 }
 function SupplyRequestDTOToJSON(value) {
@@ -79,5 +81,6 @@ function SupplyRequestDTOToJSON(value) {
         'childrenLinks': value['childrenLinks'] == null ? undefined : (value['childrenLinks'].map(SupplyRequestReferenceDTO_1.SupplyRequestReferenceDTOToJSON)),
         'targetLocation': (0, SupplyRequestLocationDTO_1.SupplyRequestLocationDTOToJSON)(value['targetLocation']),
         'transitLocation': (0, SupplyRequestLocationDTO_1.SupplyRequestLocationDTOToJSON)(value['transitLocation']),
+        'etrnIdentifier': (0, EtrnIdentifierDTO_1.EtrnIdentifierDTOToJSON)(value['etrnIdentifier']),
     };
 }

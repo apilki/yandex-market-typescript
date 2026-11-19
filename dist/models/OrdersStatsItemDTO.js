@@ -18,6 +18,7 @@ exports.OrdersStatsItemDTOFromJSON = OrdersStatsItemDTOFromJSON;
 exports.OrdersStatsItemDTOFromJSONTyped = OrdersStatsItemDTOFromJSONTyped;
 exports.OrdersStatsItemDTOToJSON = OrdersStatsItemDTOToJSON;
 const OrdersStatsPriceDTO_1 = require("./OrdersStatsPriceDTO");
+const OrdersStatsShopServiceType_1 = require("./OrdersStatsShopServiceType");
 const OrdersStatsDetailsDTO_1 = require("./OrdersStatsDetailsDTO");
 const OrdersStatsWarehouseDTO_1 = require("./OrdersStatsWarehouseDTO");
 /**
@@ -35,6 +36,7 @@ function OrdersStatsItemDTOFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'offerName': json['offerName'] == null ? undefined : json['offerName'],
+        'shopServiceType': json['shopServiceType'] == null ? undefined : (0, OrdersStatsShopServiceType_1.OrdersStatsShopServiceTypeFromJSON)(json['shopServiceType']),
         'marketSku': json['marketSku'] == null ? undefined : json['marketSku'],
         'shopSku': json['shopSku'] == null ? undefined : json['shopSku'],
         'count': json['count'] == null ? undefined : json['count'],
@@ -54,6 +56,7 @@ function OrdersStatsItemDTOToJSON(value) {
     }
     return {
         'offerName': value['offerName'],
+        'shopServiceType': (0, OrdersStatsShopServiceType_1.OrdersStatsShopServiceTypeToJSON)(value['shopServiceType']),
         'marketSku': value['marketSku'],
         'shopSku': value['shopSku'],
         'count': value['count'],

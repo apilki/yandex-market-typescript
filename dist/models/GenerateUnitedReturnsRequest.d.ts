@@ -19,9 +19,10 @@ import type { ReturnShipmentStatusType } from './ReturnShipmentStatusType';
  */
 export interface GenerateUnitedReturnsRequest {
     /**
-     * Идентификатор кабинета. Чтобы его узнать, воспользуйтесь запросом GET v2/campaigns.
+     * Идентификатор кабинета. {% if audience == "partner" %}Чтобы его узнать, воспользуйтесь запросом GET v2/campaigns.
      *
      * ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html)
+     * {% endif %}
      *
      * @type {number}
      * @memberof GenerateUnitedReturnsRequest

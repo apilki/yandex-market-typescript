@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { PlacementType } from './PlacementType';
 /**
  * Данные, необходимые для генерации отчета: идентификатор кампании и период, за который нужен отчет.
  *
@@ -44,6 +45,24 @@ export interface GenerateGoodsRealizationReportRequest {
      * @memberof GenerateGoodsRealizationReportRequest
      */
     month: number;
+    /**
+     * Список ИНН (доступно продавцам-резидентам РФ).
+     * @type {Set<string>}
+     * @memberof GenerateGoodsRealizationReportRequest
+     */
+    inns?: Set<string> | null;
+    /**
+     * Список моделей размещения.
+     * @type {Set<PlacementType>}
+     * @memberof GenerateGoodsRealizationReportRequest
+     */
+    placementPrograms?: Set<PlacementType> | null;
+    /**
+     * Список номеров договоров на размещение.
+     * @type {Set<string>}
+     * @memberof GenerateGoodsRealizationReportRequest
+     */
+    placementContracts?: Set<string> | null;
 }
 /**
  * Check if a given object implements the GenerateGoodsRealizationReportRequest interface.

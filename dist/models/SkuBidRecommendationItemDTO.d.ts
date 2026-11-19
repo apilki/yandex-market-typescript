@@ -56,7 +56,14 @@ export interface SkuBidRecommendationItemDTO {
      */
     bidRecommendations?: Array<BidRecommendationItemDTO> | null;
     /**
+     * {% note warning "Параметр устарел и будет отключен 12.10.2026." %}
+     *
+     *
+     *
+     * {% endnote %}
+     *
      * Рекомендованные цены.
+     *
      * @type {Array<PriceRecommendationItemDTO>}
      * @memberof SkuBidRecommendationItemDTO
      * @deprecated

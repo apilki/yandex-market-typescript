@@ -25,6 +25,8 @@ exports.OperationTypeToJSON = OperationTypeToJSON;
  *
  * * `ORDER_DELIVERY_INTERVAL_UPDATE` — изменение интервала дат доставки.
  *
+ * * `ORDER_STORAGE_LIMIT_DATE_UPDATE` — продление срока хранения заказа.
+ *
  * * `ORDER_STATUS_UPDATE` — обновление статуса заказа для его отмены.
  *
  * * `RETURN_CANCELLATION` — отмена возврата.
@@ -34,6 +36,7 @@ exports.OperationTypeToJSON = OperationTypeToJSON;
 exports.OperationType = {
     ORDER_RECIPIENT_UPDATE: 'ORDER_RECIPIENT_UPDATE',
     ORDER_DELIVERY_INTERVAL_UPDATE: 'ORDER_DELIVERY_INTERVAL_UPDATE',
+    ORDER_STORAGE_LIMIT_DATE_UPDATE: 'ORDER_STORAGE_LIMIT_DATE_UPDATE',
     ORDER_STATUS_UPDATE: 'ORDER_STATUS_UPDATE',
     RETURN_CANCELLATION: 'RETURN_CANCELLATION'
 };

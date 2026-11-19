@@ -12,6 +12,7 @@
 /**
  * Способ денежного перевода:
  * - `BUYER` — оплата или возврат деньгами.
+ * - `MARKET_CESSION` — уступка задолженности покупателя.
  *
  * Устаревшие способы:
  * - `CASHBACK`.
@@ -24,6 +25,7 @@ export declare const OrdersStatsPaymentSourceType: {
     readonly BUYER: "BUYER";
     readonly CASHBACK: "CASHBACK";
     readonly MARKETPLACE: "MARKETPLACE";
+    readonly MARKET_CESSION: "MARKET_CESSION";
     readonly SPLIT: "SPLIT";
 };
 export type OrdersStatsPaymentSourceType = typeof OrdersStatsPaymentSourceType[keyof typeof OrdersStatsPaymentSourceType];

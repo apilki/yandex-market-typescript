@@ -55,6 +55,7 @@ function CreateOrderDTOFromJSONTyped(json, ignoreDiscriminator) {
         'packaging': (0, CreateOrderPackagingDTO_1.CreateOrderPackagingDTOFromJSON)(json['packaging']),
         'paymentType': (0, DeliveryPaymentType_1.DeliveryPaymentTypeFromJSON)(json['paymentType']),
         'draft': json['draft'] == null ? undefined : json['draft'],
+        'fake': json['fake'] == null ? undefined : json['fake'],
     };
 }
 function CreateOrderDTOToJSON(value) {
@@ -69,5 +70,6 @@ function CreateOrderDTOToJSON(value) {
         'packaging': (0, CreateOrderPackagingDTO_1.CreateOrderPackagingDTOToJSON)(value['packaging']),
         'paymentType': (0, DeliveryPaymentType_1.DeliveryPaymentTypeToJSON)(value['paymentType']),
         'draft': value['draft'],
+        'fake': value['fake'],
     };
 }

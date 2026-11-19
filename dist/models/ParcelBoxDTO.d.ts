@@ -22,9 +22,9 @@ export interface ParcelBoxDTO {
      */
     id?: number;
     /**
-     * {% note warning "Не используйте этот параметр." %}
+     * {% note warning "Параметр устарел и будет отключен 19.10.2026." %}
      *
-     *
+     * Не используйте этот параметр.
      *
      * {% endnote %}
      *

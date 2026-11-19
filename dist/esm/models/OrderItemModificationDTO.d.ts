@@ -45,7 +45,7 @@ export interface OrderItemModificationDTO {
      *
      * Передавайте в запросе все единицы товара, который подлежит маркировке.
      *
-     * Обязательный параметр, если в заказе от бизнеса есть товары, подлежащие маркировке в системе [:no-translate[«Честный ЗНАК»]](https://честныйзнак.рф/) или [:no-translate[«ASL BELGISI»]](https://aslbelgisi.uz) (для продавцов :no-translate[Market Yandex Go]).
+     * Обязательный параметр, если в заказе от бизнеса есть товары, подлежащие маркировке в системе [«Честный ЗНАК»](https://честныйзнак.рф/) или [«ASL BELGISI»](https://aslbelgisi.uz) (для продавцов :no-translate[Market Yandex Go]).
      *
      * @type {Array<BriefOrderItemInstanceDTO>}
      * @memberof OrderItemModificationDTO

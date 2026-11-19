@@ -41,7 +41,14 @@ export interface CampaignDTO {
      */
     id?: number;
     /**
+     * {% note warning "Параметр устарел и будет отключен 05.10.2026." %}
+     *
+     *
+     *
+     * {% endnote %}
+     *
      * Идентификатор плательщика в Яндекс Балансе.
+     *
      * @type {number}
      * @memberof CampaignDTO
      * @deprecated

@@ -30,7 +30,7 @@ const index_1 = require("../models/index");
  */
 class OutletLicensesApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/deleteOutletLicenses.md) %}  Удаляет информацию о лицензиях для точек продаж.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/deleteOutletLicenses.md) %}
+     * {% include notitle access %}  Удаляет информацию о лицензиях для точек продаж.  {% include notitle limit %}
      * Удаление лицензий для точек продаж
      */
     deleteOutletLicensesRaw(requestParameters, initOverrides) {
@@ -63,7 +63,7 @@ class OutletLicensesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/deleteOutletLicenses.md) %}  Удаляет информацию о лицензиях для точек продаж.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/deleteOutletLicenses.md) %}
+     * {% include notitle access %}  Удаляет информацию о лицензиях для точек продаж.  {% include notitle limit %}
      * Удаление лицензий для точек продаж
      */
     deleteOutletLicenses(campaignId, ids, initOverrides) {
@@ -73,7 +73,7 @@ class OutletLicensesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOutletLicenses.md) %}  Возвращает информацию о лицензиях для точек продаж.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOutletLicenses.md) %}
+     * {% include notitle access %}  Возвращает информацию о лицензиях для точек продаж.  {% include notitle limit %}
      * Информация о лицензиях для точек продаж
      */
     getOutletLicensesRaw(requestParameters, initOverrides) {
@@ -106,7 +106,7 @@ class OutletLicensesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOutletLicenses.md) %}  Возвращает информацию о лицензиях для точек продаж.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOutletLicenses.md) %}
+     * {% include notitle access %}  Возвращает информацию о лицензиях для точек продаж.  {% include notitle limit %}
      * Информация о лицензиях для точек продаж
      */
     getOutletLicenses(campaignId, outletIds, ids, initOverrides) {
@@ -116,7 +116,7 @@ class OutletLicensesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateOutletLicenses.md) %}  Передает информацию о новых и существующих лицензиях для точек продаж. Поддерживаются только лицензии на розничную продажу алкоголя.  Чтобы размещать алкогольную продукцию на Маркете, надо также прислать гарантийное письмо (если вы еще не делали этого раньше) и правильно оформить предложения в прайс-листе. Далее информация о лицензиях проходит проверку.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateOutletLicenses.md) %}
+     * {% include notitle access %}  Передает информацию о новых и существующих лицензиях для точек продаж. Поддерживаются только лицензии на розничную продажу алкоголя.  Чтобы размещать алкогольную продукцию на Маркете, надо также прислать гарантийное письмо (если вы еще не делали этого раньше) и правильно оформить предложения в прайс-листе. Далее информация о лицензиях проходит проверку.  {% include notitle limit %}
      * Создание и изменение лицензий для точек продаж
      */
     updateOutletLicensesRaw(requestParameters, initOverrides) {
@@ -148,7 +148,7 @@ class OutletLicensesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateOutletLicenses.md) %}  Передает информацию о новых и существующих лицензиях для точек продаж. Поддерживаются только лицензии на розничную продажу алкоголя.  Чтобы размещать алкогольную продукцию на Маркете, надо также прислать гарантийное письмо (если вы еще не делали этого раньше) и правильно оформить предложения в прайс-листе. Далее информация о лицензиях проходит проверку.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateOutletLicenses.md) %}
+     * {% include notitle access %}  Передает информацию о новых и существующих лицензиях для точек продаж. Поддерживаются только лицензии на розничную продажу алкоголя.  Чтобы размещать алкогольную продукцию на Маркете, надо также прислать гарантийное письмо (если вы еще не делали этого раньше) и правильно оформить предложения в прайс-листе. Далее информация о лицензиях проходит проверку.  {% include notitle limit %}
      * Создание и изменение лицензий для точек продаж
      */
     updateOutletLicenses(campaignId, updateOutletLicenseRequest, initOverrides) {

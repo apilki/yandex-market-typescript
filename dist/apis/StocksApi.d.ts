@@ -10,39 +10,69 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { EmptyApiResponse, GetWarehouseStocksRequest, GetWarehouseStocksResponse, UpdateStocksRequest } from '../models/index';
+import type { EmptyApiResponse, GetStocksOnPartnerWarehousesRequest, GetStocksOnPartnerWarehousesResponse, GetWarehouseStocksRequest, GetWarehouseStocksResponse, UpdateStocksOnWarehousesRequest, UpdateStocksRequest } from '../models/index';
 export interface StocksApiGetStocksRequest {
     campaignId: number;
     pageToken?: string;
     limit?: number;
     getWarehouseStocksRequest?: GetWarehouseStocksRequest;
 }
+export interface StocksApiGetStocksOnPartnerWarehousesOperationRequest {
+    businessId: number;
+    getStocksOnPartnerWarehousesRequest: GetStocksOnPartnerWarehousesRequest;
+    pageToken?: string;
+    limit?: number;
+}
 export interface StocksApiUpdateStocksOperationRequest {
     campaignId: number;
     updateStocksRequest: UpdateStocksRequest;
+}
+export interface StocksApiUpdateStocksOnPartnerWarehousesRequest {
+    businessId: number;
+    updateStocksOnWarehousesRequest: UpdateStocksOnWarehousesRequest;
 }
 /**
  *
  */
 export declare class StocksApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getStocks.md) %}  Возвращает данные об остатках товаров (для всех моделей) и об [оборачиваемости](*turnover) товаров (для модели FBY).  {% note info \"По умолчанию данные по оборачивамости не возращаются\" %}  Чтобы они были в ответе, передавайте `true` в поле `withTurnover`.  {% endnote %}  **Для моделей FBY и LaaS:** информация об остатках может возвращаться с нескольких складов Маркета, у которых будут разные `warehouseId`. Получить список складов Маркета можно с помощью метода GET v2/warehouses.  **Для модели FBS:** в ответе может вернуться не только партнерский склад, но и склад возвратов Маркета. Это возможно, если возврат поступил в указанную продавцом точку возвратов и долго не был забран.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getStocks.md) %}  [//]: <> (turnover: Среднее количество дней, за которое товар продается. Подробно об оборачиваемости рассказано в Справке Маркета для продавцов https://yandex.ru/support/marketplace/analytics/turnover.html.)
+     * {% include notitle access %}  Возвращает данные об остатках товаров (для всех моделей) и об [оборачиваемости](*turnover) товаров (для модели FBY).  {% note warning \"Когда использовать этот метод\" %}  Метод актуален:  * для моделей FBY и LaaS; * для моделей FBS, DBS и Экспресс, если в кабинете есть группы складов.  Если в кабинете нет групп складов и вы работаете с моделями FBS, DBS или Экспресс, используйте метод POST v3/businesses/{businessId}/offers/stocks. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  {% note info \"По умолчанию данные по оборачивамости не возращаются\" %}  Чтобы они были в ответе, передавайте `true` в поле `withTurnover`.  {% endnote %}  **Для моделей FBY и LaaS:** информация об остатках может возвращаться с нескольких складов Маркета, у которых будут разные `warehouseId`. Получить список складов Маркета можно с помощью метода GET v2/warehouses.  **Для модели FBS:** в ответе может вернуться не только партнерский склад, но и склад возвратов Маркета. Это возможно, если возврат поступил в указанную продавцом точку возвратов и долго не был забран.  {% include notitle limit %}  [//]: <> (turnover: Среднее количество дней, за которое товар продается. Подробно об оборачиваемости рассказано в Справке Маркета для продавцов https://yandex.ru/support/marketplace/analytics/turnover.html.)
      * Информация об остатках и оборачиваемости
      */
     getStocksRaw(requestParameters: StocksApiGetStocksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetWarehouseStocksResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getStocks.md) %}  Возвращает данные об остатках товаров (для всех моделей) и об [оборачиваемости](*turnover) товаров (для модели FBY).  {% note info \"По умолчанию данные по оборачивамости не возращаются\" %}  Чтобы они были в ответе, передавайте `true` в поле `withTurnover`.  {% endnote %}  **Для моделей FBY и LaaS:** информация об остатках может возвращаться с нескольких складов Маркета, у которых будут разные `warehouseId`. Получить список складов Маркета можно с помощью метода GET v2/warehouses.  **Для модели FBS:** в ответе может вернуться не только партнерский склад, но и склад возвратов Маркета. Это возможно, если возврат поступил в указанную продавцом точку возвратов и долго не был забран.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getStocks.md) %}  [//]: <> (turnover: Среднее количество дней, за которое товар продается. Подробно об оборачиваемости рассказано в Справке Маркета для продавцов https://yandex.ru/support/marketplace/analytics/turnover.html.)
+     * {% include notitle access %}  Возвращает данные об остатках товаров (для всех моделей) и об [оборачиваемости](*turnover) товаров (для модели FBY).  {% note warning \"Когда использовать этот метод\" %}  Метод актуален:  * для моделей FBY и LaaS; * для моделей FBS, DBS и Экспресс, если в кабинете есть группы складов.  Если в кабинете нет групп складов и вы работаете с моделями FBS, DBS или Экспресс, используйте метод POST v3/businesses/{businessId}/offers/stocks. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  {% note info \"По умолчанию данные по оборачивамости не возращаются\" %}  Чтобы они были в ответе, передавайте `true` в поле `withTurnover`.  {% endnote %}  **Для моделей FBY и LaaS:** информация об остатках может возвращаться с нескольких складов Маркета, у которых будут разные `warehouseId`. Получить список складов Маркета можно с помощью метода GET v2/warehouses.  **Для модели FBS:** в ответе может вернуться не только партнерский склад, но и склад возвратов Маркета. Это возможно, если возврат поступил в указанную продавцом точку возвратов и долго не был забран.  {% include notitle limit %}  [//]: <> (turnover: Среднее количество дней, за которое товар продается. Подробно об оборачиваемости рассказано в Справке Маркета для продавцов https://yandex.ru/support/marketplace/analytics/turnover.html.)
      * Информация об остатках и оборачиваемости
      */
     getStocks(campaignId: number, pageToken?: string, limit?: number, getWarehouseStocksRequest?: GetWarehouseStocksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetWarehouseStocksResponse>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateStocks.md) %}  Передает данные об остатках товаров на витрине.  Для группы складов передавайте остатки только для **одного любого склада**. Информация для остальных складов в этой группе обновится автоматически.  Обязательно указывайте SKU **в точности** так, как он указан в каталоге. Например, _557722_ и _0557722_ — это два разных SKU.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateStocks.md) %}
+     * {% include notitle access %}  Возвращает данные об остатках товаров на складе кабинета.  {% note warning \"Метод подходит, только если в кабинете нет групп складов\" %}  Если в кабинете есть группы складов, используйте метод POST v2/campaigns/{campaignId}/offers/stocks. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  {% include notitle limit %}
+     * Информация об остатках
+     */
+    getStocksOnPartnerWarehousesRaw(requestParameters: StocksApiGetStocksOnPartnerWarehousesOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetStocksOnPartnerWarehousesResponse>>;
+    /**
+     * {% include notitle access %}  Возвращает данные об остатках товаров на складе кабинета.  {% note warning \"Метод подходит, только если в кабинете нет групп складов\" %}  Если в кабинете есть группы складов, используйте метод POST v2/campaigns/{campaignId}/offers/stocks. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  {% include notitle limit %}
+     * Информация об остатках
+     */
+    getStocksOnPartnerWarehouses(businessId: number, getStocksOnPartnerWarehousesRequest: GetStocksOnPartnerWarehousesRequest, pageToken?: string, limit?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetStocksOnPartnerWarehousesResponse>;
+    /**
+     * {% include notitle access %}  Передает данные об остатках товаров на витрине.  {% note warning \"Когда использовать этот метод\" %}  Метод актуален только для кабинетов с группами складов. Если в кабинете нет групп складов, используйте метод POST v3/businesses/{businessId}/offers/stocks/update. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  Для группы складов передавайте остатки только для **одного любого склада**. Информация для остальных складов в этой группе обновится автоматически.  Обязательно указывайте SKU **в точности** так, как он указан в каталоге. Например, _557722_ и _0557722_ — это два разных SKU.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
      * Передача информации об остатках
      */
     updateStocksRaw(requestParameters: StocksApiUpdateStocksOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmptyApiResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateStocks.md) %}  Передает данные об остатках товаров на витрине.  Для группы складов передавайте остатки только для **одного любого склада**. Информация для остальных складов в этой группе обновится автоматически.  Обязательно указывайте SKU **в точности** так, как он указан в каталоге. Например, _557722_ и _0557722_ — это два разных SKU.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateStocks.md) %}
+     * {% include notitle access %}  Передает данные об остатках товаров на витрине.  {% note warning \"Когда использовать этот метод\" %}  Метод актуален только для кабинетов с группами складов. Если в кабинете нет групп складов, используйте метод POST v3/businesses/{businessId}/offers/stocks/update. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  Для группы складов передавайте остатки только для **одного любого склада**. Информация для остальных складов в этой группе обновится автоматически.  Обязательно указывайте SKU **в точности** так, как он указан в каталоге. Например, _557722_ и _0557722_ — это два разных SKU.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
      * Передача информации об остатках
      */
     updateStocks(campaignId: number, updateStocksRequest: UpdateStocksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmptyApiResponse>;
+    /**
+     * {% include notitle access %}  Передает данные об остатках товаров на витрине.  Обязательно указывайте SKU **в точности** так, как он указан в каталоге. Например, _557722_ и _0557722_ — это два разных SKU.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% note warning \"Метод подходит, только если в кабинете нет групп складов\" %}  Если в кабинете есть группы складов, используйте метод PUT v2/campaigns/{campaignId}/offers/stocks. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  {% include notitle limit %}
+     * Передача информации об остатках
+     */
+    updateStocksOnPartnerWarehousesRaw(requestParameters: StocksApiUpdateStocksOnPartnerWarehousesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmptyApiResponse>>;
+    /**
+     * {% include notitle access %}  Передает данные об остатках товаров на витрине.  Обязательно указывайте SKU **в точности** так, как он указан в каталоге. Например, _557722_ и _0557722_ — это два разных SKU.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% note warning \"Метод подходит, только если в кабинете нет групп складов\" %}  Если в кабинете есть группы складов, используйте метод PUT v2/campaigns/{campaignId}/offers/stocks. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  {% include notitle limit %}
+     * Передача информации об остатках
+     */
+    updateStocksOnPartnerWarehouses(businessId: number, updateStocksOnWarehousesRequest: UpdateStocksOnWarehousesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmptyApiResponse>;
 }

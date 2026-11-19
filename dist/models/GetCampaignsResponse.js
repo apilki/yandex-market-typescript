@@ -19,6 +19,7 @@ exports.GetCampaignsResponseFromJSONTyped = GetCampaignsResponseFromJSONTyped;
 exports.GetCampaignsResponseToJSON = GetCampaignsResponseToJSON;
 const CampaignDTO_1 = require("./CampaignDTO");
 const FlippingPagerDTO_1 = require("./FlippingPagerDTO");
+const PackagingForwardScrollingPagerDTO_1 = require("./PackagingForwardScrollingPagerDTO");
 /**
  * Check if a given object implements the GetCampaignsResponse interface.
  */
@@ -37,6 +38,7 @@ function GetCampaignsResponseFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'campaigns': (json['campaigns'].map(CampaignDTO_1.CampaignDTOFromJSON)),
         'pager': json['pager'] == null ? undefined : (0, FlippingPagerDTO_1.FlippingPagerDTOFromJSON)(json['pager']),
+        'paging': json['paging'] == null ? undefined : (0, PackagingForwardScrollingPagerDTO_1.PackagingForwardScrollingPagerDTOFromJSON)(json['paging']),
     };
 }
 function GetCampaignsResponseToJSON(value) {
@@ -46,5 +48,6 @@ function GetCampaignsResponseToJSON(value) {
     return {
         'campaigns': (value['campaigns'].map(CampaignDTO_1.CampaignDTOToJSON)),
         'pager': (0, FlippingPagerDTO_1.FlippingPagerDTOToJSON)(value['pager']),
+        'paging': (0, PackagingForwardScrollingPagerDTO_1.PackagingForwardScrollingPagerDTOToJSON)(value['paging']),
     };
 }

@@ -68,6 +68,7 @@ export function OrderDeliveryDTOFromJSONTyped(json, ignoreDiscriminator) {
         'estimated': json['estimated'] == null ? undefined : json['estimated'],
         'eacType': json['eacType'] == null ? undefined : OrderDeliveryEacTypeFromJSON(json['eacType']),
         'eacCode': json['eacCode'] == null ? undefined : json['eacCode'],
+        'receiveCode': json['receiveCode'] == null ? undefined : json['receiveCode'],
     };
 }
 export function OrderDeliveryDTOToJSON(value) {
@@ -96,5 +97,6 @@ export function OrderDeliveryDTOToJSON(value) {
         'estimated': value['estimated'],
         'eacType': OrderDeliveryEacTypeToJSON(value['eacType']),
         'eacCode': value['eacCode'],
+        'receiveCode': value['receiveCode'],
     };
 }

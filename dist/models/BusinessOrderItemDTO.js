@@ -18,6 +18,7 @@ exports.BusinessOrderItemDTOFromJSON = BusinessOrderItemDTOFromJSON;
 exports.BusinessOrderItemDTOFromJSONTyped = BusinessOrderItemDTOFromJSONTyped;
 exports.BusinessOrderItemDTOToJSON = BusinessOrderItemDTOToJSON;
 const ItemPriceDTO_1 = require("./ItemPriceDTO");
+const OrderItemUnitStatusDTO_1 = require("./OrderItemUnitStatusDTO");
 const OrderItemInstanceDTO_1 = require("./OrderItemInstanceDTO");
 const OrderItemInstanceType_1 = require("./OrderItemInstanceType");
 const OrderItemTagType_1 = require("./OrderItemTagType");
@@ -50,6 +51,7 @@ function BusinessOrderItemDTOFromJSONTyped(json, ignoreDiscriminator) {
         'prices': json['prices'] == null ? undefined : (0, ItemPriceDTO_1.ItemPriceDTOFromJSON)(json['prices']),
         'instances': json['instances'] == null ? undefined : (json['instances'].map(OrderItemInstanceDTO_1.OrderItemInstanceDTOFromJSON)),
         'requiredInstanceTypes': json['requiredInstanceTypes'] == null ? undefined : (new Set(json['requiredInstanceTypes'].map(OrderItemInstanceType_1.OrderItemInstanceTypeFromJSON))),
+        'itemStatuses': json['itemStatuses'] == null ? undefined : (json['itemStatuses'].map(OrderItemUnitStatusDTO_1.OrderItemUnitStatusDTOFromJSON)),
         'tags': json['tags'] == null ? undefined : (new Set(json['tags'].map(OrderItemTagType_1.OrderItemTagTypeFromJSON))),
     };
 }
@@ -65,6 +67,7 @@ function BusinessOrderItemDTOToJSON(value) {
         'prices': (0, ItemPriceDTO_1.ItemPriceDTOToJSON)(value['prices']),
         'instances': value['instances'] == null ? undefined : (value['instances'].map(OrderItemInstanceDTO_1.OrderItemInstanceDTOToJSON)),
         'requiredInstanceTypes': value['requiredInstanceTypes'] == null ? undefined : (Array.from(value['requiredInstanceTypes']).map(OrderItemInstanceType_1.OrderItemInstanceTypeToJSON)),
+        'itemStatuses': value['itemStatuses'] == null ? undefined : (value['itemStatuses'].map(OrderItemUnitStatusDTO_1.OrderItemUnitStatusDTOToJSON)),
         'tags': value['tags'] == null ? undefined : (Array.from(value['tags']).map(OrderItemTagType_1.OrderItemTagTypeToJSON)),
     };
 }

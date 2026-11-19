@@ -32,6 +32,7 @@ export function UpdateOrderDTOFromJSONTyped(json, ignoreDiscriminator) {
         'id': json['id'],
         'deliveryInterval': json['deliveryInterval'] == null ? undefined : DeliveryIntervalsUpdateOptionDTOFromJSON(json['deliveryInterval']),
         'customer': json['customer'] == null ? undefined : CustomerDTOFromJSON(json['customer']),
+        'extendStoragePeriod': json['extendStoragePeriod'] == null ? undefined : json['extendStoragePeriod'],
     };
 }
 export function UpdateOrderDTOToJSON(value) {
@@ -42,5 +43,6 @@ export function UpdateOrderDTOToJSON(value) {
         'id': value['id'],
         'deliveryInterval': DeliveryIntervalsUpdateOptionDTOToJSON(value['deliveryInterval']),
         'customer': CustomerDTOToJSON(value['customer']),
+        'extendStoragePeriod': value['extendStoragePeriod'],
     };
 }

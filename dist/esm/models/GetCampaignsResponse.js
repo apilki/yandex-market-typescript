@@ -13,6 +13,7 @@
  */
 import { CampaignDTOFromJSON, CampaignDTOToJSON, } from './CampaignDTO';
 import { FlippingPagerDTOFromJSON, FlippingPagerDTOToJSON, } from './FlippingPagerDTO';
+import { PackagingForwardScrollingPagerDTOFromJSON, PackagingForwardScrollingPagerDTOToJSON, } from './PackagingForwardScrollingPagerDTO';
 /**
  * Check if a given object implements the GetCampaignsResponse interface.
  */
@@ -31,6 +32,7 @@ export function GetCampaignsResponseFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'campaigns': (json['campaigns'].map(CampaignDTOFromJSON)),
         'pager': json['pager'] == null ? undefined : FlippingPagerDTOFromJSON(json['pager']),
+        'paging': json['paging'] == null ? undefined : PackagingForwardScrollingPagerDTOFromJSON(json['paging']),
     };
 }
 export function GetCampaignsResponseToJSON(value) {
@@ -40,5 +42,6 @@ export function GetCampaignsResponseToJSON(value) {
     return {
         'campaigns': (value['campaigns'].map(CampaignDTOToJSON)),
         'pager': FlippingPagerDTOToJSON(value['pager']),
+        'paging': PackagingForwardScrollingPagerDTOToJSON(value['paging']),
     };
 }

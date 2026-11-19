@@ -32,6 +32,7 @@ function GetAnswersRequestFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'questionId': json['questionId'] == null ? undefined : json['questionId'],
+        'answerIds': json['answerIds'] == null ? undefined : json['answerIds'],
     };
 }
 function GetAnswersRequestToJSON(value) {
@@ -40,5 +41,6 @@ function GetAnswersRequestToJSON(value) {
     }
     return {
         'questionId': value['questionId'],
+        'answerIds': value['answerIds'] == null ? undefined : Array.from(value['answerIds']),
     };
 }

@@ -82,14 +82,28 @@ export interface OrderDTO {
      */
     deliveryTotal: number;
     /**
+     * {% note warning "Параметр устарел и будет отключен 05.10.2026." %}
+     *
+     * Вместо него используйте `itemsTotal`.
+     *
+     * {% endnote %}
+     *
      * Стоимость всех товаров в заказе в валюте покупателя после применения скидок и без учета стоимости доставки.
+     *
      * @type {number}
      * @memberof OrderDTO
      * @deprecated
      */
     buyerItemsTotal?: number;
     /**
+     * {% note warning "Параметр устарел и будет отключен 05.10.2026." %}
+     *
+     *
+     *
+     * {% endnote %}
+     *
      * Стоимость всех товаров в заказе в валюте покупателя после применения скидок и с учетом стоимости доставки.
+     *
      * @type {number}
      * @memberof OrderDTO
      * @deprecated
@@ -107,7 +121,14 @@ export interface OrderDTO {
      */
     buyerItemsTotalBeforeDiscount: number;
     /**
+     * {% note warning "Параметр устарел и будет отключен 05.10.2026." %}
+     *
+     *
+     *
+     * {% endnote %}
+     *
      * Стоимость всех товаров в заказе в валюте покупателя до применения скидок и с учетом стоимости доставки (`buyerItemsTotalBeforeDiscount` + стоимость доставки).
+     *
      * @type {number}
      * @memberof OrderDTO
      * @deprecated

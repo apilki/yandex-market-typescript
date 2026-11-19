@@ -27,7 +27,7 @@ import { AddHiddenOffersRequestToJSON, DeleteHiddenOffersRequestToJSON, EmptyApi
  */
 export class HiddenOffersApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/addHiddenOffers.md) %}  Скрывает товары магазина на Маркете.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/addHiddenOffers.md) %}
+     * {% include notitle access %}  Скрывает товары магазина на Маркете.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
      * Скрытие товаров и настройки скрытия
      */
     addHiddenOffersRaw(requestParameters, initOverrides) {
@@ -59,7 +59,7 @@ export class HiddenOffersApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/addHiddenOffers.md) %}  Скрывает товары магазина на Маркете.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/addHiddenOffers.md) %}
+     * {% include notitle access %}  Скрывает товары магазина на Маркете.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
      * Скрытие товаров и настройки скрытия
      */
     addHiddenOffers(campaignId, addHiddenOffersRequest, initOverrides) {
@@ -69,7 +69,7 @@ export class HiddenOffersApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/deleteHiddenOffers.md) %}  Возобновляет показ скрытых вами товаров магазина на Маркете.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/deleteHiddenOffers.md) %}
+     * {% include notitle access %}  Возобновляет показ скрытых вами товаров магазина на Маркете.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
      * Возобновление показа товаров
      */
     deleteHiddenOffersRaw(requestParameters, initOverrides) {
@@ -101,7 +101,7 @@ export class HiddenOffersApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/deleteHiddenOffers.md) %}  Возобновляет показ скрытых вами товаров магазина на Маркете.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/deleteHiddenOffers.md) %}
+     * {% include notitle access %}  Возобновляет показ скрытых вами товаров магазина на Маркете.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
      * Возобновление показа товаров
      */
     deleteHiddenOffers(campaignId, deleteHiddenOffersRequest, initOverrides) {
@@ -111,7 +111,7 @@ export class HiddenOffersApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getHiddenOffers.md) %}  Возвращает список скрытых вами товаров для заданного магазина.  В списке будут товары, скрытые любым способом — через API, с помощью YML-фида, в кабинете и так далее.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getHiddenOffers.md) %}
+     * {% include notitle access %}  Возвращает список скрытых вами товаров для заданного магазина.  В списке будут товары, скрытые любым способом — через API, с помощью YML-фида, в кабинете и так далее.  {% include notitle limit %}
      * Информация о скрытых вами товарах
      */
     getHiddenOffersRaw(requestParameters, initOverrides) {
@@ -147,7 +147,7 @@ export class HiddenOffersApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getHiddenOffers.md) %}  Возвращает список скрытых вами товаров для заданного магазина.  В списке будут товары, скрытые любым способом — через API, с помощью YML-фида, в кабинете и так далее.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getHiddenOffers.md) %}
+     * {% include notitle access %}  Возвращает список скрытых вами товаров для заданного магазина.  В списке будут товары, скрытые любым способом — через API, с помощью YML-фида, в кабинете и так далее.  {% include notitle limit %}
      * Информация о скрытых вами товарах
      */
     getHiddenOffers(campaignId, offerId, pageToken, limit, initOverrides) {

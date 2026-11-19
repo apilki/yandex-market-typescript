@@ -10,16 +10,18 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { DeleteGoodsFeedbackCommentRequest, EmptyApiResponse, GetGoodsFeedbackCommentsRequest, GetGoodsFeedbackCommentsResponse, GetGoodsFeedbackRequest, GetGoodsFeedbackResponse, SkipGoodsFeedbackReactionRequest, UpdateGoodsFeedbackCommentRequest, UpdateGoodsFeedbackCommentResponse } from '../models/index';
+import type { DeleteGoodsFeedbackCommentRequest, EmptyApiResponse, GetGoodsFeedbackCommentsRequest, GetGoodsFeedbackCommentsResponse, GetGoodsFeedbackRequest, GetGoodsFeedbackResponse, GetGoodsFeedbackUrbanadsRequest, GetGoodsFeedbackUrbanadsResponse, SkipGoodsFeedbackReactionRequest, SourceType, UpdateGoodsFeedbackCommentRequest, UpdateGoodsFeedbackCommentResponse } from '../models/index';
 export interface GoodsFeedbackApiDeleteGoodsFeedbackCommentOperationRequest {
     businessId: number;
     deleteGoodsFeedbackCommentRequest: DeleteGoodsFeedbackCommentRequest;
+    sourceType?: SourceType;
 }
 export interface GoodsFeedbackApiGetGoodsFeedbackCommentsOperationRequest {
     businessId: number;
     getGoodsFeedbackCommentsRequest: GetGoodsFeedbackCommentsRequest;
     pageToken?: string;
     limit?: number;
+    sourceType?: SourceType;
 }
 export interface GoodsFeedbackApiGetGoodsFeedbacksRequest {
     businessId: number;
@@ -27,66 +29,85 @@ export interface GoodsFeedbackApiGetGoodsFeedbacksRequest {
     limit?: number;
     getGoodsFeedbackRequest?: GetGoodsFeedbackRequest;
 }
+export interface GoodsFeedbackApiGetGoodsFeedbacksUrbanadsRequest {
+    businessId: number;
+    pageToken?: string;
+    limit?: number;
+    sourceType?: SourceType;
+    getGoodsFeedbackUrbanadsRequest?: GetGoodsFeedbackUrbanadsRequest;
+}
 export interface GoodsFeedbackApiSkipGoodsFeedbacksReactionRequest {
     businessId: number;
     skipGoodsFeedbackReactionRequest: SkipGoodsFeedbackReactionRequest;
+    sourceType?: SourceType;
 }
 export interface GoodsFeedbackApiUpdateGoodsFeedbackCommentOperationRequest {
     businessId: number;
     updateGoodsFeedbackCommentRequest: UpdateGoodsFeedbackCommentRequest;
+    sourceType?: SourceType;
 }
 /**
  *
  */
 export declare class GoodsFeedbackApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/deleteGoodsFeedbackComment.md) %}  Удаляет комментарий магазина.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/deleteGoodsFeedbackComment.md) %}
+     * {% include notitle access %}  Удаляет комментарий магазина.  {% include notitle limit %}
      * Удаление комментария к отзыву
      */
     deleteGoodsFeedbackCommentRaw(requestParameters: GoodsFeedbackApiDeleteGoodsFeedbackCommentOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmptyApiResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/deleteGoodsFeedbackComment.md) %}  Удаляет комментарий магазина.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/deleteGoodsFeedbackComment.md) %}
+     * {% include notitle access %}  Удаляет комментарий магазина.  {% include notitle limit %}
      * Удаление комментария к отзыву
      */
-    deleteGoodsFeedbackComment(businessId: number, deleteGoodsFeedbackCommentRequest: DeleteGoodsFeedbackCommentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmptyApiResponse>;
+    deleteGoodsFeedbackComment(businessId: number, deleteGoodsFeedbackCommentRequest: DeleteGoodsFeedbackCommentRequest, sourceType?: SourceType, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmptyApiResponse>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getGoodsFeedbackComments.md) %}  Возвращает комментарии к отзыву, кроме:    * тех, которые удалили пользователи или Маркет;   * комментариев к удаленным отзывам.  Идентификатор родительского комментария `parentId` возвращается только для ответов на другие комментарии, но не для ответов на отзывы.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый комментарий. А полную информацию о нем можно получить с помощью этого метода.  {#T}  {% endnote %}  Результаты возвращаются постранично, одна страница содержит не более 50 комментариев.  Комментарии расположены в порядке публикации, поэтому вы можете передавать определенный идентификатор страницы в `page_token`, если вы получали его ранее.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getGoodsFeedbackComments.md) %}
+     * {% include notitle access %}  Возвращает комментарии к отзыву, кроме:    * тех, которые удалили пользователи или Маркет;   * комментариев к удаленным отзывам.  Идентификатор родительского комментария `parentId` возвращается только для ответов на другие комментарии, но не для ответов на отзывы.  {% if audience == \"partner\" %}  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый комментарий. А полную информацию о нем можно получить с помощью этого метода.  {#T}  {% endnote %}  {% endif %}  Результаты возвращаются постранично.  Комментарии расположены в порядке публикации, поэтому вы можете передавать определенный идентификатор страницы в `pageToken`, если вы получали его ранее.  {% include notitle limit %}
      * Получение комментариев к отзыву
      */
     getGoodsFeedbackCommentsRaw(requestParameters: GoodsFeedbackApiGetGoodsFeedbackCommentsOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetGoodsFeedbackCommentsResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getGoodsFeedbackComments.md) %}  Возвращает комментарии к отзыву, кроме:    * тех, которые удалили пользователи или Маркет;   * комментариев к удаленным отзывам.  Идентификатор родительского комментария `parentId` возвращается только для ответов на другие комментарии, но не для ответов на отзывы.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый комментарий. А полную информацию о нем можно получить с помощью этого метода.  {#T}  {% endnote %}  Результаты возвращаются постранично, одна страница содержит не более 50 комментариев.  Комментарии расположены в порядке публикации, поэтому вы можете передавать определенный идентификатор страницы в `page_token`, если вы получали его ранее.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getGoodsFeedbackComments.md) %}
+     * {% include notitle access %}  Возвращает комментарии к отзыву, кроме:    * тех, которые удалили пользователи или Маркет;   * комментариев к удаленным отзывам.  Идентификатор родительского комментария `parentId` возвращается только для ответов на другие комментарии, но не для ответов на отзывы.  {% if audience == \"partner\" %}  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый комментарий. А полную информацию о нем можно получить с помощью этого метода.  {#T}  {% endnote %}  {% endif %}  Результаты возвращаются постранично.  Комментарии расположены в порядке публикации, поэтому вы можете передавать определенный идентификатор страницы в `pageToken`, если вы получали его ранее.  {% include notitle limit %}
      * Получение комментариев к отзыву
      */
-    getGoodsFeedbackComments(businessId: number, getGoodsFeedbackCommentsRequest: GetGoodsFeedbackCommentsRequest, pageToken?: string, limit?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetGoodsFeedbackCommentsResponse>;
+    getGoodsFeedbackComments(businessId: number, getGoodsFeedbackCommentsRequest: GetGoodsFeedbackCommentsRequest, pageToken?: string, limit?: number, sourceType?: SourceType, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetGoodsFeedbackCommentsResponse>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getGoodsFeedbacks.md) %}  Возвращает отзывы о товарах продавца по указанным фильтрам. **Исключение:** отзывы, которые удалили покупатели или Маркет.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый отзыв. А полную информацию о нем можно получить с помощью этого метода.  {#T}  {% endnote %}  Результаты возвращаются постранично, одна страница содержит не более 50 отзывов.  Отзывы расположены в порядке публикации, поэтому вы можете передавать определенный идентификатор страницы в `page_token`, если вы получали его ранее.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getGoodsFeedbacks.md) %}
+     * {% include notitle access %}  Возвращает отзывы о товарах продавца по указанным фильтрам. **Исключение:** отзывы, которые удалили покупатели или Маркет.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый отзыв. А полную информацию о нем можно получить с помощью этого метода.  {#T}  {% endnote %}  Результаты возвращаются постранично.  Отзывы расположены в порядке публикации, поэтому вы можете передавать определенный идентификатор страницы в `pageToken`, если вы получали его ранее.  {% include notitle limit %}
      * Получение отзывов о товарах продавца
      */
     getGoodsFeedbacksRaw(requestParameters: GoodsFeedbackApiGetGoodsFeedbacksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetGoodsFeedbackResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getGoodsFeedbacks.md) %}  Возвращает отзывы о товарах продавца по указанным фильтрам. **Исключение:** отзывы, которые удалили покупатели или Маркет.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый отзыв. А полную информацию о нем можно получить с помощью этого метода.  {#T}  {% endnote %}  Результаты возвращаются постранично, одна страница содержит не более 50 отзывов.  Отзывы расположены в порядке публикации, поэтому вы можете передавать определенный идентификатор страницы в `page_token`, если вы получали его ранее.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getGoodsFeedbacks.md) %}
+     * {% include notitle access %}  Возвращает отзывы о товарах продавца по указанным фильтрам. **Исключение:** отзывы, которые удалили покупатели или Маркет.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый отзыв. А полную информацию о нем можно получить с помощью этого метода.  {#T}  {% endnote %}  Результаты возвращаются постранично.  Отзывы расположены в порядке публикации, поэтому вы можете передавать определенный идентификатор страницы в `pageToken`, если вы получали его ранее.  {% include notitle limit %}
      * Получение отзывов о товарах продавца
      */
     getGoodsFeedbacks(businessId: number, pageToken?: string, limit?: number, getGoodsFeedbackRequest?: GetGoodsFeedbackRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetGoodsFeedbackResponse>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/skipGoodsFeedbacksReaction.md) %}  Пропускает реакцию на отзыв — параметр `needReaction` принимает значение `false` в методе получения всех отзывов POST v2/businesses/{businessId}/goods-feedback.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/skipGoodsFeedbacksReaction.md) %}
+     * {% include notitle access %}  Возвращает отзывы о товарах бренда по указанным фильтрам. **Исключение:** отзывы, которые удалили покупатели или Маркет.  Результаты возвращаются постранично.  Отзывы расположены в порядке публикации, поэтому вы можете передавать определенный идентификатор страницы в `pageToken`, если вы получали его ранее.  {% include notitle limit %}
+     * Получение отзывов о товарах для рекламодателей
+     */
+    getGoodsFeedbacksUrbanadsRaw(requestParameters: GoodsFeedbackApiGetGoodsFeedbacksUrbanadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetGoodsFeedbackUrbanadsResponse>>;
+    /**
+     * {% include notitle access %}  Возвращает отзывы о товарах бренда по указанным фильтрам. **Исключение:** отзывы, которые удалили покупатели или Маркет.  Результаты возвращаются постранично.  Отзывы расположены в порядке публикации, поэтому вы можете передавать определенный идентификатор страницы в `pageToken`, если вы получали его ранее.  {% include notitle limit %}
+     * Получение отзывов о товарах для рекламодателей
+     */
+    getGoodsFeedbacksUrbanads(businessId: number, pageToken?: string, limit?: number, sourceType?: SourceType, getGoodsFeedbackUrbanadsRequest?: GetGoodsFeedbackUrbanadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetGoodsFeedbackUrbanadsResponse>;
+    /**
+     * {% include notitle access %}  Пропускает реакцию на отзыв — параметр `needReaction` принимает значение `false` в методе получения всех отзывов POST v2/businesses/{businessId}/goods-feedback.  {% include notitle limit %}
      * Пропуск реакции на отзывы
      */
     skipGoodsFeedbacksReactionRaw(requestParameters: GoodsFeedbackApiSkipGoodsFeedbacksReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmptyApiResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/skipGoodsFeedbacksReaction.md) %}  Пропускает реакцию на отзыв — параметр `needReaction` принимает значение `false` в методе получения всех отзывов POST v2/businesses/{businessId}/goods-feedback.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/skipGoodsFeedbacksReaction.md) %}
+     * {% include notitle access %}  Пропускает реакцию на отзыв — параметр `needReaction` принимает значение `false` в методе получения всех отзывов POST v2/businesses/{businessId}/goods-feedback.  {% include notitle limit %}
      * Пропуск реакции на отзывы
      */
-    skipGoodsFeedbacksReaction(businessId: number, skipGoodsFeedbackReactionRequest: SkipGoodsFeedbackReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmptyApiResponse>;
+    skipGoodsFeedbacksReaction(businessId: number, skipGoodsFeedbackReactionRequest: SkipGoodsFeedbackReactionRequest, sourceType?: SourceType, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmptyApiResponse>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateGoodsFeedbackComment.md) %}  Добавляет новый комментарий магазина или изменяет комментарий, который магазин оставлял ранее.  Для создания комментария к отзыву передайте только идентификатор отзыва `feedbackId`.  Чтобы добавить комментарий к другому комментарию, передайте:  * `feedbackId` — идентификатор отзыва; * `comment.parentId` — идентификатор родительского комментария.  Чтобы изменить комментарий, передайте:  * `feedbackId`— идентификатор отзыва; * `comment.id` — идентификатор комментария, который нужно изменить.  Если передать одновременно `comment.parentId` и `comment.id`, будет изменен существующий комментарий.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateGoodsFeedbackComment.md) %}
+     * {% include notitle access %}  Добавляет новый комментарий магазина или изменяет комментарий, который магазин оставлял ранее.  Для создания комментария к отзыву передайте только идентификатор отзыва `feedbackId`.  Чтобы добавить комментарий к другому комментарию, передайте:  * `feedbackId` — идентификатор отзыва; * `comment.parentId` — идентификатор родительского комментария.  Чтобы изменить комментарий, передайте:  * `feedbackId`— идентификатор отзыва; * `comment.id` — идентификатор комментария, который нужно изменить.  Если передать одновременно `comment.parentId` и `comment.id`, будет изменен существующий комментарий.  {% include notitle limit %}
      * Добавление нового или изменение созданного комментария
      */
     updateGoodsFeedbackCommentRaw(requestParameters: GoodsFeedbackApiUpdateGoodsFeedbackCommentOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdateGoodsFeedbackCommentResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateGoodsFeedbackComment.md) %}  Добавляет новый комментарий магазина или изменяет комментарий, который магазин оставлял ранее.  Для создания комментария к отзыву передайте только идентификатор отзыва `feedbackId`.  Чтобы добавить комментарий к другому комментарию, передайте:  * `feedbackId` — идентификатор отзыва; * `comment.parentId` — идентификатор родительского комментария.  Чтобы изменить комментарий, передайте:  * `feedbackId`— идентификатор отзыва; * `comment.id` — идентификатор комментария, который нужно изменить.  Если передать одновременно `comment.parentId` и `comment.id`, будет изменен существующий комментарий.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateGoodsFeedbackComment.md) %}
+     * {% include notitle access %}  Добавляет новый комментарий магазина или изменяет комментарий, который магазин оставлял ранее.  Для создания комментария к отзыву передайте только идентификатор отзыва `feedbackId`.  Чтобы добавить комментарий к другому комментарию, передайте:  * `feedbackId` — идентификатор отзыва; * `comment.parentId` — идентификатор родительского комментария.  Чтобы изменить комментарий, передайте:  * `feedbackId`— идентификатор отзыва; * `comment.id` — идентификатор комментария, который нужно изменить.  Если передать одновременно `comment.parentId` и `comment.id`, будет изменен существующий комментарий.  {% include notitle limit %}
      * Добавление нового или изменение созданного комментария
      */
-    updateGoodsFeedbackComment(businessId: number, updateGoodsFeedbackCommentRequest: UpdateGoodsFeedbackCommentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateGoodsFeedbackCommentResponse>;
+    updateGoodsFeedbackComment(businessId: number, updateGoodsFeedbackCommentRequest: UpdateGoodsFeedbackCommentRequest, sourceType?: SourceType, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateGoodsFeedbackCommentResponse>;
 }

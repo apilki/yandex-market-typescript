@@ -23,6 +23,12 @@ export interface GetQuestionsRequest {
      */
     categoryIds?: Set<number> | null;
     /**
+     * Идентификаторы вопросов.
+     * @type {Set<number>}
+     * @memberof GetQuestionsRequest
+     */
+    questionIds?: Set<number> | null;
+    /**
      * Дата начала периода создания вопроса.
      *
      * Если параметр не указан, возвращается информация за 1 месяц до указанной в `dateTo` даты.

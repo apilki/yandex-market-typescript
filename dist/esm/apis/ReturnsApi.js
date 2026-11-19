@@ -21,13 +21,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import * as runtime from '../runtime';
-import { CancelReturnRequestToJSON, CancelReturnResponseFromJSON, CreateReturnRequestToJSON, CreateReturnResponseFromJSON, EmptyApiResponseFromJSON, GetReturnResponseFromJSON, GetReturnsResponseFromJSON, SetReturnDecisionRequestToJSON, SubmitReturnDecisionRequestToJSON, } from '../models/index';
+import { CancelReturnRequestToJSON, CancelReturnResponseFromJSON, CreateReturnRequestToJSON, CreateReturnResponseFromJSON, EmptyApiResponseFromJSON, GetReturnAvailableDecisionsRequestToJSON, GetReturnAvailableDecisionsResponseFromJSON, GetReturnResponseFromJSON, GetReturnsResponseFromJSON, SetReturnDecisionRequestToJSON, SubmitReturnDecisionRequestToJSON, } from '../models/index';
 /**
  *
  */
 export class ReturnsApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/cancelReturn.md) %}  Отменяет возврат.  Это можно сделать только до принятия в пункте выдачи (`\"shipmentStatus\": \"CREATED\"`).  {% note info \"Возврат отменяется не мгновенно\" %}  Отмена возврата применяется в течение нескольких минут и только в случае успешного завершения операции. Как проверить статус операции  {% endnote %}  {% note tip \"Используйте этот метод в подобных ситуациях\" %}  Вы создали возврат, в котором указали 3 товара. Но покупатель передумал и решил вернуть только 2. Отмените возврат и создайте новый.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/cancelReturn.md) %}
+     * {% include notitle access %}  Отменяет возврат.  Это можно сделать только до принятия в пункте выдачи (`\"shipmentStatus\": \"CREATED\"`).  {% note info \"Возврат отменяется не мгновенно\" %}  Отмена возврата применяется в течение нескольких минут и только в случае успешного завершения операции. Как проверить статус операции  {% endnote %}  {% note tip \"Используйте этот метод в подобных ситуациях\" %}  Вы создали возврат, в котором указали 3 товара. Но покупатель передумал и решил вернуть только 2. Отмените возврат и создайте новый.  {% endnote %}  {% include notitle limit %}
      * Отмена возврата
      */
     cancelReturnRaw(requestParameters, initOverrides) {
@@ -59,7 +59,7 @@ export class ReturnsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/cancelReturn.md) %}  Отменяет возврат.  Это можно сделать только до принятия в пункте выдачи (`\"shipmentStatus\": \"CREATED\"`).  {% note info \"Возврат отменяется не мгновенно\" %}  Отмена возврата применяется в течение нескольких минут и только в случае успешного завершения операции. Как проверить статус операции  {% endnote %}  {% note tip \"Используйте этот метод в подобных ситуациях\" %}  Вы создали возврат, в котором указали 3 товара. Но покупатель передумал и решил вернуть только 2. Отмените возврат и создайте новый.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/cancelReturn.md) %}
+     * {% include notitle access %}  Отменяет возврат.  Это можно сделать только до принятия в пункте выдачи (`\"shipmentStatus\": \"CREATED\"`).  {% note info \"Возврат отменяется не мгновенно\" %}  Отмена возврата применяется в течение нескольких минут и только в случае успешного завершения операции. Как проверить статус операции  {% endnote %}  {% note tip \"Используйте этот метод в подобных ситуациях\" %}  Вы создали возврат, в котором указали 3 товара. Но покупатель передумал и решил вернуть только 2. Отмените возврат и создайте новый.  {% endnote %}  {% include notitle limit %}
      * Отмена возврата
      */
     cancelReturn(campaignId, cancelReturnRequest, initOverrides) {
@@ -69,7 +69,7 @@ export class ReturnsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/createReturn.md) %}  Создает новый возврат.  Это можно сделать только для заказа в статусе `DELIVERED`.  {% note warning \"Перед вызовом метода\" %}  Проверьте, подходят ли пункты выдачи для возврата указанных товаров, — POST v1/campaigns/{campaignId}/return-delivery-options.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/createReturn.md) %}
+     * {% include notitle access %}  Создает новый возврат.  Это можно сделать только для заказа в статусе `DELIVERED`.  {% note warning \"Перед вызовом метода\" %}  Проверьте, подходят ли пункты выдачи для возврата указанных товаров, — POST v1/campaigns/{campaignId}/return-delivery-options.  {% endnote %}  {% include notitle limit %}
      * Создание возврата
      */
     createReturnRaw(requestParameters, initOverrides) {
@@ -101,7 +101,7 @@ export class ReturnsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/createReturn.md) %}  Создает новый возврат.  Это можно сделать только для заказа в статусе `DELIVERED`.  {% note warning \"Перед вызовом метода\" %}  Проверьте, подходят ли пункты выдачи для возврата указанных товаров, — POST v1/campaigns/{campaignId}/return-delivery-options.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/createReturn.md) %}
+     * {% include notitle access %}  Создает новый возврат.  Это можно сделать только для заказа в статусе `DELIVERED`.  {% note warning \"Перед вызовом метода\" %}  Проверьте, подходят ли пункты выдачи для возврата указанных товаров, — POST v1/campaigns/{campaignId}/return-delivery-options.  {% endnote %}  {% include notitle limit %}
      * Создание возврата
      */
     createReturn(campaignId, createReturnRequest, initOverrides) {
@@ -111,7 +111,7 @@ export class ReturnsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getReturn.md) %}  Получает информацию по одному невыкупу или возврату.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getReturn.md) %}
+     * {% include notitle access %}  Получает информацию по одному невыкупу или возврату.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  {% include notitle limit %}
      * Информация о невыкупе или возврате
      */
     getReturnRaw(requestParameters, initOverrides) {
@@ -144,7 +144,7 @@ export class ReturnsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getReturn.md) %}  Получает информацию по одному невыкупу или возврату.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getReturn.md) %}
+     * {% include notitle access %}  Получает информацию по одному невыкупу или возврату.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  {% include notitle limit %}
      * Информация о невыкупе или возврате
      */
     getReturn(campaignId, orderId, returnId, initOverrides) {
@@ -154,7 +154,7 @@ export class ReturnsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getReturnApplication.md) %}  Загружает заявление покупателя на возврат товара.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getReturnApplication.md) %}
+     * {% include notitle access %}  Загружает заявление покупателя на возврат товара.  {% include notitle limit %}
      * Получение заявления на возврат
      */
     getReturnApplicationRaw(requestParameters, initOverrides) {
@@ -187,7 +187,7 @@ export class ReturnsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getReturnApplication.md) %}  Загружает заявление покупателя на возврат товара.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getReturnApplication.md) %}
+     * {% include notitle access %}  Загружает заявление покупателя на возврат товара.  {% include notitle limit %}
      * Получение заявления на возврат
      */
     getReturnApplication(campaignId, orderId, returnId, initOverrides) {
@@ -197,7 +197,49 @@ export class ReturnsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getReturnPhoto.md) %}  Получает фотографии товаров, которые покупатель приложил к заявлению на возврат.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getReturnPhoto.md) %}
+     * {% include notitle access %}  Возвращает список доступных решений по возврату.  {% include notitle limit %}
+     * Получение возможных решений по возврату
+     */
+    getReturnAvailableDecisionsRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters['businessId'] == null) {
+                throw new runtime.RequiredError('businessId', 'Required parameter "businessId" was null or undefined when calling getReturnAvailableDecisions().');
+            }
+            if (requestParameters['getReturnAvailableDecisionsRequest'] == null) {
+                throw new runtime.RequiredError('getReturnAvailableDecisionsRequest', 'Required parameter "getReturnAvailableDecisionsRequest" was null or undefined when calling getReturnAvailableDecisions().');
+            }
+            const queryParameters = {};
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.apiKey) {
+                headerParameters["Api-Key"] = yield this.configuration.apiKey("Api-Key"); // ApiKey authentication
+            }
+            if (this.configuration && this.configuration.accessToken) {
+                // oauth required
+                headerParameters["Authorization"] = yield this.configuration.accessToken("OAuth", ["market:partner-api"]);
+            }
+            const response = yield this.request({
+                path: `/v1/businesses/{businessId}/returns/decisions`.replace(`{${"businessId"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: GetReturnAvailableDecisionsRequestToJSON(requestParameters['getReturnAvailableDecisionsRequest']),
+            }, initOverrides);
+            return new runtime.JSONApiResponse(response, (jsonValue) => GetReturnAvailableDecisionsResponseFromJSON(jsonValue));
+        });
+    }
+    /**
+     * {% include notitle access %}  Возвращает список доступных решений по возврату.  {% include notitle limit %}
+     * Получение возможных решений по возврату
+     */
+    getReturnAvailableDecisions(businessId, getReturnAvailableDecisionsRequest, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.getReturnAvailableDecisionsRaw({ businessId: businessId, getReturnAvailableDecisionsRequest: getReturnAvailableDecisionsRequest }, initOverrides);
+            return yield response.value();
+        });
+    }
+    /**
+     * {% include notitle access %}  Получает фотографии товаров, которые покупатель приложил к заявлению на возврат.  Хеш изображения (`imageHash`) можно получить из ответов методов GET v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId} и GET v2/campaigns/{campaignId}/returns — в поле `images` решения по товару.  Максимальный размер изображения — 50 МБ.  Тип изображения можно определить по заголовку `Content-Type` в ответе.  {% include notitle limit %}
      * Получение фотографий товаров в возврате
      */
     getReturnPhotoRaw(requestParameters, initOverrides) {
@@ -236,7 +278,7 @@ export class ReturnsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getReturnPhoto.md) %}  Получает фотографии товаров, которые покупатель приложил к заявлению на возврат.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getReturnPhoto.md) %}
+     * {% include notitle access %}  Получает фотографии товаров, которые покупатель приложил к заявлению на возврат.  Хеш изображения (`imageHash`) можно получить из ответов методов GET v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId} и GET v2/campaigns/{campaignId}/returns — в поле `images` решения по товару.  Максимальный размер изображения — 50 МБ.  Тип изображения можно определить по заголовку `Content-Type` в ответе.  {% include notitle limit %}
      * Получение фотографий товаров в возврате
      */
     getReturnPhoto(campaignId, orderId, returnId, itemId, imageHash, initOverrides) {
@@ -246,7 +288,7 @@ export class ReturnsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getReturns.md) %}  Получает список невыкупов и возвратов.  Чтобы получить информацию по одному невыкупу или возврату, выполните запрос GET v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId}.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getReturns.md) %}
+     * {% include notitle access %}  Получает список невыкупов и возвратов.  Чтобы получить информацию по одному невыкупу или возврату, выполните запрос GET v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId}.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  {% include notitle limit %}
      * Список невыкупов и возвратов
      */
     getReturnsRaw(requestParameters, initOverrides) {
@@ -303,7 +345,7 @@ export class ReturnsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getReturns.md) %}  Получает список невыкупов и возвратов.  Чтобы получить информацию по одному невыкупу или возврату, выполните запрос GET v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId}.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getReturns.md) %}
+     * {% include notitle access %}  Получает список невыкупов и возвратов.  Чтобы получить информацию по одному невыкупу или возврату, выполните запрос GET v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId}.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  {% include notitle limit %}
      * Список невыкупов и возвратов
      */
     getReturns(campaignId, pageToken, limit, orderIds, statuses, shipmentStatuses, type, fromDate, toDate, fromDate2, toDate2, initOverrides) {
@@ -313,7 +355,7 @@ export class ReturnsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/setReturnDecision.md) %}  {% note warning \"Какой метод использовать вместо устаревшего\" %}  POST v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId}/decision/submit  {% endnote %}   Выбирает решение по возврату от покупателя. После этого для подтверждения решения нужно выполнить запрос POST v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId}/decision/submit.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/setReturnDecision.md) %}
+     * {% include notitle access %}  Выбирает решение по возврату от покупателя. После этого для подтверждения решения нужно выполнить запрос POST v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId}/decision/submit.  {% include notitle limit %}
      * Принятие или изменение решения по возврату
      * @deprecated
      */
@@ -352,7 +394,7 @@ export class ReturnsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/setReturnDecision.md) %}  {% note warning \"Какой метод использовать вместо устаревшего\" %}  POST v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId}/decision/submit  {% endnote %}   Выбирает решение по возврату от покупателя. После этого для подтверждения решения нужно выполнить запрос POST v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId}/decision/submit.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/setReturnDecision.md) %}
+     * {% include notitle access %}  Выбирает решение по возврату от покупателя. После этого для подтверждения решения нужно выполнить запрос POST v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId}/decision/submit.  {% include notitle limit %}
      * Принятие или изменение решения по возврату
      * @deprecated
      */
@@ -363,8 +405,8 @@ export class ReturnsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/submitReturnDecision.md) %}  Позволяет выполнить одну из операций:  * **Для всех моделей:** передать список решений по возврату и подтвердить их.  * **Для модели DBS:** подтвердить решение, переданное в POST v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId}/decision. Для этого используйте запрос без тела.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/submitReturnDecision.md) %}
-     * Передача и подтверждение решения по возврату
+     * {% include notitle access %}  Позволяет передать список решений по возврату.  {% note info \"Перед вызовом метода\" %}  Получите список доступных решений — POST v1/businesses/{businessId}/returns/decisions.  {% endnote %}  {% include notitle limit %}
+     * Передача решения по возврату
      */
     submitReturnDecisionRaw(requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -398,8 +440,8 @@ export class ReturnsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/submitReturnDecision.md) %}  Позволяет выполнить одну из операций:  * **Для всех моделей:** передать список решений по возврату и подтвердить их.  * **Для модели DBS:** подтвердить решение, переданное в POST v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId}/decision. Для этого используйте запрос без тела.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/submitReturnDecision.md) %}
-     * Передача и подтверждение решения по возврату
+     * {% include notitle access %}  Позволяет передать список решений по возврату.  {% note info \"Перед вызовом метода\" %}  Получите список доступных решений — POST v1/businesses/{businessId}/returns/decisions.  {% endnote %}  {% include notitle limit %}
+     * Передача решения по возврату
      */
     submitReturnDecision(campaignId, orderId, returnId, submitReturnDecisionRequest, initOverrides) {
         return __awaiter(this, void 0, void 0, function* () {

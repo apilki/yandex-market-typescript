@@ -77,6 +77,12 @@ export interface ParcelBoxLabelDTO {
      */
     place: string;
     /**
+     * {% note warning "Параметр устарел и будет отключен 19.10.2026." %}
+     *
+     *
+     *
+     * {% endnote %}
+     *
      * Общая масса всех товаров в заказе.
      *
      * Возвращается в формате `weight кг`.

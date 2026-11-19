@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { ReturnRequestDecisionType } from './ReturnRequestDecisionType';
+import type { BasePriceDTO } from './BasePriceDTO';
 import type { ReturnRequestDecisionReasonType } from './ReturnRequestDecisionReasonType';
 /**
  * Решения по товару в возврате.
@@ -50,6 +51,12 @@ export interface ReturnItemDecisionDTO {
      * @memberof ReturnItemDecisionDTO
      */
     comment?: string;
+    /**
+     *
+     * @type {BasePriceDTO}
+     * @memberof ReturnItemDecisionDTO
+     */
+    compensation?: BasePriceDTO;
 }
 /**
  * Check if a given object implements the ReturnItemDecisionDTO interface.

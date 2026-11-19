@@ -32,32 +32,32 @@ export interface GoodsQuestionsApiUpdateGoodsQuestionTextEntityOperationRequest 
  */
 export declare class GoodsQuestionsApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getGoodsQuestionAnswers.md) %}  Возвращает ответы на вопрос о товаре по указанным фильтрам.  Результаты возвращаются постранично, одна страница содержит не более 50 ответов.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getGoodsQuestionAnswers.md) %}
+     * {% include notitle access %}  Возвращает ответы на вопрос о товаре по указанным фильтрам.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый ответ или комментарий. А полную информацию о них можно получить с помощью этого метода.  {#T}  {% endnote %}  Результаты возвращаются постранично, одна страница содержит не более 50 ответов.  {% include notitle limit %}
      * Получение ответов на вопрос
      */
     getGoodsQuestionAnswersRaw(requestParameters: GoodsQuestionsApiGetGoodsQuestionAnswersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetAnswersResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getGoodsQuestionAnswers.md) %}  Возвращает ответы на вопрос о товаре по указанным фильтрам.  Результаты возвращаются постранично, одна страница содержит не более 50 ответов.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getGoodsQuestionAnswers.md) %}
+     * {% include notitle access %}  Возвращает ответы на вопрос о товаре по указанным фильтрам.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый ответ или комментарий. А полную информацию о них можно получить с помощью этого метода.  {#T}  {% endnote %}  Результаты возвращаются постранично, одна страница содержит не более 50 ответов.  {% include notitle limit %}
      * Получение ответов на вопрос
      */
     getGoodsQuestionAnswers(businessId: number, getAnswersRequest: GetAnswersRequest, pageToken?: string, limit?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetAnswersResponse>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getGoodsQuestions.md) %}  Возвращает вопросы о товарах продавца по указанным фильтрам.  Результаты возвращаются постранично, одна страница содержит не более 50 вопросов.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getGoodsQuestions.md) %}
+     * {% include notitle access %}  Возвращает вопросы о товарах продавца по указанным фильтрам.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый вопрос. А полную информацию о нем можно получить с помощью этого метода.  {#T}  {% endnote %}  Результаты возвращаются постранично, одна страница содержит не более 50 вопросов.  {% include notitle limit %}
      * Получение вопросов о товарах продавца
      */
     getGoodsQuestionsRaw(requestParameters: GoodsQuestionsApiGetGoodsQuestionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetQuestionsResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getGoodsQuestions.md) %}  Возвращает вопросы о товарах продавца по указанным фильтрам.  Результаты возвращаются постранично, одна страница содержит не более 50 вопросов.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getGoodsQuestions.md) %}
+     * {% include notitle access %}  Возвращает вопросы о товарах продавца по указанным фильтрам.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый вопрос. А полную информацию о нем можно получить с помощью этого метода.  {#T}  {% endnote %}  Результаты возвращаются постранично, одна страница содержит не более 50 вопросов.  {% include notitle limit %}
      * Получение вопросов о товарах продавца
      */
     getGoodsQuestions(businessId: number, pageToken?: string, limit?: number, getQuestionsRequest?: GetQuestionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetQuestionsResponse>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateGoodsQuestionTextEntity.md) %}  Создание, изменение и удаление ответа или комментария.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateGoodsQuestionTextEntity.md) %}
+     * {% include notitle access %}  Создание, изменение и удаление ответа или комментария.  {% include notitle limit %}
      * Создание, изменение и удаление ответа или комментария
      */
     updateGoodsQuestionTextEntityRaw(requestParameters: GoodsQuestionsApiUpdateGoodsQuestionTextEntityOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdateGoodsQuestionTextEntityResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateGoodsQuestionTextEntity.md) %}  Создание, изменение и удаление ответа или комментария.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateGoodsQuestionTextEntity.md) %}
+     * {% include notitle access %}  Создание, изменение и удаление ответа или комментария.  {% include notitle limit %}
      * Создание, изменение и удаление ответа или комментария
      */
     updateGoodsQuestionTextEntity(businessId: number, updateGoodsQuestionTextEntityRequest: UpdateGoodsQuestionTextEntityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateGoodsQuestionTextEntityResponse>;

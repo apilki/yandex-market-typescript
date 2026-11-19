@@ -27,7 +27,7 @@ import { GetOrderLabelsDataResponseFromJSON, } from '../models/index';
  */
 export class OrderLabelsApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/generateOrderLabel.md) %}  Формирует ярлык‑наклейку для коробки в заказе и возвращает ярлык в PDF‑файле.  Чтобы на ярлыке отображался внешний идентификатор заказа, передайте его в методе POST v2/campaigns/{campaignId}/orders/{orderId}/external-id.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/generateOrderLabel.md) %}
+     * {% include notitle access %}  Формирует ярлык‑наклейку для коробки в заказе и возвращает ярлык в PDF‑файле.  Чтобы на ярлыке отображался внешний идентификатор заказа, передайте его в методе POST v2/campaigns/{campaignId}/orders/{orderId}/external-id.  {% include notitle limit %}
      * Готовый ярлык‑наклейка для коробки в заказе
      */
     generateOrderLabelRaw(requestParameters, initOverrides) {
@@ -66,7 +66,7 @@ export class OrderLabelsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/generateOrderLabel.md) %}  Формирует ярлык‑наклейку для коробки в заказе и возвращает ярлык в PDF‑файле.  Чтобы на ярлыке отображался внешний идентификатор заказа, передайте его в методе POST v2/campaigns/{campaignId}/orders/{orderId}/external-id.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/generateOrderLabel.md) %}
+     * {% include notitle access %}  Формирует ярлык‑наклейку для коробки в заказе и возвращает ярлык в PDF‑файле.  Чтобы на ярлыке отображался внешний идентификатор заказа, передайте его в методе POST v2/campaigns/{campaignId}/orders/{orderId}/external-id.  {% include notitle limit %}
      * Готовый ярлык‑наклейка для коробки в заказе
      */
     generateOrderLabel(campaignId, orderId, shipmentId, boxId, format, initOverrides) {
@@ -76,7 +76,7 @@ export class OrderLabelsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/generateOrderLabels.md) %}  Возвращает PDF-файл с ярлыками, которые нужно наклеить на коробки перед отгрузкой. Подробно о том, зачем они нужны и как выглядят, рассказано [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/orders/fbs/packaging/marking.html).  На вход нужно передать идентификатор заказа и один необязательный параметр, который управляет версткой PDF-файла.  Чтобы на ярлыке отображался внешний идентификатор заказа, передайте его в методе POST v2/campaigns/{campaignId}/orders/{orderId}/external-id.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/generateOrderLabels.md) %}
+     * {% include notitle access %}  Возвращает PDF-файл с ярлыками, которые нужно наклеить на коробки перед отгрузкой. Подробно о том, зачем они нужны и как выглядят, рассказано [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/orders/fbs/packaging/marking.html).  На вход нужно передать идентификатор заказа и один необязательный параметр, который управляет версткой PDF-файла.  Чтобы на ярлыке отображался внешний идентификатор заказа, передайте его в методе POST v2/campaigns/{campaignId}/orders/{orderId}/external-id.  {% include notitle limit %}
      * Готовые ярлыки‑наклейки на все коробки в одном заказе
      */
     generateOrderLabelsRaw(requestParameters, initOverrides) {
@@ -109,7 +109,7 @@ export class OrderLabelsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/generateOrderLabels.md) %}  Возвращает PDF-файл с ярлыками, которые нужно наклеить на коробки перед отгрузкой. Подробно о том, зачем они нужны и как выглядят, рассказано [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/orders/fbs/packaging/marking.html).  На вход нужно передать идентификатор заказа и один необязательный параметр, который управляет версткой PDF-файла.  Чтобы на ярлыке отображался внешний идентификатор заказа, передайте его в методе POST v2/campaigns/{campaignId}/orders/{orderId}/external-id.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/generateOrderLabels.md) %}
+     * {% include notitle access %}  Возвращает PDF-файл с ярлыками, которые нужно наклеить на коробки перед отгрузкой. Подробно о том, зачем они нужны и как выглядят, рассказано [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/orders/fbs/packaging/marking.html).  На вход нужно передать идентификатор заказа и один необязательный параметр, который управляет версткой PDF-файла.  Чтобы на ярлыке отображался внешний идентификатор заказа, передайте его в методе POST v2/campaigns/{campaignId}/orders/{orderId}/external-id.  {% include notitle limit %}
      * Готовые ярлыки‑наклейки на все коробки в одном заказе
      */
     generateOrderLabels(campaignId, orderId, format, initOverrides) {
@@ -119,7 +119,7 @@ export class OrderLabelsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOrderLabelsData.md) %}  Возвращает информацию на ярлыках, которые клеятся на коробки в заказе.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOrderLabelsData.md) %}
+     * {% include notitle access %}  Возвращает информацию на ярлыках, которые клеятся на коробки в заказе.  {% include notitle limit %}
      * Данные для самостоятельного изготовления ярлыков
      */
     getOrderLabelsDataRaw(requestParameters, initOverrides) {
@@ -149,7 +149,7 @@ export class OrderLabelsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOrderLabelsData.md) %}  Возвращает информацию на ярлыках, которые клеятся на коробки в заказе.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOrderLabelsData.md) %}
+     * {% include notitle access %}  Возвращает информацию на ярлыках, которые клеятся на коробки в заказе.  {% include notitle limit %}
      * Данные для самостоятельного изготовления ярлыков
      */
     getOrderLabelsData(campaignId, orderId, initOverrides) {

@@ -34,7 +34,9 @@
  *
  *   * `MICROCREDIT` - Сплит на основе МКК (Микрокредитной компании).
  *
- *   * `BNPL_TBYB` - Оплата после доставки на основе Сплита.
+ *   * `BNPL_TBC` - BNPL через внешний банк TBC.
+ *
+ *   * `DIGITAL_RUBLE` - Цифровой рубль.
  *
  *
  * * Значения, если выбрана оплата при получении заказа (`"paymentType": "POSTPAID"`):
@@ -46,6 +48,10 @@
  *   * `BNPL_BANK_ON_DELIVERY` — супер Сплитом.
  *
  *   * `BNPL_ON_DELIVERY` — Сплитом.
+ *
+ *   * `BNPL_TBYB` - Оплата после доставки на основе Сплита.
+ *
+ *   * `SBP_ON_DELIVERY` — постоплата через СБП.
  *
  *   * `CASH_ON_DELIVERY` — наличными.
  *
@@ -70,11 +76,14 @@ export declare const OrderPaymentMethodType: {
     readonly GOOGLE_PAY: "GOOGLE_PAY";
     readonly TINKOFF_CREDIT: "TINKOFF_CREDIT";
     readonly SBP: "SBP";
+    readonly SBP_ON_DELIVERY: "SBP_ON_DELIVERY";
     readonly TINKOFF_INSTALLMENTS: "TINKOFF_INSTALLMENTS";
     readonly B2B_ACCOUNT_PREPAYMENT: "B2B_ACCOUNT_PREPAYMENT";
     readonly B2B_ACCOUNT_POSTPAYMENT: "B2B_ACCOUNT_POSTPAYMENT";
     readonly MICROCREDIT: "MICROCREDIT";
     readonly BNPL_TBYB: "BNPL_TBYB";
+    readonly BNPL_TBC: "BNPL_TBC";
+    readonly DIGITAL_RUBLE: "DIGITAL_RUBLE";
     readonly UNKNOWN: "UNKNOWN";
 };
 export type OrderPaymentMethodType = typeof OrderPaymentMethodType[keyof typeof OrderPaymentMethodType];

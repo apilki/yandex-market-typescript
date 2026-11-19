@@ -11,6 +11,7 @@
  */
 import type { CampaignDTO } from './CampaignDTO';
 import type { FlippingPagerDTO } from './FlippingPagerDTO';
+import type { PackagingForwardScrollingPagerDTO } from './PackagingForwardScrollingPagerDTO';
 /**
  * Результаты поиска магазинов.
  * @export
@@ -29,6 +30,12 @@ export interface GetCampaignsResponse {
      * @memberof GetCampaignsResponse
      */
     pager?: FlippingPagerDTO;
+    /**
+     *
+     * @type {PackagingForwardScrollingPagerDTO}
+     * @memberof GetCampaignsResponse
+     */
+    paging?: PackagingForwardScrollingPagerDTO;
 }
 /**
  * Check if a given object implements the GetCampaignsResponse interface.

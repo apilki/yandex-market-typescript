@@ -18,6 +18,8 @@ export interface CampaignsApiGetCampaignSettingsRequest {
     campaignId: number;
 }
 export interface CampaignsApiGetCampaignsRequest {
+    pageToken?: string;
+    limit?: number;
     page?: number;
     pageSize?: number;
 }
@@ -26,33 +28,33 @@ export interface CampaignsApiGetCampaignsRequest {
  */
 export declare class CampaignsApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCampaign.md) %}  Возвращает информацию о магазине.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCampaign.md) %}
+     * {% include notitle access %}  Возвращает информацию о магазине.  {% include notitle limit %}
      * Информация о магазине
      */
     getCampaignRaw(requestParameters: CampaignsApiGetCampaignRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetCampaignResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCampaign.md) %}  Возвращает информацию о магазине.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCampaign.md) %}
+     * {% include notitle access %}  Возвращает информацию о магазине.  {% include notitle limit %}
      * Информация о магазине
      */
     getCampaign(campaignId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetCampaignResponse>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCampaignSettings.md) %}  Возвращает информацию о настройках магазина, идентификатор которого указан в запросе.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCampaignSettings.md) %}
+     * {% include notitle access %}  Возвращает информацию о настройках магазина, идентификатор которого указан в запросе.  {% include notitle limit %}
      * Настройки магазина
      */
     getCampaignSettingsRaw(requestParameters: CampaignsApiGetCampaignSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetCampaignSettingsResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCampaignSettings.md) %}  Возвращает информацию о настройках магазина, идентификатор которого указан в запросе.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCampaignSettings.md) %}
+     * {% include notitle access %}  Возвращает информацию о настройках магазина, идентификатор которого указан в запросе.  {% include notitle limit %}
      * Настройки магазина
      */
     getCampaignSettings(campaignId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetCampaignSettingsResponse>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCampaigns.md) %}  **Для Api-Key-токена:** возвращает список магазинов в кабинете, для которого выдан токен. Нельзя получить список только подагентских магазинов.  **Для OAuth-токена:** возвращает список магазинов, к которым имеет доступ пользователь — владелец токена авторизации, использованного в запросе. Для агентских пользователей список состоит из подагентских магазинов.  {% note warning \"Ограничение для параметра `pageSize`\" %}  Не передавайте значение больше 100.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCampaigns.md) %}
+     * {% include notitle access %}  **Для Api-Key-токена:** возвращает список магазинов в кабинете, для которого выдан токен. Нельзя получить список только подагентских магазинов.  **Для OAuth-токена:** возвращает список магазинов, к которым имеет доступ пользователь — владелец токена авторизации, использованного в запросе. Для агентских пользователей список состоит из подагентских магазинов.  {% note warning \"Ограничение для параметра `pageSize`\" %}  Не передавайте значение больше 100.  {% endnote %}  {% include notitle limit %}
      * Список магазинов пользователя
      */
     getCampaignsRaw(requestParameters: CampaignsApiGetCampaignsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetCampaignsResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getCampaigns.md) %}  **Для Api-Key-токена:** возвращает список магазинов в кабинете, для которого выдан токен. Нельзя получить список только подагентских магазинов.  **Для OAuth-токена:** возвращает список магазинов, к которым имеет доступ пользователь — владелец токена авторизации, использованного в запросе. Для агентских пользователей список состоит из подагентских магазинов.  {% note warning \"Ограничение для параметра `pageSize`\" %}  Не передавайте значение больше 100.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getCampaigns.md) %}
+     * {% include notitle access %}  **Для Api-Key-токена:** возвращает список магазинов в кабинете, для которого выдан токен. Нельзя получить список только подагентских магазинов.  **Для OAuth-токена:** возвращает список магазинов, к которым имеет доступ пользователь — владелец токена авторизации, использованного в запросе. Для агентских пользователей список состоит из подагентских магазинов.  {% note warning \"Ограничение для параметра `pageSize`\" %}  Не передавайте значение больше 100.  {% endnote %}  {% include notitle limit %}
      * Список магазинов пользователя
      */
-    getCampaigns(page?: number, pageSize?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetCampaignsResponse>;
+    getCampaigns(pageToken?: string, limit?: number, page?: number, pageSize?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetCampaignsResponse>;
 }

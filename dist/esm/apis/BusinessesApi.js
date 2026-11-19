@@ -27,7 +27,7 @@ import { GetBusinessSettingsResponseFromJSON, } from '../models/index';
  */
 export class BusinessesApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getBusinessSettings.md) %}  Возвращает информацию о настройках кабинета, идентификатор которого указан в запросе.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getBusinessSettings.md) %}
+     * {% include notitle access %}  Возвращает информацию о настройках кабинета, идентификатор которого указан в запросе.  {% include notitle limit %}
      * Настройки кабинета
      */
     getBusinessSettingsRaw(requestParameters, initOverrides) {
@@ -54,7 +54,7 @@ export class BusinessesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getBusinessSettings.md) %}  Возвращает информацию о настройках кабинета, идентификатор которого указан в запросе.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getBusinessSettings.md) %}
+     * {% include notitle access %}  Возвращает информацию о настройках кабинета, идентификатор которого указан в запросе.  {% include notitle limit %}
      * Настройки кабинета
      */
     getBusinessSettings(businessId, initOverrides) {

@@ -43,7 +43,9 @@ exports.OrderPaymentMethodTypeToJSON = OrderPaymentMethodTypeToJSON;
  *
  *   * `MICROCREDIT` - Сплит на основе МКК (Микрокредитной компании).
  *
- *   * `BNPL_TBYB` - Оплата после доставки на основе Сплита.
+ *   * `BNPL_TBC` - BNPL через внешний банк TBC.
+ *
+ *   * `DIGITAL_RUBLE` - Цифровой рубль.
  *
  *
  * * Значения, если выбрана оплата при получении заказа (`"paymentType": "POSTPAID"`):
@@ -55,6 +57,10 @@ exports.OrderPaymentMethodTypeToJSON = OrderPaymentMethodTypeToJSON;
  *   * `BNPL_BANK_ON_DELIVERY` — супер Сплитом.
  *
  *   * `BNPL_ON_DELIVERY` — Сплитом.
+ *
+ *   * `BNPL_TBYB` - Оплата после доставки на основе Сплита.
+ *
+ *   * `SBP_ON_DELIVERY` — постоплата через СБП.
  *
  *   * `CASH_ON_DELIVERY` — наличными.
  *
@@ -79,11 +85,14 @@ exports.OrderPaymentMethodType = {
     GOOGLE_PAY: 'GOOGLE_PAY',
     TINKOFF_CREDIT: 'TINKOFF_CREDIT',
     SBP: 'SBP',
+    SBP_ON_DELIVERY: 'SBP_ON_DELIVERY',
     TINKOFF_INSTALLMENTS: 'TINKOFF_INSTALLMENTS',
     B2B_ACCOUNT_PREPAYMENT: 'B2B_ACCOUNT_PREPAYMENT',
     B2B_ACCOUNT_POSTPAYMENT: 'B2B_ACCOUNT_POSTPAYMENT',
     MICROCREDIT: 'MICROCREDIT',
     BNPL_TBYB: 'BNPL_TBYB',
+    BNPL_TBC: 'BNPL_TBC',
+    DIGITAL_RUBLE: 'DIGITAL_RUBLE',
     UNKNOWN: 'UNKNOWN'
 };
 function instanceOfOrderPaymentMethodType(value) {

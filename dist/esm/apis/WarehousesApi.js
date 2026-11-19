@@ -21,13 +21,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import * as runtime from '../runtime';
-import { GetFulfillmentWarehousesResponseFromJSON, GetPagedWarehousesRequestToJSON, GetPagedWarehousesResponseFromJSON, GetWarehousesResponseFromJSON, UpdateWarehouseStatusRequestToJSON, UpdateWarehouseStatusResponseFromJSON, } from '../models/index';
+import { GetFulfillmentWarehousesResponseFromJSON, GetPagedWarehousesRequestToJSON, GetPagedWarehousesResponseFromJSON, GetPartnerWarehousesRequestToJSON, GetPartnerWarehousesResponseFromJSON, GetWarehousesResponseFromJSON, UpdateWarehouseModelStatusRequestToJSON, UpdateWarehouseModelStatusResponseFromJSON, UpdateWarehouseStatusRequestToJSON, UpdateWarehouseStatusResponseFromJSON, } from '../models/index';
 /**
  *
  */
 export class WarehousesApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getFulfillmentWarehouses.md) %}  Возвращает список фулфилмент-складов Маркета с их идентификаторами.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getFulfillmentWarehouses.md) %}
+     * {% include notitle access %}  Возвращает список фулфилмент-складов Маркета с их идентификаторами.  {% include notitle limit %}
      * Идентификаторы фулфилмент-складов Маркета
      */
     getFulfillmentWarehousesRaw(requestParameters, initOverrides) {
@@ -54,7 +54,7 @@ export class WarehousesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getFulfillmentWarehouses.md) %}  Возвращает список фулфилмент-складов Маркета с их идентификаторами.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getFulfillmentWarehouses.md) %}
+     * {% include notitle access %}  Возвращает список фулфилмент-складов Маркета с их идентификаторами.  {% include notitle limit %}
      * Идентификаторы фулфилмент-складов Маркета
      */
     getFulfillmentWarehouses(campaignId, initOverrides) {
@@ -64,7 +64,7 @@ export class WarehousesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getPagedWarehouses.md) %}  Возвращает список складов и информацию о них.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getPagedWarehouses.md) %}
+     * {% include notitle access %}  Возвращает список складов и информацию о них.  {% note warning \"Когда использовать этот метод\" %}  Метод актуален для кабинетов с группами складов. Если в кабинете нет групп складов, используйте метод POST v3/businesses/{businessId}/warehouses. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  {% include notitle limit %}
      * Список складов
      */
     getPagedWarehousesRaw(requestParameters, initOverrides) {
@@ -99,7 +99,7 @@ export class WarehousesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getPagedWarehouses.md) %}  Возвращает список складов и информацию о них.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getPagedWarehouses.md) %}
+     * {% include notitle access %}  Возвращает список складов и информацию о них.  {% note warning \"Когда использовать этот метод\" %}  Метод актуален для кабинетов с группами складов. Если в кабинете нет групп складов, используйте метод POST v3/businesses/{businessId}/warehouses. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  {% include notitle limit %}
      * Список складов
      */
     getPagedWarehouses(businessId, pageToken, limit, getPagedWarehousesRequest, initOverrides) {
@@ -109,7 +109,52 @@ export class WarehousesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getWarehouses.md) %}  {% note warning \"Какой метод использовать вместо устаревшего\" %}  POST v2/businesses/{businessId}/warehouses  {% endnote %}  Возвращает список складов и, если склады объединены, список групп складов. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks)  Среди прочего запрос позволяет определить идентификатор, который нужно использовать при передаче остатков для группы складов.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getWarehouses.md) %}
+     * {% include notitle access %}  Возвращает список складов кабинета и информацию о них.  Для каждого склада возвращается список моделей работы (FBS, DBS, Экспресс) и доступность API для каждой модели.  {% note warning \"Метод подходит, только если в кабинете нет групп складов\" %}  Метод возвращает только отдельные склады и не возвращает группы складов. Если в кабинете есть группы складов, используйте метод POST v2/businesses/{businessId}/warehouses. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  {% include notitle limit %}
+     * Список складов
+     */
+    getPartnerWarehousesRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters['businessId'] == null) {
+                throw new runtime.RequiredError('businessId', 'Required parameter "businessId" was null or undefined when calling getPartnerWarehouses().');
+            }
+            const queryParameters = {};
+            if (requestParameters['pageToken'] != null) {
+                queryParameters['pageToken'] = requestParameters['pageToken'];
+            }
+            if (requestParameters['limit'] != null) {
+                queryParameters['limit'] = requestParameters['limit'];
+            }
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.apiKey) {
+                headerParameters["Api-Key"] = yield this.configuration.apiKey("Api-Key"); // ApiKey authentication
+            }
+            if (this.configuration && this.configuration.accessToken) {
+                // oauth required
+                headerParameters["Authorization"] = yield this.configuration.accessToken("OAuth", ["market:partner-api"]);
+            }
+            const response = yield this.request({
+                path: `/v3/businesses/{businessId}/warehouses`.replace(`{${"businessId"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: GetPartnerWarehousesRequestToJSON(requestParameters['getPartnerWarehousesRequest']),
+            }, initOverrides);
+            return new runtime.JSONApiResponse(response, (jsonValue) => GetPartnerWarehousesResponseFromJSON(jsonValue));
+        });
+    }
+    /**
+     * {% include notitle access %}  Возвращает список складов кабинета и информацию о них.  Для каждого склада возвращается список моделей работы (FBS, DBS, Экспресс) и доступность API для каждой модели.  {% note warning \"Метод подходит, только если в кабинете нет групп складов\" %}  Метод возвращает только отдельные склады и не возвращает группы складов. Если в кабинете есть группы складов, используйте метод POST v2/businesses/{businessId}/warehouses. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  {% include notitle limit %}
+     * Список складов
+     */
+    getPartnerWarehouses(businessId, pageToken, limit, getPartnerWarehousesRequest, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.getPartnerWarehousesRaw({ businessId: businessId, pageToken: pageToken, limit: limit, getPartnerWarehousesRequest: getPartnerWarehousesRequest }, initOverrides);
+            return yield response.value();
+        });
+    }
+    /**
+     * {% include notitle access %}  Возвращает список складов и, если склады объединены, список групп складов. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks)  Среди прочего запрос позволяет определить идентификатор, который нужно использовать при передаче остатков для группы складов.  {% include notitle limit %}
      * Список складов и групп складов
      * @deprecated
      */
@@ -137,7 +182,7 @@ export class WarehousesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getWarehouses.md) %}  {% note warning \"Какой метод использовать вместо устаревшего\" %}  POST v2/businesses/{businessId}/warehouses  {% endnote %}  Возвращает список складов и, если склады объединены, список групп складов. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks)  Среди прочего запрос позволяет определить идентификатор, который нужно использовать при передаче остатков для группы складов.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getWarehouses.md) %}
+     * {% include notitle access %}  Возвращает список складов и, если склады объединены, список групп складов. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks)  Среди прочего запрос позволяет определить идентификатор, который нужно использовать при передаче остатков для группы складов.  {% include notitle limit %}
      * Список складов и групп складов
      * @deprecated
      */
@@ -148,8 +193,51 @@ export class WarehousesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateWarehouseStatus.md) %}  Отключает или включает склад.  После отключения склада товары, которые находятся на нем, скрываются через 15 минут. После включения они возвращаются на витрину через 15 минут, а если склад был выключен 30 дней или дольше — через 4 часа.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateWarehouseStatus.md) %}
+     * {% include notitle access %}  Отключает или включает модель работы (FBS, DBS или Экспресс) для указанного склада.  После отключения модели товары, которые работают по ней на данном складе, скрываются через 15 минут. После включения они возвращаются на витрину через 15 минут, а если модель была выключена 30 дней или дольше — через 4 часа.  {% include notitle limit %}
+     * Включение/выключение модели работы склада
+     */
+    updateWarehouseModelStatusRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters['businessId'] == null) {
+                throw new runtime.RequiredError('businessId', 'Required parameter "businessId" was null or undefined when calling updateWarehouseModelStatus().');
+            }
+            if (requestParameters['updateWarehouseModelStatusRequest'] == null) {
+                throw new runtime.RequiredError('updateWarehouseModelStatusRequest', 'Required parameter "updateWarehouseModelStatusRequest" was null or undefined when calling updateWarehouseModelStatus().');
+            }
+            const queryParameters = {};
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.apiKey) {
+                headerParameters["Api-Key"] = yield this.configuration.apiKey("Api-Key"); // ApiKey authentication
+            }
+            if (this.configuration && this.configuration.accessToken) {
+                // oauth required
+                headerParameters["Authorization"] = yield this.configuration.accessToken("OAuth", ["market:partner-api"]);
+            }
+            const response = yield this.request({
+                path: `/v3/businesses/{businessId}/warehouse/models/status`.replace(`{${"businessId"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: UpdateWarehouseModelStatusRequestToJSON(requestParameters['updateWarehouseModelStatusRequest']),
+            }, initOverrides);
+            return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWarehouseModelStatusResponseFromJSON(jsonValue));
+        });
+    }
+    /**
+     * {% include notitle access %}  Отключает или включает модель работы (FBS, DBS или Экспресс) для указанного склада.  После отключения модели товары, которые работают по ней на данном складе, скрываются через 15 минут. После включения они возвращаются на витрину через 15 минут, а если модель была выключена 30 дней или дольше — через 4 часа.  {% include notitle limit %}
+     * Включение/выключение модели работы склада
+     */
+    updateWarehouseModelStatus(businessId, updateWarehouseModelStatusRequest, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.updateWarehouseModelStatusRaw({ businessId: businessId, updateWarehouseModelStatusRequest: updateWarehouseModelStatusRequest }, initOverrides);
+            return yield response.value();
+        });
+    }
+    /**
+     * {% include notitle access %}  Отключает или включает склад.  После отключения склада товары, которые находятся на нем, скрываются через 15 минут. После включения они возвращаются на витрину через 15 минут, а если склад был выключен 30 дней или дольше — через 4 часа.  {% include notitle limit %}
      * Изменение статуса склада
+     * @deprecated
      */
     updateWarehouseStatusRaw(requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -180,8 +268,9 @@ export class WarehousesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateWarehouseStatus.md) %}  Отключает или включает склад.  После отключения склада товары, которые находятся на нем, скрываются через 15 минут. После включения они возвращаются на витрину через 15 минут, а если склад был выключен 30 дней или дольше — через 4 часа.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateWarehouseStatus.md) %}
+     * {% include notitle access %}  Отключает или включает склад.  После отключения склада товары, которые находятся на нем, скрываются через 15 минут. После включения они возвращаются на витрину через 15 минут, а если склад был выключен 30 дней или дольше — через 4 часа.  {% include notitle limit %}
      * Изменение статуса склада
+     * @deprecated
      */
     updateWarehouseStatus(campaignId, updateWarehouseStatusRequest, initOverrides) {
         return __awaiter(this, void 0, void 0, function* () {

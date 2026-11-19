@@ -35,11 +35,11 @@ exports.ReturnInstanceStockTypeToJSON = ReturnInstanceStockTypeToJSON;
  *
  * * `UNDEFINED` — с неизвестным статусом.
  *
- * * `INCORRECT_IMEI` — товар с некорректным [:no-translate[IMEI]](https://ru.wikipedia.org/wiki/IMEI).
+ * * `INCORRECT_IMEI` — товар с некорректным [IMEI](https://ru.wikipedia.org/wiki/IMEI).
  *
  * * `INCORRECT_SERIAL_NUMBER` — товар с некорректным серийным номером.
  *
- * * `INCORRECT_CIS` — товар с некорректным кодом идентификации единицы товара в системе [:no-translate[«Честный ЗНАК»]](https://честныйзнак.рф/) или [:no-translate[«ASL BELGISI»]](https://aslbelgisi.uz) (для продавцов :no-translate[Market Yandex Go]).
+ * * `INCORRECT_CIS` — товар с некорректным кодом идентификации единицы товара в системе [«Честный ЗНАК»](https://честныйзнак.рф/) или [«ASL BELGISI»](https://aslbelgisi.uz) (для продавцов :no-translate[Market Yandex Go]).
  *
  * * `PART_MISSING` — недостача.
  *

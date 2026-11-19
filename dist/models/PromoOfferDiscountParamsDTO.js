@@ -17,12 +17,11 @@ exports.instanceOfPromoOfferDiscountParamsDTO = instanceOfPromoOfferDiscountPara
 exports.PromoOfferDiscountParamsDTOFromJSON = PromoOfferDiscountParamsDTOFromJSON;
 exports.PromoOfferDiscountParamsDTOFromJSONTyped = PromoOfferDiscountParamsDTOFromJSONTyped;
 exports.PromoOfferDiscountParamsDTOToJSON = PromoOfferDiscountParamsDTOToJSON;
+const PromoOfferBestPriceLevelsDTO_1 = require("./PromoOfferBestPriceLevelsDTO");
 /**
  * Check if a given object implements the PromoOfferDiscountParamsDTO interface.
  */
 function instanceOfPromoOfferDiscountParamsDTO(value) {
-    if (!('maxPromoPrice' in value) || value['maxPromoPrice'] === undefined)
-        return false;
     return true;
 }
 function PromoOfferDiscountParamsDTOFromJSON(json) {
@@ -35,7 +34,8 @@ function PromoOfferDiscountParamsDTOFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'price': json['price'] == null ? undefined : json['price'],
         'promoPrice': json['promoPrice'] == null ? undefined : json['promoPrice'],
-        'maxPromoPrice': json['maxPromoPrice'],
+        'maxPromoPrice': json['maxPromoPrice'] == null ? undefined : json['maxPromoPrice'],
+        'bestPriceLevels': json['bestPriceLevels'] == null ? undefined : (0, PromoOfferBestPriceLevelsDTO_1.PromoOfferBestPriceLevelsDTOFromJSON)(json['bestPriceLevels']),
     };
 }
 function PromoOfferDiscountParamsDTOToJSON(value) {
@@ -46,5 +46,6 @@ function PromoOfferDiscountParamsDTOToJSON(value) {
         'price': value['price'],
         'promoPrice': value['promoPrice'],
         'maxPromoPrice': value['maxPromoPrice'],
+        'bestPriceLevels': (0, PromoOfferBestPriceLevelsDTO_1.PromoOfferBestPriceLevelsDTOToJSON)(value['bestPriceLevels']),
     };
 }

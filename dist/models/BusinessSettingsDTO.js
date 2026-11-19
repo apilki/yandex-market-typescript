@@ -17,6 +17,7 @@ exports.instanceOfBusinessSettingsDTO = instanceOfBusinessSettingsDTO;
 exports.BusinessSettingsDTOFromJSON = BusinessSettingsDTOFromJSON;
 exports.BusinessSettingsDTOFromJSONTyped = BusinessSettingsDTOFromJSONTyped;
 exports.BusinessSettingsDTOToJSON = BusinessSettingsDTOToJSON;
+const BusinessWarehouseModelType_1 = require("./BusinessWarehouseModelType");
 const CurrencyType_1 = require("./CurrencyType");
 /**
  * Check if a given object implements the BusinessSettingsDTO interface.
@@ -32,6 +33,7 @@ function BusinessSettingsDTOFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'warehouseModel': json['warehouseModel'] == null ? undefined : (0, BusinessWarehouseModelType_1.BusinessWarehouseModelTypeFromJSON)(json['warehouseModel']),
         'onlyDefaultPrice': json['onlyDefaultPrice'] == null ? undefined : json['onlyDefaultPrice'],
         'currency': json['currency'] == null ? undefined : (0, CurrencyType_1.CurrencyTypeFromJSON)(json['currency']),
     };
@@ -41,6 +43,7 @@ function BusinessSettingsDTOToJSON(value) {
         return value;
     }
     return {
+        'warehouseModel': (0, BusinessWarehouseModelType_1.BusinessWarehouseModelTypeToJSON)(value['warehouseModel']),
         'onlyDefaultPrice': value['onlyDefaultPrice'],
         'currency': (0, CurrencyType_1.CurrencyTypeToJSON)(value['currency']),
     };

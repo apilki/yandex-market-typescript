@@ -21,13 +21,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import * as runtime from '../runtime';
-import { DeleteGoodsFeedbackCommentRequestToJSON, EmptyApiResponseFromJSON, GetGoodsFeedbackCommentsRequestToJSON, GetGoodsFeedbackCommentsResponseFromJSON, GetGoodsFeedbackRequestToJSON, GetGoodsFeedbackResponseFromJSON, SkipGoodsFeedbackReactionRequestToJSON, UpdateGoodsFeedbackCommentRequestToJSON, UpdateGoodsFeedbackCommentResponseFromJSON, } from '../models/index';
+import { DeleteGoodsFeedbackCommentRequestToJSON, EmptyApiResponseFromJSON, GetGoodsFeedbackCommentsRequestToJSON, GetGoodsFeedbackCommentsResponseFromJSON, GetGoodsFeedbackRequestToJSON, GetGoodsFeedbackResponseFromJSON, GetGoodsFeedbackUrbanadsRequestToJSON, GetGoodsFeedbackUrbanadsResponseFromJSON, SkipGoodsFeedbackReactionRequestToJSON, UpdateGoodsFeedbackCommentRequestToJSON, UpdateGoodsFeedbackCommentResponseFromJSON, } from '../models/index';
 /**
  *
  */
 export class GoodsFeedbackApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/deleteGoodsFeedbackComment.md) %}  Удаляет комментарий магазина.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/deleteGoodsFeedbackComment.md) %}
+     * {% include notitle access %}  Удаляет комментарий магазина.  {% include notitle limit %}
      * Удаление комментария к отзыву
      */
     deleteGoodsFeedbackCommentRaw(requestParameters, initOverrides) {
@@ -39,6 +39,9 @@ export class GoodsFeedbackApi extends runtime.BaseAPI {
                 throw new runtime.RequiredError('deleteGoodsFeedbackCommentRequest', 'Required parameter "deleteGoodsFeedbackCommentRequest" was null or undefined when calling deleteGoodsFeedbackComment().');
             }
             const queryParameters = {};
+            if (requestParameters['sourceType'] != null) {
+                queryParameters['sourceType'] = requestParameters['sourceType'];
+            }
             const headerParameters = {};
             headerParameters['Content-Type'] = 'application/json';
             if (this.configuration && this.configuration.apiKey) {
@@ -59,17 +62,17 @@ export class GoodsFeedbackApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/deleteGoodsFeedbackComment.md) %}  Удаляет комментарий магазина.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/deleteGoodsFeedbackComment.md) %}
+     * {% include notitle access %}  Удаляет комментарий магазина.  {% include notitle limit %}
      * Удаление комментария к отзыву
      */
-    deleteGoodsFeedbackComment(businessId, deleteGoodsFeedbackCommentRequest, initOverrides) {
+    deleteGoodsFeedbackComment(businessId, deleteGoodsFeedbackCommentRequest, sourceType, initOverrides) {
         return __awaiter(this, void 0, void 0, function* () {
-            const response = yield this.deleteGoodsFeedbackCommentRaw({ businessId: businessId, deleteGoodsFeedbackCommentRequest: deleteGoodsFeedbackCommentRequest }, initOverrides);
+            const response = yield this.deleteGoodsFeedbackCommentRaw({ businessId: businessId, deleteGoodsFeedbackCommentRequest: deleteGoodsFeedbackCommentRequest, sourceType: sourceType }, initOverrides);
             return yield response.value();
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getGoodsFeedbackComments.md) %}  Возвращает комментарии к отзыву, кроме:    * тех, которые удалили пользователи или Маркет;   * комментариев к удаленным отзывам.  Идентификатор родительского комментария `parentId` возвращается только для ответов на другие комментарии, но не для ответов на отзывы.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый комментарий. А полную информацию о нем можно получить с помощью этого метода.  {#T}  {% endnote %}  Результаты возвращаются постранично, одна страница содержит не более 50 комментариев.  Комментарии расположены в порядке публикации, поэтому вы можете передавать определенный идентификатор страницы в `page_token`, если вы получали его ранее.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getGoodsFeedbackComments.md) %}
+     * {% include notitle access %}  Возвращает комментарии к отзыву, кроме:    * тех, которые удалили пользователи или Маркет;   * комментариев к удаленным отзывам.  Идентификатор родительского комментария `parentId` возвращается только для ответов на другие комментарии, но не для ответов на отзывы.  {% if audience == \"partner\" %}  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый комментарий. А полную информацию о нем можно получить с помощью этого метода.  {#T}  {% endnote %}  {% endif %}  Результаты возвращаются постранично.  Комментарии расположены в порядке публикации, поэтому вы можете передавать определенный идентификатор страницы в `pageToken`, если вы получали его ранее.  {% include notitle limit %}
      * Получение комментариев к отзыву
      */
     getGoodsFeedbackCommentsRaw(requestParameters, initOverrides) {
@@ -86,6 +89,9 @@ export class GoodsFeedbackApi extends runtime.BaseAPI {
             }
             if (requestParameters['limit'] != null) {
                 queryParameters['limit'] = requestParameters['limit'];
+            }
+            if (requestParameters['sourceType'] != null) {
+                queryParameters['sourceType'] = requestParameters['sourceType'];
             }
             const headerParameters = {};
             headerParameters['Content-Type'] = 'application/json';
@@ -107,17 +113,17 @@ export class GoodsFeedbackApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getGoodsFeedbackComments.md) %}  Возвращает комментарии к отзыву, кроме:    * тех, которые удалили пользователи или Маркет;   * комментариев к удаленным отзывам.  Идентификатор родительского комментария `parentId` возвращается только для ответов на другие комментарии, но не для ответов на отзывы.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый комментарий. А полную информацию о нем можно получить с помощью этого метода.  {#T}  {% endnote %}  Результаты возвращаются постранично, одна страница содержит не более 50 комментариев.  Комментарии расположены в порядке публикации, поэтому вы можете передавать определенный идентификатор страницы в `page_token`, если вы получали его ранее.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getGoodsFeedbackComments.md) %}
+     * {% include notitle access %}  Возвращает комментарии к отзыву, кроме:    * тех, которые удалили пользователи или Маркет;   * комментариев к удаленным отзывам.  Идентификатор родительского комментария `parentId` возвращается только для ответов на другие комментарии, но не для ответов на отзывы.  {% if audience == \"partner\" %}  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый комментарий. А полную информацию о нем можно получить с помощью этого метода.  {#T}  {% endnote %}  {% endif %}  Результаты возвращаются постранично.  Комментарии расположены в порядке публикации, поэтому вы можете передавать определенный идентификатор страницы в `pageToken`, если вы получали его ранее.  {% include notitle limit %}
      * Получение комментариев к отзыву
      */
-    getGoodsFeedbackComments(businessId, getGoodsFeedbackCommentsRequest, pageToken, limit, initOverrides) {
+    getGoodsFeedbackComments(businessId, getGoodsFeedbackCommentsRequest, pageToken, limit, sourceType, initOverrides) {
         return __awaiter(this, void 0, void 0, function* () {
-            const response = yield this.getGoodsFeedbackCommentsRaw({ businessId: businessId, getGoodsFeedbackCommentsRequest: getGoodsFeedbackCommentsRequest, pageToken: pageToken, limit: limit }, initOverrides);
+            const response = yield this.getGoodsFeedbackCommentsRaw({ businessId: businessId, getGoodsFeedbackCommentsRequest: getGoodsFeedbackCommentsRequest, pageToken: pageToken, limit: limit, sourceType: sourceType }, initOverrides);
             return yield response.value();
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getGoodsFeedbacks.md) %}  Возвращает отзывы о товарах продавца по указанным фильтрам. **Исключение:** отзывы, которые удалили покупатели или Маркет.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый отзыв. А полную информацию о нем можно получить с помощью этого метода.  {#T}  {% endnote %}  Результаты возвращаются постранично, одна страница содержит не более 50 отзывов.  Отзывы расположены в порядке публикации, поэтому вы можете передавать определенный идентификатор страницы в `page_token`, если вы получали его ранее.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getGoodsFeedbacks.md) %}
+     * {% include notitle access %}  Возвращает отзывы о товарах продавца по указанным фильтрам. **Исключение:** отзывы, которые удалили покупатели или Маркет.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый отзыв. А полную информацию о нем можно получить с помощью этого метода.  {#T}  {% endnote %}  Результаты возвращаются постранично.  Отзывы расположены в порядке публикации, поэтому вы можете передавать определенный идентификатор страницы в `pageToken`, если вы получали его ранее.  {% include notitle limit %}
      * Получение отзывов о товарах продавца
      */
     getGoodsFeedbacksRaw(requestParameters, initOverrides) {
@@ -152,7 +158,7 @@ export class GoodsFeedbackApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getGoodsFeedbacks.md) %}  Возвращает отзывы о товарах продавца по указанным фильтрам. **Исключение:** отзывы, которые удалили покупатели или Маркет.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый отзыв. А полную информацию о нем можно получить с помощью этого метода.  {#T}  {% endnote %}  Результаты возвращаются постранично, одна страница содержит не более 50 отзывов.  Отзывы расположены в порядке публикации, поэтому вы можете передавать определенный идентификатор страницы в `page_token`, если вы получали его ранее.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getGoodsFeedbacks.md) %}
+     * {% include notitle access %}  Возвращает отзывы о товарах продавца по указанным фильтрам. **Исключение:** отзывы, которые удалили покупатели или Маркет.  {% note tip \"Вы также можете настроить API-уведомления\" %}  Маркет отправит вам запрос, когда появится новый отзыв. А полную информацию о нем можно получить с помощью этого метода.  {#T}  {% endnote %}  Результаты возвращаются постранично.  Отзывы расположены в порядке публикации, поэтому вы можете передавать определенный идентификатор страницы в `pageToken`, если вы получали его ранее.  {% include notitle limit %}
      * Получение отзывов о товарах продавца
      */
     getGoodsFeedbacks(businessId, pageToken, limit, getGoodsFeedbackRequest, initOverrides) {
@@ -162,7 +168,55 @@ export class GoodsFeedbackApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/skipGoodsFeedbacksReaction.md) %}  Пропускает реакцию на отзыв — параметр `needReaction` принимает значение `false` в методе получения всех отзывов POST v2/businesses/{businessId}/goods-feedback.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/skipGoodsFeedbacksReaction.md) %}
+     * {% include notitle access %}  Возвращает отзывы о товарах бренда по указанным фильтрам. **Исключение:** отзывы, которые удалили покупатели или Маркет.  Результаты возвращаются постранично.  Отзывы расположены в порядке публикации, поэтому вы можете передавать определенный идентификатор страницы в `pageToken`, если вы получали его ранее.  {% include notitle limit %}
+     * Получение отзывов о товарах для рекламодателей
+     */
+    getGoodsFeedbacksUrbanadsRaw(requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (requestParameters['businessId'] == null) {
+                throw new runtime.RequiredError('businessId', 'Required parameter "businessId" was null or undefined when calling getGoodsFeedbacksUrbanads().');
+            }
+            const queryParameters = {};
+            if (requestParameters['pageToken'] != null) {
+                queryParameters['pageToken'] = requestParameters['pageToken'];
+            }
+            if (requestParameters['limit'] != null) {
+                queryParameters['limit'] = requestParameters['limit'];
+            }
+            if (requestParameters['sourceType'] != null) {
+                queryParameters['sourceType'] = requestParameters['sourceType'];
+            }
+            const headerParameters = {};
+            headerParameters['Content-Type'] = 'application/json';
+            if (this.configuration && this.configuration.apiKey) {
+                headerParameters["Api-Key"] = yield this.configuration.apiKey("Api-Key"); // ApiKey authentication
+            }
+            if (this.configuration && this.configuration.accessToken) {
+                // oauth required
+                headerParameters["Authorization"] = yield this.configuration.accessToken("OAuth", ["market:partner-api"]);
+            }
+            const response = yield this.request({
+                path: `/v1/businesses/{businessId}/goods-feedback-advertiser`.replace(`{${"businessId"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: GetGoodsFeedbackUrbanadsRequestToJSON(requestParameters['getGoodsFeedbackUrbanadsRequest']),
+            }, initOverrides);
+            return new runtime.JSONApiResponse(response, (jsonValue) => GetGoodsFeedbackUrbanadsResponseFromJSON(jsonValue));
+        });
+    }
+    /**
+     * {% include notitle access %}  Возвращает отзывы о товарах бренда по указанным фильтрам. **Исключение:** отзывы, которые удалили покупатели или Маркет.  Результаты возвращаются постранично.  Отзывы расположены в порядке публикации, поэтому вы можете передавать определенный идентификатор страницы в `pageToken`, если вы получали его ранее.  {% include notitle limit %}
+     * Получение отзывов о товарах для рекламодателей
+     */
+    getGoodsFeedbacksUrbanads(businessId, pageToken, limit, sourceType, getGoodsFeedbackUrbanadsRequest, initOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.getGoodsFeedbacksUrbanadsRaw({ businessId: businessId, pageToken: pageToken, limit: limit, sourceType: sourceType, getGoodsFeedbackUrbanadsRequest: getGoodsFeedbackUrbanadsRequest }, initOverrides);
+            return yield response.value();
+        });
+    }
+    /**
+     * {% include notitle access %}  Пропускает реакцию на отзыв — параметр `needReaction` принимает значение `false` в методе получения всех отзывов POST v2/businesses/{businessId}/goods-feedback.  {% include notitle limit %}
      * Пропуск реакции на отзывы
      */
     skipGoodsFeedbacksReactionRaw(requestParameters, initOverrides) {
@@ -174,6 +228,9 @@ export class GoodsFeedbackApi extends runtime.BaseAPI {
                 throw new runtime.RequiredError('skipGoodsFeedbackReactionRequest', 'Required parameter "skipGoodsFeedbackReactionRequest" was null or undefined when calling skipGoodsFeedbacksReaction().');
             }
             const queryParameters = {};
+            if (requestParameters['sourceType'] != null) {
+                queryParameters['sourceType'] = requestParameters['sourceType'];
+            }
             const headerParameters = {};
             headerParameters['Content-Type'] = 'application/json';
             if (this.configuration && this.configuration.apiKey) {
@@ -194,17 +251,17 @@ export class GoodsFeedbackApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/skipGoodsFeedbacksReaction.md) %}  Пропускает реакцию на отзыв — параметр `needReaction` принимает значение `false` в методе получения всех отзывов POST v2/businesses/{businessId}/goods-feedback.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/skipGoodsFeedbacksReaction.md) %}
+     * {% include notitle access %}  Пропускает реакцию на отзыв — параметр `needReaction` принимает значение `false` в методе получения всех отзывов POST v2/businesses/{businessId}/goods-feedback.  {% include notitle limit %}
      * Пропуск реакции на отзывы
      */
-    skipGoodsFeedbacksReaction(businessId, skipGoodsFeedbackReactionRequest, initOverrides) {
+    skipGoodsFeedbacksReaction(businessId, skipGoodsFeedbackReactionRequest, sourceType, initOverrides) {
         return __awaiter(this, void 0, void 0, function* () {
-            const response = yield this.skipGoodsFeedbacksReactionRaw({ businessId: businessId, skipGoodsFeedbackReactionRequest: skipGoodsFeedbackReactionRequest }, initOverrides);
+            const response = yield this.skipGoodsFeedbacksReactionRaw({ businessId: businessId, skipGoodsFeedbackReactionRequest: skipGoodsFeedbackReactionRequest, sourceType: sourceType }, initOverrides);
             return yield response.value();
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateGoodsFeedbackComment.md) %}  Добавляет новый комментарий магазина или изменяет комментарий, который магазин оставлял ранее.  Для создания комментария к отзыву передайте только идентификатор отзыва `feedbackId`.  Чтобы добавить комментарий к другому комментарию, передайте:  * `feedbackId` — идентификатор отзыва; * `comment.parentId` — идентификатор родительского комментария.  Чтобы изменить комментарий, передайте:  * `feedbackId`— идентификатор отзыва; * `comment.id` — идентификатор комментария, который нужно изменить.  Если передать одновременно `comment.parentId` и `comment.id`, будет изменен существующий комментарий.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateGoodsFeedbackComment.md) %}
+     * {% include notitle access %}  Добавляет новый комментарий магазина или изменяет комментарий, который магазин оставлял ранее.  Для создания комментария к отзыву передайте только идентификатор отзыва `feedbackId`.  Чтобы добавить комментарий к другому комментарию, передайте:  * `feedbackId` — идентификатор отзыва; * `comment.parentId` — идентификатор родительского комментария.  Чтобы изменить комментарий, передайте:  * `feedbackId`— идентификатор отзыва; * `comment.id` — идентификатор комментария, который нужно изменить.  Если передать одновременно `comment.parentId` и `comment.id`, будет изменен существующий комментарий.  {% include notitle limit %}
      * Добавление нового или изменение созданного комментария
      */
     updateGoodsFeedbackCommentRaw(requestParameters, initOverrides) {
@@ -216,6 +273,9 @@ export class GoodsFeedbackApi extends runtime.BaseAPI {
                 throw new runtime.RequiredError('updateGoodsFeedbackCommentRequest', 'Required parameter "updateGoodsFeedbackCommentRequest" was null or undefined when calling updateGoodsFeedbackComment().');
             }
             const queryParameters = {};
+            if (requestParameters['sourceType'] != null) {
+                queryParameters['sourceType'] = requestParameters['sourceType'];
+            }
             const headerParameters = {};
             headerParameters['Content-Type'] = 'application/json';
             if (this.configuration && this.configuration.apiKey) {
@@ -236,12 +296,12 @@ export class GoodsFeedbackApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateGoodsFeedbackComment.md) %}  Добавляет новый комментарий магазина или изменяет комментарий, который магазин оставлял ранее.  Для создания комментария к отзыву передайте только идентификатор отзыва `feedbackId`.  Чтобы добавить комментарий к другому комментарию, передайте:  * `feedbackId` — идентификатор отзыва; * `comment.parentId` — идентификатор родительского комментария.  Чтобы изменить комментарий, передайте:  * `feedbackId`— идентификатор отзыва; * `comment.id` — идентификатор комментария, который нужно изменить.  Если передать одновременно `comment.parentId` и `comment.id`, будет изменен существующий комментарий.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateGoodsFeedbackComment.md) %}
+     * {% include notitle access %}  Добавляет новый комментарий магазина или изменяет комментарий, который магазин оставлял ранее.  Для создания комментария к отзыву передайте только идентификатор отзыва `feedbackId`.  Чтобы добавить комментарий к другому комментарию, передайте:  * `feedbackId` — идентификатор отзыва; * `comment.parentId` — идентификатор родительского комментария.  Чтобы изменить комментарий, передайте:  * `feedbackId`— идентификатор отзыва; * `comment.id` — идентификатор комментария, который нужно изменить.  Если передать одновременно `comment.parentId` и `comment.id`, будет изменен существующий комментарий.  {% include notitle limit %}
      * Добавление нового или изменение созданного комментария
      */
-    updateGoodsFeedbackComment(businessId, updateGoodsFeedbackCommentRequest, initOverrides) {
+    updateGoodsFeedbackComment(businessId, updateGoodsFeedbackCommentRequest, sourceType, initOverrides) {
         return __awaiter(this, void 0, void 0, function* () {
-            const response = yield this.updateGoodsFeedbackCommentRaw({ businessId: businessId, updateGoodsFeedbackCommentRequest: updateGoodsFeedbackCommentRequest }, initOverrides);
+            const response = yield this.updateGoodsFeedbackCommentRaw({ businessId: businessId, updateGoodsFeedbackCommentRequest: updateGoodsFeedbackCommentRequest, sourceType: sourceType }, initOverrides);
             return yield response.value();
         });
     }

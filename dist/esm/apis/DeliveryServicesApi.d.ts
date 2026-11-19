@@ -16,12 +16,12 @@ import type { GetDeliveryServicesResponse } from '../models/index';
  */
 export declare class DeliveryServicesApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getDeliveryServices.md) %}  Возвращает справочник служб доставки: идентификаторы и наименования.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getDeliveryServices.md) %}
+     * {% include notitle access %}  Возвращает справочник служб доставки: идентификаторы и наименования.  {% include notitle limit %}
      * Справочник служб доставки
      */
     getDeliveryServicesRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetDeliveryServicesResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getDeliveryServices.md) %}  Возвращает справочник служб доставки: идентификаторы и наименования.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getDeliveryServices.md) %}
+     * {% include notitle access %}  Возвращает справочник служб доставки: идентификаторы и наименования.  {% include notitle limit %}
      * Справочник служб доставки
      */
     getDeliveryServices(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetDeliveryServicesResponse>;

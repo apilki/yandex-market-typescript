@@ -25,7 +25,14 @@ export interface TariffDTO {
      */
     type: TariffType;
     /**
+     * {% note warning "Параметр устарел и будет отключен 12.10.2026." %}
+     *
+     * Вместо него используйте `amount`.
+     *
+     * {% endnote %}
+     *
      * Значение тарифа в процентах.
+     *
      * @type {number}
      * @memberof TariffDTO
      * @deprecated

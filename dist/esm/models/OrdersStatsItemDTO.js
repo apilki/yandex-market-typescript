@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 import { OrdersStatsPriceDTOFromJSON, OrdersStatsPriceDTOToJSON, } from './OrdersStatsPriceDTO';
+import { OrdersStatsShopServiceTypeFromJSON, OrdersStatsShopServiceTypeToJSON, } from './OrdersStatsShopServiceType';
 import { OrdersStatsDetailsDTOFromJSON, OrdersStatsDetailsDTOToJSON, } from './OrdersStatsDetailsDTO';
 import { OrdersStatsWarehouseDTOFromJSON, OrdersStatsWarehouseDTOToJSON, } from './OrdersStatsWarehouseDTO';
 /**
@@ -29,6 +30,7 @@ export function OrdersStatsItemDTOFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'offerName': json['offerName'] == null ? undefined : json['offerName'],
+        'shopServiceType': json['shopServiceType'] == null ? undefined : OrdersStatsShopServiceTypeFromJSON(json['shopServiceType']),
         'marketSku': json['marketSku'] == null ? undefined : json['marketSku'],
         'shopSku': json['shopSku'] == null ? undefined : json['shopSku'],
         'count': json['count'] == null ? undefined : json['count'],
@@ -48,6 +50,7 @@ export function OrdersStatsItemDTOToJSON(value) {
     }
     return {
         'offerName': value['offerName'],
+        'shopServiceType': OrdersStatsShopServiceTypeToJSON(value['shopServiceType']),
         'marketSku': value['marketSku'],
         'shopSku': value['shopSku'],
         'count': value['count'],

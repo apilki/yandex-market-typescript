@@ -94,7 +94,14 @@ export interface OrderItemDTO {
      */
     buyerPriceBeforeDiscount: number;
     /**
+     * {% note warning "Параметр устарел и будет отключен 05.10.2026." %}
+     *
+     *
+     *
+     * {% endnote %}
+     *
      * Стоимость товара в валюте магазина до применения скидок.
+     *
      * @type {number}
      * @memberof OrderItemDTO
      * @deprecated
@@ -136,9 +143,9 @@ export interface OrderItemDTO {
      */
     shopSku?: string;
     /**
-     * {% note warning "Вместо него используйте `subsidies`." %}
+     * {% note warning "Параметр устарел и будет отключен 05.10.2026." %}
      *
-     *
+     * Вместо него используйте `subsidies`.
      *
      * {% endnote %}
      *
@@ -186,9 +193,9 @@ export interface OrderItemDTO {
      */
     instances?: Array<OrderItemInstanceDTO> | null;
     /**
-     * {% note warning "Для получения информации о невыкупах и возвратах используйте GET v2/campaigns/{campaignId}/returns." %}
+     * {% note warning "Параметр устарел и будет отключен 05.10.2026." %}
      *
-     *
+     * Для получения информации о невыкупах и возвратах используйте GET v2/campaigns/{campaignId}/returns.
      *
      * {% endnote %}
      *

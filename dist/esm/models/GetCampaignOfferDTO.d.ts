@@ -11,7 +11,6 @@
  */
 import type { GetPriceWithVatDTO } from './GetPriceWithVatDTO';
 import type { OfferErrorDTO } from './OfferErrorDTO';
-import type { QuantumDTO } from './QuantumDTO';
 import type { GetPriceWithDiscountDTO } from './GetPriceWithDiscountDTO';
 import type { OfferCampaignStatusType } from './OfferCampaignStatusType';
 /**
@@ -44,14 +43,9 @@ export interface GetCampaignOfferDTO {
      */
     offerId: string;
     /**
+     * {% note warning "Параметр устарел и будет отключен 19.10.2026." %}
      *
-     * @type {QuantumDTO}
-     * @memberof GetCampaignOfferDTO
-     * @deprecated
-     */
-    quantum?: QuantumDTO;
-    /**
-     * {% note warning "Вместо него используйте методы скрытия товаров с витрины" %}
+     * Вместо него используйте методы скрытия товаров с витрины
      *
      * * GET v2/campaigns/{campaignId}/hidden-offers — просмотр скрытых товаров;
      * * POST v2/campaigns/{campaignId}/hidden-offers — скрытие товаров;

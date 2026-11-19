@@ -27,6 +27,7 @@ export function GetQuestionsRequestFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'categoryIds': json['categoryIds'] == null ? undefined : json['categoryIds'],
+        'questionIds': json['questionIds'] == null ? undefined : json['questionIds'],
         'dateFrom': json['dateFrom'] == null ? undefined : (new Date(json['dateFrom'])),
         'dateTo': json['dateTo'] == null ? undefined : (new Date(json['dateTo'])),
         'needAnswer': json['needAnswer'] == null ? undefined : json['needAnswer'],
@@ -39,6 +40,7 @@ export function GetQuestionsRequestToJSON(value) {
     }
     return {
         'categoryIds': value['categoryIds'] == null ? undefined : Array.from(value['categoryIds']),
+        'questionIds': value['questionIds'] == null ? undefined : Array.from(value['questionIds']),
         'dateFrom': value['dateFrom'] == null ? undefined : ((value['dateFrom']).toISOString().substring(0, 10)),
         'dateTo': value['dateTo'] == null ? undefined : ((value['dateTo']).toISOString().substring(0, 10)),
         'needAnswer': value['needAnswer'],

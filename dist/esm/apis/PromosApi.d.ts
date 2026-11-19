@@ -34,42 +34,42 @@ export interface PromosApiUpdatePromoOffersOperationRequest {
  */
 export declare class PromosApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/deletePromoOffers.md) %}  Убирает товары из акции.  Изменения начинают действовать в течение 4–6 часов. Узнать, применились ли они, можно с помощью параметра `processing` в ответе метода POST v2/businesses/{businessId}/promos.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/deletePromoOffers.md) %}
+     * {% include notitle access %}  Убирает товары из акции.  Изменения начинают действовать в течение 4–6 часов. Узнать, применились ли они, можно с помощью параметра `processing` в ответе метода POST v2/businesses/{businessId}/promos.  {% include notitle limit %}
      * Удаление товаров из акции
      */
     deletePromoOffersRaw(requestParameters: PromosApiDeletePromoOffersOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeletePromoOffersResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/deletePromoOffers.md) %}  Убирает товары из акции.  Изменения начинают действовать в течение 4–6 часов. Узнать, применились ли они, можно с помощью параметра `processing` в ответе метода POST v2/businesses/{businessId}/promos.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/deletePromoOffers.md) %}
+     * {% include notitle access %}  Убирает товары из акции.  Изменения начинают действовать в течение 4–6 часов. Узнать, применились ли они, можно с помощью параметра `processing` в ответе метода POST v2/businesses/{businessId}/promos.  {% include notitle limit %}
      * Удаление товаров из акции
      */
     deletePromoOffers(businessId: number, deletePromoOffersRequest: DeletePromoOffersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeletePromoOffersResponse>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getPromoOffers.md) %}  Возвращает список товаров, которые участвуют или могут участвовать в акции.  {% note warning \"Условия участия в акциях могут меняться\" %}  Например, `maxPromoPrice`.  Установленные цены меняться не будут — `price` и `promoPrice`.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getPromoOffers.md) %}
+     * {% include notitle access %}  Возвращает список товаров, которые участвуют или могут участвовать в акции.  {% note warning \"Условия участия в акциях могут меняться\" %}  Например, `maxPromoPrice` и `bestPriceLevels`.  Установленные цены меняться не будут — `price` и `promoPrice`.  {% endnote %}  {% include notitle limit %}
      * Получение списка товаров, которые участвуют или могут участвовать в акции
      */
     getPromoOffersRaw(requestParameters: PromosApiGetPromoOffersOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetPromoOffersResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getPromoOffers.md) %}  Возвращает список товаров, которые участвуют или могут участвовать в акции.  {% note warning \"Условия участия в акциях могут меняться\" %}  Например, `maxPromoPrice`.  Установленные цены меняться не будут — `price` и `promoPrice`.  {% endnote %}  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getPromoOffers.md) %}
+     * {% include notitle access %}  Возвращает список товаров, которые участвуют или могут участвовать в акции.  {% note warning \"Условия участия в акциях могут меняться\" %}  Например, `maxPromoPrice` и `bestPriceLevels`.  Установленные цены меняться не будут — `price` и `promoPrice`.  {% endnote %}  {% include notitle limit %}
      * Получение списка товаров, которые участвуют или могут участвовать в акции
      */
     getPromoOffers(businessId: number, getPromoOffersRequest: GetPromoOffersRequest, pageToken?: string, limit?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetPromoOffersResponse>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getPromos.md) %}  Возвращает информацию об акциях Маркета. Не возвращает данные об акциях, которые создал продавец.  По умолчанию возвращаются акции, в которых продавец участвует или может принять участие.  Чтобы получить текущие или завершенные акции, передайте параметр `participation`.  Типы акций, которые возвращаются в ответе:  * прямая скидка; * флеш-акция; * скидка по промокоду.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getPromos.md) %}
+     * {% include notitle access %}  Возвращает информацию об акциях Маркета. Не возвращает данные об акциях, которые создал продавец.  По умолчанию возвращаются акции, в которых продавец участвует или может принять участие.  Чтобы получить текущие или завершенные акции, передайте параметр `participation`.  Типы акций, которые возвращаются в ответе:  * прямая скидка; * флеш-акция; * скидка по промокоду.  {% include notitle limit %}
      * Получение списка акций
      */
     getPromosRaw(requestParameters: PromosApiGetPromosOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetPromosResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getPromos.md) %}  Возвращает информацию об акциях Маркета. Не возвращает данные об акциях, которые создал продавец.  По умолчанию возвращаются акции, в которых продавец участвует или может принять участие.  Чтобы получить текущие или завершенные акции, передайте параметр `participation`.  Типы акций, которые возвращаются в ответе:  * прямая скидка; * флеш-акция; * скидка по промокоду.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getPromos.md) %}
+     * {% include notitle access %}  Возвращает информацию об акциях Маркета. Не возвращает данные об акциях, которые создал продавец.  По умолчанию возвращаются акции, в которых продавец участвует или может принять участие.  Чтобы получить текущие или завершенные акции, передайте параметр `participation`.  Типы акций, которые возвращаются в ответе:  * прямая скидка; * флеш-акция; * скидка по промокоду.  {% include notitle limit %}
      * Получение списка акций
      */
     getPromos(businessId: number, getPromosRequest?: GetPromosRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetPromosResponse>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updatePromoOffers.md) %}  Добавляет товары в акцию или изменяет цены на товары, которые участвуют в акции.  Изменения начинают действовать в течение 4–6 часов. Узнать, применились ли они, можно с помощью параметра `processing` в ответе метода POST v2/businesses/{businessId}/promos.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updatePromoOffers.md) %}
+     * {% include notitle access %}  Добавляет товары в акцию или изменяет цены на товары, которые участвуют в акции.  Изменения начинают действовать в течение 4–6 часов. Узнать, применились ли они, можно с помощью параметра `processing` в ответе метода POST v2/businesses/{businessId}/promos.  {% include notitle limit %}
      * Добавление товаров в акцию или изменение их цен
      */
     updatePromoOffersRaw(requestParameters: PromosApiUpdatePromoOffersOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdatePromoOffersResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updatePromoOffers.md) %}  Добавляет товары в акцию или изменяет цены на товары, которые участвуют в акции.  Изменения начинают действовать в течение 4–6 часов. Узнать, применились ли они, можно с помощью параметра `processing` в ответе метода POST v2/businesses/{businessId}/promos.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updatePromoOffers.md) %}
+     * {% include notitle access %}  Добавляет товары в акцию или изменяет цены на товары, которые участвуют в акции.  Изменения начинают действовать в течение 4–6 часов. Узнать, применились ли они, можно с помощью параметра `processing` в ответе метода POST v2/businesses/{businessId}/promos.  {% include notitle limit %}
      * Добавление товаров в акцию или изменение их цен
      */
     updatePromoOffers(businessId: number, updatePromoOffersRequest: UpdatePromoOffersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdatePromoOffersResponse>;

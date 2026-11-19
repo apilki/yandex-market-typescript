@@ -41,52 +41,52 @@ export interface OutletsApiUpdateOutletRequest {
  */
 export declare class OutletsApi extends runtime.BaseAPI {
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/createOutlet.md) %}  Создает точку продаж магазина на Маркете.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/createOutlet.md) %}
+     * {% include notitle access %}  Создает точку продаж магазина на Маркете.  {% include notitle limit %}
      * Создание точки продаж
      */
     createOutletRaw(requestParameters: OutletsApiCreateOutletRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateOutletResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/createOutlet.md) %}  Создает точку продаж магазина на Маркете.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/createOutlet.md) %}
+     * {% include notitle access %}  Создает точку продаж магазина на Маркете.  {% include notitle limit %}
      * Создание точки продаж
      */
     createOutlet(campaignId: number, changeOutletRequest: ChangeOutletRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateOutletResponse>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/deleteOutlet.md) %}  Удаляет точку продаж магазина на Маркете.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/deleteOutlet.md) %}
+     * {% include notitle access %}  Удаляет точку продаж магазина на Маркете.  {% include notitle limit %}
      * Удаление точки продаж
      */
     deleteOutletRaw(requestParameters: OutletsApiDeleteOutletRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmptyApiResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/deleteOutlet.md) %}  Удаляет точку продаж магазина на Маркете.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/deleteOutlet.md) %}
+     * {% include notitle access %}  Удаляет точку продаж магазина на Маркете.  {% include notitle limit %}
      * Удаление точки продаж
      */
     deleteOutlet(campaignId: number, outletId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmptyApiResponse>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOutlet.md) %}  Возвращает информацию о точках продаж магазина.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOutlet.md) %}
+     * {% include notitle access %}  Возвращает информацию о точках продаж магазина.  {% include notitle limit %}
      * Информация об одной точке продаж
      */
     getOutletRaw(requestParameters: OutletsApiGetOutletRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetOutletResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOutlet.md) %}  Возвращает информацию о точках продаж магазина.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOutlet.md) %}
+     * {% include notitle access %}  Возвращает информацию о точках продаж магазина.  {% include notitle limit %}
      * Информация об одной точке продаж
      */
     getOutlet(campaignId: number, outletId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetOutletResponse>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOutlets.md) %}  Возвращает список точек продаж магазина.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOutlets.md) %}
+     * {% include notitle access %}  Возвращает список точек продаж магазина.  {% include notitle limit %}
      * Информация о нескольких точках продаж
      */
     getOutletsRaw(requestParameters: OutletsApiGetOutletsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetOutletsResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/getOutlets.md) %}  Возвращает список точек продаж магазина.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/getOutlets.md) %}
+     * {% include notitle access %}  Возвращает список точек продаж магазина.  {% include notitle limit %}
      * Информация о нескольких точках продаж
      */
     getOutlets(campaignId: number, pageToken?: string, limit?: number, regionId?: number, shopOutletCode?: string, regionId2?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetOutletsResponse>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateOutlet.md) %}  Изменяет информацию о точке продаж магазина на Маркете.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateOutlet.md) %}
+     * {% include notitle access %}  Изменяет информацию о точке продаж магазина на Маркете.  {% include notitle limit %}
      * Изменение информации о точке продаж
      */
     updateOutletRaw(requestParameters: OutletsApiUpdateOutletRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmptyApiResponse>>;
     /**
-     * {% include notitle [:no-translate[access]](../../_auto/method_scopes/updateOutlet.md) %}  Изменяет информацию о точке продаж магазина на Маркете.  {% include notitle [:no-translate[limit]](../../_auto/method_limits/updateOutlet.md) %}
+     * {% include notitle access %}  Изменяет информацию о точке продаж магазина на Маркете.  {% include notitle limit %}
      * Изменение информации о точке продаж
      */
     updateOutlet(campaignId: number, outletId: number, changeOutletRequest: ChangeOutletRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmptyApiResponse>;

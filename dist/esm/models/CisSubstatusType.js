@@ -18,7 +18,7 @@
  *
  * * `CIS_VALIDATION_ERROR` — проверка не пройдена.
  *
- * * `CIS_GTIN_NOT_FOUND` — код маркировки не содержит [:no-translate[GTIN]](:no-translate[*gtin]).
+ * * `CIS_GTIN_NOT_FOUND` — код маркировки не содержит [GTIN](:no-translate[*gtin]).
  *
  * * `CIS_SERIAL_NUMBER_NOT_FOUND` — код маркировки не содержит серийный номер.
  *
