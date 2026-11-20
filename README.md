@@ -1,6 +1,6 @@
 # @apilki/yandex-market — JavaScript/TypeScript client
 
-**Version: {{version}} · API as of {{date}}** <!-- штампуется пайплайном (github-distro); штамп ОДИН (EN), стандарт public-client-readme-standard -->
+**Version: 0.5.0 · API as of 2026-11-19** <!-- штампуется пайплайном (github-distro); штамп ОДИН (EN), стандарт public-client-readme-standard -->
 
 A **curated generated TypeScript client** for the Yandex Market Partner API —
 generated from the official API specification, with edge-cases and conflicts
