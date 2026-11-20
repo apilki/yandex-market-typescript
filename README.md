@@ -126,8 +126,9 @@ const config = new Configuration({
 ## Postman-коллекция
 
 Готовая [Postman Collection](https://github.com/apilki/yandex-market-postman)
-v2.1 — отдельный артефакт `apilki/yandex-market-postman`
-(`postman/collection.json`). Импортируйте коллекцию и работайте с API без кода.
+v2.1 (161 запрос — все операции спецификации) — отдельный репозиторий
+`apilki/yandex-market-postman` (`postman/collection.json`). Импортируйте коллекцию,
+задайте `apiKey` в её авторизации и работайте с API без кода.
 
 ## Тесты
 
