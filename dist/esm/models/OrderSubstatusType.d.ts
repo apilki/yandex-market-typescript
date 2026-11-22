@@ -189,7 +189,6 @@ export declare const OrderSubstatusType: {
     readonly AWAIT_USER_STEAM_FAST_URL: "AWAIT_USER_STEAM_FAST_URL";
     readonly USER_IDENTIFICATION_MISMATCH: "USER_IDENTIFICATION_MISMATCH";
     readonly PURCHASE_GROUP_THRESHOLD_NOT_REACHED_CANCELLED: "PURCHASE_GROUP_THRESHOLD_NOT_REACHED_CANCELLED";
-    readonly COURIER_DELIVERY_POSTPAID_FAILED: "COURIER_DELIVERY_POSTPAID_FAILED";
     readonly UNKNOWN: "UNKNOWN";
 };
 export type OrderSubstatusType = typeof OrderSubstatusType[keyof typeof OrderSubstatusType];
