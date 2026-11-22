@@ -1,6 +1,6 @@
 # @apilki/yandex-market — JavaScript/TypeScript client
 
-**Version: {{version}} · API as of {{date}}** <!-- штампуется пайплайном (github-distro); штамп ОДИН (EN), стандарт public-client-readme-standard -->
+**Version: 0.6.0 · API as of 2026-11-22** <!-- штампуется пайплайном (github-distro); штамп ОДИН (EN), стандарт public-client-readme-standard -->
 
 A **curated generated TypeScript client** for the Yandex Market Partner API —
 generated from the official API specification, with edge-cases and conflicts
@@ -125,9 +125,10 @@ const config = new Configuration({
 
 ## Postman-коллекция
 
-Готовая [Postman Collection](https://github.com/apilki/yandex-market-postman)
-v2.1 — отдельный артефакт `apilki/yandex-market-postman`
-(`postman/collection.json`). Импортируйте коллекцию и работайте с API без кода.
+Готовая Postman Collection v2.1 (161 запрос — все операции спецификации) — отдельный репозиторий
+[apilki/yandex-market-postman](https://github.com/apilki/yandex-market-postman)
+(`postman/collection.json`). Задайте `apiKey` в авторизации коллекции — она применена
+ко всем запросам. Обновляется пайплайном при каждой смене API.
 
 ## Тесты
 
