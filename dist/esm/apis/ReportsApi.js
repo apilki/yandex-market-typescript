@@ -27,7 +27,7 @@ import { GenerateBannersStatisticsRequestToJSON, GenerateBarcodesReportRequestTo
  */
 export class ReportsApi extends runtime.BaseAPI {
     /**
-     * {% include notitle access %}  Запускает генерацию сводного отчета по охватному продвижению. {% if audience == \"partner\" %}Что это за отчет: [для баннеров](https://yandex.ru/support/marketplace/ru/marketing/advertising-tools/banner#statistics), [для пуш-уведомлений](https://yandex.ru/support/marketplace/ru/marketing/advertising-tools/push-notifications#statistics).{% endif %}  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% if audience != \"advertiser\" %}  {% include notitle tariff-period %}  {% endif %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию сводного отчета по охватному продвижению. {% if audience == \"partner\" %}Что это за отчет: [для баннеров](https://yandex.ru/support/marketplace/ru/marketing/advertising-tools/banner#statistics), [для пуш-уведомлений](https://yandex.ru/support/marketplace/ru/marketing/advertising-tools/push-notifications#statistics).{% endif %}  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% if audience != \"advertiser\" %}  {% include notitle tariff-period %}  {% endif %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по охватному продвижению
      */
     generateBannersStatisticsReportRaw(requestParameters, initOverrides) {
@@ -62,7 +62,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию сводного отчета по охватному продвижению. {% if audience == \"partner\" %}Что это за отчет: [для баннеров](https://yandex.ru/support/marketplace/ru/marketing/advertising-tools/banner#statistics), [для пуш-уведомлений](https://yandex.ru/support/marketplace/ru/marketing/advertising-tools/push-notifications#statistics).{% endif %}  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% if audience != \"advertiser\" %}  {% include notitle tariff-period %}  {% endif %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию сводного отчета по охватному продвижению. {% if audience == \"partner\" %}Что это за отчет: [для баннеров](https://yandex.ru/support/marketplace/ru/marketing/advertising-tools/banner#statistics), [для пуш-уведомлений](https://yandex.ru/support/marketplace/ru/marketing/advertising-tools/push-notifications#statistics).{% endif %}  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% if audience != \"advertiser\" %}  {% include notitle tariff-period %}  {% endif %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по охватному продвижению
      */
     generateBannersStatisticsReport(generateBannersStatisticsRequest, format, sourceType, initOverrides) {
@@ -72,7 +72,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию PDF-файла со штрихкодами переданных товаров или товаров в указанной заявке на поставку.  Файл не получится сгенерировать, если в нем будет более 1 500 штрихкодов.  Узнать статус генерации и получить ссылку на готовый файл можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию PDF-файла со штрихкодами переданных товаров или товаров в указанной заявке на поставку.  Файл не получится сгенерировать, если в нем будет более 1 500 штрихкодов.  Узнать статус генерации и получить ссылку на готовый файл можно с помощью запроса GET v2/reports/info/{reportId}.  **Пошаговые инструкции**  * Получить файл со штрихкодами товаров в заявке * Заказать отчёт или документ  {% include notitle limit %}
      * Получение файла со штрихкодами
      */
     generateBarcodesReportRaw(requestParameters, initOverrides) {
@@ -101,7 +101,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию PDF-файла со штрихкодами переданных товаров или товаров в указанной заявке на поставку.  Файл не получится сгенерировать, если в нем будет более 1 500 штрихкодов.  Узнать статус генерации и получить ссылку на готовый файл можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию PDF-файла со штрихкодами переданных товаров или товаров в указанной заявке на поставку.  Файл не получится сгенерировать, если в нем будет более 1 500 штрихкодов.  Узнать статус генерации и получить ссылку на готовый файл можно с помощью запроса GET v2/reports/info/{reportId}.  **Пошаговые инструкции**  * Получить файл со штрихкодами товаров в заявке * Заказать отчёт или документ  {% include notitle limit %}
      * Получение файла со штрихкодами
      */
     generateBarcodesReport(generateBarcodesReportRequest, initOverrides) {
@@ -111,7 +111,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию сводного отчета по бусту продаж за заданный период. {% if audience == \"partner\" %}[Что такое буст продаж](https://yandex.ru/support/marketplace/ru/marketing/campaigns){% endif %}  Отчет содержит информацию по всем кампаниям, созданным и через API, и в кабинете.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle [reports]({{ report-columns-boost-consolidated }}) %}  {% if audience != \"advertiser\" %}  {% include notitle tariff-period %}  {% endif %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию сводного отчета по бусту продаж за заданный период. {% if audience == \"partner\" %}[Что такое буст продаж](https://yandex.ru/support/marketplace/ru/marketing/campaigns){% endif %}  Отчет содержит информацию по всем кампаниям, созданным и через API, и в кабинете.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle [reports]({{ report-columns-boost-consolidated }}) %}  {% if audience != \"advertiser\" %}  {% include notitle tariff-period %}  {% endif %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по бусту продаж
      */
     generateBoostConsolidatedReportRaw(requestParameters, initOverrides) {
@@ -146,7 +146,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию сводного отчета по бусту продаж за заданный период. {% if audience == \"partner\" %}[Что такое буст продаж](https://yandex.ru/support/marketplace/ru/marketing/campaigns){% endif %}  Отчет содержит информацию по всем кампаниям, созданным и через API, и в кабинете.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle [reports]({{ report-columns-boost-consolidated }}) %}  {% if audience != \"advertiser\" %}  {% include notitle tariff-period %}  {% endif %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию сводного отчета по бусту продаж за заданный период. {% if audience == \"partner\" %}[Что такое буст продаж](https://yandex.ru/support/marketplace/ru/marketing/campaigns){% endif %}  Отчет содержит информацию по всем кампаниям, созданным и через API, и в кабинете.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle [reports]({{ report-columns-boost-consolidated }}) %}  {% if audience != \"advertiser\" %}  {% include notitle tariff-period %}  {% endif %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по бусту продаж
      */
     generateBoostConsolidatedReport(generateBoostConsolidatedRequest, format, sourceType, initOverrides) {
@@ -156,7 +156,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по схождению с закрывающими документами в зависимости от типа договора.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - Договор на размещение    {% include notitle reports %}  - Договор на продвижение    {% include notitle reports %}  {% endlist %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по схождению с закрывающими документами в зависимости от типа договора.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - Договор на размещение    {% include notitle reports %}  - Договор на продвижение    {% include notitle reports %}  {% endlist %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по схождению с закрывающими документами
      */
     generateClosureDocumentsDetalizationReportRaw(requestParameters, initOverrides) {
@@ -188,7 +188,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по схождению с закрывающими документами в зависимости от типа договора.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - Договор на размещение    {% include notitle reports %}  - Договор на продвижение    {% include notitle reports %}  {% endlist %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по схождению с закрывающими документами в зависимости от типа договора.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - Договор на размещение    {% include notitle reports %}  - Договор на продвижение    {% include notitle reports %}  {% endlist %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по схождению с закрывающими документами
      */
     generateClosureDocumentsDetalizationReport(generateClosureDocumentsDetalizationRequest, format, initOverrides) {
@@ -198,7 +198,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Возвращает ZIP-архив с закрывающими документами в формате PDF за указанный месяц.  {% cut \"Состав документов в зависимости от типа договора\" %}  * **Договор на размещение**    * [универсальный передаточный документ (УПД-1)](*acts-main-utd) (в России формируется за октябрь 2026 года и последующие месяцы, вместо акта об оказанных услугах и счета-фактуры)   * [акт об оказанных услугах](*acts-main-act) (в России формируется за месяцы до октября 2026 года)   * [счет-фактура](*acts-main-invoice) (в России формируется за месяцы до октября 2026 года)   * [сводный отчет по данным статистики](*acts-main-report)   * [отчет об исполнении поручения и о зачете взаимных требований](*acts-main-agent) (отчет агента)  * **Договор на продвижение** (в России не заключается после 30 сентября 2024 года)    * [акт об оказании услуг](*acts-discounts-act)   * [счет-фактура](*acts-discounts-invoice), если этого требует схема налогообложения  * **Договор на маркетинг**    * [универсальный передаточный документ (УПД-1)](*acts-main-utd) (в России формируется за август 2026 года и последующие месяцы, вместо акта об оказанных услугах и счета-фактуры)   * [акт об оказанных услугах](*acts-marketing-act) (в России формируется за месяцы до августа 2026 года)   * [счет-фактура](*acts-main-invoice) (в России формируется за месяцы до августа 2026 года)   * [счет-фактура на аванс](*acts-marketing-invoice)   * [детализация к акту](*acts-marketing-details)  {% endcut %}  Узнать статус генерации и получить ссылку на архив можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает ZIP-архив с закрывающими документами в формате PDF за указанный месяц.  {% cut \"Состав документов в зависимости от типа договора\" %}  * **Договор на размещение**    * [универсальный передаточный документ (УПД-1)](*acts-main-utd) (в России формируется за октябрь 2026 года и последующие месяцы, вместо акта об оказанных услугах и счета-фактуры)   * [акт об оказанных услугах](*acts-main-act) (в России формируется за месяцы до октября 2026 года)   * [счет-фактура](*acts-main-invoice) (в России формируется за месяцы до октября 2026 года)   * [сводный отчет по данным статистики](*acts-main-report)   * [отчет об исполнении поручения и о зачете взаимных требований](*acts-main-agent) (отчет агента)  * **Договор на продвижение** (в России не заключается после 30 сентября 2024 года)    * [акт об оказании услуг](*acts-discounts-act)   * [счет-фактура](*acts-discounts-invoice), если этого требует схема налогообложения  * **Договор на маркетинг**    * [универсальный передаточный документ (УПД-1)](*acts-main-utd) (в России формируется за август 2026 года и последующие месяцы, вместо акта об оказанных услугах и счета-фактуры)   * [акт об оказанных услугах](*acts-marketing-act) (в России формируется за месяцы до августа 2026 года)   * [счет-фактура](*acts-main-invoice) (в России формируется за месяцы до августа 2026 года)   * [счет-фактура на аванс](*acts-marketing-invoice)   * [детализация к акту](*acts-marketing-details)  {% endcut %}  Узнать статус генерации и получить ссылку на архив можно с помощью запроса GET v2/reports/info/{reportId}.  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Закрывающие документы
      */
     generateClosureDocumentsReportRaw(requestParameters, initOverrides) {
@@ -227,7 +227,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Возвращает ZIP-архив с закрывающими документами в формате PDF за указанный месяц.  {% cut \"Состав документов в зависимости от типа договора\" %}  * **Договор на размещение**    * [универсальный передаточный документ (УПД-1)](*acts-main-utd) (в России формируется за октябрь 2026 года и последующие месяцы, вместо акта об оказанных услугах и счета-фактуры)   * [акт об оказанных услугах](*acts-main-act) (в России формируется за месяцы до октября 2026 года)   * [счет-фактура](*acts-main-invoice) (в России формируется за месяцы до октября 2026 года)   * [сводный отчет по данным статистики](*acts-main-report)   * [отчет об исполнении поручения и о зачете взаимных требований](*acts-main-agent) (отчет агента)  * **Договор на продвижение** (в России не заключается после 30 сентября 2024 года)    * [акт об оказании услуг](*acts-discounts-act)   * [счет-фактура](*acts-discounts-invoice), если этого требует схема налогообложения  * **Договор на маркетинг**    * [универсальный передаточный документ (УПД-1)](*acts-main-utd) (в России формируется за август 2026 года и последующие месяцы, вместо акта об оказанных услугах и счета-фактуры)   * [акт об оказанных услугах](*acts-marketing-act) (в России формируется за месяцы до августа 2026 года)   * [счет-фактура](*acts-main-invoice) (в России формируется за месяцы до августа 2026 года)   * [счет-фактура на аванс](*acts-marketing-invoice)   * [детализация к акту](*acts-marketing-details)  {% endcut %}  Узнать статус генерации и получить ссылку на архив можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает ZIP-архив с закрывающими документами в формате PDF за указанный месяц.  {% cut \"Состав документов в зависимости от типа договора\" %}  * **Договор на размещение**    * [универсальный передаточный документ (УПД-1)](*acts-main-utd) (в России формируется за октябрь 2026 года и последующие месяцы, вместо акта об оказанных услугах и счета-фактуры)   * [акт об оказанных услугах](*acts-main-act) (в России формируется за месяцы до октября 2026 года)   * [счет-фактура](*acts-main-invoice) (в России формируется за месяцы до октября 2026 года)   * [сводный отчет по данным статистики](*acts-main-report)   * [отчет об исполнении поручения и о зачете взаимных требований](*acts-main-agent) (отчет агента)  * **Договор на продвижение** (в России не заключается после 30 сентября 2024 года)    * [акт об оказании услуг](*acts-discounts-act)   * [счет-фактура](*acts-discounts-invoice), если этого требует схема налогообложения  * **Договор на маркетинг**    * [универсальный передаточный документ (УПД-1)](*acts-main-utd) (в России формируется за август 2026 года и последующие месяцы, вместо акта об оказанных услугах и счета-фактуры)   * [акт об оказанных услугах](*acts-marketing-act) (в России формируется за месяцы до августа 2026 года)   * [счет-фактура](*acts-main-invoice) (в России формируется за месяцы до августа 2026 года)   * [счет-фактура на аванс](*acts-marketing-invoice)   * [детализация к акту](*acts-marketing-details)  {% endcut %}  Узнать статус генерации и получить ссылку на архив можно с помощью запроса GET v2/reports/info/{reportId}.  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Закрывающие документы
      */
     generateClosureDocumentsReport(generateClosureDocumentsRequest, initOverrides) {
@@ -237,7 +237,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета «Конкурентная позиция» за заданный период. [Что это за отчет](https://yandex.ru/support2/marketplace/ru/analytics/competitors.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% note info \"Значение -1 в отчете\" %}  Если в CSV-файле в столбце :no-translate[**POSITION**] стоит -1, в этот день не было заказов с товарами в указанной категории.  {% endnote %}  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета «Конкурентная позиция» за заданный период. [Что это за отчет](https://yandex.ru/support2/marketplace/ru/analytics/competitors.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% note info \"Значение -1 в отчете\" %}  Если в CSV-файле в столбце :no-translate[**POSITION**] стоит -1, в этот день не было заказов с товарами в указанной категории.  {% endnote %}  {% include notitle reports %}  {% include notitle tariff-period %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет «Конкурентная позиция»
      */
     generateCompetitorsPositionReportRaw(requestParameters, initOverrides) {
@@ -269,7 +269,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета «Конкурентная позиция» за заданный период. [Что это за отчет](https://yandex.ru/support2/marketplace/ru/analytics/competitors.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% note info \"Значение -1 в отчете\" %}  Если в CSV-файле в столбце :no-translate[**POSITION**] стоит -1, в этот день не было заказов с товарами в указанной категории.  {% endnote %}  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета «Конкурентная позиция» за заданный период. [Что это за отчет](https://yandex.ru/support2/marketplace/ru/analytics/competitors.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% note info \"Значение -1 в отчете\" %}  Если в CSV-файле в столбце :no-translate[**POSITION**] стоит -1, в этот день не было заказов с товарами в указанной категории.  {% endnote %}  {% include notitle reports %}  {% include notitle tariff-period %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет «Конкурентная позиция»
      */
     generateCompetitorsPositionReport(generateCompetitorsPositionReportRequest, format, initOverrides) {
@@ -279,7 +279,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по отзывам о товарах. [Что это за отчет](https://yandex.ru/support/marketplace/ru/marketing/plus-reviews#stat)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по отзывам о товарах. [Что это за отчет](https://yandex.ru/support/marketplace/ru/marketing/plus-reviews#stat)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по отзывам о товарах
      */
     generateGoodsFeedbackReportRaw(requestParameters, initOverrides) {
@@ -311,7 +311,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по отзывам о товарах. [Что это за отчет](https://yandex.ru/support/marketplace/ru/marketing/plus-reviews#stat)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по отзывам о товарах. [Что это за отчет](https://yandex.ru/support/marketplace/ru/marketing/plus-reviews#stat)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по отзывам о товарах
      */
     generateGoodsFeedbackReport(generateGoodsFeedbackRequest, format, initOverrides) {
@@ -321,7 +321,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по движению товаров. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/reports-fby-fbs.html#flow)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по движению товаров. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/reports-fby-fbs.html#flow)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по движению товаров
      */
     generateGoodsMovementReportRaw(requestParameters, initOverrides) {
@@ -353,7 +353,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по движению товаров. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/reports-fby-fbs.html#flow)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по движению товаров. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/reports-fby-fbs.html#flow)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по движению товаров
      */
     generateGoodsMovementReport(generateGoodsMovementReportRequest, format, initOverrides) {
@@ -363,7 +363,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета «Цены».  **Какая информация вернется:**  * если передать `businessId` — по единым ценам кабинета; * если [включены магазинные цены](*onlyDefaultPrice-false) и указать `campaignId` — по ценам в соответствующем магазине.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - Цены во всех магазинах кабинета    {% include notitle reports %}  - Магазинные цены    {% include notitle reports %}  {% endlist %}  {% include notitle tariff-period %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета «Цены».  **Какая информация вернется:**  * если передать `businessId` — по единым ценам кабинета; * если [включены магазинные цены](*onlyDefaultPrice-false) и указать `campaignId` — по ценам в соответствующем магазине.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - Цены во всех магазинах кабинета    {% include notitle reports %}  - Магазинные цены    {% include notitle reports %}  {% endlist %}  {% include notitle tariff-period %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет «Цены»
      */
     generateGoodsPricesReportRaw(requestParameters, initOverrides) {
@@ -395,7 +395,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета «Цены».  **Какая информация вернется:**  * если передать `businessId` — по единым ценам кабинета; * если [включены магазинные цены](*onlyDefaultPrice-false) и указать `campaignId` — по ценам в соответствующем магазине.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - Цены во всех магазинах кабинета    {% include notitle reports %}  - Магазинные цены    {% include notitle reports %}  {% endlist %}  {% include notitle tariff-period %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета «Цены».  **Какая информация вернется:**  * если передать `businessId` — по единым ценам кабинета; * если [включены магазинные цены](*onlyDefaultPrice-false) и указать `campaignId` — по ценам в соответствующем магазине.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - Цены во всех магазинах кабинета    {% include notitle reports %}  - Магазинные цены    {% include notitle reports %}  {% endlist %}  {% include notitle tariff-period %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет «Цены»
      */
     generateGoodsPricesReport(generateGoodsPricesReportRequest, format, initOverrides) {
@@ -405,7 +405,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по реализации за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/accounting/transactions#sales-report)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - FBY, FBS, Экспресс    {% include notitle reports %}  - DBS    {% include notitle reports %}  {% endlist %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по реализации за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/accounting/transactions#sales-report)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - FBY, FBS, Экспресс    {% include notitle reports %}  - DBS    {% include notitle reports %}  {% endlist %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по реализации
      */
     generateGoodsRealizationReportRaw(requestParameters, initOverrides) {
@@ -437,7 +437,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по реализации за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/accounting/transactions#sales-report)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - FBY, FBS, Экспресс    {% include notitle reports %}  - DBS    {% include notitle reports %}  {% endlist %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по реализации за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/accounting/transactions#sales-report)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - FBY, FBS, Экспресс    {% include notitle reports %}  - DBS    {% include notitle reports %}  {% endlist %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по реализации
      */
     generateGoodsRealizationReport(generateGoodsRealizationReportRequest, format, initOverrides) {
@@ -447,7 +447,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по оборачиваемости за заданную дату.  [Что это за отчет](https://yandex.ru/support/marketplace/ru/storage/logistics#turnover)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по оборачиваемости за заданную дату.  [Что это за отчет](https://yandex.ru/support/marketplace/ru/storage/logistics#turnover)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по оборачиваемости
      */
     generateGoodsTurnoverReportRaw(requestParameters, initOverrides) {
@@ -479,7 +479,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по оборачиваемости за заданную дату.  [Что это за отчет](https://yandex.ru/support/marketplace/ru/storage/logistics#turnover)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по оборачиваемости за заданную дату.  [Что это за отчет](https://yandex.ru/support/marketplace/ru/storage/logistics#turnover)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по оборачиваемости
      */
     generateGoodsTurnoverReport(generateGoodsTurnoverRequest, format, initOverrides) {
@@ -489,7 +489,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по заказам с ювелирными изделиями.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по заказам с ювелирными изделиями.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по заказам с ювелирными изделиями
      */
     generateJewelryFiscalReportRaw(requestParameters, initOverrides) {
@@ -521,7 +521,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по заказам с ювелирными изделиями.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по заказам с ювелирными изделиями.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по заказам с ювелирными изделиями
      */
     generateJewelryFiscalReport(generateJewelryFiscalReportRequest, format, initOverrides) {
@@ -531,7 +531,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по ключевым показателям. [Что это за отчет](https://yandex.ru/support/marketplace/ru/analytics/key-metrics)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по ключевым показателям. [Что это за отчет](https://yandex.ru/support/marketplace/ru/analytics/key-metrics)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по ключевым показателям
      */
     generateKeyIndicatorsReportRaw(requestParameters, initOverrides) {
@@ -563,7 +563,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по ключевым показателям. [Что это за отчет](https://yandex.ru/support/marketplace/ru/analytics/key-metrics)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по ключевым показателям. [Что это за отчет](https://yandex.ru/support/marketplace/ru/analytics/key-metrics)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по ключевым показателям
      */
     generateKeyIndicatorsReport(generateKeyIndicatorsRequest, format, initOverrides) {
@@ -573,7 +573,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по счету маркетинга.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по счету маркетинга.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по счету маркетинга
      */
     generateMarketingDetalizationReportRaw(requestParameters, initOverrides) {
@@ -611,7 +611,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по счету маркетинга.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по счету маркетинга.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по счету маркетинга
      */
     generateMarketingDetalizationReport(businessId, generateMarketingDetalizationRequest, format, sourceType, initOverrides) {
@@ -621,7 +621,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию PDF-файла с ярлыками для переданных заказов. Подробно о том, зачем они нужны и как выглядят, рассказано [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/orders/fbs/packaging/marking.html).  Чтобы на ярлыке отображался внешний идентификатор заказа, передайте его в методе POST v2/campaigns/{campaignId}/orders/{orderId}/external-id.  Узнать статус генерации и получить ссылку на готовый файл можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию PDF-файла с ярлыками для переданных заказов. Подробно о том, зачем они нужны и как выглядят, рассказано [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/orders/fbs/packaging/marking.html).  Чтобы на ярлыке отображался внешний идентификатор заказа, передайте его в методе POST v2/campaigns/{campaignId}/orders/{orderId}/external-id.  Узнать статус генерации и получить ссылку на готовый файл можно с помощью запроса GET v2/reports/info/{reportId}.  **Пошаговые инструкции**  * Напечатать ярлыки для нескольких FBS-заказов * Заказать отчёт или документ  {% include notitle limit %}
      * Готовые ярлыки‑наклейки на все коробки в нескольких заказах
      */
     generateMassOrderLabelsReportRaw(requestParameters, initOverrides) {
@@ -653,7 +653,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию PDF-файла с ярлыками для переданных заказов. Подробно о том, зачем они нужны и как выглядят, рассказано [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/orders/fbs/packaging/marking.html).  Чтобы на ярлыке отображался внешний идентификатор заказа, передайте его в методе POST v2/campaigns/{campaignId}/orders/{orderId}/external-id.  Узнать статус генерации и получить ссылку на готовый файл можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию PDF-файла с ярлыками для переданных заказов. Подробно о том, зачем они нужны и как выглядят, рассказано [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/orders/fbs/packaging/marking.html).  Чтобы на ярлыке отображался внешний идентификатор заказа, передайте его в методе POST v2/campaigns/{campaignId}/orders/{orderId}/external-id.  Узнать статус генерации и получить ссылку на готовый файл можно с помощью запроса GET v2/reports/info/{reportId}.  **Пошаговые инструкции**  * Напечатать ярлыки для нескольких FBS-заказов * Заказать отчёт или документ  {% include notitle limit %}
      * Готовые ярлыки‑наклейки на все коробки в нескольких заказах
      */
     generateMassOrderLabelsReport(generateMassOrderLabelsRequest, format, initOverrides) {
@@ -663,7 +663,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по географии продаж. [Что это за отчет](https://yandex.ru/support/marketplace/ru/analytics/sales-geography)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по географии продаж. [Что это за отчет](https://yandex.ru/support/marketplace/ru/analytics/sales-geography)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по географии продаж
      */
     generateSalesGeographyReportRaw(requestParameters, initOverrides) {
@@ -695,7 +695,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по географии продаж. [Что это за отчет](https://yandex.ru/support/marketplace/ru/analytics/sales-geography)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по географии продаж. [Что это за отчет](https://yandex.ru/support/marketplace/ru/analytics/sales-geography)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по географии продаж
      */
     generateSalesGeographyReport(generateSalesGeographyRequest, format, initOverrides) {
@@ -705,7 +705,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию сводного отчета по полкам — рекламным блокам с баннером или видео и набором товаров. {% if audience == \"partner\" %}Подробнее о них читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/marketing/shelf).{% endif %}  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% if audience != \"advertiser\" %}  {% include notitle tariff-period %}  {% endif %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию сводного отчета по полкам — рекламным блокам с баннером или видео и набором товаров. {% if audience == \"partner\" %}Подробнее о них читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/marketing/shelf).{% endif %}  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% if audience != \"advertiser\" %}  {% include notitle tariff-period %}  {% endif %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по полкам
      */
     generateShelfsStatisticsReportRaw(requestParameters, initOverrides) {
@@ -740,7 +740,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию сводного отчета по полкам — рекламным блокам с баннером или видео и набором товаров. {% if audience == \"partner\" %}Подробнее о них читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/marketing/shelf).{% endif %}  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% if audience != \"advertiser\" %}  {% include notitle tariff-period %}  {% endif %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию сводного отчета по полкам — рекламным блокам с баннером или видео и набором товаров. {% if audience == \"partner\" %}Подробнее о них читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/marketing/shelf).{% endif %}  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% if audience != \"advertiser\" %}  {% include notitle tariff-period %}  {% endif %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по полкам
      */
     generateShelfsStatisticsReport(generateShelfsStatisticsRequest, format, sourceType, initOverrides) {
@@ -750,7 +750,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию **листа сборки** для отгрузки.  Чтобы на в листе сборки отображался внешний идентификатор заказа, передайте его в методе POST v2/campaigns/{campaignId}/orders/{orderId}/external-id.  Узнать статус генерации и получить ссылку на готовый документ можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию **листа сборки** для отгрузки.  Чтобы на в листе сборки отображался внешний идентификатор заказа, передайте его в методе POST v2/campaigns/{campaignId}/orders/{orderId}/external-id.  Узнать статус генерации и получить ссылку на готовый документ можно с помощью запроса GET v2/reports/info/{reportId}.  **Пошаговые инструкции**  * Сформировать лист сборки FBS * Заказать отчёт или документ  {% include notitle limit %}
      * Получение листа сборки
      */
     generateShipmentListDocumentReportRaw(requestParameters, initOverrides) {
@@ -779,7 +779,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию **листа сборки** для отгрузки.  Чтобы на в листе сборки отображался внешний идентификатор заказа, передайте его в методе POST v2/campaigns/{campaignId}/orders/{orderId}/external-id.  Узнать статус генерации и получить ссылку на готовый документ можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию **листа сборки** для отгрузки.  Чтобы на в листе сборки отображался внешний идентификатор заказа, передайте его в методе POST v2/campaigns/{campaignId}/orders/{orderId}/external-id.  Узнать статус генерации и получить ссылку на готовый документ можно с помощью запроса GET v2/reports/info/{reportId}.  **Пошаговые инструкции**  * Сформировать лист сборки FBS * Заказать отчёт или документ  {% include notitle limit %}
      * Получение листа сборки
      */
     generateShipmentListDocumentReport(generateShipmentListDocumentReportRequest, initOverrides) {
@@ -789,7 +789,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию сводного отчета по бусту показов за заданный период. {% if audience == \"partner\" %}[Что такое буст показов](https://yandex.ru/support/marketplace/ru/marketing/boost-shows){% endif %}  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle [reports]({{ report-columns-shows-boost }}) %}  {% if audience != \"advertiser\" %}  {% include notitle tariff-period %}  {% endif %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию сводного отчета по бусту показов за заданный период. {% if audience == \"partner\" %}[Что такое буст показов](https://yandex.ru/support/marketplace/ru/marketing/boost-shows){% endif %}  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle [reports]({{ report-columns-shows-boost }}) %}  {% if audience != \"advertiser\" %}  {% include notitle tariff-period %}  {% endif %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по бусту показов
      */
     generateShowsBoostReportRaw(requestParameters, initOverrides) {
@@ -824,7 +824,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию сводного отчета по бусту показов за заданный период. {% if audience == \"partner\" %}[Что такое буст показов](https://yandex.ru/support/marketplace/ru/marketing/boost-shows){% endif %}  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle [reports]({{ report-columns-shows-boost }}) %}  {% if audience != \"advertiser\" %}  {% include notitle tariff-period %}  {% endif %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию сводного отчета по бусту показов за заданный период. {% if audience == \"partner\" %}[Что такое буст показов](https://yandex.ru/support/marketplace/ru/marketing/boost-shows){% endif %}  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle [reports]({{ report-columns-shows-boost }}) %}  {% if audience != \"advertiser\" %}  {% include notitle tariff-period %}  {% endif %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по бусту показов
      */
     generateShowsBoostReport(generateShowsBoostRequest, format, sourceType, initOverrides) {
@@ -834,7 +834,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета «Аналитика продаж» за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/shows-sales.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета «Аналитика продаж» за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/shows-sales.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет «Аналитика продаж»
      */
     generateShowsSalesReportRaw(requestParameters, initOverrides) {
@@ -866,7 +866,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета «Аналитика продаж» за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/shows-sales.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета «Аналитика продаж» за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/shows-sales.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет «Аналитика продаж»
      */
     generateShowsSalesReport(generateShowsSalesReportRequest, format, initOverrides) {
@@ -876,7 +876,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по остаткам на складах. [Что это за отчет](https://yandex.ru/support/marketplace/ru/storage/logistics#remains-history)  {% note warning \"Когда использовать этот метод\" %}  Метод актуален:  * для моделей FBY и LaaS; * для моделей FBS, DBS и Экспресс, если в кабинете есть группы складов.  Если в кабинете нет групп складов и вы работаете с моделями FBS, DBS или Экспресс, используйте метод POST v3/businesses/{businessId}/reports/stocks/generate. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  **Какая информация вернется:**  * Для моделей FBY и LaaS, если указать `campaignId`, — об остатках на складах Маркета. * Для остальных моделей, если указать `campaignId`, — об остатках на соответствующем складе магазина. * Для остальных моделей, если указать `businessId`, — об остатках на всех складах магазинов в кабинете, кроме FBY и LaaS. Используйте фильтр `campaignIds`, чтобы указать определенные магазины.  ⚠️ Не передавайте одновременно `campaignId` и `businessId`.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - Склад Маркета    {% include notitle reports %}  - Склад магазина    {% include notitle reports %}  - Все склады магазинов в кабинете, кроме FBY и LaaS    {% include notitle reports %}  {% endlist %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по остаткам на складах. [Что это за отчет](https://yandex.ru/support/marketplace/ru/storage/logistics#remains-history)  {% note warning \"Когда использовать этот метод\" %}  Метод актуален:  * для моделей FBY и LaaS; * для моделей FBS, DBS и Экспресс, если в кабинете есть группы складов.  Если в кабинете нет групп складов и вы работаете с моделями FBS, DBS или Экспресс, используйте метод POST v3/businesses/{businessId}/reports/stocks/generate. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  **Какая информация вернется:**  * Для моделей FBY и LaaS, если указать `campaignId`, — об остатках на складах Маркета. * Для остальных моделей, если указать `campaignId`, — об остатках на соответствующем складе магазина. * Для остальных моделей, если указать `businessId`, — об остатках на всех складах магазинов в кабинете, кроме FBY и LaaS. Используйте фильтр `campaignIds`, чтобы указать определенные магазины.  ⚠️ Не передавайте одновременно `campaignId` и `businessId`.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - Склад Маркета    {% include notitle reports %}  - Склад магазина    {% include notitle reports %}  - Все склады магазинов в кабинете, кроме FBY и LaaS    {% include notitle reports %}  {% endlist %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по остаткам на складах
      */
     generateStocksOnWarehousesReportRaw(requestParameters, initOverrides) {
@@ -908,7 +908,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по остаткам на складах. [Что это за отчет](https://yandex.ru/support/marketplace/ru/storage/logistics#remains-history)  {% note warning \"Когда использовать этот метод\" %}  Метод актуален:  * для моделей FBY и LaaS; * для моделей FBS, DBS и Экспресс, если в кабинете есть группы складов.  Если в кабинете нет групп складов и вы работаете с моделями FBS, DBS или Экспресс, используйте метод POST v3/businesses/{businessId}/reports/stocks/generate. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  **Какая информация вернется:**  * Для моделей FBY и LaaS, если указать `campaignId`, — об остатках на складах Маркета. * Для остальных моделей, если указать `campaignId`, — об остатках на соответствующем складе магазина. * Для остальных моделей, если указать `businessId`, — об остатках на всех складах магазинов в кабинете, кроме FBY и LaaS. Используйте фильтр `campaignIds`, чтобы указать определенные магазины.  ⚠️ Не передавайте одновременно `campaignId` и `businessId`.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - Склад Маркета    {% include notitle reports %}  - Склад магазина    {% include notitle reports %}  - Все склады магазинов в кабинете, кроме FBY и LaaS    {% include notitle reports %}  {% endlist %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по остаткам на складах. [Что это за отчет](https://yandex.ru/support/marketplace/ru/storage/logistics#remains-history)  {% note warning \"Когда использовать этот метод\" %}  Метод актуален:  * для моделей FBY и LaaS; * для моделей FBS, DBS и Экспресс, если в кабинете есть группы складов.  Если в кабинете нет групп складов и вы работаете с моделями FBS, DBS или Экспресс, используйте метод POST v3/businesses/{businessId}/reports/stocks/generate. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  **Какая информация вернется:**  * Для моделей FBY и LaaS, если указать `campaignId`, — об остатках на складах Маркета. * Для остальных моделей, если указать `campaignId`, — об остатках на соответствующем складе магазина. * Для остальных моделей, если указать `businessId`, — об остатках на всех складах магазинов в кабинете, кроме FBY и LaaS. Используйте фильтр `campaignIds`, чтобы указать определенные магазины.  ⚠️ Не передавайте одновременно `campaignId` и `businessId`.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% list tabs %}  - Склад Маркета    {% include notitle reports %}  - Склад магазина    {% include notitle reports %}  - Все склады магазинов в кабинете, кроме FBY и LaaS    {% include notitle reports %}  {% endlist %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по остаткам на складах
      */
     generateStocksOnWarehousesReport(generateStocksOnWarehousesReportRequest, format, initOverrides) {
@@ -960,7 +960,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по стоимости услуг за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/accounting/transactions#reports)  Тип отчета зависит от того, какие поля заполнены в запросе:  |**Тип отчета**               |**Какие поля нужны**             | |-----------------------------|---------------------------------| |По дате начисления услуги    |`dateFrom` и `dateTo`            | |По дате формирования акта    |`year` и `month`                 |  Заказать отчеты обоих типов одним запросом нельзя.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по стоимости услуг за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/accounting/transactions#reports)  Тип отчета зависит от того, какие поля заполнены в запросе:  |**Тип отчета**               |**Какие поля нужны**             | |-----------------------------|---------------------------------| |По дате начисления услуги    |`dateFrom` и `dateTo`            | |По дате формирования акта    |`year` и `month`                 |  Заказать отчеты обоих типов одним запросом нельзя.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по стоимости услуг
      */
     generateUnitedMarketplaceServicesReportRaw(requestParameters, initOverrides) {
@@ -995,7 +995,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по стоимости услуг за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/accounting/transactions#reports)  Тип отчета зависит от того, какие поля заполнены в запросе:  |**Тип отчета**               |**Какие поля нужны**             | |-----------------------------|---------------------------------| |По дате начисления услуги    |`dateFrom` и `dateTo`            | |По дате формирования акта    |`year` и `month`                 |  Заказать отчеты обоих типов одним запросом нельзя.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по стоимости услуг за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/accounting/transactions#reports)  Тип отчета зависит от того, какие поля заполнены в запросе:  |**Тип отчета**               |**Какие поля нужны**             | |-----------------------------|---------------------------------| |По дате начисления услуги    |`dateFrom` и `dateTo`            | |По дате формирования акта    |`year` и `month`                 |  Заказать отчеты обоих типов одним запросом нельзя.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по стоимости услуг
      */
     generateUnitedMarketplaceServicesReport(generateUnitedMarketplaceServicesReportRequest, format, language, initOverrides) {
@@ -1005,7 +1005,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по платежам за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/accounting/transactions#all-pay)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  Тип отчета зависит от того, какие поля заполнены в запросе:  #| || **Тип отчета** | **Какие поля нужны** | **Комментарий** || || О платежах за период | `dateFrom` и `dateTo` |   В отчет попадают все платежи, которые были выплачены и начислены в выбранный период.    Пример: если перевод выполнен 31 августа и зачислен 1 сентября, он попадет в отчет за оба месяца. || || О платежном поручении | `bankOrderId` и `bankOrderDateTime` |—|| || [О баллах Маркета](*баллы_маркета) | `monthOfYear` |—|| |#  Заказать отчеты нескольких типов одним запросом нельзя.  {% include notitle reports %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по платежам за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/accounting/transactions#all-pay)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  Тип отчета зависит от того, какие поля заполнены в запросе:  #| || **Тип отчета** | **Какие поля нужны** | **Комментарий** || || О платежах за период | `dateFrom` и `dateTo` |   В отчет попадают все платежи, которые были выплачены и начислены в выбранный период.    Пример: если перевод выполнен 31 августа и зачислен 1 сентября, он попадет в отчет за оба месяца. || || О платежном поручении | `bankOrderId` и `bankOrderDateTime` |—|| || [О баллах Маркета](*баллы_маркета) | `monthOfYear` |—|| |#  Заказать отчеты нескольких типов одним запросом нельзя.  {% include notitle reports %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по платежам
      */
     generateUnitedNettingReportRaw(requestParameters, initOverrides) {
@@ -1040,7 +1040,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по платежам за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/accounting/transactions#all-pay)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  Тип отчета зависит от того, какие поля заполнены в запросе:  #| || **Тип отчета** | **Какие поля нужны** | **Комментарий** || || О платежах за период | `dateFrom` и `dateTo` |   В отчет попадают все платежи, которые были выплачены и начислены в выбранный период.    Пример: если перевод выполнен 31 августа и зачислен 1 сентября, он попадет в отчет за оба месяца. || || О платежном поручении | `bankOrderId` и `bankOrderDateTime` |—|| || [О баллах Маркета](*баллы_маркета) | `monthOfYear` |—|| |#  Заказать отчеты нескольких типов одним запросом нельзя.  {% include notitle reports %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по платежам за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/accounting/transactions#all-pay)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  Тип отчета зависит от того, какие поля заполнены в запросе:  #| || **Тип отчета** | **Какие поля нужны** | **Комментарий** || || О платежах за период | `dateFrom` и `dateTo` |   В отчет попадают все платежи, которые были выплачены и начислены в выбранный период.    Пример: если перевод выполнен 31 августа и зачислен 1 сентября, он попадет в отчет за оба месяца. || || О платежном поручении | `bankOrderId` и `bankOrderDateTime` |—|| || [О баллах Маркета](*баллы_маркета) | `monthOfYear` |—|| |#  Заказать отчеты нескольких типов одним запросом нельзя.  {% include notitle reports %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по платежам
      */
     generateUnitedNettingReport(generateUnitedNettingReportRequest, format, language, initOverrides) {
@@ -1050,7 +1050,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по заказам за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/accounting/transactions#get-report)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по заказам за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/accounting/transactions#get-report)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по заказам
      */
     generateUnitedOrdersReportRaw(requestParameters, initOverrides) {
@@ -1085,7 +1085,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию отчета по заказам за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/accounting/transactions#get-report)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию отчета по заказам за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/accounting/transactions#get-report)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по заказам
      */
     generateUnitedOrdersReport(generateUnitedOrdersRequest, format, language, initOverrides) {
@@ -1095,7 +1095,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию сводного отчета по невыкупам и возвратам за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/orders/returns/logistic#rejected-orders)  Отчет содержит информацию о невыкупах и возвратах за указанный период, а также о тех, которые готовы к выдаче.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию сводного отчета по невыкупам и возвратам за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/orders/returns/logistic#rejected-orders)  Отчет содержит информацию о невыкупах и возвратах за указанный период, а также о тех, которые готовы к выдаче.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по невыкупам и возвратам
      */
     generateUnitedReturnsReportRaw(requestParameters, initOverrides) {
@@ -1127,7 +1127,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Запускает генерацию сводного отчета по невыкупам и возвратам за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/orders/returns/logistic#rejected-orders)  Отчет содержит информацию о невыкупах и возвратах за указанный период, а также о тех, которые готовы к выдаче.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  {% include notitle limit %}
+     * {% include notitle access %}  Запускает генерацию сводного отчета по невыкупам и возвратам за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/ru/orders/returns/logistic#rejected-orders)  Отчет содержит информацию о невыкупах и возвратах за указанный период, а также о тех, которые готовы к выдаче.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса GET v2/reports/info/{reportId}.  {% include notitle reports %}  {% include notitle tariff-period %}  **Пошаговые инструкции**  * Заказать отчёт или документ  {% include notitle limit %}
      * Отчет по невыкупам и возвратам
      */
     generateUnitedReturnsReport(generateUnitedReturnsRequest, format, initOverrides) {
@@ -1137,7 +1137,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Возвращает статус генерации заданного отчета или документа и, если он готов, ссылку для скачивания.  Чтобы воспользоваться этим запросом, вначале нужно запустить генерацию отчета или документа. Инструкция  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает статус генерации заданного отчета или документа и, если он готов, ссылку для скачивания.  Чтобы воспользоваться этим запросом, вначале нужно запустить генерацию отчета или документа.  **Пошаговые инструкции**  * Проверить готовность отчёта или документа  {% include notitle limit %}
      * Получение заданного отчета или документа
      */
     getReportInfoRaw(requestParameters, initOverrides) {
@@ -1167,7 +1167,7 @@ export class ReportsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Возвращает статус генерации заданного отчета или документа и, если он готов, ссылку для скачивания.  Чтобы воспользоваться этим запросом, вначале нужно запустить генерацию отчета или документа. Инструкция  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает статус генерации заданного отчета или документа и, если он готов, ссылку для скачивания.  Чтобы воспользоваться этим запросом, вначале нужно запустить генерацию отчета или документа.  **Пошаговые инструкции**  * Проверить готовность отчёта или документа  {% include notitle limit %}
      * Получение заданного отчета или документа
      */
     getReportInfo(reportId, sourceType, initOverrides) {

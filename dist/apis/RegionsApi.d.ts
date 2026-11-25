@@ -31,12 +31,12 @@ export interface RegionsApiSearchRegionsByNameRequest {
  */
 export declare class RegionsApi extends runtime.BaseAPI {
     /**
-     * {% include notitle access %}  Возвращает список стран с их кодами в формате :no-translate[ISO 3166-1 alpha-2].  Страна производства `countryCode` понадобится при продаже товаров из-за рубежа для бизнеса. Инструкция  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает список стран с их кодами в формате :no-translate[ISO 3166-1 alpha-2].  Страна производства `countryCode` понадобится при продаже товаров из-за рубежа для бизнеса.  **Пошаговые инструкции**  * Обработка заказов от юридических лиц  {% include notitle limit %}
      * Список допустимых кодов стран
      */
     getRegionsCodesRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetRegionsCodesResponse>>;
     /**
-     * {% include notitle access %}  Возвращает список стран с их кодами в формате :no-translate[ISO 3166-1 alpha-2].  Страна производства `countryCode` понадобится при продаже товаров из-за рубежа для бизнеса. Инструкция  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает список стран с их кодами в формате :no-translate[ISO 3166-1 alpha-2].  Страна производства `countryCode` понадобится при продаже товаров из-за рубежа для бизнеса.  **Пошаговые инструкции**  * Обработка заказов от юридических лиц  {% include notitle limit %}
      * Список допустимых кодов стран
      */
     getRegionsCodes(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetRegionsCodesResponse>;

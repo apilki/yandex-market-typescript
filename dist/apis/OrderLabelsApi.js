@@ -79,7 +79,7 @@ class OrderLabelsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Возвращает PDF-файл с ярлыками, которые нужно наклеить на коробки перед отгрузкой. Подробно о том, зачем они нужны и как выглядят, рассказано [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/orders/fbs/packaging/marking.html).  На вход нужно передать идентификатор заказа и один необязательный параметр, который управляет версткой PDF-файла.  Чтобы на ярлыке отображался внешний идентификатор заказа, передайте его в методе POST v2/campaigns/{campaignId}/orders/{orderId}/external-id.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает PDF-файл с ярлыками, которые нужно наклеить на коробки перед отгрузкой. Подробно о том, зачем они нужны и как выглядят, рассказано [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/orders/fbs/packaging/marking.html).  На вход нужно передать идентификатор заказа и один необязательный параметр, который управляет версткой PDF-файла.  Чтобы на ярлыке отображался внешний идентификатор заказа, передайте его в методе POST v2/campaigns/{campaignId}/orders/{orderId}/external-id.  **Пошаговые инструкции**  * Напечатать ярлыки для FBS-заказа * Напечатать ярлыки для Экспресс-заказа  {% include notitle limit %}
      * Готовые ярлыки‑наклейки на все коробки в одном заказе
      */
     generateOrderLabelsRaw(requestParameters, initOverrides) {
@@ -112,7 +112,7 @@ class OrderLabelsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Возвращает PDF-файл с ярлыками, которые нужно наклеить на коробки перед отгрузкой. Подробно о том, зачем они нужны и как выглядят, рассказано [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/orders/fbs/packaging/marking.html).  На вход нужно передать идентификатор заказа и один необязательный параметр, который управляет версткой PDF-файла.  Чтобы на ярлыке отображался внешний идентификатор заказа, передайте его в методе POST v2/campaigns/{campaignId}/orders/{orderId}/external-id.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает PDF-файл с ярлыками, которые нужно наклеить на коробки перед отгрузкой. Подробно о том, зачем они нужны и как выглядят, рассказано [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/orders/fbs/packaging/marking.html).  На вход нужно передать идентификатор заказа и один необязательный параметр, который управляет версткой PDF-файла.  Чтобы на ярлыке отображался внешний идентификатор заказа, передайте его в методе POST v2/campaigns/{campaignId}/orders/{orderId}/external-id.  **Пошаговые инструкции**  * Напечатать ярлыки для FBS-заказа * Напечатать ярлыки для Экспресс-заказа  {% include notitle limit %}
      * Готовые ярлыки‑наклейки на все коробки в одном заказе
      */
     generateOrderLabels(campaignId, orderId, format, initOverrides) {

@@ -70,72 +70,72 @@ export interface ReturnsApiSubmitReturnDecisionOperationRequest {
  */
 export declare class ReturnsApi extends runtime.BaseAPI {
     /**
-     * {% include notitle access %}  Отменяет возврат.  Это можно сделать только до принятия в пункте выдачи (`\"shipmentStatus\": \"CREATED\"`).  {% note info \"Возврат отменяется не мгновенно\" %}  Отмена возврата применяется в течение нескольких минут и только в случае успешного завершения операции. Как проверить статус операции  {% endnote %}  {% note tip \"Используйте этот метод в подобных ситуациях\" %}  Вы создали возврат, в котором указали 3 товара. Но покупатель передумал и решил вернуть только 2. Отмените возврат и создайте новый.  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Отменяет возврат.  Это можно сделать только до принятия в пункте выдачи (`\"shipmentStatus\": \"CREATED\"`).  {% note info \"Возврат отменяется не мгновенно\" %}  Отмена возврата применяется в течение нескольких минут и только в случае успешного завершения операции. Как проверить статус операции  {% endnote %}  {% note tip \"Используйте этот метод в подобных ситуациях\" %}  Вы создали возврат, в котором указали 3 товара. Но покупатель передумал и решил вернуть только 2. Отмените возврат и создайте новый.  {% endnote %}  **Пошаговые инструкции**  * Отменить возврат LaaS  {% include notitle limit %}
      * Отмена возврата
      */
     cancelReturnRaw(requestParameters: ReturnsApiCancelReturnOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CancelReturnResponse>>;
     /**
-     * {% include notitle access %}  Отменяет возврат.  Это можно сделать только до принятия в пункте выдачи (`\"shipmentStatus\": \"CREATED\"`).  {% note info \"Возврат отменяется не мгновенно\" %}  Отмена возврата применяется в течение нескольких минут и только в случае успешного завершения операции. Как проверить статус операции  {% endnote %}  {% note tip \"Используйте этот метод в подобных ситуациях\" %}  Вы создали возврат, в котором указали 3 товара. Но покупатель передумал и решил вернуть только 2. Отмените возврат и создайте новый.  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Отменяет возврат.  Это можно сделать только до принятия в пункте выдачи (`\"shipmentStatus\": \"CREATED\"`).  {% note info \"Возврат отменяется не мгновенно\" %}  Отмена возврата применяется в течение нескольких минут и только в случае успешного завершения операции. Как проверить статус операции  {% endnote %}  {% note tip \"Используйте этот метод в подобных ситуациях\" %}  Вы создали возврат, в котором указали 3 товара. Но покупатель передумал и решил вернуть только 2. Отмените возврат и создайте новый.  {% endnote %}  **Пошаговые инструкции**  * Отменить возврат LaaS  {% include notitle limit %}
      * Отмена возврата
      */
     cancelReturn(campaignId: number, cancelReturnRequest: CancelReturnRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CancelReturnResponse>;
     /**
-     * {% include notitle access %}  Создает новый возврат.  Это можно сделать только для заказа в статусе `DELIVERED`.  {% note warning \"Перед вызовом метода\" %}  Проверьте, подходят ли пункты выдачи для возврата указанных товаров, — POST v1/campaigns/{campaignId}/return-delivery-options.  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Создает новый возврат.  Это можно сделать только для заказа в статусе `DELIVERED`.  {% note warning \"Перед вызовом метода\" %}  Проверьте, подходят ли пункты выдачи для возврата указанных товаров, — POST v1/campaigns/{campaignId}/return-delivery-options.  {% endnote %}  **Пошаговые инструкции**  * Создать возврат LaaS  {% include notitle limit %}
      * Создание возврата
      */
     createReturnRaw(requestParameters: ReturnsApiCreateReturnOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateReturnResponse>>;
     /**
-     * {% include notitle access %}  Создает новый возврат.  Это можно сделать только для заказа в статусе `DELIVERED`.  {% note warning \"Перед вызовом метода\" %}  Проверьте, подходят ли пункты выдачи для возврата указанных товаров, — POST v1/campaigns/{campaignId}/return-delivery-options.  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Создает новый возврат.  Это можно сделать только для заказа в статусе `DELIVERED`.  {% note warning \"Перед вызовом метода\" %}  Проверьте, подходят ли пункты выдачи для возврата указанных товаров, — POST v1/campaigns/{campaignId}/return-delivery-options.  {% endnote %}  **Пошаговые инструкции**  * Создать возврат LaaS  {% include notitle limit %}
      * Создание возврата
      */
     createReturn(campaignId: number, createReturnRequest: CreateReturnRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateReturnResponse>;
     /**
-     * {% include notitle access %}  Получает информацию по одному невыкупу или возврату.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Получает информацию по одному невыкупу или возврату.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  **Пошаговые инструкции**  * Невыкупы и возвраты  {% include notitle limit %}
      * Информация о невыкупе или возврате
      */
     getReturnRaw(requestParameters: ReturnsApiGetReturnRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetReturnResponse>>;
     /**
-     * {% include notitle access %}  Получает информацию по одному невыкупу или возврату.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Получает информацию по одному невыкупу или возврату.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  **Пошаговые инструкции**  * Невыкупы и возвраты  {% include notitle limit %}
      * Информация о невыкупе или возврате
      */
     getReturn(campaignId: number, orderId: number, returnId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetReturnResponse>;
     /**
-     * {% include notitle access %}  Загружает заявление покупателя на возврат товара.  {% include notitle limit %}
+     * {% include notitle access %}  Загружает заявление покупателя на возврат товара.  **Пошаговые инструкции**  * Как работать с невыкупами и возвратами  {% include notitle limit %}
      * Получение заявления на возврат
      */
     getReturnApplicationRaw(requestParameters: ReturnsApiGetReturnApplicationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>>;
     /**
-     * {% include notitle access %}  Загружает заявление покупателя на возврат товара.  {% include notitle limit %}
+     * {% include notitle access %}  Загружает заявление покупателя на возврат товара.  **Пошаговые инструкции**  * Как работать с невыкупами и возвратами  {% include notitle limit %}
      * Получение заявления на возврат
      */
     getReturnApplication(campaignId: number, orderId: number, returnId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Blob>;
     /**
-     * {% include notitle access %}  Возвращает список доступных решений по возврату.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает список доступных решений по возврату.  **Пошаговые инструкции**  * Как работать с невыкупами и возвратами  {% include notitle limit %}
      * Получение возможных решений по возврату
      */
     getReturnAvailableDecisionsRaw(requestParameters: ReturnsApiGetReturnAvailableDecisionsOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetReturnAvailableDecisionsResponse>>;
     /**
-     * {% include notitle access %}  Возвращает список доступных решений по возврату.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает список доступных решений по возврату.  **Пошаговые инструкции**  * Как работать с невыкупами и возвратами  {% include notitle limit %}
      * Получение возможных решений по возврату
      */
     getReturnAvailableDecisions(businessId: number, getReturnAvailableDecisionsRequest: GetReturnAvailableDecisionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetReturnAvailableDecisionsResponse>;
     /**
-     * {% include notitle access %}  Получает фотографии товаров, которые покупатель приложил к заявлению на возврат.  Хеш изображения (`imageHash`) можно получить из ответов методов GET v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId} и GET v2/campaigns/{campaignId}/returns — в поле `images` решения по товару.  Максимальный размер изображения — 50 МБ.  Тип изображения можно определить по заголовку `Content-Type` в ответе.  {% include notitle limit %}
+     * {% include notitle access %}  Получает фотографии товаров, которые покупатель приложил к заявлению на возврат.  Хеш изображения (`imageHash`) можно получить из ответов методов GET v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId} и GET v2/campaigns/{campaignId}/returns — в поле `images` решения по товару.  Максимальный размер изображения — 50 МБ.  Тип изображения можно определить по заголовку `Content-Type` в ответе.  **Пошаговые инструкции**  * Как работать с невыкупами и возвратами  {% include notitle limit %}
      * Получение фотографий товаров в возврате
      */
     getReturnPhotoRaw(requestParameters: ReturnsApiGetReturnPhotoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>>;
     /**
-     * {% include notitle access %}  Получает фотографии товаров, которые покупатель приложил к заявлению на возврат.  Хеш изображения (`imageHash`) можно получить из ответов методов GET v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId} и GET v2/campaigns/{campaignId}/returns — в поле `images` решения по товару.  Максимальный размер изображения — 50 МБ.  Тип изображения можно определить по заголовку `Content-Type` в ответе.  {% include notitle limit %}
+     * {% include notitle access %}  Получает фотографии товаров, которые покупатель приложил к заявлению на возврат.  Хеш изображения (`imageHash`) можно получить из ответов методов GET v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId} и GET v2/campaigns/{campaignId}/returns — в поле `images` решения по товару.  Максимальный размер изображения — 50 МБ.  Тип изображения можно определить по заголовку `Content-Type` в ответе.  **Пошаговые инструкции**  * Как работать с невыкупами и возвратами  {% include notitle limit %}
      * Получение фотографий товаров в возврате
      */
     getReturnPhoto(campaignId: number, orderId: number, returnId: number, itemId: number, imageHash: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Blob>;
     /**
-     * {% include notitle access %}  Получает список невыкупов и возвратов.  Чтобы получить информацию по одному невыкупу или возврату, выполните запрос GET v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId}.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Получает список невыкупов и возвратов.  Чтобы получить информацию по одному невыкупу или возврату, выполните запрос GET v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId}.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  **Пошаговые инструкции**  * Невыкупы и возвраты  {% include notitle limit %}
      * Список невыкупов и возвратов
      */
     getReturnsRaw(requestParameters: ReturnsApiGetReturnsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetReturnsResponse>>;
     /**
-     * {% include notitle access %}  Получает список невыкупов и возвратов.  Чтобы получить информацию по одному невыкупу или возврату, выполните запрос GET v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId}.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Получает список невыкупов и возвратов.  Чтобы получить информацию по одному невыкупу или возврату, выполните запрос GET v2/campaigns/{campaignId}/orders/{orderId}/returns/{returnId}.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый невыкуп или возврат.  {#T}  {% endnote %}  **Пошаговые инструкции**  * Невыкупы и возвраты  {% include notitle limit %}
      * Список невыкупов и возвратов
      */
     getReturns(campaignId: number, pageToken?: string, limit?: number, orderIds?: Set<number>, statuses?: Set<RefundStatusType>, shipmentStatuses?: Set<ReturnShipmentStatusType>, type?: ReturnType, fromDate?: Date, toDate?: Date, fromDate2?: Date, toDate2?: Date, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetReturnsResponse>;
@@ -152,12 +152,12 @@ export declare class ReturnsApi extends runtime.BaseAPI {
      */
     setReturnDecision(campaignId: number, orderId: number, returnId: number, setReturnDecisionRequest: SetReturnDecisionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmptyApiResponse>;
     /**
-     * {% include notitle access %}  Позволяет передать список решений по возврату.  {% note info \"Перед вызовом метода\" %}  Получите список доступных решений — POST v1/businesses/{businessId}/returns/decisions.  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Позволяет передать список решений по возврату.  {% note info \"Перед вызовом метода\" %}  Получите список доступных решений — POST v1/businesses/{businessId}/returns/decisions.  {% endnote %}  **Пошаговые инструкции**  * Как работать с невыкупами и возвратами  {% include notitle limit %}
      * Передача решения по возврату
      */
     submitReturnDecisionRaw(requestParameters: ReturnsApiSubmitReturnDecisionOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmptyApiResponse>>;
     /**
-     * {% include notitle access %}  Позволяет передать список решений по возврату.  {% note info \"Перед вызовом метода\" %}  Получите список доступных решений — POST v1/businesses/{businessId}/returns/decisions.  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Позволяет передать список решений по возврату.  {% note info \"Перед вызовом метода\" %}  Получите список доступных решений — POST v1/businesses/{businessId}/returns/decisions.  {% endnote %}  **Пошаговые инструкции**  * Как работать с невыкупами и возвратами  {% include notitle limit %}
      * Передача решения по возврату
      */
     submitReturnDecision(campaignId: number, orderId: number, returnId: number, submitReturnDecisionRequest?: SubmitReturnDecisionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmptyApiResponse>;

@@ -165,7 +165,7 @@ export class PricesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Устанавливает цены, которые действуют во всех магазинах. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  При необходимости передавайте НДС с помощью параметра `vat` в запросе POST v2/campaigns/{campaignId}/offers/update.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Устанавливает цены, которые действуют во всех магазинах. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  При необходимости передавайте НДС с помощью параметра `vat` в запросе POST v2/campaigns/{campaignId}/offers/update.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  **Пошаговые инструкции**  * Как изменить цены на товары  {% include notitle limit %}
      * Установка цен на товары для всех магазинов
      */
     updateBusinessPricesRaw(requestParameters, initOverrides) {
@@ -197,7 +197,7 @@ export class PricesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Устанавливает цены, которые действуют во всех магазинах. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  При необходимости передавайте НДС с помощью параметра `vat` в запросе POST v2/campaigns/{campaignId}/offers/update.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Устанавливает цены, которые действуют во всех магазинах. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  При необходимости передавайте НДС с помощью параметра `vat` в запросе POST v2/campaigns/{campaignId}/offers/update.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  **Пошаговые инструкции**  * Как изменить цены на товары  {% include notitle limit %}
      * Установка цен на товары для всех магазинов
      */
     updateBusinessPrices(businessId, updateBusinessPricesRequest, initOverrides) {
@@ -207,7 +207,7 @@ export class PricesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Устанавливает цены на товары в магазине. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  {% note warning \"Метод только для отдельных магазинов\" %}  Вам доступен этот метод, если в кабинете продавца на Маркете есть возможность установить уникальные цены в отдельных магазинах. Как это проверить — в методе POST v2/businesses/{businessId}/settings в параметре `onlyDefaultPrice` возвращается значение `false`.  В ином случае используйте метод управления ценами, которые действуют во всех магазинах, — POST v2/businesses/{businessId}/offer-prices/updates.  {% endnote %}  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Устанавливает цены на товары в магазине. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  {% note warning \"Метод только для отдельных магазинов\" %}  Вам доступен этот метод, если в кабинете продавца на Маркете есть возможность установить уникальные цены в отдельных магазинах. Как это проверить — в методе POST v2/businesses/{businessId}/settings в параметре `onlyDefaultPrice` возвращается значение `false`.  В ином случае используйте метод управления ценами, которые действуют во всех магазинах, — POST v2/businesses/{businessId}/offer-prices/updates.  {% endnote %}  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  **Пошаговые инструкции**  * Как изменить цены на товары  {% include notitle limit %}
      * Установка цен на товары в конкретном магазине
      */
     updatePricesRaw(requestParameters, initOverrides) {
@@ -239,7 +239,7 @@ export class PricesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Устанавливает цены на товары в магазине. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  {% note warning \"Метод только для отдельных магазинов\" %}  Вам доступен этот метод, если в кабинете продавца на Маркете есть возможность установить уникальные цены в отдельных магазинах. Как это проверить — в методе POST v2/businesses/{businessId}/settings в параметре `onlyDefaultPrice` возвращается значение `false`.  В ином случае используйте метод управления ценами, которые действуют во всех магазинах, — POST v2/businesses/{businessId}/offer-prices/updates.  {% endnote %}  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Устанавливает цены на товары в магазине. Чтобы получить рекомендации Маркета, касающиеся цен, выполните запрос POST v2/businesses/{businessId}/offers/recommendations.  {% note warning \"Метод только для отдельных магазинов\" %}  Вам доступен этот метод, если в кабинете продавца на Маркете есть возможность установить уникальные цены в отдельных магазинах. Как это проверить — в методе POST v2/businesses/{businessId}/settings в параметре `onlyDefaultPrice` возвращается значение `false`.  В ином случае используйте метод управления ценами, которые действуют во всех магазинах, — POST v2/businesses/{businessId}/offer-prices/updates.  {% endnote %}  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  **Пошаговые инструкции**  * Как изменить цены на товары  {% include notitle limit %}
      * Установка цен на товары в конкретном магазине
      */
     updatePrices(campaignId, updatePricesRequest, initOverrides) {

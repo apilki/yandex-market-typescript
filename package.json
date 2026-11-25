@@ -1,6 +1,6 @@
 {
   "name": "@apilki/yandex-market",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "JavaScript/TypeScript client for Yandex Market Partner API",
   "main": "./dist/index.js",
   "module": "./dist/esm/index.js",

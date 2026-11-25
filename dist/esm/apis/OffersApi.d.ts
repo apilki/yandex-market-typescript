@@ -36,12 +36,12 @@ export interface OffersApiUpdateCampaignOffersOperationRequest {
  */
 export declare class OffersApi extends runtime.BaseAPI {
     /**
-     * {% include notitle access %}  Удаляет заданные товары из заданного магазина.  {% note warning \"Запрос удаляет товары из конкретного магазина\" %}  На продажи в других магазинах и на наличие товара в общем каталоге он не влияет.  {% endnote %}  Товар не получится удалить, если он хранится на складах Маркета.  {% include notitle limit %}
+     * {% include notitle access %}  Удаляет заданные товары из заданного магазина.  {% note warning \"Запрос удаляет товары из конкретного магазина\" %}  На продажи в других магазинах и на наличие товара в общем каталоге он не влияет.  {% endnote %}  Товар не получится удалить, если он хранится на складах Маркета.  **Пошаговые инструкции**  * Удаление товаров из каталога  {% include notitle limit %}
      * Удаление товаров из ассортимента магазина
      */
     deleteCampaignOffersRaw(requestParameters: OffersApiDeleteCampaignOffersOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteCampaignOffersResponse>>;
     /**
-     * {% include notitle access %}  Удаляет заданные товары из заданного магазина.  {% note warning \"Запрос удаляет товары из конкретного магазина\" %}  На продажи в других магазинах и на наличие товара в общем каталоге он не влияет.  {% endnote %}  Товар не получится удалить, если он хранится на складах Маркета.  {% include notitle limit %}
+     * {% include notitle access %}  Удаляет заданные товары из заданного магазина.  {% note warning \"Запрос удаляет товары из конкретного магазина\" %}  На продажи в других магазинах и на наличие товара в общем каталоге он не влияет.  {% endnote %}  Товар не получится удалить, если он хранится на складах Маркета.  **Пошаговые инструкции**  * Удаление товаров из каталога  {% include notitle limit %}
      * Удаление товаров из ассортимента магазина
      */
     deleteCampaignOffers(campaignId: number, deleteCampaignOffersRequest: DeleteCampaignOffersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteCampaignOffersResponse>;
@@ -66,12 +66,12 @@ export declare class OffersApi extends runtime.BaseAPI {
      */
     getOfferRecommendations(businessId: number, getOfferRecommendationsRequest: GetOfferRecommendationsRequest, pageToken?: string, limit?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetOfferRecommendationsResponse>;
     /**
-     * {% include notitle access %}  Изменяет параметры размещения товаров в конкретном магазине: доступность товара и применяемый НДС.  {% include notitle limit %}
+     * {% include notitle access %}  Изменяет параметры размещения товаров в конкретном магазине: доступность товара и применяемый НДС.  **Пошаговые инструкции**  * Добавить новые товары в каталог  {% include notitle limit %}
      * Изменение условий продажи товаров в магазине
      */
     updateCampaignOffersRaw(requestParameters: OffersApiUpdateCampaignOffersOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmptyApiResponse>>;
     /**
-     * {% include notitle access %}  Изменяет параметры размещения товаров в конкретном магазине: доступность товара и применяемый НДС.  {% include notitle limit %}
+     * {% include notitle access %}  Изменяет параметры размещения товаров в конкретном магазине: доступность товара и применяемый НДС.  **Пошаговые инструкции**  * Добавить новые товары в каталог  {% include notitle limit %}
      * Изменение условий продажи товаров в магазине
      */
     updateCampaignOffers(campaignId: number, updateCampaignOffersRequest: UpdateCampaignOffersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmptyApiResponse>;

@@ -30,7 +30,7 @@ const index_1 = require("../models/index");
  */
 class OffersApi extends runtime.BaseAPI {
     /**
-     * {% include notitle access %}  Удаляет заданные товары из заданного магазина.  {% note warning \"Запрос удаляет товары из конкретного магазина\" %}  На продажи в других магазинах и на наличие товара в общем каталоге он не влияет.  {% endnote %}  Товар не получится удалить, если он хранится на складах Маркета.  {% include notitle limit %}
+     * {% include notitle access %}  Удаляет заданные товары из заданного магазина.  {% note warning \"Запрос удаляет товары из конкретного магазина\" %}  На продажи в других магазинах и на наличие товара в общем каталоге он не влияет.  {% endnote %}  Товар не получится удалить, если он хранится на складах Маркета.  **Пошаговые инструкции**  * Удаление товаров из каталога  {% include notitle limit %}
      * Удаление товаров из ассортимента магазина
      */
     deleteCampaignOffersRaw(requestParameters, initOverrides) {
@@ -62,7 +62,7 @@ class OffersApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Удаляет заданные товары из заданного магазина.  {% note warning \"Запрос удаляет товары из конкретного магазина\" %}  На продажи в других магазинах и на наличие товара в общем каталоге он не влияет.  {% endnote %}  Товар не получится удалить, если он хранится на складах Маркета.  {% include notitle limit %}
+     * {% include notitle access %}  Удаляет заданные товары из заданного магазина.  {% note warning \"Запрос удаляет товары из конкретного магазина\" %}  На продажи в других магазинах и на наличие товара в общем каталоге он не влияет.  {% endnote %}  Товар не получится удалить, если он хранится на складах Маркета.  **Пошаговые инструкции**  * Удаление товаров из каталога  {% include notitle limit %}
      * Удаление товаров из ассортимента магазина
      */
     deleteCampaignOffers(campaignId, deleteCampaignOffersRequest, initOverrides) {
@@ -168,7 +168,7 @@ class OffersApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Изменяет параметры размещения товаров в конкретном магазине: доступность товара и применяемый НДС.  {% include notitle limit %}
+     * {% include notitle access %}  Изменяет параметры размещения товаров в конкретном магазине: доступность товара и применяемый НДС.  **Пошаговые инструкции**  * Добавить новые товары в каталог  {% include notitle limit %}
      * Изменение условий продажи товаров в магазине
      */
     updateCampaignOffersRaw(requestParameters, initOverrides) {
@@ -200,7 +200,7 @@ class OffersApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Изменяет параметры размещения товаров в конкретном магазине: доступность товара и применяемый НДС.  {% include notitle limit %}
+     * {% include notitle access %}  Изменяет параметры размещения товаров в конкретном магазине: доступность товара и применяемый НДС.  **Пошаговые инструкции**  * Добавить новые товары в каталог  {% include notitle limit %}
      * Изменение условий продажи товаров в магазине
      */
     updateCampaignOffers(campaignId, updateCampaignOffersRequest, initOverrides) {

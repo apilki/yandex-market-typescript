@@ -27,7 +27,7 @@ import { GetSupplyRequestDocumentsRequestToJSON, GetSupplyRequestDocumentsRespon
  */
 export class SupplyRequestsApi extends runtime.BaseAPI {
     /**
-     * {% include notitle access %}  Возвращает документы по заявке.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает документы по заявке.  **Пошаговые инструкции**  * Заявки на поставку товаров на склад, вывоз или утилизацию  {% include notitle limit %}
      * Получение документов по заявке на поставку, вывоз или утилизацию
      */
     getSupplyRequestDocumentsRaw(requestParameters, initOverrides) {
@@ -59,7 +59,7 @@ export class SupplyRequestsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Возвращает документы по заявке.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает документы по заявке.  **Пошаговые инструкции**  * Заявки на поставку товаров на склад, вывоз или утилизацию  {% include notitle limit %}
      * Получение документов по заявке на поставку, вывоз или утилизацию
      */
     getSupplyRequestDocuments(campaignId, getSupplyRequestDocumentsRequest, initOverrides) {
@@ -69,7 +69,7 @@ export class SupplyRequestsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Возвращает список товаров в заявке и информацию по ним.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает список товаров в заявке и информацию по ним.  **Пошаговые инструкции**  * Заявки на поставку товаров на склад, вывоз или утилизацию  {% include notitle limit %}
      * Получение товаров в заявке на поставку, вывоз или утилизацию
      */
     getSupplyRequestItemsRaw(requestParameters, initOverrides) {
@@ -107,7 +107,7 @@ export class SupplyRequestsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Возвращает список товаров в заявке и информацию по ним.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает список товаров в заявке и информацию по ним.  **Пошаговые инструкции**  * Заявки на поставку товаров на склад, вывоз или утилизацию  {% include notitle limit %}
      * Получение товаров в заявке на поставку, вывоз или утилизацию
      */
     getSupplyRequestItems(campaignId, getSupplyRequestItemsRequest, pageToken, limit, initOverrides) {
@@ -117,7 +117,7 @@ export class SupplyRequestsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  По указанным фильтрам возвращает заявки на поставку, вывоз и утилизацию, а также информацию по ним.  {% include notitle limit %}
+     * {% include notitle access %}  По указанным фильтрам возвращает заявки на поставку, вывоз и утилизацию, а также информацию по ним.  **Пошаговые инструкции**  * Заявки на поставку товаров на склад, вывоз или утилизацию  {% include notitle limit %}
      * Получение информации о заявках на поставку, вывоз и утилизацию
      */
     getSupplyRequestsRaw(requestParameters, initOverrides) {
@@ -152,7 +152,7 @@ export class SupplyRequestsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  По указанным фильтрам возвращает заявки на поставку, вывоз и утилизацию, а также информацию по ним.  {% include notitle limit %}
+     * {% include notitle access %}  По указанным фильтрам возвращает заявки на поставку, вывоз и утилизацию, а также информацию по ним.  **Пошаговые инструкции**  * Заявки на поставку товаров на склад, вывоз или утилизацию  {% include notitle limit %}
      * Получение информации о заявках на поставку, вывоз и утилизацию
      */
     getSupplyRequests(campaignId, pageToken, limit, getSupplyRequestsRequest, initOverrides) {

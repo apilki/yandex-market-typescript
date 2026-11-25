@@ -64,7 +64,7 @@ export class WarehousesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Возвращает список складов и информацию о них.  {% note warning \"Когда использовать этот метод\" %}  Метод актуален для кабинетов с группами складов. Если в кабинете нет групп складов, используйте метод POST v3/businesses/{businessId}/warehouses. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает список складов и информацию о них.  {% note warning \"Когда использовать этот метод\" %}  Метод актуален для кабинетов с группами складов. Если в кабинете нет групп складов, используйте метод POST v3/businesses/{businessId}/warehouses. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  **Пошаговые инструкции**  * Работа со складами  {% include notitle limit %}
      * Список складов
      */
     getPagedWarehousesRaw(requestParameters, initOverrides) {
@@ -99,7 +99,7 @@ export class WarehousesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Возвращает список складов и информацию о них.  {% note warning \"Когда использовать этот метод\" %}  Метод актуален для кабинетов с группами складов. Если в кабинете нет групп складов, используйте метод POST v3/businesses/{businessId}/warehouses. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает список складов и информацию о них.  {% note warning \"Когда использовать этот метод\" %}  Метод актуален для кабинетов с группами складов. Если в кабинете нет групп складов, используйте метод POST v3/businesses/{businessId}/warehouses. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  **Пошаговые инструкции**  * Работа со складами  {% include notitle limit %}
      * Список складов
      */
     getPagedWarehouses(businessId, pageToken, limit, getPagedWarehousesRequest, initOverrides) {
@@ -109,7 +109,7 @@ export class WarehousesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Возвращает список складов кабинета и информацию о них.  Для каждого склада возвращается список моделей работы (FBS, DBS, Экспресс) и доступность API для каждой модели.  {% note warning \"Метод подходит, только если в кабинете нет групп складов\" %}  Метод возвращает только отдельные склады и не возвращает группы складов. Если в кабинете есть группы складов, используйте метод POST v2/businesses/{businessId}/warehouses. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает список складов кабинета и информацию о них.  Для каждого склада возвращается список моделей работы (FBS, DBS, Экспресс) и доступность API для каждой модели.  {% note warning \"Метод подходит, только если в кабинете нет групп складов\" %}  Метод возвращает только отдельные склады и не возвращает группы складов. Если в кабинете есть группы складов, используйте метод POST v2/businesses/{businessId}/warehouses. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  **Пошаговые инструкции**  * Работа со складами  {% include notitle limit %}
      * Список складов
      */
     getPartnerWarehousesRaw(requestParameters, initOverrides) {
@@ -144,7 +144,7 @@ export class WarehousesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Возвращает список складов кабинета и информацию о них.  Для каждого склада возвращается список моделей работы (FBS, DBS, Экспресс) и доступность API для каждой модели.  {% note warning \"Метод подходит, только если в кабинете нет групп складов\" %}  Метод возвращает только отдельные склады и не возвращает группы складов. Если в кабинете есть группы складов, используйте метод POST v2/businesses/{businessId}/warehouses. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает список складов кабинета и информацию о них.  Для каждого склада возвращается список моделей работы (FBS, DBS, Экспресс) и доступность API для каждой модели.  {% note warning \"Метод подходит, только если в кабинете нет групп складов\" %}  Метод возвращает только отдельные склады и не возвращает группы складов. Если в кабинете есть группы складов, используйте метод POST v2/businesses/{businessId}/warehouses. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  **Пошаговые инструкции**  * Работа со складами  {% include notitle limit %}
      * Список складов
      */
     getPartnerWarehouses(businessId, pageToken, limit, getPartnerWarehousesRequest, initOverrides) {
@@ -193,7 +193,7 @@ export class WarehousesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Отключает или включает модель работы (FBS, DBS или Экспресс) для указанного склада.  После отключения модели товары, которые работают по ней на данном складе, скрываются через 15 минут. После включения они возвращаются на витрину через 15 минут, а если модель была выключена 30 дней или дольше — через 4 часа.  {% include notitle limit %}
+     * {% include notitle access %}  Отключает или включает модель работы (FBS, DBS или Экспресс) для указанного склада.  После отключения модели товары, которые работают по ней на данном складе, скрываются через 15 минут. После включения они возвращаются на витрину через 15 минут, а если модель была выключена 30 дней или дольше — через 4 часа.  **Пошаговые инструкции**  * Отключить или включить модель работы склада  {% include notitle limit %}
      * Включение/выключение модели работы склада
      */
     updateWarehouseModelStatusRaw(requestParameters, initOverrides) {
@@ -225,7 +225,7 @@ export class WarehousesApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Отключает или включает модель работы (FBS, DBS или Экспресс) для указанного склада.  После отключения модели товары, которые работают по ней на данном складе, скрываются через 15 минут. После включения они возвращаются на витрину через 15 минут, а если модель была выключена 30 дней или дольше — через 4 часа.  {% include notitle limit %}
+     * {% include notitle access %}  Отключает или включает модель работы (FBS, DBS или Экспресс) для указанного склада.  После отключения модели товары, которые работают по ней на данном складе, скрываются через 15 минут. После включения они возвращаются на витрину через 15 минут, а если модель была выключена 30 дней или дольше — через 4 часа.  **Пошаговые инструкции**  * Отключить или включить модель работы склада  {% include notitle limit %}
      * Включение/выключение модели работы склада
      */
     updateWarehouseModelStatus(businessId, updateWarehouseModelStatusRequest, initOverrides) {

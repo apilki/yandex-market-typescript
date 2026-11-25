@@ -20,12 +20,12 @@ export interface OperationsApiGetOperationsOperationRequest {
  */
 export declare class OperationsApi extends runtime.BaseAPI {
     /**
-     * {% include notitle access %}  Возвращает статусы запущенных операций по их идентификаторам.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает статусы запущенных операций по их идентификаторам.  **Пошаговые инструкции**  * Работа с LaaS-заказом * Проверить завершение операции отмены возврата  {% include notitle limit %}
      * Получение статусов операций
      */
     getOperationsRaw(requestParameters: OperationsApiGetOperationsOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetOperationsResponse>>;
     /**
-     * {% include notitle access %}  Возвращает статусы запущенных операций по их идентификаторам.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает статусы запущенных операций по их идентификаторам.  **Пошаговые инструкции**  * Работа с LaaS-заказом * Проверить завершение операции отмены возврата  {% include notitle limit %}
      * Получение статусов операций
      */
     getOperations(businessId: number, getOperationsRequest: GetOperationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetOperationsResponse>;

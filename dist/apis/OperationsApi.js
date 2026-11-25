@@ -30,7 +30,7 @@ const index_1 = require("../models/index");
  */
 class OperationsApi extends runtime.BaseAPI {
     /**
-     * {% include notitle access %}  Возвращает статусы запущенных операций по их идентификаторам.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает статусы запущенных операций по их идентификаторам.  **Пошаговые инструкции**  * Работа с LaaS-заказом * Проверить завершение операции отмены возврата  {% include notitle limit %}
      * Получение статусов операций
      */
     getOperationsRaw(requestParameters, initOverrides) {
@@ -62,7 +62,7 @@ class OperationsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Возвращает статусы запущенных операций по их идентификаторам.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает статусы запущенных операций по их идентификаторам.  **Пошаговые инструкции**  * Работа с LaaS-заказом * Проверить завершение операции отмены возврата  {% include notitle limit %}
      * Получение статусов операций
      */
     getOperations(businessId, getOperationsRequest, initOverrides) {

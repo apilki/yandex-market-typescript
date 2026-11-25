@@ -30,7 +30,7 @@ const index_1 = require("../models/index");
  */
 class OrderBusinessInformationApi extends runtime.BaseAPI {
     /**
-     * {% include notitle access %}  Возвращает информацию о покупателе по идентификатору заказа.  {% note info \"Как получить информацию о покупателе, который является физическим лицом\" %}  Воспользуйтесь запросом GET v2/campaigns/{campaignId}/orders/{orderId}/buyer.  {% endnote %}  Получить данные можно, только если заказ находится в статусе `PROCESSING`, `DELIVERY`, `PICKUP` или `DELIVERED`.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает информацию о покупателе по идентификатору заказа.  {% note info \"Как получить информацию о покупателе, который является физическим лицом\" %}  Воспользуйтесь запросом GET v2/campaigns/{campaignId}/orders/{orderId}/buyer.  {% endnote %}  Получить данные можно, только если заказ находится в статусе `PROCESSING`, `DELIVERY`, `PICKUP` или `DELIVERED`.  **Пошаговые инструкции**  * Как получить информацию о покупателе  {% include notitle limit %}
      * Информация о покупателе — юридическом лице
      */
     getOrderBusinessBuyerInfoRaw(requestParameters, initOverrides) {
@@ -60,7 +60,7 @@ class OrderBusinessInformationApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Возвращает информацию о покупателе по идентификатору заказа.  {% note info \"Как получить информацию о покупателе, который является физическим лицом\" %}  Воспользуйтесь запросом GET v2/campaigns/{campaignId}/orders/{orderId}/buyer.  {% endnote %}  Получить данные можно, только если заказ находится в статусе `PROCESSING`, `DELIVERY`, `PICKUP` или `DELIVERED`.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает информацию о покупателе по идентификатору заказа.  {% note info \"Как получить информацию о покупателе, который является физическим лицом\" %}  Воспользуйтесь запросом GET v2/campaigns/{campaignId}/orders/{orderId}/buyer.  {% endnote %}  Получить данные можно, только если заказ находится в статусе `PROCESSING`, `DELIVERY`, `PICKUP` или `DELIVERED`.  **Пошаговые инструкции**  * Как получить информацию о покупателе  {% include notitle limit %}
      * Информация о покупателе — юридическом лице
      */
     getOrderBusinessBuyerInfo(campaignId, orderId, initOverrides) {
@@ -70,7 +70,7 @@ class OrderBusinessInformationApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Возвращает информацию о документах по идентификатору заказа.  Получить данные можно после того, как заказ перейдет в статус `DELIVERED`.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает информацию о документах по идентификатору заказа.  Получить данные можно после того, как заказ перейдет в статус `DELIVERED`.  **Пошаговые инструкции**  * Как получить информацию о документах  {% include notitle limit %}
      * Информация о документах
      */
     getOrderBusinessDocumentsInfoRaw(requestParameters, initOverrides) {
@@ -100,7 +100,7 @@ class OrderBusinessInformationApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Возвращает информацию о документах по идентификатору заказа.  Получить данные можно после того, как заказ перейдет в статус `DELIVERED`.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает информацию о документах по идентификатору заказа.  Получить данные можно после того, как заказ перейдет в статус `DELIVERED`.  **Пошаговые инструкции**  * Как получить информацию о документах  {% include notitle limit %}
      * Информация о документах
      */
     getOrderBusinessDocumentsInfo(campaignId, orderId, initOverrides) {

@@ -30,7 +30,7 @@ const index_1 = require("../models/index");
  */
 class LogisticPointsApi extends runtime.BaseAPI {
     /**
-     * {% include notitle access %}  Возвращает список пунктов выдачи заказов Маркета.  Регулярно запрашивайте эту информацию, чтобы в системе магазина хранить актуальные данные. Например, раз в день.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает список пунктов выдачи заказов Маркета.  Регулярно запрашивайте эту информацию, чтобы в системе магазина хранить актуальные данные. Например, раз в день.  **Пошаговые инструкции**  * Создать заказ LaaS * Создать возврат LaaS  {% include notitle limit %}
      * Получение точек ПВЗ Маркета
      */
     getLogisticPointsRaw(requestParameters, initOverrides) {
@@ -63,7 +63,7 @@ class LogisticPointsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Возвращает список пунктов выдачи заказов Маркета.  Регулярно запрашивайте эту информацию, чтобы в системе магазина хранить актуальные данные. Например, раз в день.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает список пунктов выдачи заказов Маркета.  Регулярно запрашивайте эту информацию, чтобы в системе магазина хранить актуальные данные. Например, раз в день.  **Пошаговые инструкции**  * Создать заказ LaaS * Создать возврат LaaS  {% include notitle limit %}
      * Получение точек ПВЗ Маркета
      */
     getLogisticPoints(businessId, pageToken, limit, initOverrides) {

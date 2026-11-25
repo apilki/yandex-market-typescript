@@ -52,72 +52,72 @@ export interface ChatsApiSendMessageToChatOperationRequest {
  */
 export declare class ChatsApi extends runtime.BaseAPI {
     /**
-     * {% include notitle access %}  Создает новый чат с покупателем и возвращает информацию о нем или созданном ранее.  Типы чатов, которые может начать продавец:  * по заказам; * по возвратам (доступны только для FBY-, FBS- и Экспресс-магазинов).  {% include notitle limit %}
+     * {% include notitle access %}  Создает новый чат с покупателем и возвращает информацию о нем или созданном ранее.  Типы чатов, которые может начать продавец:  * по заказам; * по возвратам (доступны только для FBY-, FBS- и Экспресс-магазинов).  **Пошаговые инструкции**  * Начать чат с покупателем  {% include notitle limit %}
      * Создание нового чата с покупателем
      */
     createChatRaw(requestParameters: ChatsApiCreateChatOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateChatResponse>>;
     /**
-     * {% include notitle access %}  Создает новый чат с покупателем и возвращает информацию о нем или созданном ранее.  Типы чатов, которые может начать продавец:  * по заказам; * по возвратам (доступны только для FBY-, FBS- и Экспресс-магазинов).  {% include notitle limit %}
+     * {% include notitle access %}  Создает новый чат с покупателем и возвращает информацию о нем или созданном ранее.  Типы чатов, которые может начать продавец:  * по заказам; * по возвратам (доступны только для FBY-, FBS- и Экспресс-магазинов).  **Пошаговые инструкции**  * Начать чат с покупателем  {% include notitle limit %}
      * Создание нового чата с покупателем
      */
     createChat(businessId: number, createChatRequest: CreateChatRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateChatResponse>;
     /**
-     * {% include notitle access %}  Возвращает чат по его идентификатору.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает чат по его идентификатору.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  **Пошаговые инструкции**  * Как проверить, есть ли новые чаты или сообщения  {% include notitle limit %}
      * Получение чата по идентификатору
      */
     getChatRaw(requestParameters: ChatsApiGetChatRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetChatResponse>>;
     /**
-     * {% include notitle access %}  Возвращает чат по его идентификатору.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает чат по его идентификатору.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  **Пошаговые инструкции**  * Как проверить, есть ли новые чаты или сообщения  {% include notitle limit %}
      * Получение чата по идентификатору
      */
     getChat(businessId: number, chatId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetChatResponse>;
     /**
-     * {% include notitle access %}  Возвращает историю сообщений в чате с покупателем.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает историю сообщений в чате с покупателем.  **Пошаговые инструкции**  * Чаты с покупателями  {% include notitle limit %}
      * Получение истории сообщений в чате
      */
     getChatHistoryRaw(requestParameters: ChatsApiGetChatHistoryOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetChatHistoryResponse>>;
     /**
-     * {% include notitle access %}  Возвращает историю сообщений в чате с покупателем.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает историю сообщений в чате с покупателем.  **Пошаговые инструкции**  * Чаты с покупателями  {% include notitle limit %}
      * Получение истории сообщений в чате
      */
     getChatHistory(businessId: number, chatId: number, getChatHistoryRequest: GetChatHistoryRequest, pageToken?: string, limit?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetChatHistoryResponse>;
     /**
-     * {% include notitle access %}  Возвращает сообщение по его идентификатору.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает сообщение по его идентификатору.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  **Пошаговые инструкции**  * Как проверить, есть ли новые чаты или сообщения  {% include notitle limit %}
      * Получение сообщения в чате
      */
     getChatMessageRaw(requestParameters: ChatsApiGetChatMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetChatMessageResponse>>;
     /**
-     * {% include notitle access %}  Возвращает сообщение по его идентификатору.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает сообщение по его идентификатору.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  **Пошаговые инструкции**  * Как проверить, есть ли новые чаты или сообщения  {% include notitle limit %}
      * Получение сообщения в чате
      */
     getChatMessage(businessId: number, chatId: number, messageId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetChatMessageResponse>;
     /**
-     * {% include notitle access %}  Возвращает чаты с покупателями.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает чаты с покупателями.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  **Пошаговые инструкции**  * Чаты с покупателями  {% include notitle limit %}
      * Получение доступных чатов
      */
     getChatsRaw(requestParameters: ChatsApiGetChatsOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetChatsResponse>>;
     /**
-     * {% include notitle access %}  Возвращает чаты с покупателями.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает чаты с покупателями.  {% note tip \"Подключите API-уведомления\" %}  Маркет отправит вам запрос POST notification, когда появится новый чат или сообщение.  {#T}  {% endnote %}  **Пошаговые инструкции**  * Чаты с покупателями  {% include notitle limit %}
      * Получение доступных чатов
      */
     getChats(businessId: number, getChatsRequest: GetChatsRequest, pageToken?: string, limit?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetChatsResponse>;
     /**
-     * {% include notitle access %}  Отправляет файл в чат с покупателем.  {% include notitle limit %}
+     * {% include notitle access %}  Отправляет файл в чат с покупателем.  **Пошаговые инструкции**  * Чаты с покупателями  {% include notitle limit %}
      * Отправка файла в чат
      */
     sendFileToChatRaw(requestParameters: ChatsApiSendFileToChatRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmptyApiResponse>>;
     /**
-     * {% include notitle access %}  Отправляет файл в чат с покупателем.  {% include notitle limit %}
+     * {% include notitle access %}  Отправляет файл в чат с покупателем.  **Пошаговые инструкции**  * Чаты с покупателями  {% include notitle limit %}
      * Отправка файла в чат
      */
     sendFileToChat(businessId: number, chatId: number, file: Blob, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmptyApiResponse>;
     /**
-     * {% include notitle access %}  Отправляет сообщение в чат с покупателем.  {% include notitle limit %}
+     * {% include notitle access %}  Отправляет сообщение в чат с покупателем.  **Пошаговые инструкции**  * Чаты с покупателями  {% include notitle limit %}
      * Отправка сообщения в чат
      */
     sendMessageToChatRaw(requestParameters: ChatsApiSendMessageToChatOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmptyApiResponse>>;
     /**
-     * {% include notitle access %}  Отправляет сообщение в чат с покупателем.  {% include notitle limit %}
+     * {% include notitle access %}  Отправляет сообщение в чат с покупателем.  **Пошаговые инструкции**  * Чаты с покупателями  {% include notitle limit %}
      * Отправка сообщения в чат
      */
     sendMessageToChat(businessId: number, chatId: number, sendMessageToChatRequest: SendMessageToChatRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmptyApiResponse>;

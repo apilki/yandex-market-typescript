@@ -72,7 +72,7 @@ export class StocksApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Возвращает данные об остатках товаров на складе кабинета.  {% note warning \"Метод подходит, только если в кабинете нет групп складов\" %}  Если в кабинете есть группы складов, используйте метод POST v2/campaigns/{campaignId}/offers/stocks. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает данные об остатках товаров на складе кабинета.  {% note warning \"Метод подходит, только если в кабинете нет групп складов\" %}  Если в кабинете есть группы складов, используйте метод POST v2/campaigns/{campaignId}/offers/stocks. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  **Пошаговые инструкции**  * Если в кабинете нет групп складов  {% include notitle limit %}
      * Информация об остатках
      */
     getStocksOnPartnerWarehousesRaw(requestParameters, initOverrides) {
@@ -110,7 +110,7 @@ export class StocksApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Возвращает данные об остатках товаров на складе кабинета.  {% note warning \"Метод подходит, только если в кабинете нет групп складов\" %}  Если в кабинете есть группы складов, используйте метод POST v2/campaigns/{campaignId}/offers/stocks. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает данные об остатках товаров на складе кабинета.  {% note warning \"Метод подходит, только если в кабинете нет групп складов\" %}  Если в кабинете есть группы складов, используйте метод POST v2/campaigns/{campaignId}/offers/stocks. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  **Пошаговые инструкции**  * Если в кабинете нет групп складов  {% include notitle limit %}
      * Информация об остатках
      */
     getStocksOnPartnerWarehouses(businessId, getStocksOnPartnerWarehousesRequest, pageToken, limit, initOverrides) {
@@ -120,7 +120,7 @@ export class StocksApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Передает данные об остатках товаров на витрине.  {% note warning \"Когда использовать этот метод\" %}  Метод актуален только для кабинетов с группами складов. Если в кабинете нет групп складов, используйте метод POST v3/businesses/{businessId}/offers/stocks/update. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  Для группы складов передавайте остатки только для **одного любого склада**. Информация для остальных складов в этой группе обновится автоматически.  Обязательно указывайте SKU **в точности** так, как он указан в каталоге. Например, _557722_ и _0557722_ — это два разных SKU.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Передает данные об остатках товаров на витрине.  {% note warning \"Когда использовать этот метод\" %}  Метод актуален только для кабинетов с группами складов. Если в кабинете нет групп складов, используйте метод POST v3/businesses/{businessId}/offers/stocks/update. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  Для группы складов передавайте остатки только для **одного любого склада**. Информация для остальных складов в этой группе обновится автоматически.  Обязательно указывайте SKU **в точности** так, как он указан в каталоге. Например, _557722_ и _0557722_ — это два разных SKU.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  **Пошаговые инструкции**  * Передача остатков через API  {% include notitle limit %}
      * Передача информации об остатках
      */
     updateStocksRaw(requestParameters, initOverrides) {
@@ -152,7 +152,7 @@ export class StocksApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Передает данные об остатках товаров на витрине.  {% note warning \"Когда использовать этот метод\" %}  Метод актуален только для кабинетов с группами складов. Если в кабинете нет групп складов, используйте метод POST v3/businesses/{businessId}/offers/stocks/update. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  Для группы складов передавайте остатки только для **одного любого склада**. Информация для остальных складов в этой группе обновится автоматически.  Обязательно указывайте SKU **в точности** так, как он указан в каталоге. Например, _557722_ и _0557722_ — это два разных SKU.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Передает данные об остатках товаров на витрине.  {% note warning \"Когда использовать этот метод\" %}  Метод актуален только для кабинетов с группами складов. Если в кабинете нет групп складов, используйте метод POST v3/businesses/{businessId}/offers/stocks/update. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  Для группы складов передавайте остатки только для **одного любого склада**. Информация для остальных складов в этой группе обновится автоматически.  Обязательно указывайте SKU **в точности** так, как он указан в каталоге. Например, _557722_ и _0557722_ — это два разных SKU.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  **Пошаговые инструкции**  * Передача остатков через API  {% include notitle limit %}
      * Передача информации об остатках
      */
     updateStocks(campaignId, updateStocksRequest, initOverrides) {
@@ -162,7 +162,7 @@ export class StocksApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Передает данные об остатках товаров на витрине.  Обязательно указывайте SKU **в точности** так, как он указан в каталоге. Например, _557722_ и _0557722_ — это два разных SKU.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% note warning \"Метод подходит, только если в кабинете нет групп складов\" %}  Если в кабинете есть группы складов, используйте метод PUT v2/campaigns/{campaignId}/offers/stocks. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Передает данные об остатках товаров на витрине.  Обязательно указывайте SKU **в точности** так, как он указан в каталоге. Например, _557722_ и _0557722_ — это два разных SKU.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% note warning \"Метод подходит, только если в кабинете нет групп складов\" %}  Если в кабинете есть группы складов, используйте метод PUT v2/campaigns/{campaignId}/offers/stocks. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  **Пошаговые инструкции**  * Передача остатков через API  {% include notitle limit %}
      * Передача информации об остатках
      */
     updateStocksOnPartnerWarehousesRaw(requestParameters, initOverrides) {
@@ -194,7 +194,7 @@ export class StocksApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Передает данные об остатках товаров на витрине.  Обязательно указывайте SKU **в точности** так, как он указан в каталоге. Например, _557722_ и _0557722_ — это два разных SKU.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% note warning \"Метод подходит, только если в кабинете нет групп складов\" %}  Если в кабинете есть группы складов, используйте метод PUT v2/campaigns/{campaignId}/offers/stocks. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  {% include notitle limit %}
+     * {% include notitle access %}  Передает данные об остатках товаров на витрине.  Обязательно указывайте SKU **в точности** так, как он указан в каталоге. Например, _557722_ и _0557722_ — это два разных SKU.  {% note info \"Данные в каталоге обновляются не мгновенно\" %}  Это занимает до нескольких минут.  {% endnote %}  {% note warning \"Метод подходит, только если в кабинете нет групп складов\" %}  Если в кабинете есть группы складов, используйте метод PUT v2/campaigns/{campaignId}/offers/stocks. [Что такое группы складов и зачем они нужны](https://yandex.ru/support/marketplace/assortment/operations/stocks.html#unified-stocks).  {% endnote %}  **Пошаговые инструкции**  * Передача остатков через API  {% include notitle limit %}
      * Передача информации об остатках
      */
     updateStocksOnPartnerWarehouses(businessId, updateStocksOnWarehousesRequest, initOverrides) {

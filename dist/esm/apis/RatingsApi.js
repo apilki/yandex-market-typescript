@@ -27,7 +27,7 @@ import { GetQualityRatingDetailsResponseFromJSON, GetQualityRatingRequestToJSON,
  */
 export class RatingsApi extends runtime.BaseAPI {
     /**
-     * {% include notitle access %}  Возвращает список заказов, которые повлияли на индекс качества магазина. Чтобы узнать значение индекса качества, выполните запрос POST v2/businesses/{businessId}/ratings/quality.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает список заказов, которые повлияли на индекс качества магазина. Чтобы узнать значение индекса качества, выполните запрос POST v2/businesses/{businessId}/ratings/quality.  **Пошаговые инструкции**  * Индекс качества  {% include notitle limit %}
      * Заказы, которые повлияли на индекс качества
      */
     getQualityRatingDetailsRaw(requestParameters, initOverrides) {
@@ -54,7 +54,7 @@ export class RatingsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Возвращает список заказов, которые повлияли на индекс качества магазина. Чтобы узнать значение индекса качества, выполните запрос POST v2/businesses/{businessId}/ratings/quality.  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает список заказов, которые повлияли на индекс качества магазина. Чтобы узнать значение индекса качества, выполните запрос POST v2/businesses/{businessId}/ratings/quality.  **Пошаговые инструкции**  * Индекс качества  {% include notitle limit %}
      * Заказы, которые повлияли на индекс качества
      */
     getQualityRatingDetails(campaignId, initOverrides) {
@@ -64,7 +64,7 @@ export class RatingsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Возвращает значение индекса качества магазинов и его составляющие.  Подробнее об индексе качества читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/quality/score/).  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает значение индекса качества магазинов и его составляющие.  Подробнее об индексе качества читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/quality/score/).  **Пошаговые инструкции**  * Индекс качества  {% include notitle limit %}
      * Индекс качества магазинов
      */
     getQualityRatingsRaw(requestParameters, initOverrides) {
@@ -96,7 +96,7 @@ export class RatingsApi extends runtime.BaseAPI {
         });
     }
     /**
-     * {% include notitle access %}  Возвращает значение индекса качества магазинов и его составляющие.  Подробнее об индексе качества читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/quality/score/).  {% include notitle limit %}
+     * {% include notitle access %}  Возвращает значение индекса качества магазинов и его составляющие.  Подробнее об индексе качества читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/quality/score/).  **Пошаговые инструкции**  * Индекс качества  {% include notitle limit %}
      * Индекс качества магазинов
      */
     getQualityRatings(businessId, getQualityRatingRequest, initOverrides) {
